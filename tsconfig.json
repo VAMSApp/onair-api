@@ -3,7 +3,7 @@
     "outDir": "./dist",
     "compilerOptions": {
         "target": "es5",
-        "module": "amd",
+        "module": "commonjs",
         "types": ["mocha", "node"],
         "sourceMap": true
     }

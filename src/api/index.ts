@@ -17,12 +17,12 @@ export const getCompany = GetCompany;
 export const getFlight = GetFlight;
 
 export default {
+    getCompany,
+    getCompanyFleet,
     getAircraft,
     getAircraftFlights,
     getAirport,
     getCompanyFbos,
-    getCompanyFleet,
     getCompanyFlights,
-    getCompany,
     getFlight,
 }

@@ -6,5 +6,3 @@ const companyId: string = process.env.COMPANY_ID;
 const world: string = process.env.COMPANY_WORLD;
 
 const Api: OnAirApi = new OnAirApi(apiKey, companyId, world)
-
-console.log(Api.getAircraft());
