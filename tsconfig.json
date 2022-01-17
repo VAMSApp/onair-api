@@ -1,0 +1,10 @@
+{
+    "rootDir": "./src",
+    "outDir": "./dist",
+    "compilerOptions": {
+        "target": "es5",
+        "module": "amd",
+        "types": ["mocha", "node"],
+        "sourceMap": true
+    }
+}
