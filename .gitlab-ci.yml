@@ -11,11 +11,16 @@ cache:
 install_dependencies:
   stage: build
   script:
-    - cp .env-example .env
     - npm install
   artifacts:
     paths:
       - node_modules/
+
+configure_app:
+  stage: build
+  script:
+    - cp .env-example .env
+    - cat .env
 
 testing_testing:
   stage: test
