@@ -11,16 +11,14 @@ cache:
 install_dependencies:
   stage: build
   script:
+    - echo "COMPANY_APIKEY='d17ea885-aad5-429b-9297-fe2e6deca5d9'" > .env
+    - echo "COMPANY_ID='c3d8e51d-f2e9-4918-a286-c3f2cd5ab141'" >> .env
+    - echo "COMPANY_WORLD='cumulus'" >> .env
     - npm install
   artifacts:
     paths:
       - node_modules/
-configure_project:
-  stage: build
-  script:
-    - echo "COMPANY_APIKEY='d17ea885-aad5-429b-9297-fe2e6deca5d9'" > .env
-    - echo "COMPANY_ID='c3d8e51d-f2e9-4918-a286-c3f2cd5ab141'" >> .env
-    - echo "COMPANY_WORLD='cumulus'" >> .env
+
 testing_testing:
   stage: test
   script: npm test
