@@ -5,7 +5,7 @@ import Api from './api/index'
 import { Flight } from './types/Flight'
 import { Fbo } from './types/Fbo'
 
-export default class OnAirApi {
+export class OnAirApi {
     // Properties
     private apiKey = null
     private companyId = null
@@ -96,3 +96,5 @@ export default class OnAirApi {
     }
     
 }
+
+export default OnAirApi

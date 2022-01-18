@@ -35,12 +35,9 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getFlight = void 0;
-var onAirRequest_1 = __importDefault(require("./onAirRequest"));
+var onAirRequest_1 = require("./onAirRequest");
 var config_1 = require("../utils/config");
 var utils_1 = require("../utils/utils");
 var endPoint = 'flights/';
@@ -75,3 +72,4 @@ var getFlight = function (flightId, apiKey, world) { return __awaiter(void 0, vo
 }); };
 exports.getFlight = getFlight;
 exports.default = exports.getFlight;
+//# sourceMappingURL=getFlight.js.map

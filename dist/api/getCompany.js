@@ -35,13 +35,10 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getCompany = void 0;
 var config_1 = require("../utils/config");
-var onAirRequest_1 = __importDefault(require("./onAirRequest"));
+var onAirRequest_1 = require("./onAirRequest");
 var endPoint = 'company/';
 var getCompany = function (companyId, apiKey, world) { return __awaiter(void 0, void 0, void 0, function () {
     var response, e_1;
@@ -69,3 +66,4 @@ var getCompany = function (companyId, apiKey, world) { return __awaiter(void 0, 
 }); };
 exports.getCompany = getCompany;
 exports.default = exports.getCompany;
+//# sourceMappingURL=getCompany.js.map

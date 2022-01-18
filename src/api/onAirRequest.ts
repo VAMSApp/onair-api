@@ -6,8 +6,6 @@ import { Company } from "../types/Company";
 import { Fbo } from "../types/Fbo";
 import { Flight } from "../types/Flight";
 
-import { config } from '../utils/config';
-
 
 interface OnAirResponse {
   Error: string;

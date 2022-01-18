@@ -35,13 +35,10 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 var mocha_1 = require("mocha");
 var chai_1 = require("chai");
-var app_1 = __importDefault(require("./app"));
+var app_1 = require("./app");
 var ApiKey = process.env.COMPANY_APIKEY;
 var CompanyId = process.env.COMPANY_ID;
 var World = process.env.COMPANY_WORLD;
@@ -98,38 +95,5 @@ var World = process.env.COMPANY_WORLD;
             });
         });
     });
-    it('getCompanyDetails() should return company details', function () {
-        return __awaiter(this, void 0, void 0, function () {
-            var Api, actual;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        Api = new app_1.default(ApiKey, CompanyId, World);
-                        return [4 /*yield*/, Api.getCompanyDetails()];
-                    case 1:
-                        actual = _a.sent();
-                        (0, chai_1.expect)(actual.Id).equal(CompanyId);
-                        return [2 /*return*/];
-                }
-            });
-        });
-    });
-    it('getCompanyFleet() should return matching company details', function () {
-        return __awaiter(this, void 0, void 0, function () {
-            var Api, actual;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        Api = new app_1.default(ApiKey, CompanyId, World);
-                        return [4 /*yield*/, Api.getCompanyFleet()];
-                    case 1:
-                        actual = _a.sent();
-                        // console.log(actual);
-                        (0, chai_1.expect)(actual).to.be.an('array');
-                        (0, chai_1.expect)(actual[0]['CompanyId']).equal(CompanyId);
-                        return [2 /*return*/];
-                }
-            });
-        });
-    });
 });
+//# sourceMappingURL=app.spec.js.map
