@@ -17,10 +17,11 @@ install_dependencies:
       - node_modules/
 
 configure_app:
-  stage: test
+  stage: build
   script:
-    - cp .env-example .env
-    - cat .env
+    - echo "COMPANY_APIKEY='d17ea885-aad5-429b-9297-fe2e6deca5d9'" >> ".env"
+    - echo "COMPANY_ID='c3d8e51d-f2e9-4918-a286-c3f2cd5ab141'" >> ".env"
+    - echo "COMPANY_WORLD='cumulus'" >> ".env"
 
 testing_testing:
   stage: test
