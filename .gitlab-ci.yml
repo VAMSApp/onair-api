@@ -25,4 +25,6 @@ configure_app:
 
 testing_testing:
   stage: test
-  script: npm test
+  script:
+    - cat .env
+    - npm test
