@@ -18,4 +18,8 @@ install_dependencies:
 
 testing_testing:
   stage: test
+  environment:
+    COMPANY_APIKEY: "d17ea885-aad5-429b-9297-fe2e6deca5d9"
+    COMPANY_ID: "c3d8e51d-f2e9-4918-a286-c3f2cd5ab141"
+    COMPANY_WORLD: "cumulus"
   script: npm test
