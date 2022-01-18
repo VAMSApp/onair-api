@@ -17,7 +17,7 @@ install_dependencies:
       - node_modules/
 
 configure_app:
-  stage: build
+  stage: test
   script:
     - cp .env-example .env
     - cat .env
