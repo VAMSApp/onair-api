@@ -62,31 +62,37 @@ export default class OnAirApi {
         return companyFbos;
     }
     
-    public async getCompanyFlights() {
-        let companyFlights: Flight[] = await Api.getCompanyFlights(this.companyId, this.apiKey, this.world);
+    public async getCompanyFlights(page: number = null, limit: number = 100) {
+        let companyFlights: Flight[] = await Api.getCompanyFlights(this.companyId, this.apiKey, this.world, page, limit);
         return companyFlights;
     }
     
     public async getAircraft(aircraftId: string) {
+        if (!aircraftId) throw new Error('Aircraft ID not provided');
+
         let aircraft: Aircraft = await Api.getAircraft(aircraftId, this.apiKey, this.world);
         return aircraft;
     }
 
     public async getAircraftFlights(aircraftId: string) {
+        if (!aircraftId) throw new Error('Aircraft ID not provided');
+
         let flights: Flight[] = await Api.getAircraftFlights(aircraftId, this.apiKey, this.world);
         return flights;
     }
 
     public async getAirport(airportCode: string) {
+        if (!airportCode) throw new Error('Airport ICAO code not provided');
+
         let airport: any = await Api.getAirport(airportCode, this.apiKey, this.world);
         return airport;
     }
     
     public async getFlight(flightId: string) {
+        if (!flightId) throw new Error('Flight ID not provided');
+
         let flight: Flight = await Api.getFlight(flightId, this.apiKey, this.world);
         return flight;
     }
-    
-    // Methods
     
 }

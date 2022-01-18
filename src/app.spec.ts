@@ -64,10 +64,48 @@ describe('OnAirApi()', function() {
         // expect(true);
     })
 
-    it('getCompanyFbos() should matching company FBOs');
-    it('getCompanyFlights() should matching company Flights');
-    it('getAircraft() should matching aircraft details');
-    it('getAircraftFlights() should matching aircraft flights');
-    it('getAirport() should matching airport details');
-    it('getFlight() should matching flight details');
+    it('getCompanyFbos() should matching company FBOs', async function() {
+        const Api: OnAirApi = new OnAirApi(ApiKey, CompanyId, World);
+        let actual = Api.getCompanyFbos();
+        expect(true);
+    });
+
+    it('getCompanyFlights() should matching company Flights', async function() {
+        const Api: OnAirApi = new OnAirApi(ApiKey, CompanyId, World);
+        let actual = Api.getCompanyFlights();
+        expect(true);
+    });
+
+    it('getAircraft() should matching aircraft details', async function() {
+        const Api: OnAirApi = new OnAirApi(ApiKey, CompanyId, World);
+        const aircraftId = '2dc2320f-27cc-4d19-8168-f2df3a105838';
+        let actual = Api.getAircraft(aircraftId);
+
+        expect(true);
+    });
+
+    it('getAircraftFlights() should matching aircraft flights', async function() {
+        const Api: OnAirApi = new OnAirApi(ApiKey, CompanyId, World);
+        const aircraftId = '2dc2320f-27cc-4d19-8168-f2df3a105838';
+        let actual = Api.getAircraftFlights(aircraftId);
+
+        expect(true);
+    });
+
+    it('getAirport() should matching airport details', async function() {
+        const Api: OnAirApi = new OnAirApi(ApiKey, CompanyId, World);
+        const airportCode = 'KPHX';
+        let actual = Api.getAirport(airportCode);
+
+        expect(true);
+    });
+
+    it('getFlight() should matching flight details', async function() {
+        const Api: OnAirApi = new OnAirApi(ApiKey, CompanyId, World);
+        const flightId = '';
+        let actual = Api.getFlight(flightId);
+
+        expect(true);
+    });
+
 })
