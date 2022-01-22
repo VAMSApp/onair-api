@@ -1,5 +1,4 @@
 import axios, { AxiosResponse, AxiosRequestConfig} from "axios";
-
 import { Aircraft } from "../types/Aircraft";
 import { Airport } from "../types/Airport";
 import { Company } from "../types/Company";
@@ -7,7 +6,6 @@ import { Fbo } from "../types/Fbo";
 import { Flight } from "../types/Flight";
 import { Job } from "../types/Job";
 import { Member, VirtualAirline } from "../types/VirtualAirline";
-
 
 interface OnAirResponse {
   Error: string;
@@ -57,7 +55,7 @@ export default async <T>(url: string, apiKey: string, requestData?: Record<strin
     headers: {
       'oa-apikey': apiKey,
       'Accept': 'application/json',
-      'User-Agent': `vams-app API middleware for OnAir Company`
+      'User-Agent': `onair-api middleware for OnAir Company v${process.env.npm_package_version}`
     },
   }
   if (typeof requestData !== 'undefined') {

@@ -4,7 +4,7 @@
       "lib": [
         "ESNext"
       ],
-      "rootDir": "src",
+      "rootDir": ".",
       "outDir": "dist",
       "module": "commonjs",
       "skipLibCheck": true,
