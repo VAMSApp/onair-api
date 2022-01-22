@@ -1,4 +1,3 @@
-import 'dotenv/config'
 import Api from './api'
 import {
     Company,
