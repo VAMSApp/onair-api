@@ -39,7 +39,7 @@ describe('OnAirApi()', function() {
                 
                 let flights: Flight[] = await api.getAircraftFlights(aircraftId);
                 
-                expect(flights).to.be.an('Object');
+                expect(flights).to.be.an('Array');
                 expect(flights[0].AircraftId).to.equal(aircraftId);
             }
         });
@@ -66,7 +66,7 @@ describe('OnAirApi()', function() {
                 
                 let fbos: Fbo[] = await api.getCompanyFbos();
                 
-                expect(fbos).to.be.an('Object');
+                expect(fbos).to.be.an('Array');
             }
         });
     });
@@ -78,7 +78,7 @@ describe('OnAirApi()', function() {
                 
                 let aircraft: Aircraft[] = await api.getCompanyFleet();
                 
-                expect(aircraft).to.be.an('Object');
+                expect(aircraft).to.be.an('Array');
             }
         });
     });
@@ -90,7 +90,7 @@ describe('OnAirApi()', function() {
                 
                 let flights: Flight[] = await api.getCompanyFlights();
                 
-                expect(flights).to.be.an('Object');
+                expect(flights).to.be.an('Array');
             }
         });
     });
@@ -102,7 +102,7 @@ describe('OnAirApi()', function() {
                     
                     let jobs: Job[] = await api.getCompanyJobs();
                     
-                    expect(jobs).to.be.an('Object');
+                    expect(jobs).to.be.an('Array');
                 }
         });
     });
@@ -140,7 +140,7 @@ describe('OnAirApi()', function() {
                     
                     let members: Member[] = await api.getVirtualAirlineMembers();
                     
-                    expect(members).to.be.an('Object');
+                    expect(members).to.be.an('Array');
                 }
         });
     });
