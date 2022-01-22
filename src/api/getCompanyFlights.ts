@@ -1,5 +1,4 @@
-import { Flight } from '../types/Flight';
-import { config } from '../utils/config';
+import { Flight } from '../types';
 import onAirRequest, { FlightResponse } from './onAirRequest';
 
 const endPoint = 'company/';
@@ -9,7 +8,7 @@ export const getCompanyFlights = async (companyId: string, apiKey: string, world
   
   try {
     const response = await onAirRequest<FlightResponse>(
-      `https://${world}${config.apiUrl}${endPoint}${companyId}/flights`,
+      `https://${world}.onair.company/api/v1/${endPoint}${companyId}/flights`,
       apiKey, {
         startIndex: startIndex,
         limit: limit
@@ -25,5 +24,3 @@ export const getCompanyFlights = async (companyId: string, apiKey: string, world
     throw new Error(e.response.status === 400 ? `Company Id "${companyId}"" not found` : e.message);
   }
 }
-
-export default getCompanyFlights;

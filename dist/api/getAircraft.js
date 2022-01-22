@@ -35,23 +35,26 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-var onAirRequest_1 = require("./onAirRequest");
-var config_1 = require("../utils/config");
-var index_1 = require("../utils/index");
+exports.getAircraft = void 0;
+var onAirRequest_1 = __importDefault(require("./onAirRequest"));
+var utils_1 = require("../utils");
 var endPoint = 'aircraft/';
 var getAircraft = function (aircraftId, apiKey, world) { return __awaiter(void 0, void 0, void 0, function () {
     var response, e_1;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
-                if (!aircraftId.match(index_1.uuid4)) {
+                if (!aircraftId.match(utils_1.uuid4)) {
                     throw new Error('Aircraft ID is incorrect! It should be a 36 character UUID');
                 }
                 _a.label = 1;
             case 1:
                 _a.trys.push([1, 3, , 4]);
-                return [4 /*yield*/, (0, onAirRequest_1.default)("https://".concat(world).concat(config_1.config.apiUrl).concat(endPoint).concat(aircraftId), apiKey)];
+                return [4 /*yield*/, (0, onAirRequest_1.default)("https://".concat(world, ".onair.company/api/v1/").concat(endPoint).concat(aircraftId), apiKey)];
             case 2:
                 response = _a.sent();
                 if (typeof response.data.Content !== 'undefined') {
@@ -69,5 +72,4 @@ var getAircraft = function (aircraftId, apiKey, world) { return __awaiter(void 0
         }
     });
 }); };
-exports.default = getAircraft;
-//# sourceMappingURL=getAircraft.js.map
+exports.getAircraft = getAircraft;

@@ -1,30 +1,27 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getFlight = exports.getCompany = exports.getCompanyFlights = exports.getCompanyFleet = exports.getCompanyFbos = exports.getAirport = exports.getAircraftFlights = exports.getAircraft = void 0;
-var getAircraft_1 = require("./getAircraft");
 var getAircraftFlights_1 = require("./getAircraftFlights");
+var getAircraft_1 = require("./getAircraft");
 var getAirport_1 = require("./getAirport");
 var getCompanyFbos_1 = require("./getCompanyFbos");
 var getCompanyFleet_1 = require("./getCompanyFleet");
 var getCompanyFlights_1 = require("./getCompanyFlights");
+var getCompanyJobs_1 = require("./getCompanyJobs");
 var getCompany_1 = require("./getCompany");
 var getFlight_1 = require("./getFlight");
-exports.getAircraft = getAircraft_1.default;
-exports.getAircraftFlights = getAircraftFlights_1.default;
-exports.getAirport = getAirport_1.default;
-exports.getCompanyFbos = getCompanyFbos_1.default;
-exports.getCompanyFleet = getCompanyFleet_1.default;
-exports.getCompanyFlights = getCompanyFlights_1.default;
-exports.getCompany = getCompany_1.default;
-exports.getFlight = getFlight_1.default;
-exports.default = {
-    getCompany: exports.getCompany,
-    getCompanyFleet: exports.getCompanyFleet,
-    getAircraft: exports.getAircraft,
-    getAircraftFlights: exports.getAircraftFlights,
-    getAirport: exports.getAirport,
-    getCompanyFbos: exports.getCompanyFbos,
-    getCompanyFlights: exports.getCompanyFlights,
-    getFlight: exports.getFlight,
+var getVirtualAirlineMembers_1 = require("./getVirtualAirlineMembers");
+var getVirtualAirline_1 = require("./getVirtualAirline");
+var Api = {
+    getAircraftFlights: getAircraftFlights_1.getAircraftFlights,
+    getAircraft: getAircraft_1.getAircraft,
+    getAirport: getAirport_1.getAirport,
+    getCompanyFbos: getCompanyFbos_1.getCompanyFbos,
+    getCompanyFleet: getCompanyFleet_1.getCompanyFleet,
+    getCompanyFlights: getCompanyFlights_1.getCompanyFlights,
+    getCompanyJobs: getCompanyJobs_1.getCompanyJobs,
+    getCompany: getCompany_1.getCompany,
+    getFlight: getFlight_1.getFlight,
+    getVirtualAirlineMembers: getVirtualAirlineMembers_1.getVirtualAirlineMembers,
+    getVirtualAirline: getVirtualAirline_1.getVirtualAirline,
 };
-//# sourceMappingURL=index.js.map
+exports.default = Api;

@@ -5,6 +5,8 @@ import { Airport } from "../types/Airport";
 import { Company } from "../types/Company";
 import { Fbo } from "../types/Fbo";
 import { Flight } from "../types/Flight";
+import { Job } from "../types/Job";
+import { Member, VirtualAirline } from "../types/VirtualAirline";
 
 
 interface OnAirResponse {
@@ -31,6 +33,17 @@ export interface FboResponse extends OnAirResponse {
   Content: Fbo[];
 }
 
+export interface JobResponse extends OnAirResponse {
+  Content: Job | Job[];
+}
+
+export interface VirtualAirlineResponse extends OnAirResponse {
+  Content: VirtualAirline;
+}
+export interface VirtualAirlineMemberResponse extends OnAirResponse {
+  Content: Member | Member[];
+}
+
 /**
  * Generic Get request to OnAir
  * 
@@ -44,7 +57,7 @@ export default async <T>(url: string, apiKey: string, requestData?: Record<strin
     headers: {
       'oa-apikey': apiKey,
       'Accept': 'application/json',
-      'User-Agent': `CLI for OnAir Company`
+      'User-Agent': `vams-app API middleware for OnAir Company`
     },
   }
   if (typeof requestData !== 'undefined') {

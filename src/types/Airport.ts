@@ -1,6 +1,4 @@
-import { Runway } from './Runway';
-import { AirportLocation } from './AirportLocation';
-import { AirportFrequency } from './AirportFrequency';
+import { Runway, AirportLocation, AirportFrequency, } from './index'
 
 export interface Airport {
   Id: string,

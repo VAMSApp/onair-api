@@ -35,8 +35,11 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-var axios_1 = require("axios");
+var axios_1 = __importDefault(require("axios"));
 /**
  * Generic Get request to OnAir
  *
@@ -54,7 +57,7 @@ exports.default = (function (url, apiKey, requestData) { return __awaiter(void 0
                     headers: {
                         'oa-apikey': apiKey,
                         'Accept': 'application/json',
-                        'User-Agent': "CLI for OnAir Company"
+                        'User-Agent': "vams-app API middleware for OnAir Company"
                     },
                 };
                 if (typeof requestData !== 'undefined') {
@@ -65,4 +68,3 @@ exports.default = (function (url, apiKey, requestData) { return __awaiter(void 0
         }
     });
 }); });
-//# sourceMappingURL=onAirRequest.js.map

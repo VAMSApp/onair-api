@@ -1,5 +1,4 @@
-import { Airport } from "./Airport";
-import { Company } from "./Company";
+import { Airport, Company, } from ".";
 
 export const engineTypes:string[] = [
   'Piston',

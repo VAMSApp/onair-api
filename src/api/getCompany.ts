@@ -1,5 +1,4 @@
-import { Company } from '../types/Company';
-import { config } from '../utils/config';
+import { Company } from '../types';
 import onAirRequest, { CompanyResponse } from './onAirRequest';
 
 const endPoint = 'company/';
@@ -7,7 +6,7 @@ const endPoint = 'company/';
 export const getCompany = async (companyId: string, apiKey: string, world: string) => {
   try {
     const response = await onAirRequest<CompanyResponse>(
-      `https://${world}${config.apiUrl}${endPoint}${companyId}`,
+      `https://${world}.onair.company/api/v1/${endPoint}${companyId}`,
       apiKey
     );
 
@@ -20,5 +19,3 @@ export const getCompany = async (companyId: string, apiKey: string, world: strin
     throw new Error(e.response.status === 400 ? `Company Id "${companyId}"" not found` : e.message);
   }
 }
-
-export default getCompany;

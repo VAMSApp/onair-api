@@ -1,5 +1,4 @@
-import { Fbo } from '../types/Fbo';
-import { config } from '../utils/config';
+import { Fbo } from '../types';
 import onAirRequest, { FboResponse } from './onAirRequest';
 
 const endPoint = 'company/';
@@ -7,7 +6,7 @@ const endPoint = 'company/';
 export const getCompanyFbos = async (companyId: string, apiKey: string, world: string) => {
   try {
     const response = await onAirRequest<FboResponse>(
-      `https://${world}${config.apiUrl}${endPoint}${companyId}/fbos`,
+      `https://${world}.onair.company/api/v1/${endPoint}${companyId}/fbos`,
       apiKey
     );
 
@@ -20,5 +19,3 @@ export const getCompanyFbos = async (companyId: string, apiKey: string, world: s
     throw new Error(e.response.status === 400 ? `Company Id "${companyId}"" not found` : e.message);
   }
 }
-
-export default getCompanyFbos;

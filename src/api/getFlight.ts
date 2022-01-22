@@ -1,7 +1,6 @@
 import onAirRequest, { FlightResponse } from './onAirRequest';
-import { Flight } from '../types/Flight';
-import { config } from '../utils/config';
-import { uuid4 } from '../utils/utils';
+import { Flight } from '../types';
+import { uuid4 } from '../utils';
 
 const endPoint = 'flights/';
 
@@ -12,7 +11,7 @@ export const getFlight = async (flightId: string, apiKey: string, world: string)
 
   try {
     const response = await onAirRequest<FlightResponse>(
-      `https://${world}${config.apiUrl}${endPoint}${flightId}`, 
+      `https://${world}.onair.company/api/v1/${endPoint}${flightId}`, 
       apiKey
       );
 
@@ -26,4 +25,3 @@ export const getFlight = async (flightId: string, apiKey: string, world: string)
   }
 }
 
-export default getFlight;

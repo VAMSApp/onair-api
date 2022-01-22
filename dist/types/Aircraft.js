@@ -17,4 +17,3 @@ exports.aircraftStatuses = [
     'Warp',
     'Ferry'
 ];
-//# sourceMappingURL=Aircraft.js.map

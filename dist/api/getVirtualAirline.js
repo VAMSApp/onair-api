@@ -39,31 +39,31 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getAirport = void 0;
+exports.getVirtualAirline = void 0;
 var onAirRequest_1 = __importDefault(require("./onAirRequest"));
-var endPoint = 'airports/';
-var getAirport = function (icao, apiKey, world) { return __awaiter(void 0, void 0, void 0, function () {
+var endPoint = 'va/';
+var getVirtualAirline = function (vaId, apiKey, world) { return __awaiter(void 0, void 0, void 0, function () {
     var response, e_1;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
                 _a.trys.push([0, 2, , 3]);
-                return [4 /*yield*/, (0, onAirRequest_1.default)("https://".concat(world, ".onair.company/api/v1/").concat(endPoint).concat(icao), apiKey)];
+                return [4 /*yield*/, (0, onAirRequest_1.default)("https://".concat(world, ".onair.company/api/v1/").concat(endPoint).concat(vaId), apiKey)];
             case 1:
                 response = _a.sent();
                 if (typeof response.data.Content !== 'undefined') {
                     return [2 /*return*/, response.data.Content];
                 }
                 else {
-                    throw new Error(response.data.Error ? response.data.Error : "Airport ICAO code ".concat(icao.toUpperCase(), " not found"));
+                    throw new Error(response.data.Error ? response.data.Error : "VA Id \"".concat(vaId, "\"\" not found"));
                 }
                 ;
                 return [3 /*break*/, 3];
             case 2:
                 e_1 = _a.sent();
-                throw new Error(e_1.message);
+                throw new Error(e_1.response.status === 400 ? "VA Id \"".concat(vaId, "\" not found") : e_1.message);
             case 3: return [2 /*return*/];
         }
     });
 }); };
-exports.getAirport = getAirport;
+exports.getVirtualAirline = getVirtualAirline;

@@ -35,11 +35,13 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getAircraftFlights = void 0;
-var onAirRequest_1 = require("./onAirRequest");
-var config_1 = require("../utils/config");
-var utils_1 = require("../utils/utils");
+var onAirRequest_1 = __importDefault(require("./onAirRequest"));
+var utils_1 = require("../utils");
 var endPoint = 'aircraft/';
 var getAircraftFlights = function (aircraftId, apiKey, world, page, limit) {
     if (page === void 0) { page = 1; }
@@ -56,7 +58,7 @@ var getAircraftFlights = function (aircraftId, apiKey, world, page, limit) {
                     _a.label = 1;
                 case 1:
                     _a.trys.push([1, 3, , 4]);
-                    return [4 /*yield*/, (0, onAirRequest_1.default)("https://".concat(world).concat(config_1.config.apiUrl).concat(endPoint).concat(aircraftId, "/flights"), apiKey, {
+                    return [4 /*yield*/, (0, onAirRequest_1.default)("https://".concat(world, ".onair.company/api/v1/").concat(endPoint).concat(aircraftId, "/flights"), apiKey, {
                             startIndex: startIndex,
                             limit: limit
                         })];
@@ -79,5 +81,3 @@ var getAircraftFlights = function (aircraftId, apiKey, world, page, limit) {
     });
 };
 exports.getAircraftFlights = getAircraftFlights;
-exports.default = exports.getAircraftFlights;
-//# sourceMappingURL=getAircraftFlights.js.map

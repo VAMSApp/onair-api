@@ -1,4 +1,6 @@
-interface CompanySkillPoint {
+import { World } from './World';
+
+export interface CompanySkillPoint {
   Id: string,
   CompanyId: string,
   Company: Record<string, unknown>,
@@ -7,23 +9,13 @@ interface CompanySkillPoint {
   Tag: string,
   Comment: string,
   CreationDate: string
+
 }
 
 export interface Company {
   Id: string,
   WorldId: string,
-  World: {
-    Id: string,
-    Name: string,
-    IsSurvival: boolean,
-    IsHumanOnly: boolean,
-    Fuel100LLBasePrice: number,
-    FuelJetBasePrice: number,
-    JobsBaseBonus: number,
-    JobsMaxBonus: number,
-    ShortName: string,
-    EnableEconomicBalance: boolean
-  },
+  World: World,
   Name: string,
   AirlineCode: string,
   LastConnection: string,

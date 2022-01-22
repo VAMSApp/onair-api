@@ -1,5 +1,4 @@
-import { Airport } from '../types/Airport';
-import { config } from '../utils/config';
+import { Airport } from '../types';
 import onAirRequest, { AirportResponse } from './onAirRequest';
 
 const endPoint = 'airports/';
@@ -7,7 +6,7 @@ const endPoint = 'airports/';
 export const getAirport = async (icao: string, apiKey: string, world: string) => {
   try {
     const response = await onAirRequest<AirportResponse>(
-      `https://${world}${config.apiUrl}${endPoint}${icao}`,
+      `https://${world}.onair.company/api/v1/${endPoint}${icao}`,
       apiKey
     );
 
@@ -20,5 +19,3 @@ export const getAirport = async (icao: string, apiKey: string, world: string) =>
     throw new Error(e.message);
   }
 }
-
-export default getAirport;
