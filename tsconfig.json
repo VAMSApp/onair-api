@@ -13,7 +13,6 @@
       "forceConsistentCasingInFileNames": true,
       "useUnknownInCatchVariables": false,
       "resolveJsonModule": true,
-      "types": ["src/types"],
     },
     "include": [
       "src"
