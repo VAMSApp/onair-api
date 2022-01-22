@@ -13,15 +13,14 @@ import {
 export class OnAirApi {
     // Properties
     private ApiKey: string
-    private CompanyId: string
     private World: string
+    private CompanyId: string | undefined
     private VaId: string | undefined
 
     // Constructor
-    constructor(apiKey: string, companyId: string, world: string, vaId: string | undefined) {
+    constructor(apiKey: string, world: string, companyId?: string | undefined, vaId?: string | undefined) {
         if (!apiKey) throw new Error('No API Key provided');
-        if(!companyId) throw new Error('No Company ID provided');
-        if(!world) throw new Error('No World provided');
+        if (!world) throw new Error('No World provided');
 
         this.ApiKey = apiKey;
         this.CompanyId = companyId;
@@ -30,26 +29,36 @@ export class OnAirApi {
     }
 
     public async getCompanyDetails(): Promise<Company> {
+        if (!this.CompanyId) throw new Error('No Company ID provided');
+
         let company: Company = await Api.getCompany(this.CompanyId, this.ApiKey, this.World)
         return company;
     }
 
     public async getCompanyFleet(): Promise<Aircraft[]> {
+        if (!this.CompanyId) throw new Error('No Company ID provided');
+
         let companyFleet: Aircraft[] = await Api.getCompanyFleet(this.CompanyId, this.ApiKey, this.World)
         return companyFleet;
     }
     
     public async getCompanyFbos(): Promise<Fbo[]> {
+        if (!this.CompanyId) throw new Error('No Company ID provided');
+
         let companyFbos: Fbo[] = await Api.getCompanyFbos(this.CompanyId, this.ApiKey, this.World);
         return companyFbos;
     }
     
     public async getCompanyFlights(page: number = 1, limit: number = 100): Promise<Flight[]> {
+        if (!this.CompanyId) throw new Error('No Company ID provided');
+
         let companyFlights: Flight[] = await Api.getCompanyFlights(this.CompanyId, this.ApiKey, this.World, page, limit);
         return companyFlights;
     }
     
     public async getCompanyJobs(): Promise<Job[]> {
+        if (!this.CompanyId) throw new Error('No Company ID provided');
+
         let companyJobs: Job[] = await Api.getCompanyJobs(this.CompanyId, this.ApiKey, this.World);
         return companyJobs;
     }

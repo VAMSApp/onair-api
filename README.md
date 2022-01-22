@@ -9,24 +9,24 @@ A node.js wrapper around the OnAir Airline Manager's public API.
 
 ## Usage
 
-**The required apiKey and companyId** can be found in the lower left corner of the options screen within the OnAir Desktop client.
+**The required apiKey and optional companyId** can be found in the lower left corner of the options screen within the OnAir Desktop client.
 
 * apiKey
-* companyId
+* companyId - *Optional*, but required for all `getCompany*` methods
 * vaId - *Optional*, only required if using either of the VA methods `getVirtualAirline` or `getVirtualAirlineMembers`
 
 ### Example using Javascript
 ```javascript
-import { OnAirApi } from 'onair-api'
+import OnAirApi from 'onair-api'
 
 // define the prerequisite keys, and world
 // apiKey and companyId can be found in the lower left corner of the options screen within the OnAir Desktop client
 const apikey = 'YOUR-API-KEY'
-const companyId = 'YOUR-COMPANY-ID'
 const world = 'cumulus' // one of, cumulus, stratus, thunder. Use 'stratus' for clear-sky world
+const companyId = 'YOUR-COMPANY-ID'
 
 // instantiate the OnAirApi
-const Api = new OnAirApi(apiKey, companyId, world);
+const Api = new OnAirApi(apiKey, world, companyId);
 
 /**
  * call one of the Api methods, like getCompanyDetails
@@ -44,9 +44,9 @@ let company = await Api.getCompanyDetails();
 Fetches the company details for the given companyId, and world.
 #### Usage
 ```typescript
-import { OnAirApi } from 'onair-api'
+import OnAirApi from 'onair-api'
 import { Api, Company, } from 'onair-api/src/types'
-const api: Api = new OnAirApi(apiKey, companyId, world);
+const api: Api = new OnAirApi(apiKey, world, companyId);
 let companyDetails: Company = await api.getCompanyDetails();
 ```
 
@@ -91,9 +91,9 @@ let companyDetails: Company = await api.getCompanyDetails();
 Fetches the aircraft that are owned, leased, or rented for a given companyId, and world.
 #### Usage
 ```typescript
-import { OnAirApi } from 'onair-api'
+import OnAirApi from 'onair-api'
 import { Api, Aircraft, } from 'onair-api/src/types'
-const api: Api = new OnAirApi(apiKey, companyId, world);
+const api: Api = new OnAirApi(apiKey, world, companyId);
 let fleet: Aircraft[] = await api.getCompanyFleet();
 
 ```
@@ -108,9 +108,9 @@ let fleet: Aircraft[] = await api.getCompanyFleet();
 Fetches the FBOs for a given companyId, and world.
 #### Usage
 ```typescript
-import { OnAirApi } from 'onair-api'
+import OnAirApi from 'onair-api'
 import { Api, Fbo, } from 'onair-api/src/types'
-const api: Api = new OnAirApi(apiKey, companyId, world);
+const api: Api = new OnAirApi(apiKey,, world companyId);
 let companyFbos: Fbo[] = await api.getCompanyFbos();
 ```
 
@@ -124,9 +124,9 @@ let companyFbos: Fbo[] = await api.getCompanyFbos();
 Fetches the Flights for a given companyId, and world.
 #### Usage
 ```typescript
-import { OnAirApi } from 'onair-api'
+import OnAirApi from 'onair-api'
 import { Api, Flight, } from 'onair-api/src/types'
-const api: Api = new OnAirApi(apiKey, companyId, world);
+const api: Api = new OnAirApi(apiKey, world, companyId);
 let companyFlights: Flight[] = await api.getCompanyFlights();
 ```
 
@@ -142,7 +142,7 @@ Fetches the **pending** jobs for a given companyId, and world.
 ```typescript
 import { OnAirApi } from 'onair-api'
 import { Api, Job, } from 'onair-api/src/types'
-const api: Api = new OnAirApi(apiKey, companyId, world);
+const api: Api = new OnAirApi(apiKey, world, companyId);
 let companyFlights: Job[] = await api.getCompanyJobs();
 ```
 
@@ -153,12 +153,12 @@ let companyFlights: Job[] = await api.getCompanyJobs();
 
 
 ### getAircraft(aircraftId: string)
-Fetches the Aircraft details for a given aircraftId, companyId, and world.
+Fetches the Aircraft details for a given aircraftId and world.
 #### Usage
 ```typescript
-import { OnAirApi } from 'onair-api'
+import OnAirApi from 'onair-api'
 import { Api, Aircraft, } from 'onair-api/src/types'
-const api: Api = new OnAirApi(apiKey, companyId, world);
+const api: Api = new OnAirApi(apiKey, world);
 const aircraftId: string = '9891d561-def7-438c-9097-d3336989af93';
 let aircraft: Aircraft = await api.getAircraft(aircraftId);
 ```
@@ -173,9 +173,9 @@ let aircraft: Aircraft = await api.getAircraft(aircraftId);
 Fetches the Flights flown for a given aircraftId.
 #### Usage
 ```typescript
-import { OnAirApi } from 'onair-api'
+import OnAirApi from 'onair-api'
 import { Api, Aircraft, } from 'onair-api/src/types'
-const api: Api = new OnAirApi(apiKey, companyId, world);
+const api: Api = new OnAirApi(apiKey, world);
 const aircraftId: string = '9891d561-def7-438c-9097-d3336989af93';
 let aircraft: Aircraft = await api.getAircraft(aircraftId);
 ```
@@ -187,12 +187,12 @@ let aircraft: Aircraft = await api.getAircraft(aircraftId);
 
 
 ### getAirport(airportCode: string)
-Fetches Airport details for a given airport**Code** and world.
+Fetches Airport details for a given airport **Code** and world.
 #### Usage
 ```typescript
 import { OnAirApi } from 'onair-api'
 import { Api, Airport, } from 'onair-api/src/types'
-const api: Api = new OnAirApi(apiKey, companyId, world);
+const api: Api = new OnAirApi(apiKey, world);
 const airportCode: string = 'KLAX';// Los Angeles Intel Airport ICAO
 let aircraft: Airport = await api.getAirport(airportCode);
 ```
@@ -209,7 +209,7 @@ Fetches Flight details for a given flightId and world.
 ```typescript
 import { OnAirApi } from 'onair-api'
 import { Api, Flight, } from 'onair-api/src/types'
-const api: Api = new OnAirApi(apiKey, companyId, world);
+const api: Api = new OnAirApi(apiKey, world);
 const flightId: string = '9891d561-def7-438c-9097-d3336989af93';
 let flight: Flight = await api.getFlight(flightId);
 ```
@@ -227,7 +227,7 @@ Fetches VirtualAirline details for a given vaId, and world.
 ```typescript
 import { OnAirApi } from 'onair-api'
 import { Api, VirtualAirline, } from 'onair-api/src/types'
-const api: Api = new OnAirApi(apiKey, companyId, world, vaId);
+const api: Api = new OnAirApi(apiKey, world, companyId, vaId);
 let va: VirtualAirline = await api.getVirtualAirline();
 ```
 
@@ -244,8 +244,8 @@ Fetches the members of a Virtual Airline for a given vaId, and world.
 ```typescript
 import { OnAirApi } from 'onair-api'
 import { Api, Member, } from 'onair-api/src/types'
-const api: Api = new OnAirApi(apiKey, companyId, world, vaId);
-let memers: Member[] = await api.getVirtualAirlineMembers();
+const api: Api = new OnAirApi(apiKey, world, companyId, vaId);
+let members: Member[] = await api.getVirtualAirlineMembers();
 ```
 
 #### Example Response
