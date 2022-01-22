@@ -15,7 +15,7 @@
     "version": "git add -A",
     "postversion": "git push && git push --tags",
     "lint": "eslint src --ext .ts",
-    "test": "mocha --require ts-node/register src/**/*.spec.ts"
+    "test": "mocha --require ts-node/register src/*.spec.ts src/**/*.spec.ts"
   },
   "author": {
     "name": "Mike DeVita",
