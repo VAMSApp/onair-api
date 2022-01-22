@@ -1,5 +1,8 @@
-# API Middleware for OnAir Airline Manager
+# API Middleware for OnAir Airline Manager 
 A node.js wrapper around the OnAir Airline Manager's public API.
+
+[![NPM Version](https://img.shields.io/npm/v/onair-api.svg)](https://www.npmjs.com/package/onair-api)
+[![Build Status][build-image]][build-url]
 
 ## Installation
 `npm i -s onair-api`
@@ -298,3 +301,9 @@ import { Company, Aircraft, Api, } from 'onair-api/src/types'
     });
 })();
 ```
+
+
+
+[npm-url]: https://www.npmjs.com/package/onair-api
+[build-image]: https://app.travis-ci.com/vams-app/onair-api.svg?branch=main
+[build-url]: https://app.travis-ci.com/vams-app/onair-api
