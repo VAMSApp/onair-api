@@ -119,7 +119,7 @@ describe('OnAirApi()', function() {
         });
     });
 
-    describe('getFlight()', function() {
+    describe.skip('getFlight()', function() {
         it('when getFlight() is queried with valid data, it should return a Flight Object', async function() {
             if (ApiKey !== undefined && CompanyId !== undefined && World !== undefined) {
                     const api: OnAirApi = new OnAirApi(ApiKey, CompanyId, World, VaId);
