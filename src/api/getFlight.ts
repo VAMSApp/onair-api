@@ -5,7 +5,7 @@ import { uuid4 } from '../utils';
 const endPoint = 'flights/';
 
 export const getFlight = async (flightId: string, apiKey: string, world: string): Promise<Flight> => {
-  if (!flightId.match(uuid4) ) {
+  if (!uuid4.test(flightId) ) {
     throw new Error('Flight ID is incorrect! It should be a 36 character UUID')
   }
 
