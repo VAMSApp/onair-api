@@ -10,7 +10,12 @@ jobs:
     - stage: Test
       script: 
         - npm run test
-
+      env:
+        - COMPANY_APIKEY=$COMPANY_APIKEY
+        - COMPANY_ID=$COMPANY_ID
+        - COMPANY_WORLD=$COMPANY_WORLD
+        - VIRTUAL_AIRLINE_ID=$VIRTUAL_AIRLINE_ID
+        
     - stage: Release
       if: tag IS present AND commit_message =~ /^Version /
       script: npm run build
