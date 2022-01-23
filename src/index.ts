@@ -59,7 +59,7 @@ export class OnAirApi {
         return companyFbos;
     }
     
-    public async getCompanyFlights(page: number = 1, limit: number = 100): Promise<Flight[]> {
+    public async getCompanyFlights(page: number = 1, limit: number = 20): Promise<Flight[]> {
         if (!this.CompanyId) throw new Error('No Company ID provided');
 
         let companyFlights: Flight[] = await Api.getCompanyFlights(this.CompanyId, this.ApiKey, this.World, page, limit);
@@ -80,7 +80,7 @@ export class OnAirApi {
         return aircraft;
     }
 
-    public async getAircraftFlights(aircraftId: string, page: number = 1, limit: number = 100): Promise<Flight[]> {
+    public async getAircraftFlights(aircraftId: string, page: number = 1, limit: number = 20): Promise<Flight[]> {
         if (!aircraftId) throw new Error('Aircraft ID not provided');
 
         let flights: Flight[] = await Api.getAircraftFlights(aircraftId, this.ApiKey, this.World, page, limit);
