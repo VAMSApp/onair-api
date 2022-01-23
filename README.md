@@ -9,7 +9,7 @@ A node.js wrapper around the OnAir Airline Manager's public API.
 
 ## Usage
 
-**The required apiKey and optional companyId** can be found in the lower left corner of the options screen within the OnAir Desktop client.
+**The required apiKey and optional companyId** can be found in the lower left corner of the options screen within the OnAir Desktop client, if You need additional help locating these ID's check the [How To](https://github.com/vams-app/onair-api/wiki/How-To-find-your-OnAir-Company-and-VA-Id's-and-Api-Key) in the wiki.
 
 * apiKey
 * companyId - *Optional*, but required for all `getCompany*` methods
