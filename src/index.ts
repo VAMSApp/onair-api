@@ -80,10 +80,10 @@ export class OnAirApi {
         return aircraft;
     }
 
-    public async getAircraftFlights(aircraftId: string): Promise<Flight[]> {
+    public async getAircraftFlights(aircraftId: string, page: number = 1, limit: number = 100): Promise<Flight[]> {
         if (!aircraftId) throw new Error('Aircraft ID not provided');
 
-        let flights: Flight[] = await Api.getAircraftFlights(aircraftId, this.ApiKey, this.World);
+        let flights: Flight[] = await Api.getAircraftFlights(aircraftId, this.ApiKey, this.World, page, limit);
         return flights;
     }
 
