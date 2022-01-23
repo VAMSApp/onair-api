@@ -4,6 +4,10 @@ node_js:
   
 before_deploy: "npm run build"
 
+branches:
+  only:
+    - main
+    
 jobs:
   include:
     - stage: Test
