@@ -36,7 +36,7 @@ export class OnAirApi {
         this.VaId = vaId;
     }
 
-    public async getCompanyDetails(): Promise<Company> {
+    public async getCompany(): Promise<Company> {
         if (!this.CompanyId) throw new Error('No Company ID provided');
 
         let company: Company = await Api.getCompany(this.CompanyId, this.ApiKey, this.World)

@@ -29,25 +29,25 @@ const companyId = 'YOUR-COMPANY-ID'
 const Api = new OnAirApi({ apiKey, world, companyId });
 
 /**
- * call one of the Api methods, like getCompanyDetails
+ * call one of the Api methods, like getCompany
  * which will query the OnAir API using the above credentials
  * and returns the company details
  */
-let company = await Api.getCompanyDetails();
+let company = await Api.getCompany();
 // do something with the company data
 
 ```
 ---
 ## Methods
 
-### getCompanyDetails()
+### getCompany()
 Fetches the company details for the given companyId, and world.
 #### Usage
 ```typescript
 import OnAirApi from 'onair-api'
 import { Api, Company, } from 'onair-api/src/types'
 const api: Api = new OnAirApi({ apiKey, world, companyId });
-let companyDetails: Company = await api.getCompanyDetails();
+let companyDetails: Company = await api.getCompany();
 ```
 
 #### Example response
