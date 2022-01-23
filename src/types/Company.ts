@@ -34,7 +34,7 @@ export interface Company {
   UseSmallAirports: boolean,
   UseOnlyVanillaAirports: boolean,
   EnableSkillTree: boolean,
-  CheckrideLevel: boolean,
+  CheckrideLevel: number,
   EnableLandingPenalities: boolean,
   EnableEmployeesFlightDutyAndSleep: boolean,
   AircraftRentLevel: number,
