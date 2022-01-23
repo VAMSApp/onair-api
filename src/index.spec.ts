@@ -3,15 +3,15 @@ import { expect } from 'chai';
 import OnAirApi from './index';
 import { Aircraft, Airport, Api, Company, Fbo, Flight, Job, Member, VirtualAirline, } from './types';
 
-const ApiKey: string | undefined = process.env.COMPANY_APIKEY;
-const CompanyId: string | undefined = process.env.COMPANY_ID;
-const World: string | undefined = process.env.COMPANY_WORLD;
-const VaId: string | undefined = process.env.VIRTUAL_AIRLINE_ID;
+const apiKey: string | undefined = process.env.COMPANY_APIKEY;
+const companyId: string | undefined = process.env.COMPANY_ID;
+const world: string | undefined = process.env.COMPANY_WORLD;
+const vaId: string | undefined = process.env.VIRTUAL_AIRLINE_ID;
 
 describe('OnAirApi()', function() {
     it('when instantiated with valid data, it should return an OnAirApi object', async function() {
-        if (ApiKey !== undefined && CompanyId !== undefined && World !== undefined) {
-            const api: OnAirApi = new OnAirApi(ApiKey, World, CompanyId, VaId);
+        if (apiKey !== undefined && companyId !== undefined && world !== undefined) {
+            const api: OnAirApi = new OnAirApi({ apiKey, world, companyId, vaId });
             
             expect(api).to.be.an('Object');
         }
@@ -19,8 +19,8 @@ describe('OnAirApi()', function() {
 
     describe('getAircraft()', function () {
         it('when getAircraft() is queried with valid data, it should return a Aircraft object', async function() {
-            if (ApiKey !== undefined && CompanyId !== undefined && World !== undefined) {
-                const api: OnAirApi = new OnAirApi(ApiKey, World, CompanyId, VaId);
+            if (apiKey !== undefined && companyId !== undefined && world !== undefined) {
+                const api: OnAirApi = new OnAirApi({ apiKey, world, companyId, vaId });
                 const aircraftId: string = 'd8a921a5-4774-4530-b75e-14b41545cabc';
                 
                 let aircraft: Aircraft = await api.getAircraft(aircraftId);
@@ -33,8 +33,8 @@ describe('OnAirApi()', function() {
 
     describe('getAircraftFlights()', function () {
         it('when getAircraftFlights() is queried with valid data, it should return an Aircrafts flights array', async function() {
-            if (ApiKey !== undefined && CompanyId !== undefined && World !== undefined) {
-                const api: OnAirApi = new OnAirApi(ApiKey, World, CompanyId, VaId);
+            if (apiKey !== undefined && companyId !== undefined && world !== undefined) {
+                const api: OnAirApi = new OnAirApi({ apiKey, world, companyId, vaId });
                 const aircraftId: string = 'd8a921a5-4774-4530-b75e-14b41545cabc';
                 
                 let flights: Flight[] = await api.getAircraftFlights(aircraftId);
@@ -47,8 +47,8 @@ describe('OnAirApi()', function() {
 
     describe('getAirport()', function() {
         it('when getAirport() is queried with valid data, it should return a valid Airport object', async function() {
-            if (ApiKey !== undefined && CompanyId !== undefined && World !== undefined) {
-                const api: OnAirApi = new OnAirApi(ApiKey, World, CompanyId, VaId);
+            if (apiKey !== undefined && companyId !== undefined && world !== undefined) {
+                const api: OnAirApi = new OnAirApi({ apiKey, world, companyId, vaId });
                 const airportCode: string = 'KLAX';
                 
                 let airport: Airport = await api.getAirport(airportCode);
@@ -61,8 +61,8 @@ describe('OnAirApi()', function() {
 
     describe('getCompanyFbos()', function() {
         it('when getCompanyFbos() is queried with valid data, it should return an Array of Fbo Objects', async function() {
-            if (ApiKey !== undefined && CompanyId !== undefined && World !== undefined) {
-                const api: OnAirApi = new OnAirApi(ApiKey, World, CompanyId, VaId);
+            if (apiKey !== undefined && companyId !== undefined && world !== undefined) {
+                const api: OnAirApi = new OnAirApi({ apiKey, world, companyId, vaId });
                 
                 let fbos: Fbo[] = await api.getCompanyFbos();
                 
@@ -73,8 +73,8 @@ describe('OnAirApi()', function() {
 
     describe('getCompanyFleet()', function() {
         it('when getCompanyFleet() is queried with valid data, it should return an Array of Aircraft Objects', async function() {
-            if (ApiKey !== undefined && CompanyId !== undefined && World !== undefined) {
-                const api: OnAirApi = new OnAirApi(ApiKey, World, CompanyId, VaId);
+            if (apiKey !== undefined && companyId !== undefined && world !== undefined) {
+                const api: OnAirApi = new OnAirApi({ apiKey, world, companyId, vaId });
                 
                 let aircraft: Aircraft[] = await api.getCompanyFleet();
                 
@@ -85,8 +85,8 @@ describe('OnAirApi()', function() {
 
     describe('getCompanyFlights()', function() {
         it('when getCompanyFlights() is queried with valid data, it should return an Array of Flight objects', async function() {
-            if (ApiKey !== undefined && CompanyId !== undefined && World !== undefined) {
-                const api: OnAirApi = new OnAirApi(ApiKey, World, CompanyId, VaId);
+            if (apiKey !== undefined && companyId !== undefined && world !== undefined) {
+                const api: OnAirApi = new OnAirApi({ apiKey, world, companyId, vaId });
                 
                 let flights: Flight[] = await api.getCompanyFlights();
                 
@@ -97,8 +97,8 @@ describe('OnAirApi()', function() {
 
     describe('getCompanyJobs()', function() {
         it('when getCompanyJobs() is queried with valid data, it should return an Array of pending Jobs', async function() {
-            if (ApiKey !== undefined && CompanyId !== undefined && World !== undefined) {
-                    const api: OnAirApi = new OnAirApi(ApiKey, World, CompanyId, VaId);
+            if (apiKey !== undefined && companyId !== undefined && world !== undefined) {
+                    const api: OnAirApi = new OnAirApi({ apiKey, world, companyId, vaId });
                     
                     let jobs: Job[] = await api.getCompanyJobs();
                     
@@ -109,8 +109,8 @@ describe('OnAirApi()', function() {
 
     describe('getCompanyDetails()', function() {
         it('when getCompanyDetails() is queried with valid data, it should return a Company Object', async function() {
-            if (ApiKey !== undefined && CompanyId !== undefined && World !== undefined) {
-                    const api: OnAirApi = new OnAirApi(ApiKey, World, CompanyId, VaId);
+            if (apiKey !== undefined && companyId !== undefined && world !== undefined) {
+                    const api: OnAirApi = new OnAirApi({ apiKey, world, companyId, vaId });
                     
                     let company: Company = await api.getCompanyDetails();
                     
@@ -121,8 +121,8 @@ describe('OnAirApi()', function() {
 
     describe.skip('getFlight()', function() {
         it('when getFlight() is queried with valid data, it should return a Flight Object', async function() {
-            if (ApiKey !== undefined && CompanyId !== undefined && World !== undefined) {
-                    const api: OnAirApi = new OnAirApi(ApiKey, World, CompanyId, VaId);
+            if (apiKey !== undefined && companyId !== undefined && world !== undefined) {
+                    const api: OnAirApi = new OnAirApi({ apiKey, world, companyId, vaId });
                     const flightId: string = 'd8a921a5-4774-4530-b75e-14b41545cabc';
                     
                     let flight: Flight = await api.getFlight(flightId);
@@ -135,8 +135,8 @@ describe('OnAirApi()', function() {
 
     describe('getVirtualAirlineMembers()', function() {
         it('when getVirtualAirlineMembers() is queried with valid data, it should return an Array of Members in a VirtualAirline', async function() {
-            if (ApiKey !== undefined && CompanyId !== undefined && World !== undefined) {
-                    const api: OnAirApi = new OnAirApi(ApiKey, World, CompanyId, VaId);
+            if (apiKey !== undefined && companyId !== undefined && world !== undefined) {
+                    const api: OnAirApi = new OnAirApi({ apiKey, world, companyId, vaId });
                     
                     let members: Member[] = await api.getVirtualAirlineMembers();
                     
@@ -147,8 +147,8 @@ describe('OnAirApi()', function() {
 
     describe('getVirtualAirline()', function() {
         it('when getVirtualAirline() is queried with valid data, it should return a VirtualAirline Object', async function() {
-            if (ApiKey !== undefined && CompanyId !== undefined && World !== undefined) {
-                    const api: OnAirApi = new OnAirApi(ApiKey, World, CompanyId, VaId);
+            if (apiKey !== undefined && companyId !== undefined && world !== undefined) {
+                    const api: OnAirApi = new OnAirApi({ apiKey, world, companyId, vaId });
                     
                     let va: VirtualAirline = await api.getVirtualAirline();
                     
