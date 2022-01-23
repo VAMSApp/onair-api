@@ -11,6 +11,8 @@ import {
     OnAirApiConfig,
 } from './types'
 
+export * from './types';
+
 export class OnAirApi {
     // Properties
     private ApiKey: string
@@ -113,7 +115,5 @@ export class OnAirApi {
         return members;
     }
 }
-
-
 
 export default OnAirApi
