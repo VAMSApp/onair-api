@@ -1,4 +1,4 @@
-import { Aircraft, Flight, Airport, Fbo, Company, Job, Member, VirtualAirline, } from ".";
+//import { Aircraft, Flight, Airport, Fbo, Company, Job, Member, VirtualAirline, } from ".";
 
 export interface Api {
     getAircraftFlights: any,
@@ -17,6 +17,6 @@ export interface Api {
 export interface OnAirApiConfig {
     apiKey: string,
     world: string,
-    companyId: string | undefined,
-    vaId: string | undefined,
+    companyId?: string | undefined,
+    vaId?: string | undefined,
 }

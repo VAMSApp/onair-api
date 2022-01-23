@@ -107,12 +107,12 @@ describe('OnAirApi()', function() {
         });
     });
 
-    describe('getCompanyDetails()', function() {
-        it('when getCompanyDetails() is queried with valid data, it should return a Company Object', async function() {
+    describe('getCompany()', function() {
+        it('when getCompany() is queried with valid data, it should return a Company Object', async function() {
             if (apiKey !== undefined && companyId !== undefined && world !== undefined) {
                     const api: OnAirApi = new OnAirApi({ apiKey, world, companyId, vaId });
                     
-                    let company: Company = await api.getCompanyDetails();
+                    let company: Company = await api.getCompany();
                     
                     expect(company).to.be.an('Object');
                 }

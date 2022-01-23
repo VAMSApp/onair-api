@@ -11,6 +11,8 @@ import {
     OnAirApiConfig,
 } from './types'
 
+export * from './types';
+
 export class OnAirApi {
     // Properties
     private ApiKey: string
@@ -36,7 +38,7 @@ export class OnAirApi {
         this.VaId = vaId;
     }
 
-    public async getCompanyDetails(): Promise<Company> {
+    public async getCompany(): Promise<Company> {
         if (!this.CompanyId) throw new Error('No Company ID provided');
 
         let company: Company = await Api.getCompany(this.CompanyId, this.ApiKey, this.World)
@@ -57,7 +59,7 @@ export class OnAirApi {
         return companyFbos;
     }
     
-    public async getCompanyFlights(page: number = 1, limit: number = 100): Promise<Flight[]> {
+    public async getCompanyFlights(page: number = 1, limit: number = 20): Promise<Flight[]> {
         if (!this.CompanyId) throw new Error('No Company ID provided');
 
         let companyFlights: Flight[] = await Api.getCompanyFlights(this.CompanyId, this.ApiKey, this.World, page, limit);
@@ -78,10 +80,10 @@ export class OnAirApi {
         return aircraft;
     }
 
-    public async getAircraftFlights(aircraftId: string): Promise<Flight[]> {
+    public async getAircraftFlights(aircraftId: string, page: number = 1, limit: number = 20): Promise<Flight[]> {
         if (!aircraftId) throw new Error('Aircraft ID not provided');
 
-        let flights: Flight[] = await Api.getAircraftFlights(aircraftId, this.ApiKey, this.World);
+        let flights: Flight[] = await Api.getAircraftFlights(aircraftId, this.ApiKey, this.World, page, limit);
         return flights;
     }
 
@@ -113,7 +115,5 @@ export class OnAirApi {
         return members;
     }
 }
-
-
 
 export default OnAirApi
