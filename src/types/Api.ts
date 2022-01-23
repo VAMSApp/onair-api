@@ -13,3 +13,10 @@ export interface Api {
     getVirtualAirlineMembers: any,
     getVirtualAirline: any,
 }
+
+export interface OnAirApiConfig {
+    apiKey: string,
+    world: string,
+    companyId: string | undefined,
+    vaId: string | undefined,
+}

@@ -7,7 +7,8 @@ import {
     Job,
     VirtualAirline,
     Member,
-    Airport, 
+    Airport,
+    OnAirApiConfig,
 } from './types'
 
 export class OnAirApi {
@@ -18,7 +19,14 @@ export class OnAirApi {
     private VaId: string | undefined
 
     // Constructor
-    constructor(apiKey: string, world: string, companyId?: string | undefined, vaId?: string | undefined) {
+    constructor(config: OnAirApiConfig) {
+        const {
+            apiKey,
+            world,
+            companyId,
+            vaId
+        } = config
+        
         if (!apiKey) throw new Error('No API Key provided');
         if (!world) throw new Error('No World provided');
 
