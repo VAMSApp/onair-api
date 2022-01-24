@@ -7,6 +7,7 @@ before_deploy: "npm run build"
 branches:
   only:
     - main
+    - development
     
 jobs:
   include:
@@ -18,6 +19,10 @@ jobs:
         - COMPANY_ID=$COMPANY_ID
         - COMPANY_WORLD=$COMPANY_WORLD
         - VIRTUAL_AIRLINE_ID=$VIRTUAL_AIRLINE_ID
+      branches:
+        only:
+          - main
+          - development
         
     - stage: Release
       if: tag IS present AND commit_message =~ /^Version /
@@ -27,5 +32,6 @@ jobs:
         email: $NPM_EMAIL
         api_token: $NPM_TOKEN
         skip_cleanup: true
+        tag: next
         on:
-          tags: true
+          branch: main
