@@ -108,7 +108,7 @@ describe('OnAirApi()', function() {
     });
 
     describe('getCompanyEmployees()', function() {
-        it.only('when getCompanyEmployees() is queried with valid data, it should return an Array of pending Jobs', async function() {
+        it('when getCompanyEmployees() is queried with valid data, it should return an Array of pending Jobs', async function() {
             if (apiKey !== undefined && companyId !== undefined && world !== undefined) {
                     const api: OnAirApi = new OnAirApi({ apiKey, world, companyId, vaId });
                     
