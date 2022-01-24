@@ -1,4 +1,5 @@
 import axios, { AxiosResponse, AxiosRequestConfig} from "axios";
+import { People } from "../types";
 import { Aircraft } from "../types/Aircraft";
 import { Airport } from "../types/Airport";
 import { Company } from "../types/Company";
@@ -40,6 +41,10 @@ export interface VirtualAirlineResponse extends OnAirResponse {
 }
 export interface VirtualAirlineMemberResponse extends OnAirResponse {
   Content: Member | Member[];
+}
+
+export interface PeopleResponse extends OnAirResponse {
+  Content: People | People[]
 }
 
 /**

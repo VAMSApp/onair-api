@@ -8,6 +8,7 @@ export interface Api {
     getCompanyFleet: any,
     getCompanyFlights: any,
     getCompanyJobs: any,
+    getCompanyEmployees: any,
     getCompany: any,
     getFlight: any,
     getVirtualAirlineMembers: any,

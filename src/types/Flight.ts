@@ -1,6 +1,7 @@
-import { Aircraft } from "./Aircraft";
+import { Aircraft, AircraftAddon } from "./Aircraft";
 import { Airport } from "./Airport";
 import { Company } from "./Company";
+import { People } from "./People";
 
 /*
 From OnAir Company Discord
@@ -20,10 +21,18 @@ on the Flights endpoint
         in between values should not be affected ever, there are internal statuses
 */
 
+export interface FlightCrew {
+    Id: string,
+    FlightId: string,
+    PeopleId: string,
+    Role: number,
+    People: People[]
+}
+
 export interface Flight {
   Id: string,
   AircraftAddonId: string,
-  AircraftAddon: Record<string, unknown>,
+  AircraftAddon: AircraftAddon,
   AircraftId: string,
   Aircraft: Aircraft,
   CompanyId: string,
@@ -61,7 +70,7 @@ export interface Flight {
   Engine4Status: number,
   Engine5Status: number,
   Engine6Status: number,
-  FlightCrews: Record<string, unknown>[],
+  FlightCrews: FlightCrew[],
   XPFlight: number,
   XPFlightBonus: number,
   XPMissions: number,
@@ -85,5 +94,5 @@ export interface Flight {
   StartHeading: number,
   CanResumeOrAbort: boolean,
   EngineOnRealTime: string,
-  EngineOffRealTime: string;
+  EngineOffRealTime: string
 }

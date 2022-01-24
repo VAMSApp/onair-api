@@ -1,7 +1,7 @@
 import { describe } from 'mocha';
 import { expect } from 'chai';
 import OnAirApi from './index';
-import { Aircraft, Airport, Api, Company, Fbo, Flight, Job, Member, VirtualAirline, } from './types';
+import { Aircraft, Airport, Api, Company, Fbo, Flight, Job, Member, People, VirtualAirline, } from './types';
 
 const apiKey: string | undefined = process.env.COMPANY_APIKEY;
 const companyId: string | undefined = process.env.COMPANY_ID;
@@ -77,7 +77,7 @@ describe('OnAirApi()', function() {
                 const api: OnAirApi = new OnAirApi({ apiKey, world, companyId, vaId });
                 
                 let aircraft: Aircraft[] = await api.getCompanyFleet();
-                
+
                 expect(aircraft).to.be.an('Array');
             }
         });
@@ -103,6 +103,53 @@ describe('OnAirApi()', function() {
                     let jobs: Job[] = await api.getCompanyJobs();
                     
                     expect(jobs).to.be.an('Array');
+                }
+        });
+    });
+
+    describe('getCompanyEmployees()', function() {
+        it.only('when getCompanyEmployees() is queried with valid data, it should return an Array of pending Jobs', async function() {
+            if (apiKey !== undefined && companyId !== undefined && world !== undefined) {
+                    const api: OnAirApi = new OnAirApi({ apiKey, world, companyId, vaId });
+                    
+                    let employees: People[] = await api.getCompanyEmployees();
+                    
+                    expect(employees).to.be.an('Array');
+                    
+                    expect(employees[0]).to.have.keys([
+                        'Id',
+                        'WorldId',
+                        'ClassCertifications',
+                        'Pseudo',
+                        'CompanyId',
+                        'Company',
+                        'FlightHoursTotalBeforeHiring',
+                        'FlightHoursInCompany',
+                        'Weight',
+                        'BirthDate',
+                        'Fatigue',
+                        'Punctuality',
+                        'Comfort',
+                        'Happiness',
+                        'CurrentAirportId',
+                        'HomeAirportId',
+                        'HomeAirport',
+                        'PerFlightHourWages',
+                        'WeeklyGarantedSalary',
+                        'PerFlightHourSalary',
+                        'Category',
+                        'Status',
+                        'LastStatusChange',
+                        'FlightDutyStart',
+                        'CurrentTotalFlightHoursInDuty',
+                        'HiredSince',
+                        'LastPaymentDate',
+                        'AvatarImageName',
+                        'IsOnline',
+                        'FlightDutyEnd',
+                        'FlightHoursGrandTotal',
+                        'AvatarUrl',
+                    ])
                 }
         });
     });

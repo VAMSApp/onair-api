@@ -9,6 +9,7 @@ import {
     Member,
     Airport,
     OnAirApiConfig,
+    People,
 } from './types'
 
 export * from './types';
@@ -71,6 +72,14 @@ export class OnAirApi {
 
         let companyJobs: Job[] = await Api.getCompanyJobs(this.CompanyId, this.ApiKey, this.World);
         return companyJobs;
+    }
+
+    public async getCompanyEmployees(): Promise<People[]> {
+        if (!this.CompanyId) throw new Error('No Company ID provided');
+
+        let companyEmployees: People[] = await Api.getCompanyEmployees(this.CompanyId, this.ApiKey, this.World);
+
+        return companyEmployees;
     }
 
     public async getAircraft(aircraftId: string): Promise<Aircraft> {

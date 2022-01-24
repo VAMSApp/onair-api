@@ -9,6 +9,7 @@ import { getCompany, } from './getCompany'
 import { getFlight, } from './getFlight'
 import { getVirtualAirlineMembers, } from './getVirtualAirlineMembers'
 import { getVirtualAirline, } from './getVirtualAirline'
+import { getCompanyEmployees, } from './getCompanyEmployees'
 
 const Api = {
     getAircraftFlights,
@@ -18,6 +19,7 @@ const Api = {
     getCompanyFleet,
     getCompanyFlights,
     getCompanyJobs,
+    getCompanyEmployees,
     getCompany,
     getFlight,
     getVirtualAirlineMembers,

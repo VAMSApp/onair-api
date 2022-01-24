@@ -1,21 +1,21 @@
 {
-    "compilerOptions": {
-      "target": "es5",
-      "lib": [
-        "ESNext"
-      ],
-      "rootDir": "src",
-      "outDir": "dist",
-      "module": "commonjs",
-      "skipLibCheck": true,
-      "esModuleInterop": true,
-      "strict": true,
-      "forceConsistentCasingInFileNames": true,
-      "useUnknownInCatchVariables": false,
-      "resolveJsonModule": true,
-      "declaration": true,
-    },
-    "include": [
-      "src"
-    ]
-  }
+  "compilerOptions": {
+    "target": "es5",
+    "lib": [
+      "ESNext"
+    ],
+    "rootDir": "src",
+    "outDir": "dist",
+    "module": "commonjs",
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "useUnknownInCatchVariables": false,
+    "resolveJsonModule": true,
+    "declaration": true,
+  },
+  "include": [
+    "src"
+  ]
+}

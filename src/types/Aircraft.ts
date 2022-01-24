@@ -17,15 +17,33 @@ export const aircraftStatuses:string[] = [
   'Warp',
   'Ferry'
 ];
+export interface AircraftStatus {
+  Id: number,
+  Name: string
+}
+
+export interface EngineType {
+  Id: string,
+  AircraftId: string,
+  Number: number,
+  Condition: number,
+  MaxCondition: number,
+  EngineHours: number,
+  LastCheckup: string
+}
+
+export interface AircraftClass {
+  Id: string,
+  ShortName: string,
+  Name: string,
+  Order: number
+}
 
 export interface AircraftType {
   Id: string,
   Hash: string,
   AircraftClassId: string,
-  AircraftClass: Record<string, unknown>,
-  AllowSell: boolean,
-  AllowRent: boolean,
-  AllowLease: boolean,
+  AircraftClass: AircraftClass,
   CreationDate: string,
   LastModerationDate: string,
   DisplayName: string, //use
@@ -65,7 +83,47 @@ export interface AircraftType {
   ComputedSeats: number,
   IsVanilla: boolean,
   CreatedByUserId: string,
-  TestedByUser: boolean;
+  TestedByUser: boolean
+}
+
+export interface AircraftAddon {
+  Id: string,
+  Hash: string,
+  AircraftTypeId: string,
+  AircraftType: AircraftType,
+  CreationDate: string,
+  LastModerationDate: string,
+  FuelTotalCapacityInGallons: number,
+  DisplayName: string,
+  TypeName: string,
+  AirFileName: string,
+  simulatorVersion: number,
+  emptyWeight: number,
+  maximumGrossWeight: number,
+  estimatedCruiseFF: number,
+  engineType: number,
+  numberOfEngines: number,
+  fuelType: number,
+  designSpeedVS0: number,
+  designSpeedVS1: number,
+  designSpeedVC: number,
+  IsDisabled: boolean,
+  AddonUrl: string,
+  IsVanilla: boolean,
+  CreatedByUserId: string,
+  TestedByUser: boolean,
+  LastTestFlightDate: string,
+  ConsolidatedDesignSpeedVC: number ,
+  ConsolidatedEstimatedCruiseFF: number,
+  EnableAutoConsolidation: boolean,
+  ComputedMaxPayload: number,
+  ComputedSeats: number,
+  ProposedSeats: number,
+  ProposedMaxPayload: number,
+  FlightsCount: number,
+  DisableHardLanding: boolean,
+  SimVersionShortDisplay: string,
+  SimVersionDisplay: string,
 }
 
 export interface Aircraft {
@@ -75,12 +133,13 @@ export interface Aircraft {
   Nickname: string,
   WorldId: string,
   CurrentAirportId: string,
-  CurrentAirport: Airport, //use
-  AircraftStatus: number, //use
-  LastStatusChange: number, //date
+  CurrentAirport: Airport,
+  AircraftStatus: AircraftStatus, 
+  LastStatusChange: string, 
   CurrentStatusDurationInMinutes: number,
   AllowSell: boolean,
   AllowRent: boolean,
+  AllowLease: boolean,
   SellPrice: number,
   RentHourPrice: number,
   RentAirportId: string,
@@ -91,7 +150,7 @@ export interface Aircraft {
   RentCompany: Company,
   RentStartDate: string,
   RentLastDailyChargeDate: string,
-  Identifier: string, //use
+  Identifier: string,
   Heading: number,
   Longitude: number,
   Latitude: number,
@@ -100,7 +159,7 @@ export interface Aircraft {
   loadedWeight: number,
   zeroFuelWeight: number,
   airframeHours: number,
-  airframeCondition: number, //use? pc
+  airframeCondition: number,
   AirframeMaxCondition: number,
   LastAnnualCheckup: string,
   Last100hInspection: string,
@@ -109,15 +168,18 @@ export interface Aircraft {
   IsControlledByAI: boolean,
   HoursBefore100HInspection: number,
   Engines: Record<string, unknown>[],
-  ConfigFirstSeats: number, //use?
-  ConfigBusSeats: number, //
-  ConfigEcoSeats: number, //
+  ConfigFirstSeats: number,
+  ConfigBusSeats: number,
+  ConfigEcoSeats: number,
   SeatsReservedForEmployees: number,
   RemainingMaintenanceWorkHours: number,
   CurrentCompanyId: string,
   CurrentCompanyIdIfAny: string,
   ExtraWeightCapacity: number,
   TotalWeightCapacity: number,
-  CurrentSeats: number, //use?
-  MustDoMaintenance: boolean; //
+  CurrentSeats: number, 
+  MustDoMaintenance: boolean
+  RentMaxDate: string,
+  Altitude: string,
+  FlightState: string,
 }
