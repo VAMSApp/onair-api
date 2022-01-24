@@ -23,6 +23,9 @@ export interface AircraftType {
   Hash: string,
   AircraftClassId: string,
   AircraftClass: Record<string, unknown>,
+  AllowSell: boolean,
+  AllowRent: boolean,
+  AllowLease: boolean,
   CreationDate: string,
   LastModerationDate: string,
   DisplayName: string, //use
