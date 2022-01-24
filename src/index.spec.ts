@@ -115,41 +115,6 @@ describe('OnAirApi()', function() {
                     let employees: People[] = await api.getCompanyEmployees();
                     
                     expect(employees).to.be.an('Array');
-                    
-                    expect(employees[0]).to.have.keys([
-                        'Id',
-                        'WorldId',
-                        'ClassCertifications',
-                        'Pseudo',
-                        'CompanyId',
-                        'Company',
-                        'FlightHoursTotalBeforeHiring',
-                        'FlightHoursInCompany',
-                        'Weight',
-                        'BirthDate',
-                        'Fatigue',
-                        'Punctuality',
-                        'Comfort',
-                        'Happiness',
-                        'CurrentAirportId',
-                        'HomeAirportId',
-                        'HomeAirport',
-                        'PerFlightHourWages',
-                        'WeeklyGarantedSalary',
-                        'PerFlightHourSalary',
-                        'Category',
-                        'Status',
-                        'LastStatusChange',
-                        'FlightDutyStart',
-                        'CurrentTotalFlightHoursInDuty',
-                        'HiredSince',
-                        'LastPaymentDate',
-                        'AvatarImageName',
-                        'IsOnline',
-                        'FlightDutyEnd',
-                        'FlightHoursGrandTotal',
-                        'AvatarUrl',
-                    ])
                 }
         });
     });
