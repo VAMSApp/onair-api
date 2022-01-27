@@ -58,7 +58,7 @@ export interface AircraftType {
   Baseprice: number,
   FuelTotalCapacityInGallons: number,
   engineType: number, //use? but need info
-  engineTypeName: string,
+  EngineTypeName: string, // custom onair-api
   numberOfEngines: number,
   seats: number,
   needsCopilot: boolean,
@@ -136,7 +136,7 @@ export interface Aircraft {
   CurrentAirportId: string,
   CurrentAirport: Airport,
   AircraftStatus: number,
-  AircraftStatusName: string,
+  AircraftStatusName: string, // custom onair-api
   LastStatusChange: string,
   CurrentStatusDurationInMinutes: number,
   AllowSell: boolean,
