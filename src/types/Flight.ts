@@ -1,7 +1,7 @@
-import { Aircraft, AircraftAddon } from "./Aircraft";
-import { Airport } from "./Airport";
-import { Company } from "./Company";
-import { People } from "./People";
+import { Aircraft, AircraftAddon } from './Aircraft';
+import { Airport } from './Airport';
+import { Company } from './Company';
+import { People } from './People';
 
 /*
 From OnAir Company Discord

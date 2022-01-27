@@ -1,7 +1,7 @@
-import { Company, } from './Company';
-import { World } from './World';
-import { Cargo } from './Cargo';
-import { Charter } from './Charter';
+import {
+    Cargo,
+    Charter,
+} from '.';
 
 export interface MissionType {
     Id: string,

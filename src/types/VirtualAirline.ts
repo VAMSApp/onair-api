@@ -1,5 +1,5 @@
-import { Aircraft } from "./Aircraft";
-import { Company } from "./Company";
+import { Aircraft } from './Aircraft';
+import { Company } from './Company';
 
 export interface VARole {
     Id: string,
@@ -71,4 +71,4 @@ export interface Member {
     FlightHours: number,
     Color: string,
     AcceptChallengeMode: boolean,
-};
+}

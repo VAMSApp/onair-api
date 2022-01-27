@@ -1,5 +1,4 @@
-import { BlobOptions } from "buffer";
-import { Airport } from "./Airport";
+import { Airport } from './Airport';
 
 export interface CharterType {
     Id: string,
@@ -17,7 +16,7 @@ export interface Charter {
     CurrentAirportId: string,
     CurrentAirport: Airport,
     PassengersNumber: number,
-    DepartureAirportId: String,
+    DepartureAirportId: string,
     DepartureAirport: Airport,
     DestinationAirportId: string,
     DestinationAirport: Airport,
@@ -26,6 +25,7 @@ export interface Charter {
     Description: string,
     HumanOnly: boolean,
     CompanyId: string,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     CharterPOIMappings: any,
     InRecyclingPool:  boolean,
     MinPAXSeatConf: number,

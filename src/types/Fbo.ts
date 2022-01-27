@@ -1,5 +1,5 @@
-import { Airport } from "./Airport";
-import { Company } from "./Company";
+import { Airport } from './Airport';
+import { Company } from './Company';
 
 interface World {
   Id: string,

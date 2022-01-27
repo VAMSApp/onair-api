@@ -1,21 +1,21 @@
-import { Airport, Company, } from ".";
+import { Airport, Company, } from '.';
 
 export const engineTypes:string[] = [
-  'Piston',
-  'Jet',
-  'Sailplane',
-  'Helo Turbine',
-  'Rocket',
-  'Turboprop'
+    'Piston',
+    'Jet',
+    'Sailplane',
+    'Helo Turbine',
+    'Rocket',
+    'Turboprop'
 ];
 
 export const aircraftStatuses:string[] = [
-  'Idle',
-  'Maintenance',
-  'ApronWork',
-  'InFlight',
-  'Warp',
-  'Ferry'
+    'Idle',
+    'Maintenance',
+    'ApronWork',
+    'InFlight',
+    'Warp',
+    'Ferry'
 ];
 export interface AircraftStatus {
   Id: number,

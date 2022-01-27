@@ -1,4 +1,4 @@
-import { Airport, Company } from ".";
+import { Airport, Company } from '.';
 
 export interface ClassCertification {
     Id: string,
