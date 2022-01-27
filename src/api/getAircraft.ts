@@ -1,5 +1,5 @@
 import onAirRequest, { AircraftResponse } from './onAirRequest';
-import { Aircraft } from '../types';
+import { Aircraft, aircraftStatuses, engineTypes } from '../types';
 import { uuid4 } from '../utils';
 
 const endPoint = 'aircraft/';
@@ -16,7 +16,10 @@ export const getAircraft = async (aircraftId: string, apiKey: string, world: str
         );
 
         if (typeof response.data.Content !== 'undefined') {
-            return response.data.Content as Aircraft;
+            let aircraft = response.data.Content as Aircraft;
+            aircraft.AircraftStatusName = aircraftStatuses[aircraft.AircraftStatus];
+            aircraft.AircraftType.EngineTypeName = engineTypes[aircraft.AircraftType.engineType];
+            return aircraft;
         } else {
             throw new Error(response.data.Error ? response.data.Error : `Aircraft ID code ${aircraftId} not found`);
         }
