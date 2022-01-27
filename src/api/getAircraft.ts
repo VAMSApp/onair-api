@@ -16,7 +16,7 @@ export const getAircraft = async (aircraftId: string, apiKey: string, world: str
         );
 
         if (typeof response.data.Content !== 'undefined') {
-            let aircraft = response.data.Content as Aircraft;
+            const aircraft = response.data.Content as Aircraft;
             aircraft.AircraftStatusName = aircraftStatuses[aircraft.AircraftStatus];
             aircraft.AircraftType.EngineTypeName = engineTypes[aircraft.AircraftType.engineType];
             return aircraft;
