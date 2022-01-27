@@ -58,6 +58,7 @@ export interface AircraftType {
   Baseprice: number,
   FuelTotalCapacityInGallons: number,
   engineType: number, //use? but need info
+  engineTypeName: string,
   numberOfEngines: number,
   seats: number,
   needsCopilot: boolean,
@@ -134,8 +135,9 @@ export interface Aircraft {
   WorldId: string,
   CurrentAirportId: string,
   CurrentAirport: Airport,
-  AircraftStatus: AircraftStatus, 
-  LastStatusChange: string, 
+  AircraftStatus: number,
+  AircraftStatusName: string,
+  LastStatusChange: string,
   CurrentStatusDurationInMinutes: number,
   AllowSell: boolean,
   AllowRent: boolean,
@@ -177,7 +179,7 @@ export interface Aircraft {
   CurrentCompanyIdIfAny: string,
   ExtraWeightCapacity: number,
   TotalWeightCapacity: number,
-  CurrentSeats: number, 
+  CurrentSeats: number,
   MustDoMaintenance: boolean
   RentMaxDate: string,
   Altitude: string,
