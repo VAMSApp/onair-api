@@ -72,3 +72,7 @@ export interface Member {
     Color: string,
     AcceptChallengeMode: boolean,
 }
+
+export interface ShareHolder extends Member {
+    OwnerEquity: number
+}

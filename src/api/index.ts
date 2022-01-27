@@ -10,6 +10,8 @@ import { getFlight, } from './getFlight';
 import { getVirtualAirlineMembers, } from './getVirtualAirlineMembers';
 import { getVirtualAirline, } from './getVirtualAirline';
 import { getCompanyEmployees, } from './getCompanyEmployees';
+import { getVirtualAirlineShareHolders } from './getVirtualAirlineShareHolders';
+import { getVirtualAirlineRoles } from './getVirtualAirlineRoles';
 
 const Api = {
     getAircraftFlights,
@@ -24,6 +26,8 @@ const Api = {
     getFlight,
     getVirtualAirlineMembers,
     getVirtualAirline,
+    getVirtualAirlineShareHolders,
+    getVirtualAirlineRoles,
 };
 
 export default Api;

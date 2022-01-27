@@ -1,7 +1,7 @@
 import { describe } from 'mocha';
 import { expect } from 'chai';
 import OnAirApi from './index';
-import { Aircraft, Airport, Company, Fbo, Flight, Job, Member, People, VirtualAirline, } from './types';
+import { Aircraft, Airport, Company, Fbo, Flight, Job, Member, People, ShareHolder, VARole, VirtualAirline, } from './types';
 
 const apiKey: string | undefined = process.env.COMPANY_APIKEY;
 const companyId: string | undefined = process.env.COMPANY_ID;
@@ -169,4 +169,27 @@ describe('OnAirApi()', function() {
         });
     });
 
+    describe('getVirtualAirlineShareHolders()', function() {
+        it('when getVirtualAirlineShareHolders() is queried with valid data, it should return a ShareHolder Array', async function() {
+            if (apiKey !== undefined && companyId !== undefined && world !== undefined) {
+                const api: OnAirApi = new OnAirApi({ apiKey, world, companyId, vaId });
+
+                const shareholders: ShareHolder[] = await api.getVirtualAirlineShareHolders();
+
+                expect(shareholders).to.be.an('Array');
+            }
+        });
+    });
+
+    describe('getVirtualAirlineRoles()', function() {
+        it('when getVirtualAirlineRoles() is queried with valid data, it should return a ShareHolder Array', async function() {
+            if (apiKey !== undefined && companyId !== undefined && world !== undefined) {
+                const api: OnAirApi = new OnAirApi({ apiKey, world, companyId, vaId });
+
+                const varoles: VARole[] = await api.getVirtualAirlineRoles();
+
+                expect(varoles).to.be.an('Array');
+            }
+        });
+    });
 });

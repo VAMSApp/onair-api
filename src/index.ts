@@ -10,6 +10,8 @@ import {
     Airport,
     OnAirApiConfig,
     People,
+    ShareHolder,
+    VARole,
 } from './types';
 
 export * from './types';
@@ -29,7 +31,7 @@ export class OnAirApi {
             companyId,
             vaId
         } = config;
-        
+
         if (!apiKey) throw new Error('No API Key provided');
         if (!world) throw new Error('No World provided');
 
@@ -52,21 +54,21 @@ export class OnAirApi {
         const companyFleet: Aircraft[] = await Api.getCompanyFleet(this.CompanyId, this.ApiKey, this.World);
         return companyFleet;
     }
-    
+
     public async getCompanyFbos(): Promise<Fbo[]> {
         if (!this.CompanyId) throw new Error('No Company ID provided');
 
         const companyFbos: Fbo[] = await Api.getCompanyFbos(this.CompanyId, this.ApiKey, this.World);
         return companyFbos;
     }
-    
+
     public async getCompanyFlights(page = 1, limit = 20): Promise<Flight[]> {
         if (!this.CompanyId) throw new Error('No Company ID provided');
 
         const companyFlights: Flight[] = await Api.getCompanyFlights(this.CompanyId, this.ApiKey, this.World, page, limit);
         return companyFlights;
     }
-    
+
     public async getCompanyJobs(): Promise<Job[]> {
         if (!this.CompanyId) throw new Error('No Company ID provided');
 
@@ -102,14 +104,14 @@ export class OnAirApi {
         const airport: Airport = await Api.getAirport(airportCode, this.ApiKey, this.World);
         return airport;
     }
-    
+
     public async getFlight(flightId: string): Promise<Flight> {
         if (!flightId) throw new Error('Flight ID not provided');
 
         const flight: Flight = await Api.getFlight(flightId, this.ApiKey, this.World);
         return flight;
     }
-    
+
     public async getVirtualAirline(): Promise<VirtualAirline> {
         if (!this.VaId) throw new Error('VA ID is not provided');
 
@@ -122,6 +124,20 @@ export class OnAirApi {
 
         const members: Member[] = await Api.getVirtualAirlineMembers(this.VaId, this.ApiKey, this.World);
         return members;
+    }
+
+    public async getVirtualAirlineShareHolders(): Promise<ShareHolder[]> {
+        if (!this.VaId) throw new Error('VA ID is not provided');
+
+        const shareholders: ShareHolder[] = await Api.getVirtualAirlineShareHolders(this.VaId, this.ApiKey, this.World);
+        return shareholders;
+    }
+
+    public async getVirtualAirlineRoles(): Promise<VARole[]> {
+        if (!this.VaId) throw new Error('VA ID is not provided');
+
+        const varoles: VARole[] = await Api.getVirtualAirlineRoles(this.VaId, this.ApiKey, this.World);
+        return varoles;
     }
 }
 

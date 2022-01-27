@@ -6,7 +6,7 @@ import { Company } from '../types/Company';
 import { Fbo } from '../types/Fbo';
 import { Flight } from '../types/Flight';
 import { Job } from '../types/Job';
-import { Member, VirtualAirline } from '../types/VirtualAirline';
+import { Member, ShareHolder, VARole, VirtualAirline } from '../types/VirtualAirline';
 
 interface OnAirResponse {
   Error: string;
@@ -43,16 +43,24 @@ export interface VirtualAirlineMemberResponse extends OnAirResponse {
   Content: Member | Member[];
 }
 
+export interface VirtualAirlineShareHolderResponse extends OnAirResponse {
+    Content: ShareHolder | ShareHolder[];
+}
+
+export interface VirtualAirlineVARoleResponse extends OnAirResponse {
+    Content: VARole | VARole[];
+}
+
 export interface PeopleResponse extends OnAirResponse {
   Content: People | People[]
 }
 
 /**
  * Generic Get request to OnAir
- * 
- * @param url 
- * @param apiKey 
- * @param requestData 
+ *
+ * @param url
+ * @param apiKey
+ * @param requestData
  * @returns Promise<AxiosResponse<T>>
  */
 export default async <T>(url: string, apiKey: string, requestData?: Record<string, unknown> | undefined): Promise<AxiosResponse<T>> => {

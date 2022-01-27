@@ -14,6 +14,8 @@ export interface Api {
     getFlight: any,
     getVirtualAirlineMembers: any,
     getVirtualAirline: any,
+    getVirtualAirlineShareHolders: any,
+    getVirtualAirlineRoles: any,
 }
 
 export interface OnAirApiConfig {
