@@ -23,7 +23,12 @@
     "name": "Mike DeVita",
     "email": "mike@devita.co"
   },
-  "contributors": [],
+  "contributors": [
+      {
+        "name": "Will Kelly",
+        "email": "will@logicbox.net"
+      }
+  ],
   "license": "MIT",
   "dependencies": {
     "axios": "^0.24.0",
