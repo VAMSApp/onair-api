@@ -16,7 +16,7 @@ import {
 
 export * from './types';
 
-export class OnAirApi {
+export default class OnAirApi {
     // Properties
     private ApiKey: string
     private World: string
@@ -141,4 +141,3 @@ export class OnAirApi {
     }
 }
 
-export default OnAirApi;
