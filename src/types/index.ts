@@ -14,3 +14,4 @@ export * from './Runway';
 export * from './VirtualAirline';
 export * from './World';
 export * from './People';
+export * from './CashFlow';

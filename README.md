@@ -1,4 +1,4 @@
-# API Middleware for OnAir Airline Manager 
+# API Middleware for OnAir Airline Manager
 A node.js wrapper around the OnAir Airline Manager's public API.
 
 [![NPM Version](https://img.shields.io/npm/v/onair-api.svg)](https://www.npmjs.com/package/onair-api)
@@ -39,6 +39,22 @@ let company = await Api.getCompany();
 ```
 ---
 ## Methods
+
+- [getAircraftFlights](#getAircraftFlights)
+- [getAircraft](#getAircraftaircraftId-string)
+- [getAirport](#getAirportairportCode-string)
+- [getCompanyFbos](#getCompanyFbos)
+- [getCompanyFleet](#getCompanyFleet)
+- [getCompanyFlights](#getCompanyFlights)
+- [getCompanyJobs](#getCompanyJobs)
+- [getCompanyEmployees](#getCompanyEmployees)
+- [getCompanyCashFlow](#getCompanyCashFlow)
+- [getCompany](#getCompany)
+- [getFlight](#getFlightflightId-string)
+- [getVirtualAirlineMembers](#getVirtualAirlineMembers)
+- [getVirtualAirline](#getVirtualAirline)
+- [getVirtualAirlineShareHolders](#getVirtualAirlineShareHolders)
+- [getVirtualAirlineRoles](#getVirtualAirlineRoles)
 
 ### getCompany()
 Fetches the company details for the given companyId, and world.
@@ -141,6 +157,52 @@ let companyFlights: Flight[] = await api.getCompanyFlights();
 #### Example Response
 ```javascript
 // wip, array of Flight objects
+```
+
+### getCompanyEmployees()
+Fetches the Employees for a given companyId, and world.
+#### Usage
+```typescript
+import OnAirApi from 'onair-api'
+import { Api, Employee, } from 'onair-api/src/types'
+const api: Api = new OnAirApi({ apiKey, world, companyId });
+let companyEmployees: Employee[] = await api.getCompanyEmployees();
+```
+
+#### Example Response
+```javascript
+// wip, array of Flight objects
+```
+
+### getCompanyCashFlow()
+Fetches the cash flow for a given companyId, and world.
+#### Usage
+```typescript
+import OnAirApi from 'onair-api'
+import { Api, CashFlow, } from 'onair-api/src/types'
+const api: Api = new OnAirApi({ apiKey, world, companyId });
+let companyCashFlow: CashFlow = await api.getCompanyCashFlow();
+```
+
+#### Example Response
+```javascript
+{
+  Entries: [
+    {
+      Id: '9dcebce1-b679-4882-af52-cda810143c4e',
+      CompanyId: 'c3d8e51d-f2e9-4918-a286-c3f2cd5ab141',
+      AccountId: '4d1ce4cb-9005-4c33-a918-cfe3697eaf5d',
+      Amount: 43.12,
+      CreationDate: '2022-01-29T22:10:45.8',
+      Description: '100LL Fuel at NDBB Airways - KFFZ FBO (KFFZ), 7.8 gal @5.50/gal for N7453Q Cessna 172 Skyhawk',
+      CarryForward: false
+    },
+    // .. removed for brevity
+  ],
+  CompanyCurrentCash: 1428675036.79,
+  LastReportAmount: 1512321690.64,
+  LastReportDate: '2022-01-14T00:00:00'
+}
 ```
 
 
@@ -274,9 +336,9 @@ import { OnAirApi, } from 'onair-api'
     const apiKey = process.env.COMPANY_APIKEY;
     const companyId = process.env.COMPANY_ID;
     const world = process.env.COMPANY_WORLD;
-    
+
     const Api = new OnAirApi({ apiKey, companyId, world });
-    
+
     let company = await Api.getCompanyDetails();
     let fleet = await Api.getCompanyFleet();
 
@@ -297,9 +359,9 @@ import { Company, Aircraft, Api, } from 'onair-api/src/types'
     const apiKey: string = process.env.COMPANY_APIKEY;
     const companyId: string = process.env.COMPANY_ID;
     const world: string = process.env.COMPANY_WORLD;
-    
+
     const api = new OnAirApi({ apiKey, companyId, world });
-    
+
     let company: Company = await api.getCompanyDetails();
     let fleet: Aircraft[] = await api.getCompanyFleet();
 
