@@ -1,7 +1,7 @@
 import { describe } from 'mocha';
 import { expect } from 'chai';
 import OnAirApi from './index';
-import { Aircraft, Airport, Company, Fbo, Flight, Job, Member, People, ShareHolder, VARole, VirtualAirline, } from './types';
+import { Aircraft, Airport, CashFlow, Company, Fbo, Flight, Job, Member, People, ShareHolder, VARole, VirtualAirline, } from './types';
 
 const apiKey: string | undefined = process.env.COMPANY_APIKEY;
 const companyId: string | undefined = process.env.COMPANY_ID;
@@ -115,6 +115,18 @@ describe('OnAirApi()', function() {
                 const employees: People[] = await api.getCompanyEmployees();
 
                 expect(employees).to.be.an('Array');
+            }
+        });
+    });
+
+    describe('getCompanyCashFlow()', function() {
+        it('when getCompanyCashFlow() is queried with valid data, it should return an object of the companie\'s cash flow.', async function() {
+            if (apiKey !== undefined && companyId !== undefined && world !== undefined) {
+                const api: OnAirApi = new OnAirApi({ apiKey, world, companyId, vaId });
+
+                const cashflow: CashFlow = await api.getCompanyCashFlow();
+
+                expect(cashflow).to.be.an('Object');
             }
         });
     });

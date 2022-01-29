@@ -12,6 +12,7 @@ import {
     People,
     ShareHolder,
     VARole,
+    CashFlow,
 } from './types';
 
 export * from './types';
@@ -82,6 +83,14 @@ export default class OnAirApi {
         const companyEmployees: People[] = await Api.getCompanyEmployees(this.CompanyId, this.ApiKey, this.World);
 
         return companyEmployees;
+    }
+
+    public async getCompanyCashFlow(): Promise<CashFlow> {
+        if (!this.CompanyId) throw new Error('No Company ID provided');
+
+        const cashFlow: CashFlow = await Api.getCompanyCashFlow(this.CompanyId, this.ApiKey, this.World);
+
+        return cashFlow;
     }
 
     public async getAircraft(aircraftId: string): Promise<Aircraft> {

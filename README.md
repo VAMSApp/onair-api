@@ -1,4 +1,4 @@
-# API Middleware for OnAir Airline Manager 
+# API Middleware for OnAir Airline Manager
 A node.js wrapper around the OnAir Airline Manager's public API.
 
 [![NPM Version](https://img.shields.io/npm/v/onair-api.svg)](https://www.npmjs.com/package/onair-api)
@@ -39,6 +39,22 @@ let company = await Api.getCompany();
 ```
 ---
 ## Methods
+
+- [getAircraftFlights](#getAircraftFlights)
+- [getAircraft](#getAircraftaircraftId-string)
+- [getAirport](#getAirportairportCode-string)
+- [getCompanyFbos](#getCompanyFbos)
+- [getCompanyFleet](#getCompanyFleet)
+- [getCompanyFlights](#getCompanyFlights)
+- [getCompanyJobs](#getCompanyJobs)
+- [getCompanyEmployees](#getCompanyEmployees)
+- [getCompanyCashFlow](#getCompanyCashFlow)
+- [getCompany](#getCompany)
+- [getFlight](#getFlightflightId-string)
+- [getVirtualAirlineMembers](#getVirtualAirlineMembers)
+- [getVirtualAirline](#getVirtualAirline)
+- [getVirtualAirlineShareHolders](#getVirtualAirlineShareHolders)
+- [getVirtualAirlineRoles](#getVirtualAirlineRoles)
 
 ### getCompany()
 Fetches the company details for the given companyId, and world.
@@ -136,6 +152,36 @@ import OnAirApi from 'onair-api'
 import { Api, Flight, } from 'onair-api/src/types'
 const api: Api = new OnAirApi({ apiKey, world, companyId });
 let companyFlights: Flight[] = await api.getCompanyFlights();
+```
+
+#### Example Response
+```javascript
+// wip, array of Flight objects
+```
+
+### getCompanyEmployees()
+Fetches the Employees for a given companyId, and world.
+#### Usage
+```typescript
+import OnAirApi from 'onair-api'
+import { Api, Employee, } from 'onair-api/src/types'
+const api: Api = new OnAirApi({ apiKey, world, companyId });
+let companyEmployees: Employee[] = await api.getCompanyEmployees();
+```
+
+#### Example Response
+```javascript
+// wip, array of Flight objects
+```
+
+### getCompanyCashFlow()
+Fetches the cash flow for a given companyId, and world.
+#### Usage
+```typescript
+import OnAirApi from 'onair-api'
+import { Api, CashFlow, } from 'onair-api/src/types'
+const api: Api = new OnAirApi({ apiKey, world, companyId });
+let companyCashFlow: CashFlow = await api.getCompanyCashFlow();
 ```
 
 #### Example Response
@@ -274,9 +320,9 @@ import { OnAirApi, } from 'onair-api'
     const apiKey = process.env.COMPANY_APIKEY;
     const companyId = process.env.COMPANY_ID;
     const world = process.env.COMPANY_WORLD;
-    
+
     const Api = new OnAirApi({ apiKey, companyId, world });
-    
+
     let company = await Api.getCompanyDetails();
     let fleet = await Api.getCompanyFleet();
 
@@ -297,9 +343,9 @@ import { Company, Aircraft, Api, } from 'onair-api/src/types'
     const apiKey: string = process.env.COMPANY_APIKEY;
     const companyId: string = process.env.COMPANY_ID;
     const world: string = process.env.COMPANY_WORLD;
-    
+
     const api = new OnAirApi({ apiKey, companyId, world });
-    
+
     let company: Company = await api.getCompanyDetails();
     let fleet: Aircraft[] = await api.getCompanyFleet();
 
