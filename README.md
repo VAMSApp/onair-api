@@ -47,6 +47,7 @@ let company = await Api.getCompany();
 - [getCompanyJobs](#getCompanyJobs)
 - [getCompanyEmployees](#getCompanyEmployees)
 - [getCompanyCashFlow](#getCompanyCashFlow)
+- [getCompanyIncomeStatement](#getCompanyIncomeStatement)
 - [getAircraft](#getAircraftaircraftId-string)
 - [getAircraftFlights](#getAircraftFlights)
 - [getAirport](#getAirportairportCode-string)
@@ -208,6 +209,35 @@ let companyCashFlow: CashFlow[] = await api.getCompanyCashFlow();
 
 
 ---
+
+### getCompanyIncomeStatement(startDate: string, endDate: string)
+Fetches the income statement within a given range for a companyId and world.
+If not startDate or endDate is provided it will return the last 30 days.
+
+#### Usage
+```typescript
+import OnAirApi, { IncomeStatement, OnAirApiConfig, } from 'onair-api'
+
+const apiConfig: OnAirApiConfig = {
+  apiKey: 'YOUR-API-KEY',
+  world: 'cumulus',
+  companyId: 'YOUR-COMPANY-ID',
+  vaId: 'YOUR-VA-ID'
+};
+
+const api: Api = new OnAirApi(apiConfig);
+// no startDate or endDate provided, returns 30 days
+let companyIncomeStatement: IncomeStatement = await api.getCompanyIncomeStatement();
+
+// providing a startDate and endDate
+const startDate = '2021-12-01T00:00:00';
+const endDate = '2022-01-30T02:58:39.104Z';
+
+let companyIncomeStatement2: IncomeStatement = await api.getCompanyIncomeStatement(startDate, endDate)
+```
+
+#### Example Response
+ - [getCompanyIncomeStatement.md](docs/responses/getCompanyIncomeStatement.md)
 
 
 

@@ -13,6 +13,7 @@ import {
     ShareHolder,
     VARole,
     CashFlow,
+    IncomeStatement,
 } from './types';
 
 export * from './types';
@@ -91,6 +92,24 @@ export default class OnAirApi {
         const cashFlow: CashFlow = await Api.getCompanyCashFlow(this.CompanyId, this.ApiKey, this.World);
 
         return cashFlow;
+    }
+
+    public async getCompanyIncomeStatement(startDate?: string | undefined, endDate?: string | undefined): Promise<IncomeStatement> {
+        if (!this.CompanyId) throw new Error('No Company ID provided');
+
+        if (!startDate) {
+            const currentDate = new Date();
+            const priorDate = new Date().setDate(currentDate.getDate() - 30);
+            startDate = new Date(priorDate).toISOString();
+        }
+
+        if (!endDate) {
+            endDate = new Date().toISOString();
+        }
+
+        const incomeStatement: IncomeStatement = await Api.getCompanyIncomeStatement(startDate, endDate, this.CompanyId, this.ApiKey, this.World);
+
+        return incomeStatement;
     }
 
     public async getAircraft(aircraftId: string): Promise<Aircraft> {

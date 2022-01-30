@@ -1,5 +1,5 @@
 import axios, { AxiosResponse, AxiosRequestConfig} from 'axios';
-import { CashFlow, People } from '../types';
+import { CashFlow, IncomeStatement, People } from '../types';
 import { Aircraft } from '../types/Aircraft';
 import { Airport } from '../types/Airport';
 import { Company } from '../types/Company';
@@ -57,7 +57,11 @@ export interface PeopleResponse extends OnAirResponse {
 
 export interface CashFlowResponse extends OnAirResponse {
     Content: CashFlow | CashFlow[]
-  }
+}
+export interface IncomeStatementResponse extends OnAirResponse {
+    Content: IncomeStatement | IncomeStatement[]
+}
+
 
 /**
  * Generic Get request to OnAir

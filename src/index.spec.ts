@@ -1,7 +1,7 @@
 import { describe } from 'mocha';
 import { expect } from 'chai';
 import OnAirApi from './index';
-import { Aircraft, Airport, CashFlow, Company, Fbo, Flight, Job, Member, People, ShareHolder, VARole, VirtualAirline, } from './types';
+import { Aircraft, Airport, CashFlow, Company, Fbo, Flight, IncomeStatement, Job, Member, People, ShareHolder, VARole, VirtualAirline, } from './types';
 
 const apiKey: string | undefined = process.env.COMPANY_APIKEY;
 const companyId: string | undefined = process.env.COMPANY_ID;
@@ -127,6 +127,34 @@ describe('OnAirApi()', function() {
                 const cashflow: CashFlow = await api.getCompanyCashFlow();
 
                 expect(cashflow).to.be.an('Object');
+            }
+        });
+    });
+
+    describe.only('getCompanyIncomeStatement(startDate: string, endDate: string)', function() {
+        it('when queried providing a startDate and endDate, it should return an object of the company\'s income statement.', async function() {
+            if (apiKey !== undefined && companyId !== undefined && world !== undefined) {
+                const api: OnAirApi = new OnAirApi({ apiKey, world, companyId, vaId });
+
+                const currentDate = new Date();
+                const currentDateStr = currentDate.toISOString();
+                const priorDate = new Date().setDate(currentDate.getDate() - 30);
+
+                const priorDateStr = new Date(priorDate).toISOString();
+
+                const incomestatement: IncomeStatement = await api.getCompanyIncomeStatement(priorDateStr, currentDateStr);
+
+                expect(incomestatement).to.be.an('Object');
+            }
+        });
+
+        it('when queried without providing a startDate or an endDate, it should return an object of the company\'s current income statement within the last 30 days.', async function () {
+            if (apiKey !== undefined && companyId !== undefined && world !== undefined) {
+                const api: OnAirApi = new OnAirApi({ apiKey, world, companyId, vaId });
+
+                const incomestatement: IncomeStatement = await api.getCompanyIncomeStatement();
+
+                expect(incomestatement).to.be.an('Object');
             }
         });
     });
