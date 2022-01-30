@@ -40,289 +40,267 @@ let company = await Api.getCompany();
 ---
 ## Methods
 
-- [getAircraftFlights](#getAircraftFlights)
-- [getAircraft](#getAircraftaircraftId-string)
-- [getAirport](#getAirportairportCode-string)
+- [getCompany](#getCompany)
 - [getCompanyFbos](#getCompanyFbos)
 - [getCompanyFleet](#getCompanyFleet)
 - [getCompanyFlights](#getCompanyFlights)
 - [getCompanyJobs](#getCompanyJobs)
 - [getCompanyEmployees](#getCompanyEmployees)
 - [getCompanyCashFlow](#getCompanyCashFlow)
-- [getCompany](#getCompany)
+- [getAircraft](#getAircraftaircraftId-string)
+- [getAircraftFlights](#getAircraftFlights)
+- [getAirport](#getAirportairportCode-string)
 - [getFlight](#getFlightflightId-string)
 - [getVirtualAirlineMembers](#getVirtualAirlineMembers)
 - [getVirtualAirline](#getVirtualAirline)
 - [getVirtualAirlineShareHolders](#getVirtualAirlineShareHolders)
 - [getVirtualAirlineRoles](#getVirtualAirlineRoles)
 
+
 ### getCompany()
 Fetches the company details for the given companyId, and world.
 #### Usage
 ```typescript
-import OnAirApi from 'onair-api'
-import { Api, Company, } from 'onair-api/src/types'
-const api: Api = new OnAirApi({ apiKey, world, companyId });
-let companyDetails: Company = await api.getCompany();
-```
+import OnAirApi, { Company, OnAirApiConfig, } from 'onair-api'
 
-#### Example response
-```javascript
-{
-  Id: 'c3d8e51d-f2e9-4918-a286-c3f2cd5ab141',
-  WorldId: 'ad3ec8a4-246e-4abb-84a9-9dbc43bb6ae6',
-  Name: 'NDBB Airways',
-  AirlineCode: 'NDBB',
-  LastConnection: '2022-01-21T18:27:11.597',
-  LastReportDate: '2022-01-02T00:00:00',
-  Reputation: 0.7151961959318697,
-  CreationDate: '2021-08-29T02:12:45.287',
-  DifficultyLevel: 1,
-  UTCOffsetinHours: -7,
-  Paused: false,
-  Level: 12,
-  LevelXP: 9235,
-  TransportEmployeeInstant: true,
-  TransportPlayerInstant: true,
-  ForceTimeInSimulator: false,
-  UseSmallAirports: true,
-  UseOnlyVanillaAirports: true,
-  EnableSkillTree: false,
-  CheckrideLevel: 0,
-  EnableLandingPenalities: false,
-  EnableEmployeesFlightDutyAndSleep: false,
-  AircraftRentLevel: 0,
-  EnableCargosAndChartersLoadingTime: false,
-  InSurvival: false,
-  PayBonusFactor: 0.9,
-  EnableSimFailures: true,
-  DisableSeatsConfigCheck: true,
-  RealisticSimProcedures: true,
-  TravelTokens: 10
-}
-```
-
-
-### getCompanyFleet()
-Fetches the aircraft that are owned, leased, or rented for a given companyId, and world.
-#### Usage
-```typescript
-import OnAirApi from 'onair-api'
-import { Api, Aircraft, OnAirApiConfig, } from 'onair-api/src/types'
 
 const apiConfig: OnAirApiConfig = {
-    apiKey: 'd17eaa85-aad5-429b-9297-fe2e6deca5d9',
-    world: 'cumulus', // cumulus, stratus or, thunder. Cler Sky world, use stratus
-    companyid: 'c3d8e51d-f2e9-4918-a2a6-c3f2cd5ab141', // Optional, but required for all `getCompany*` methods
-    vaId: 'cd7df229-c5ff-4528-b74f-688b98c808fe', // Optional, only required if using either of the VA methods `getVirtualAirline` or `getVirtualAirlineMembers`
+  apiKey: 'YOUR-API-KEY',
+  world: 'cumulus',
+  companyId: 'YOUR-COMPANY-ID',
+  vaId: 'YOUR-VA-ID'
 };
 
 const api: Api = new OnAirApi(apiConfig);
-let fleet: Aircraft[] = await api.getCompanyFleet();
-
+let companyDetails: Company = await api.getCompany();
 ```
-
 #### Example Response
-```javascript
-// wip, array of aircraft objects
-```
-
+[getCompany.md](responses/getCompany.md)
 
 ### getCompanyFbos()
 Fetches the FBOs for a given companyId, and world.
 #### Usage
 ```typescript
-import OnAirApi from 'onair-api'
-import { Api, Fbo, } from 'onair-api/src/types'
-const api: Api = new OnAirApi({ apiKey, world, companyId });
+import OnAirApi, { Fbo, OnAirApiConfig, } from 'onair-api'
+
+
+const apiConfig: OnAirApiConfig = {
+  apiKey: 'YOUR-API-KEY',
+  world: 'cumulus',
+  companyId: 'YOUR-COMPANY-ID',
+  vaId: 'YOUR-VA-ID'
+};
+
+const api: Api = new OnAirApi(apiConfig);
 let companyFbos: Fbo[] = await api.getCompanyFbos();
 ```
 
 #### Example Response
-```javascript
-// wip, array of FBO objects
+[getCompanyFbos.md](responses/getCompanyFbos.md)
+### getCompanyFleet()
+Fetches the aircraft that are owned, leased, or rented for a given companyId, and world.
+
+#### Usage
+```typescript
+import OnAirApi, { Aircraft, OnAirApiConfig, } from 'onair-api'
+
+
+const apiConfig: OnAirApiConfig = {
+  apiKey: 'YOUR-API-KEY',
+  world: 'cumulus',
+  companyId: 'YOUR-COMPANY-ID',
+  vaId: 'YOUR-VA-ID'
+};
+
+const api: Api = new OnAirApi(apiConfig);
+let companyFleet: Aircraft[] = await api.getCompanyFleet();
 ```
 
+#### Example Response
+[getCompanyFleet.md](docs/responses/getCompanyFleet.md)
 
 ### getCompanyFlights()
 Fetches the Flights for a given companyId, and world.
+
 #### Usage
 ```typescript
-import OnAirApi from 'onair-api'
-import { Api, Flight, } from 'onair-api/src/types'
-const api: Api = new OnAirApi({ apiKey, world, companyId });
+import OnAirApi, { Flight, OnAirApiConfig, } from 'onair-api'
+
+
+const apiConfig: OnAirApiConfig = {
+  apiKey: 'YOUR-API-KEY',
+  world: 'cumulus',
+  companyId: 'YOUR-COMPANY-ID',
+  vaId: 'YOUR-VA-ID'
+};
+
+const api: Api = new OnAirApi(apiConfig);
 let companyFlights: Flight[] = await api.getCompanyFlights();
 ```
 
 #### Example Response
-```javascript
-// wip, array of Flight objects
-```
-
-### getCompanyEmployees()
-Fetches the Employees for a given companyId, and world.
-#### Usage
-```typescript
-import OnAirApi from 'onair-api'
-import { Api, Employee, } from 'onair-api/src/types'
-const api: Api = new OnAirApi({ apiKey, world, companyId });
-let companyEmployees: Employee[] = await api.getCompanyEmployees();
-```
-
-#### Example Response
-```javascript
-// wip, array of Flight objects
-```
-
-### getCompanyCashFlow()
-Fetches the cash flow for a given companyId, and world.
-#### Usage
-```typescript
-import OnAirApi from 'onair-api'
-import { Api, CashFlow, } from 'onair-api/src/types'
-const api: Api = new OnAirApi({ apiKey, world, companyId });
-let companyCashFlow: CashFlow = await api.getCompanyCashFlow();
-```
-
-#### Example Response
-```javascript
-{
-  Entries: [
-    {
-      Id: '9dcebce1-b679-4882-af52-cda810143c4e',
-      CompanyId: 'c3d8e51d-f2e9-4918-a286-c3f2cd5ab141',
-      AccountId: '4d1ce4cb-9005-4c33-a918-cfe3697eaf5d',
-      Amount: 43.12,
-      CreationDate: '2022-01-29T22:10:45.8',
-      Description: '100LL Fuel at NDBB Airways - KFFZ FBO (KFFZ), 7.8 gal @5.50/gal for N7453Q Cessna 172 Skyhawk',
-      CarryForward: false
-    },
-    // .. removed for brevity
-  ],
-  CompanyCurrentCash: 1428675036.79,
-  LastReportAmount: 1512321690.64,
-  LastReportDate: '2022-01-14T00:00:00'
-}
-```
-
+[getCompanyFlights.md](docs/responses/getCompanyFlights.md)
 
 ### getCompanyJobs()
-Fetches the **pending** jobs for a given companyId, and world.
+Fetches the pending jobs for a given companyId, and world.
+
+
 #### Usage
 ```typescript
-import { OnAirApi } from 'onair-api'
-import { Api, Job, } from 'onair-api/src/types'
-const api: Api = new OnAirApi({ apiKey, world, companyId });
-let companyFlights: Job[] = await api.getCompanyJobs();
+import OnAirApi, { Job, OnAirApiConfig, } from 'onair-api'
+
+
+const apiConfig: OnAirApiConfig = {
+  apiKey: 'YOUR-API-KEY',
+  world: 'cumulus',
+  companyId: 'YOUR-COMPANY-ID',
+  vaId: 'YOUR-VA-ID'
+};
+
+const api: Api = new OnAirApi(apiConfig);
+let companyJobs: Job[] = await api.getCompanyJobs();
 ```
 
 #### Example Response
-```javascript
-// wip, array of Job objects
+[getCompanyJobs.md](docs/responses/getCompanyJobs.md)
+
+### getCompanyEmployees()
+Fetches the Persons currently employed by a given companyId and world.
+#### Usage
+```typescript
+import OnAirApi, { People, OnAirApiConfig, } from 'onair-api'
+
+
+const apiConfig: OnAirApiConfig = {
+  apiKey: 'YOUR-API-KEY',
+  world: 'cumulus',
+  companyId: 'YOUR-COMPANY-ID',
+  vaId: 'YOUR-VA-ID'
+};
+
+const api: Api = new OnAirApi(apiConfig);
+let companyEmployees: People[] = await api.getCompanyEmployees();
 ```
+
+#### Example Response
+[getCompanyEmployees.md](docs/responses/getCompanyEmployees.md)
+
+### getCompanyCashFlow()
+Fetches the cash flow for a given companyId and world.
+#### Usage
+```typescript
+import OnAirApi, { CashFlow, OnAirApiConfig, } from 'onair-api'
+
+const apiConfig: OnAirApiConfig = {
+  apiKey: 'YOUR-API-KEY',
+  world: 'cumulus',
+  companyId: 'YOUR-COMPANY-ID',
+  vaId: 'YOUR-VA-ID'
+};
+
+const api: Api = new OnAirApi(apiConfig);
+let companyCashFlow: CashFlow[] = await api.getCompanyCashFlow();
+```
+
+#### Example Response
+ - [getCompanyCashFlow.md](docs/responses/getCompanyCashFlow.md)
+
+
+---
+
+
 
 
 ### getAircraft(aircraftId: string)
 Fetches the Aircraft details for a given aircraftId and world.
+
 #### Usage
 ```typescript
-import OnAirApi from 'onair-api'
-import { Api, Aircraft, } from 'onair-api/src/types'
-const api: Api = new OnAirApi({ apiKey, world });
-const aircraftId: string = '9891d561-def7-438c-9097-d3336989af93';
-let aircraft: Aircraft = await api.getAircraft(aircraftId);
+import OnAirApi, { Aircraft, OnAirApiConfig, } from 'onair-api'
+
+const apiConfig: OnAirApiConfig = {
+  apiKey: 'YOUR-API-KEY',
+  world: 'cumulus',
+  companyId: 'YOUR-COMPANY-ID',
+  vaId: 'YOUR-VA-ID'
+};
+
+const api: Api = new OnAirApi(apiConfig);
+const aircraftId = '9891d561-def7-438c-9097-d3336989af93';
+let companyAircraft: Aircraft = await api.getAircraft(aircraftId);
 ```
 
 #### Example Response
-```javascript
-// wip, Aircraft object
-```
+ - [getAircraft](docs/responses/getAircraft.md)
 
 
 ### getAircraftFlights(aircraftId: string)
 Fetches the Flights flown for a given aircraftId.
+
 #### Usage
 ```typescript
-import OnAirApi from 'onair-api'
-import { Api, Aircraft, } from 'onair-api/src/types'
-const api: Api = new OnAirApi({ apiKey, world });
-const aircraftId: string = '9891d561-def7-438c-9097-d3336989af93';
-let aircraft: Aircraft = await api.getAircraft(aircraftId);
+import OnAirApi, { Flight, OnAirApiConfig, } from 'onair-api'
+
+const apiConfig: OnAirApiConfig = {
+  apiKey: 'YOUR-API-KEY',
+  world: 'cumulus',
+  companyId: 'YOUR-COMPANY-ID',
+  vaId: 'YOUR-VA-ID'
+};
+
+const api: Api = new OnAirApi(apiConfig);
+const aircraftId = '9891d561-def7-438c-9097-d3336989af93';
+let companyAircraftFlights: Flight[] = await api.getAircraftFlights(aircraftId);
 ```
 
 #### Example Response
-```javascript
-// wip, Aircraft object
-```
-
+[getAircraftFlights.md](docs/responses/getAircraftFlights.md)
 
 ### getAirport(airportCode: string)
-Fetches Airport details for a given airport **Code** and world.
+Fetches Airport details for a given airport Code and world.
+
 #### Usage
 ```typescript
-import { OnAirApi } from 'onair-api'
-import { Api, Airport, } from 'onair-api/src/types'
-const api: Api = new OnAirApi({ apiKey, world });
-const airportCode: string = 'KLAX';// Los Angeles Intel Airport ICAO
-let aircraft: Airport = await api.getAirport(airportCode);
+import OnAirApi, { Airport, OnAirApiConfig, } from 'onair-api'
+
+const apiConfig: OnAirApiConfig = {
+  apiKey: 'YOUR-API-KEY',
+  world: 'cumulus',
+  companyId: 'YOUR-COMPANY-ID',
+  vaId: 'YOUR-VA-ID'
+};
+
+const api: Api = new OnAirApi(apiConfig);
+const airportCode = 'KLAX';
+let airport: Airport = await api.getAirport(airportCode);
 ```
 
 #### Example Response
-```javascript
-// wip, Aircraft object
-```
+[getAirport.md](docs/responses/getAirport.md)
 
 
 ### getFlight(flightId: string)
 Fetches Flight details for a given flightId and world.
+
 #### Usage
 ```typescript
-import { OnAirApi } from 'onair-api'
-import { Api, Flight, } from 'onair-api/src/types'
-const api: Api = new OnAirApi({ apiKey, world });
-const flightId: string = '9891d561-def7-438c-9097-d3336989af93';
+import OnAirApi, { Flight, OnAirApiConfig, } from 'onair-api'
+
+const apiConfig: OnAirApiConfig = {
+  apiKey: 'YOUR-API-KEY',
+  world: 'cumulus',
+  companyId: 'YOUR-COMPANY-ID',
+  vaId: 'YOUR-VA-ID'
+};
+
+const api: Api = new OnAirApi(apiConfig);
+const flightId = '9891d561-def7-438c-9097-d3336989af93';
 let flight: Flight = await api.getFlight(flightId);
 ```
 
 #### Example Response
-```javascript
-// wip, Aircraft object
-```
+[getFlight.md](docs/responses/getFlight.md)
 
-
-### getVirtualAirline()
-Fetches VirtualAirline details for a given vaId, and world.
-**Note**: this requires the vaId to be provided during Api instantiation
-#### Usage
-```typescript
-import { OnAirApi } from 'onair-api'
-import { Api, VirtualAirline, } from 'onair-api/src/types'
-const api: Api = new OnAirApi({ apiKey, world, companyId, vaId });
-let va: VirtualAirline = await api.getVirtualAirline();
-```
-
-#### Example Response
-```javascript
-// wip, VirtualAirline object
-```
-
-
-
-### getVirtualAirlineMembers()
-Fetches the members of a Virtual Airline for a given vaId, and world.
-#### Usage
-```typescript
-import { OnAirApi } from 'onair-api'
-import { Api, Member, } from 'onair-api/src/types'
-const api: Api = new OnAirApi({ apiKey, world, companyId, vaId });
-let members: Member[] = await api.getVirtualAirlineMembers();
-```
-
-#### Example Response
-```javascript
-// wip, Member object
-```
----
 
 ## Examples
 

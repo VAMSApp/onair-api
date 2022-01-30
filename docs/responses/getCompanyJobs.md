@@ -1,0 +1,101 @@
+## getCompanyJobs()
+
+- [Cargos](./Jobs-Cargos.md)
+- [Charters](./Jobs-Charters.md)
+
+### response
+```javascript
+[
+  {
+    Id: 'c4288091-180c-48f0-811d-921df48c56a5',
+    WorldId: 'ad3ec8a4-246e-4abb-84a9-9dbc43bb6ae6',
+    Cargos: [ [Object] ],
+    Charters: [],
+    MissionTypeId: '5ea8b27b-f65c-451f-ba94-d5c423df0d00',
+    MissionType: {
+      Id: '5ea8b27b-f65c-451f-ba94-d5c423df0d00',
+      Name: 'Goods transport',
+      ShortName: 'GOODS',
+      Description: 'All sort of common goods crates.',
+      BaseReputationImpact: 0.6,
+      BasePayFactor: 0,
+      BasePenalityFactor: 0
+    },
+    MainAirportId: '7d8b7ab4-0d7c-4f5f-9f23-1df0f9235c1a',
+    BaseAirportId: '105b84e5-8ae8-4039-a0d3-358883ad29e2',
+    ValuePerLbsPerDistance: 0.06673002385211688,
+    IsGoodValue: false,
+    MaxDistance: 468,
+    TotalDistance: 468,
+    MainAirportHeading: 44,
+    Description: 'Goods transport',
+    ExpirationDate: '2022-02-04T09:07:47.13',
+    Pay: 429720,
+    PayCompanyBonus: 386750,
+    Penality: 28750,
+    ReputationImpact: 0,
+    CompanyId: 'c3d8e51d-f2e9-4918-a286-c3f2cd5ab141',
+    CreationDate: '2022-01-19T19:47:27.753',
+    TakenDate: '2022-01-19T19:52:55.37',
+    TotalCargoTransported: 0,
+    TotalPaxTransported: 0,
+    Category: 0,
+    State: 1,
+    XP: 23,
+    SkillPoint: 0,
+    MinCompanyReput: 0,
+    Hash: '33902AAA367DEE2D6E3A52F996CE3F9E4EB719B3',
+    RealPay: 816470,
+    RealPenality: 18940.0603385333,
+    CanAccess: true,
+    IsLastMinute: false,
+    IsFavorited: false
+  },
+  {
+    Id: 'e26b4270-3f76-4d0d-b3e5-d104dca335a1',
+    WorldId: 'ad3ec8a4-246e-4abb-84a9-9dbc43bb6ae6',
+    Cargos: [ [Object] ],
+    Charters: [ [Object], [Object], [Object], [Object], [Object] ],
+    MissionTypeId: 'eb49d816-2795-41db-abab-4c248edbfb8b',
+    MissionType: {
+      Id: 'eb49d816-2795-41db-abab-4c248edbfb8b',
+      Name: 'Passengers',
+      ShortName: 'BUSTRIP',
+      Description: 'Customers staff have to be transported beetween different business units',
+      BaseReputationImpact: 0.5,
+      BasePayFactor: 0,
+      BasePenalityFactor: 0
+    },
+    MainAirportId: '8c161146-d3ae-46c2-b9e6-b4b57fdbe41f',
+    BaseAirportId: '105b84e5-8ae8-4039-a0d3-358883ad29e2',
+    ValuePerLbsPerDistance: 0.10302245705420171,
+    IsGoodValue: false,
+    MaxDistance: 468,
+    TotalDistance: 531.1907724868848,
+    MainAirportHeading: 86,
+    Description: 'Passengers',
+    ExpirationDate: '2022-01-25T16:38:47.13',
+    Pay: 509650,
+    PayCompanyBonus: 458690,
+    Penality: 31680,
+    ReputationImpact: 0,
+    CompanyId: 'c3d8e51d-f2e9-4918-a286-c3f2cd5ab141',
+    CreationDate: '2022-01-19T19:47:27.51',
+    TakenDate: '2022-01-19T19:50:04.52',
+    TotalCargoTransported: 0,
+    TotalPaxTransported: 0,
+    Category: 0,
+    State: 1,
+    XP: 26,
+    SkillPoint: 0,
+    MinCompanyReput: 0,
+    Hash: '8267742F82041362A3D8E19F46077E1B8E0068D2',
+    RealPay: 968340,
+    RealPenality: 138765.66950528347,
+    CanAccess: false,
+    CanAccessDisplay: 'The mission has expired.',
+    IsLastMinute: false,
+    IsFavorited: false
+  }
+]
+```
