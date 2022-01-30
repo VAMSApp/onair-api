@@ -1,6 +1,6 @@
 {
   "name": "onair-api",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Node.js package to query the OnAir company API",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -24,10 +24,10 @@
     "email": "mike@devita.co"
   },
   "contributors": [
-      {
-        "name": "Will Kelly",
-        "email": "will@logicbox.net"
-      }
+    {
+      "name": "Will Kelly",
+      "email": "will@logicbox.net"
+    }
   ],
   "license": "MIT",
   "dependencies": {
