@@ -212,7 +212,7 @@ let companyCashFlow: CashFlow[] = await api.getCompanyCashFlow();
 
 ### getCompanyIncomeStatement(startDate: string, endDate: string)
 Fetches the income statement within a given range for a companyId and world.
-If not startDate or endDate is provided it will return the last 30 days.
+If no startDate or endDate is provided it will return the last 30 days.
 
 #### Usage
 ```typescript
