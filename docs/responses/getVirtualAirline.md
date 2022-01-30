@@ -1,0 +1,47 @@
+## getVirtualAirline()
+
+### response
+```javascript
+{
+  InitalOwnerEquity: 100000,
+  PercentLeftToPilots: 0,
+  PercentDividendsToDistribute: 0.1,
+  LastDividendsDistribution: '2022-01-21T18:28:09.063',
+  ForceAssignJobsToPilots: false,
+  AutomaticallyAssignJobWhenTaken: false,
+  AutomaticallyAssignJobWhenLoaded: false,
+  RestrictLoadingVAJobsIntoNonVAAircraft: false,
+  RestrictLoadingNonVAJobsIntoVAAircraft: false,
+  MemberCount: 0,
+  Id: 'cd7df229-c5ff-4528-b74f-688b98c80afe',
+  WorldId: 'ad3ec8a4-246e-4abb-84a9-9dbc43bb6ae6',
+  Name: 'Amazon Airways',
+  AirlineCode: 'AMAZY',
+  LastConnection: '2022-01-23T02:25:56.643',
+  LastReportDate: '2022-01-21T18:28:09.063',
+  Reputation: 0,
+  CreationDate: '2022-01-21T18:28:09.063',
+  DifficultyLevel: 0,
+  UTCOffsetinHours: 0,
+  Paused: false,
+  Level: 1,
+  LevelXP: 0,
+  TransportEmployeeInstant: false,
+  TransportPlayerInstant: false,
+  ForceTimeInSimulator: true,
+  UseSmallAirports: false,
+  UseOnlyVanillaAirports: false,
+  EnableSkillTree: true,
+  CheckrideLevel: 2,
+  EnableLandingPenalities: true,
+  EnableEmployeesFlightDutyAndSleep: true,
+  AircraftRentLevel: 2,
+  EnableCargosAndChartersLoadingTime: true,
+  InSurvival: true,
+  PayBonusFactor: 0,
+  EnableSimFailures: false,
+  DisableSeatsConfigCheck: false,
+  RealisticSimProcedures: true,
+  TravelTokens: 0
+}
+```
