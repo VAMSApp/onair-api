@@ -95,7 +95,7 @@ describe('OnAirApi()', function() {
         });
     });
 
-    describe.only('getCompanyJobs()', function() {
+    describe('getCompanyJobs()', function() {
         it('when getCompanyJobs() is queried with valid data, it should return an Array of pending Jobs', async function() {
             if (apiKey !== undefined && companyId !== undefined && world !== undefined) {
                 const api: OnAirApi = new OnAirApi({ apiKey, world, companyId, vaId });
@@ -251,6 +251,20 @@ describe('OnAirApi()', function() {
                 const varoles: VARole[] = await api.getVirtualAirlineRoles();
 
                 expect(varoles).to.be.an('Array');
+            }
+        });
+    });
+
+    describe('getEmployee()', function () {
+        it('when getEmployee() is queried with valid data, it should return an employees details within a People object', async function() {
+            if (apiKey !== undefined && companyId !== undefined && world !== undefined) {
+                const api: OnAirApi = new OnAirApi({ apiKey, world, companyId, vaId });
+                const personId = '596b6c2e-4ac7-44e9-b1d4-a4299030cb04';
+
+                const employee: People = await api.getEmployee(personId);
+
+                expect(employee).to.be.an('Object');
+                expect(employee.Id).to.equal(personId);
             }
         });
     });

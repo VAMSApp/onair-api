@@ -19,6 +19,7 @@ export interface Api {
     getVirtualAirline: any,
     getVirtualAirlineShareHolders: any,
     getVirtualAirlineRoles: any,
+    getEmployee: any,
 }
 
 export interface OnAirApiConfig {

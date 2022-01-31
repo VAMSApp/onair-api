@@ -176,5 +176,12 @@ export default class OnAirApi {
         const varoles: VARole[] = await Api.getVirtualAirlineRoles(this.VaId, this.ApiKey, this.World);
         return varoles;
     }
+
+    public async getEmployee(employeeId: string): Promise<People> {
+        if (!employeeId) throw new Error('Employee ID is not provided');
+
+        const employee: People = await Api.getEmployee(employeeId, this.ApiKey, this.World);
+        return employee;
+    }
 }
 

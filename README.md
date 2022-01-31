@@ -57,7 +57,7 @@ let company = await Api.getCompany();
 - [getVirtualAirline](#getVirtualAirline)
 - [getVirtualAirlineShareHolders](#getVirtualAirlineShareHolders)
 - [getVirtualAirlineRoles](#getVirtualAirlineRoles)
-
+- [getEmployee](#getemployeeemployeeid-string)
 
 ### getCompany()
 Fetches the company details for the given companyId, and world.
@@ -439,9 +439,33 @@ let roles: VARole[] = await api.getVirtualAirlineRoles();
 #### Example Response
  - [getVirtualAirlineRoles.md](docs/responses/getVirtualAirlineRoles.md)
 
+### getEmployee(employeeId: string)
+Fetches details for a given employeeId and world.
+
+#### Usage
+```typescript
+import OnAirApi, { People, OnAirApiConfig, } from 'onair-api'
+
+const apiConfig: OnAirApiConfig = {
+  apiKey: 'YOUR-API-KEY',
+  world: 'cumulus',
+  companyId: 'YOUR-COMPANY-ID',
+  vaId: 'YOUR-VA-ID'
+};
+
+const api: Api = new OnAirApi(apiConfig);
+const employeeId = '596b6c2e-4ac7-44e9-b1d4-a4299030cb04';
+let employee_details: People = await api.getEmployee(employeeId);
+```
+
+#### Example Response
+ - [getEmployee.md](docs/responses/getEmployee.md)
+
+
 
 
 ---
+
 
 ## Examples
 
