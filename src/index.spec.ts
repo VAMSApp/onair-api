@@ -95,12 +95,22 @@ describe('OnAirApi()', function() {
         });
     });
 
-    describe('getCompanyJobs()', function() {
+    describe.only('getCompanyJobs()', function() {
         it('when getCompanyJobs() is queried with valid data, it should return an Array of pending Jobs', async function() {
             if (apiKey !== undefined && companyId !== undefined && world !== undefined) {
                 const api: OnAirApi = new OnAirApi({ apiKey, world, companyId, vaId });
 
                 const jobs: Job[] = await api.getCompanyJobs();
+
+                expect(jobs).to.be.an('Array');
+            }
+        });
+
+        it('when getCompanyJobs() is queried with valid data, passing true as the first argument, it should return an Array of completed Jobs', async function() {
+            if (apiKey !== undefined && companyId !== undefined && world !== undefined) {
+                const api: OnAirApi = new OnAirApi({ apiKey, world, companyId, vaId });
+
+                const jobs: Job[] = await api.getCompanyJobs(true);
 
                 expect(jobs).to.be.an('Array');
             }

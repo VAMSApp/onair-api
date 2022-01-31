@@ -72,10 +72,10 @@ export default class OnAirApi {
         return companyFlights;
     }
 
-    public async getCompanyJobs(): Promise<Job[]> {
+    public async getCompanyJobs(completed = false): Promise<Job[]> {
         if (!this.CompanyId) throw new Error('No Company ID provided');
 
-        const companyJobs: Job[] = await Api.getCompanyJobs(this.CompanyId, this.ApiKey, this.World);
+        const companyJobs: Job[] = await Api.getCompanyJobs(this.CompanyId, this.ApiKey, this.World, completed);
         return companyJobs;
     }
 

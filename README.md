@@ -44,7 +44,7 @@ let company = await Api.getCompany();
 - [getCompanyFbos](#getCompanyFbos)
 - [getCompanyFleet](#getCompanyFleet)
 - [getCompanyFlights](#getCompanyFlights)
-- [getCompanyJobs](#getCompanyJobs)
+- [getCompanyJobs](#getCompanyJobs-completed-false)
 - [getCompanyEmployees](#getCompanyEmployees)
 - [getCompanyCashFlow](#getCompanyCashFlow)
 - [getCompanyIncomeStatement](#getcompanyincomestatementstartdate-string-enddate-string)
@@ -146,8 +146,9 @@ let companyFlights: Flight[] = await api.getCompanyFlights();
 #### Example Response
  - [getCompanyFlights.md](docs/responses/getCompanyFlights.md)
 
-### getCompanyJobs()
+### getCompanyJobs(completed = false)
 Fetches the pending jobs for a given companyId, and world.
+Pass `true` as the first argument to return completed jobs.
 
 #### Usage
 ```typescript
@@ -162,6 +163,9 @@ const apiConfig: OnAirApiConfig = {
 
 const api: Api = new OnAirApi(apiConfig);
 let companyJobs: Job[] = await api.getCompanyJobs();
+// pass true as the first argument to return the completed jobs
+let completedCompanyJobs: Job[] = await api.getCompanyJobs(true);
+
 ```
 
 #### Example Response

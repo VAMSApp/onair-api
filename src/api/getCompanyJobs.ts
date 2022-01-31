@@ -2,11 +2,11 @@ import { Job, } from '../types';
 import onAirRequest, { JobResponse } from './onAirRequest';
 
 
-export const getCompanyJobs = async (companyId: string, apiKey: string, world: string) => {
-  
+export const getCompanyJobs = async (companyId: string, apiKey: string, world: string, completed = false) => {
+
     try {
         const response = await onAirRequest<JobResponse>(
-            `https://${world}.onair.company/api/v1/company/${companyId}/jobs/pending`,
+            `https://${world}.onair.company/api/v1/company/${companyId}/jobs/${(completed) ? 'completed' : 'pending'}`,
             apiKey
         );
 
