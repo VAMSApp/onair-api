@@ -1,5 +1,5 @@
-# API Middleware for OnAir Airline Manager
-A node.js wrapper around the OnAir Airline Manager's public API.
+# Typescript/Javascript package for querying the OnAir API
+A Typescript/Javascript wrapper around the OnAir Airline Manager's API.
 
 [![NPM Version](https://img.shields.io/npm/v/onair-api.svg)](https://www.npmjs.com/package/onair-api)
 [![Build Status][build-image]][build-url]
