@@ -9,34 +9,25 @@
       ShortName: 'REVPax',
       Entries: [
         {
-          Name: 'Passenger Services',
-          ShortName: 'REVPax',
-          Entries: [
+          Id: '9a509279-aad5-4b12-90d2-599c9412dfe2',
+          CompanyId: 'c3d8e51d-f2e9-4918-a286-c3f2cd5ab141',
+          AccountId: '4780f80f-e426-4b7f-92f2-058b722c6c8c',
+          Amount: 183606.21,
+          Account: [
             {
-              Id: '9a509279-aad5-4b12-90d2-599c9412dfe2',
-              CompanyId: 'c3d8e51d-f2e9-4918-a286-c3f2cd5ab141',
-              AccountId: '4780f80f-e426-4b7f-92f2-058b722c6c8c',
-              Amount: 183606.21,
-              Account: [
-                {
-                  Id: '4780f80f-e426-4b7f-92f2-058b722c6c8c',
-                  ShortName: 'REVPax',
-                  Name: 'Passenger Services',
-                  Category: 0,
-                  Order: 0
-                }
-              ],
-              CreationDate: '2022-01-14T18:03:43.237',
-              Description: 'Payment for PAX (Medical Transportation).',
-              CarryForward: false
+              Id: '4780f80f-e426-4b7f-92f2-058b722c6c8c',
+              ShortName: 'REVPax',
+              Name: 'Passenger Services',
+              Category: 0,
+              Order: 0
             }
           ],
-          Order: 0,
-          Amount: 183606.21
-        }
-      ],
-      Order: 0,
-      Amount: 183606.21
+          CreationDate: '2022-01-14T18:03:43.237',
+          Description: 'Payment for PAX (Medical Transportation).',
+          CarryForward: false
+        },
+        // removed for brevity
+      ]
     },
     // removed for brevity
   ],
