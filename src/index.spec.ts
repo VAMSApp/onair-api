@@ -1,7 +1,7 @@
 import { describe } from 'mocha';
 import { expect } from 'chai';
 import OnAirApi from './index';
-import { Aircraft, Airport, CashFlow, Company, Fbo, Flight, IncomeStatement, Job, Member, People, ShareHolder, VARole, VirtualAirline, } from './types';
+import { Aircraft, Airport, BalanceSheet, CashFlow, Company, Fbo, Flight, IncomeStatement, Job, Member, People, ShareHolder, VARole, VirtualAirline, } from './types';
 
 const apiKey: string | undefined = process.env.COMPANY_APIKEY;
 const companyId: string | undefined = process.env.COMPANY_ID;
@@ -131,7 +131,7 @@ describe('OnAirApi()', function() {
         });
     });
 
-    describe.only('getCompanyIncomeStatement(startDate: string, endDate: string)', function() {
+    describe('getCompanyIncomeStatement(startDate: string, endDate: string)', function() {
         it('when queried providing a startDate and endDate, it should return an object of the company\'s income statement.', async function() {
             if (apiKey !== undefined && companyId !== undefined && world !== undefined) {
                 const api: OnAirApi = new OnAirApi({ apiKey, world, companyId, vaId });
@@ -155,6 +155,18 @@ describe('OnAirApi()', function() {
                 const incomestatement: IncomeStatement = await api.getCompanyIncomeStatement();
 
                 expect(incomestatement).to.be.an('Object');
+            }
+        });
+    });
+
+    describe('getCompanyBalanceSheet()', function() {
+        it('when getCompanyBalanceSheet() is queried with valid data, it should return an object of the company\'s current balance sheet.', async function() {
+            if (apiKey !== undefined && companyId !== undefined && world !== undefined) {
+                const api: OnAirApi = new OnAirApi({ apiKey, world, companyId, vaId });
+
+                const balancesheet: BalanceSheet = await api.getCompanyBalanceSheet();
+
+                expect(balancesheet).to.be.an('Object');
             }
         });
     });

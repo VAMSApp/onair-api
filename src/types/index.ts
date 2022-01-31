@@ -16,3 +16,4 @@ export * from './World';
 export * from './People';
 export * from './CashFlow';
 export * from './IncomeStatement';
+export * from './BalanceSheet';

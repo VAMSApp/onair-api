@@ -2,10 +2,10 @@ import { CashFlowEntry } from '.';
 
 export interface ISCashFlowEntry extends CashFlowEntry {
     Id: string,
-    Account: Account,
+    Account: CFAccount,
 }
 
-export interface ISAccount {
+export interface Account {
     Name: string,
     ShortName: string,
     Entries: ISCashFlowEntry[]
@@ -13,7 +13,7 @@ export interface ISAccount {
     Amount: number
 }
 
-export interface Account {
+export interface CFAccount {
     Id: string,
     ShortName: string,
     Name: string,
@@ -22,8 +22,8 @@ export interface Account {
 }
 
 export interface IncomeStatement {
-    REVAccounts: ISAccount[],
-    EXPAccounts: ISAccount[],
+    REVAccounts: Account[],
+    EXPAccounts: Account[],
     REVAmount: number,
     EXPAmount: number,
     NetIncomeAmount: number,

@@ -48,6 +48,7 @@ let company = await Api.getCompany();
 - [getCompanyEmployees](#getCompanyEmployees)
 - [getCompanyCashFlow](#getCompanyCashFlow)
 - [getCompanyIncomeStatement](#getcompanyincomestatementstartdate-string-enddate-string)
+- [getCompanyBalanceSheet](#getcompanybalancesheet)
 - [getAircraft](#getAircraftaircraftId-string)
 - [getAircraftFlights](#getAircraftFlights)
 - [getAirport](#getAirportairportCode-string)
@@ -239,7 +240,26 @@ let companyIncomeStatement2: IncomeStatement = await api.getCompanyIncomeStateme
 #### Example Response
  - [getCompanyIncomeStatement.md](docs/responses/getCompanyIncomeStatement.md)
 
+### getCompanyBalanceSheet()
+Fetches the company's current balance sheet. Which provides a current snapshot of the status of a company.
+#### Usage
+```typescript
+import OnAirApi, { BalanceSheet, OnAirApiConfig, } from 'onair-api'
 
+
+const apiConfig: OnAirApiConfig = {
+  apiKey: 'YOUR-API-KEY',
+  world: 'cumulus',
+  companyId: 'YOUR-COMPANY-ID',
+  vaId: 'YOUR-VA-ID'
+};
+
+const api: Api = new OnAirApi(apiConfig);
+let balancesheet: BalanceSheet = await api.getCompanyBalanceSheet();
+```
+
+#### Example Response
+ - [getCompanyBalanceSheet.md](docs/responses/getCompanyBalanceSheet.md)
 
 
 ### getAircraft(aircraftId: string)

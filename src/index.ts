@@ -14,6 +14,7 @@ import {
     VARole,
     CashFlow,
     IncomeStatement,
+    BalanceSheet,
 } from './types';
 
 export * from './types';
@@ -110,6 +111,14 @@ export default class OnAirApi {
         const incomeStatement: IncomeStatement = await Api.getCompanyIncomeStatement(startDate, endDate, this.CompanyId, this.ApiKey, this.World);
 
         return incomeStatement;
+    }
+
+    public async getCompanyBalanceSheet(): Promise<BalanceSheet> {
+        if (!this.CompanyId) throw new Error('No Company ID provided');
+
+        const balanceSheet: BalanceSheet = await Api.getCompanyBalanceSheet(this.CompanyId, this.ApiKey, this.World);
+
+        return balanceSheet;
     }
 
     public async getAircraft(aircraftId: string): Promise<Aircraft> {
