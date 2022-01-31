@@ -241,7 +241,7 @@ let companyIncomeStatement2: IncomeStatement = await api.getCompanyIncomeStateme
  - [getCompanyIncomeStatement.md](docs/responses/getCompanyIncomeStatement.md)
 
 ### getCompanyBalanceSheet()
-Fetches the company's current balance sheet. Which provides a current snapshot of the status of a company.
+Fetches the company's current balance sheet. Which provides a current snapshot of the financial status of a company.
 #### Usage
 ```typescript
 import OnAirApi, { BalanceSheet, OnAirApiConfig, } from 'onair-api'
