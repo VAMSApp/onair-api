@@ -44,7 +44,7 @@ let company = await Api.getCompany();
 - [getCompanyFbos](#getCompanyFbos)
 - [getCompanyFleet](#getCompanyFleet)
 - [getCompanyFlights](#getCompanyFlights)
-- [getCompanyJobs](#getCompanyJobs-completed-false)
+- [getCompanyJobs](#getcompanyjobscompleted--false)
 - [getCompanyEmployees](#getCompanyEmployees)
 - [getCompanyCashFlow](#getCompanyCashFlow)
 - [getCompanyIncomeStatement](#getcompanyincomestatementstartdate-string-enddate-string)
