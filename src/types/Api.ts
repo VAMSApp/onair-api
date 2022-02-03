@@ -24,7 +24,6 @@ export interface Api {
 
 export interface OnAirApiConfig {
     apiKey: string,
-    world: string,
     companyId?: string | undefined,
     vaId?: string | undefined,
 }

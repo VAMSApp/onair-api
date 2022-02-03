@@ -3,7 +3,7 @@ import onAirRequest, { FlightResponse } from './onAirRequest';
 
 const endPoint = 'company/';
 
-export const getCompanyFlights = async (companyId: string, apiKey: string, world: string, page=1, limit=10) => {
+export const getCompanyFlights = async (companyId: string, apiKey: string, page=1, limit=10) => {
     const startIndex = page > 1 ? limit * page : 0;
 
     try {

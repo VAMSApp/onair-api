@@ -3,7 +3,7 @@ import onAirRequest, { IncomeStatementResponse } from './onAirRequest';
 
 const endPoint = 'company/';
 
-export const getCompanyIncomeStatement = async (startDate: string, endDate: string, companyId: string, apiKey: string, world: string) => {
+export const getCompanyIncomeStatement = async (startDate: string, endDate: string, companyId: string, apiKey: string) => {
     try {
         const response = await onAirRequest<IncomeStatementResponse>(
             `https://server1.onair.company/api/v1/${endPoint}${companyId}/incomestatement?startDate=${startDate}&endDate=${endDate}`,

@@ -19,14 +19,13 @@ A Typescript/Javascript wrapper around the OnAir Airline Manager's API.
 ```javascript
 import OnAirApi from 'onair-api'
 
-// define the prerequisite keys, and world
+// define the prerequisite keys
 // apiKey and companyId can be found in the lower left corner of the options screen within the OnAir Desktop client
 const apikey = 'YOUR-API-KEY'
-const world = 'cumulus' // one of, cumulus, stratus, thunder. Use 'stratus' for clear-sky world
 const companyId = 'YOUR-COMPANY-ID'
 
 // instantiate the OnAirApi
-const Api = new OnAirApi({ apiKey, world, companyId });
+const Api = new OnAirApi({ apiKey, companyId });
 
 /**
  * call one of the Api methods, like getCompany
@@ -60,7 +59,7 @@ let company = await Api.getCompany();
 - [getEmployee](#getemployeeemployeeid-string)
 
 ### getCompany()
-Fetches the company details for the given companyId, and world.
+Fetches the company details for the given companyId.
 #### Usage
 ```typescript
 import OnAirApi, { Company, OnAirApiConfig, } from 'onair-api'
@@ -68,7 +67,6 @@ import OnAirApi, { Company, OnAirApiConfig, } from 'onair-api'
 
 const apiConfig: OnAirApiConfig = {
   apiKey: 'YOUR-API-KEY',
-  world: 'cumulus',
   companyId: 'YOUR-COMPANY-ID',
   vaId: 'YOUR-VA-ID'
 };
@@ -82,7 +80,7 @@ let companyDetails: Company = await api.getCompany();
 
 
 ### getCompanyFbos()
-Fetches the FBOs for a given companyId, and world.
+Fetches the FBOs for a given companyId.
 #### Usage
 ```typescript
 import OnAirApi, { Fbo, OnAirApiConfig, } from 'onair-api'
@@ -90,7 +88,6 @@ import OnAirApi, { Fbo, OnAirApiConfig, } from 'onair-api'
 
 const apiConfig: OnAirApiConfig = {
   apiKey: 'YOUR-API-KEY',
-  world: 'cumulus',
   companyId: 'YOUR-COMPANY-ID',
   vaId: 'YOUR-VA-ID'
 };
@@ -104,7 +101,7 @@ let companyFbos: Fbo[] = await api.getCompanyFbos();
 
 
 ### getCompanyFleet()
-Fetches the aircraft that are owned, leased, or rented for a given companyId, and world.
+Fetches the aircraft that are owned, leased, or rented for a given companyId.
 
 #### Usage
 ```typescript
@@ -112,7 +109,6 @@ import OnAirApi, { Aircraft, OnAirApiConfig, } from 'onair-api'
 
 const apiConfig: OnAirApiConfig = {
   apiKey: 'YOUR-API-KEY',
-  world: 'cumulus',
   companyId: 'YOUR-COMPANY-ID',
   vaId: 'YOUR-VA-ID'
 };
@@ -125,7 +121,7 @@ let companyFleet: Aircraft[] = await api.getCompanyFleet();
 
 
 ### getCompanyFlights()
-Fetches the Flights for a given companyId, and world.
+Fetches the Flights for a given companyId.
 
 #### Usage
 ```typescript
@@ -134,7 +130,6 @@ import OnAirApi, { Flight, OnAirApiConfig, } from 'onair-api'
 
 const apiConfig: OnAirApiConfig = {
   apiKey: 'YOUR-API-KEY',
-  world: 'cumulus',
   companyId: 'YOUR-COMPANY-ID',
   vaId: 'YOUR-VA-ID'
 };
@@ -147,7 +142,7 @@ let companyFlights: Flight[] = await api.getCompanyFlights();
  - [getCompanyFlights.md](docs/responses/getCompanyFlights.md)
 
 ### getCompanyJobs(completed = false)
-Fetches the pending jobs for a given companyId, and world.
+Fetches the pending jobs for a given companyId.
 Pass `true` as the first argument to return completed jobs.
 
 #### Usage
@@ -156,7 +151,6 @@ import OnAirApi, { Job, OnAirApiConfig, } from 'onair-api'
 
 const apiConfig: OnAirApiConfig = {
   apiKey: 'YOUR-API-KEY',
-  world: 'cumulus',
   companyId: 'YOUR-COMPANY-ID',
   vaId: 'YOUR-VA-ID'
 };
@@ -172,7 +166,7 @@ let completedCompanyJobs: Job[] = await api.getCompanyJobs(true);
  - [getCompanyJobs.md](docs/responses/getCompanyJobs.md)
 
 ### getCompanyEmployees()
-Fetches the Persons currently employed by a given companyId and world.
+Fetches the Persons currently employed by a given companyId.
 #### Usage
 ```typescript
 import OnAirApi, { People, OnAirApiConfig, } from 'onair-api'
@@ -180,7 +174,6 @@ import OnAirApi, { People, OnAirApiConfig, } from 'onair-api'
 
 const apiConfig: OnAirApiConfig = {
   apiKey: 'YOUR-API-KEY',
-  world: 'cumulus',
   companyId: 'YOUR-COMPANY-ID',
   vaId: 'YOUR-VA-ID'
 };
@@ -193,14 +186,13 @@ let companyEmployees: People[] = await api.getCompanyEmployees();
  - [getCompanyEmployees.md](docs/responses/getCompanyEmployees.md)
 
 ### getCompanyCashFlow()
-Fetches the cash flow for a given companyId and world.
+Fetches the cash flow for a given companyId.
 #### Usage
 ```typescript
 import OnAirApi, { CashFlow, OnAirApiConfig, } from 'onair-api'
 
 const apiConfig: OnAirApiConfig = {
   apiKey: 'YOUR-API-KEY',
-  world: 'cumulus',
   companyId: 'YOUR-COMPANY-ID',
   vaId: 'YOUR-VA-ID'
 };
@@ -216,7 +208,7 @@ let companyCashFlow: CashFlow[] = await api.getCompanyCashFlow();
 ---
 
 ### getCompanyIncomeStatement(startDate: string, endDate: string)
-Fetches the income statement within a given range for a companyId and world.
+Fetches the income statement within a given range for a companyId.
 If no startDate or endDate is provided it will return the last 30 days.
 
 #### Usage
@@ -225,7 +217,6 @@ import OnAirApi, { IncomeStatement, OnAirApiConfig, } from 'onair-api'
 
 const apiConfig: OnAirApiConfig = {
   apiKey: 'YOUR-API-KEY',
-  world: 'cumulus',
   companyId: 'YOUR-COMPANY-ID',
   vaId: 'YOUR-VA-ID'
 };
@@ -253,7 +244,6 @@ import OnAirApi, { BalanceSheet, OnAirApiConfig, } from 'onair-api'
 
 const apiConfig: OnAirApiConfig = {
   apiKey: 'YOUR-API-KEY',
-  world: 'cumulus',
   companyId: 'YOUR-COMPANY-ID',
   vaId: 'YOUR-VA-ID'
 };
@@ -267,7 +257,7 @@ let balancesheet: BalanceSheet = await api.getCompanyBalanceSheet();
 
 
 ### getAircraft(aircraftId: string)
-Fetches the Aircraft details for a given aircraftId and world.
+Fetches the Aircraft details for a given aircraftId.
 
 #### Usage
 ```typescript
@@ -275,7 +265,6 @@ import OnAirApi, { Aircraft, OnAirApiConfig, } from 'onair-api'
 
 const apiConfig: OnAirApiConfig = {
   apiKey: 'YOUR-API-KEY',
-  world: 'cumulus',
   companyId: 'YOUR-COMPANY-ID',
   vaId: 'YOUR-VA-ID'
 };
@@ -298,7 +287,6 @@ import OnAirApi, { Flight, OnAirApiConfig, } from 'onair-api'
 
 const apiConfig: OnAirApiConfig = {
   apiKey: 'YOUR-API-KEY',
-  world: 'cumulus',
   companyId: 'YOUR-COMPANY-ID',
   vaId: 'YOUR-VA-ID'
 };
@@ -312,7 +300,7 @@ let companyAircraftFlights: Flight[] = await api.getAircraftFlights(aircraftId);
  - [getAircraftFlights.md](docs/responses/getAircraftFlights.md)
 
 ### getAirport(airportCode: string)
-Fetches Airport details for a given airport Code and world.
+Fetches Airport details for a given airport Code.
 
 #### Usage
 ```typescript
@@ -320,7 +308,6 @@ import OnAirApi, { Airport, OnAirApiConfig, } from 'onair-api'
 
 const apiConfig: OnAirApiConfig = {
   apiKey: 'YOUR-API-KEY',
-  world: 'cumulus',
   companyId: 'YOUR-COMPANY-ID',
   vaId: 'YOUR-VA-ID'
 };
@@ -335,7 +322,7 @@ let airport: Airport = await api.getAirport(airportCode);
 
 
 ### getFlight(flightId: string)
-Fetches Flight details for a given flightId and world.
+Fetches Flight details for a given flightId.
 
 #### Usage
 ```typescript
@@ -343,7 +330,6 @@ import OnAirApi, { Flight, OnAirApiConfig, } from 'onair-api'
 
 const apiConfig: OnAirApiConfig = {
   apiKey: 'YOUR-API-KEY',
-  world: 'cumulus',
   companyId: 'YOUR-COMPANY-ID',
   vaId: 'YOUR-VA-ID'
 };
@@ -357,7 +343,7 @@ let flight: Flight = await api.getFlight(flightId);
  - [getFlight.md](docs/responses/getFlight.md)
 
 ### getVirtualAirline()
-Fetches VirtualAirline details for a given vaId, and world. Note: this requires the vaId to be provided during Api instantiation
+Fetches VirtualAirline details for a given vaId. Note: this requires the vaId to be provided during Api instantiation
 
 #### Usage
 ```typescript
@@ -365,7 +351,6 @@ import OnAirApi, { VirtualAirline, OnAirApiConfig, } from 'onair-api'
 
 const apiConfig: OnAirApiConfig = {
   apiKey: 'YOUR-API-KEY',
-  world: 'cumulus',
   companyId: 'YOUR-COMPANY-ID',
   vaId: 'YOUR-VA-ID'
 };
@@ -379,7 +364,7 @@ let va: VirtualAirline = await api.getVirtualAirline();
 
 
 ### getVirtualAirlineMembers()
-Fetches the members of a Virtual Airline for a given vaId, and world.
+Fetches the members of a Virtual Airline for a given vaId.
 
 #### Usage
 ```typescript
@@ -387,7 +372,6 @@ import OnAirApi, { Member, OnAirApiConfig, } from 'onair-api'
 
 const apiConfig: OnAirApiConfig = {
   apiKey: 'YOUR-API-KEY',
-  world: 'cumulus',
   companyId: 'YOUR-COMPANY-ID',
   vaId: 'YOUR-VA-ID'
 };
@@ -399,7 +383,7 @@ let vaMembers: Member[] = await api.getVirtualAirlineMembers();
   - [getVirtualAirlineMembers.md](docs/responses/getVirtualAirlineMembers.md)
 
 ### getVirtualAirlineShareHolders()
-Fetches the ShareHolders of a Virtual Airline for a given vaId, and world.
+Fetches the ShareHolders of a Virtual Airline for a given vaId.
 
 #### Usage
 ```typescript
@@ -407,7 +391,6 @@ import OnAirApi, { ShareHolder, OnAirApiConfig, } from 'onair-api'
 
 const apiConfig: OnAirApiConfig = {
   apiKey: 'YOUR-API-KEY',
-  world: 'cumulus',
   companyId: 'YOUR-COMPANY-ID',
   vaId: 'YOUR-VA-ID'
 };
@@ -419,7 +402,7 @@ let vaShareHolders: ShareHolder[] = await api.getVirtualAirlineShareHolders();
 #### Example Response
  - [getVirtualAirlineShareHolders.md](docs/responses/getVirtualAirlineShareHolders.md)
 ### getVirtualAirlineRoles()
-Fetches the Roles for a given vaId and world.
+Fetches the Roles for a given vaId.
 
 #### Usage
 ```typescript
@@ -427,7 +410,6 @@ import OnAirApi, { VARole, OnAirApiConfig, } from 'onair-api'
 
 const apiConfig: OnAirApiConfig = {
   apiKey: 'YOUR-API-KEY',
-  world: 'cumulus',
   companyId: 'YOUR-COMPANY-ID',
   vaId: 'YOUR-VA-ID'
 };
@@ -440,7 +422,7 @@ let roles: VARole[] = await api.getVirtualAirlineRoles();
  - [getVirtualAirlineRoles.md](docs/responses/getVirtualAirlineRoles.md)
 
 ### getEmployee(employeeId: string)
-Fetches details for a given employeeId and world.
+Fetches details for a given employeeId.
 
 #### Usage
 ```typescript
@@ -448,7 +430,6 @@ import OnAirApi, { People, OnAirApiConfig, } from 'onair-api'
 
 const apiConfig: OnAirApiConfig = {
   apiKey: 'YOUR-API-KEY',
-  world: 'cumulus',
   companyId: 'YOUR-COMPANY-ID',
   vaId: 'YOUR-VA-ID'
 };
@@ -478,9 +459,9 @@ import { OnAirApi, } from 'onair-api'
 (async function () {
     const apiKey = process.env.COMPANY_APIKEY;
     const companyId = process.env.COMPANY_ID;
-    const world = process.env.COMPANY_WORLD;
+    const vaId = process.env.VIRTUAL_AIRLINE_ID;
 
-    const Api = new OnAirApi({ apiKey, companyId, world });
+    const Api = new OnAirApi({ apiKey, companyId, vaId, });
 
     let company = await Api.getCompanyDetails();
     let fleet = await Api.getCompanyFleet();
@@ -501,9 +482,9 @@ import { Company, Aircraft, Api, } from 'onair-api/src/types'
 (async function () {
     const apiKey: string = process.env.COMPANY_APIKEY;
     const companyId: string = process.env.COMPANY_ID;
-    const world: string = process.env.COMPANY_WORLD;
+    const vaId = process.env.VIRTUAL_AIRLINE_ID;
 
-    const api = new OnAirApi({ apiKey, companyId, world });
+    const api: Api = new OnAirApi({ apiKey, companyId, vaId, });
 
     let company: Company = await api.getCompanyDetails();
     let fleet: Aircraft[] = await api.getCompanyFleet();

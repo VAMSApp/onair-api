@@ -2,7 +2,7 @@ import { Job, } from '../types';
 import onAirRequest, { JobResponse } from './onAirRequest';
 
 
-export const getCompanyJobs = async (companyId: string, apiKey: string, world: string, completed = false) => {
+export const getCompanyJobs = async (companyId: string, apiKey: string, completed = false) => {
 
     try {
         const response = await onAirRequest<JobResponse>(

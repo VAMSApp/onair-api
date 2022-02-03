@@ -2,7 +2,7 @@ import onAirRequest, { FlightResponse } from './onAirRequest';
 import { Flight } from '../types';
 import { uuid4 } from '../utils';
 
-export const getFlight = async (flightId: string, apiKey: string, world: string): Promise<Flight> => {
+export const getFlight = async (flightId: string, apiKey: string): Promise<Flight> => {
     if (!uuid4.test(flightId) ) {
         throw new Error('Flight ID is incorrect! It should be a 36 character UUID');
     }

@@ -3,7 +3,7 @@ import onAirRequest, { BalanceSheetResponse } from './onAirRequest';
 
 const endPoint = 'company/';
 
-export const getCompanyBalanceSheet = async (companyId: string, apiKey: string, world: string) => {
+export const getCompanyBalanceSheet = async (companyId: string, apiKey: string) => {
 
     try {
         const response = await onAirRequest<BalanceSheetResponse>(

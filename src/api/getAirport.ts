@@ -3,7 +3,7 @@ import onAirRequest, { AirportResponse } from './onAirRequest';
 
 const endPoint = 'airports/';
 
-export const getAirport = async (icao: string, apiKey: string, world: string) => {
+export const getAirport = async (icao: string, apiKey: string) => {
     try {
         const response = await onAirRequest<AirportResponse>(
             `https://server1.onair.company/api/v1/${endPoint}${icao}`,
