@@ -8,12 +8,12 @@ export const getAircraftFlights = async (aircraftId: string, apiKey: string, wor
     if (!aircraftId.match(uuid4)) {
         throw new Error('Aircraft ID is incorrect! It should be a 36 character UUID');
     }
-  
+
     const startIndex = page > 1 ? limit * page : 0;
 
     try {
         const response = await onAirRequest<FlightResponse>(
-            `https://${world}.onair.company/api/v1/${endPoint}${aircraftId}/flights`,
+            `https://server1.onair.company/api/v1/${endPoint}${aircraftId}/flights`,
             apiKey, {
                 startIndex: startIndex,
                 limit: limit

@@ -5,10 +5,10 @@ const endPoint = 'company/';
 
 export const getCompanyFlights = async (companyId: string, apiKey: string, world: string, page=1, limit=10) => {
     const startIndex = page > 1 ? limit * page : 0;
-  
+
     try {
         const response = await onAirRequest<FlightResponse>(
-            `https://${world}.onair.company/api/v1/${endPoint}${companyId}/flights`,
+            `https://server1.onair.company/api/v1/${endPoint}${companyId}/flights`,
             apiKey, {
                 startIndex: startIndex,
                 limit: limit

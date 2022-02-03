@@ -6,7 +6,7 @@ const endPoint = 'va/';
 export const getVirtualAirlineShareHolders = async (vaId: string, apiKey: string, world: string) => {
     try {
         const response = await onAirRequest<VirtualAirlineShareHolderResponse>(
-            `https://${world}.onair.company/api/v1/${endPoint}${vaId}/shareholders`,
+            `https://server1.onair.company/api/v1/${endPoint}${vaId}/shareholders`,
             apiKey
         );
 

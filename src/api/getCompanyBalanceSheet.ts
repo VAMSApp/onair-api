@@ -7,7 +7,7 @@ export const getCompanyBalanceSheet = async (companyId: string, apiKey: string, 
 
     try {
         const response = await onAirRequest<BalanceSheetResponse>(
-            `https://${world}.onair.company/api/v1/${endPoint}${companyId}/balancesheet`,
+            `https://server1.onair.company/api/v1/${endPoint}${companyId}/balancesheet`,
             apiKey
         );
 

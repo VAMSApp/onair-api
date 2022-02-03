@@ -6,7 +6,7 @@ const endPoint = 'company/';
 export const getCompanyFleet = async (companyId: string, apiKey: string, world: string) => {
     try {
         const response = await onAirRequest<AircraftResponse>(
-            `https://${world}.onair.company/api/v1/${endPoint}${companyId}/fleet`,
+            `https://server1.onair.company/api/v1/${endPoint}${companyId}/fleet`,
             apiKey
         );
 

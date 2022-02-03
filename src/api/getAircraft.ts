@@ -11,7 +11,7 @@ export const getAircraft = async (aircraftId: string, apiKey: string, world: str
 
     try {
         const response = await onAirRequest<AircraftResponse>(
-            `https://${world}.onair.company/api/v1/${endPoint}${aircraftId}`, 
+            `https://server1.onair.company/api/v1/${endPoint}${aircraftId}`,
             apiKey
         );
 

@@ -6,7 +6,7 @@ const endPoint = 'company/';
 export const getCompanyCashFlow = async (companyId: string, apiKey: string, world: string) => {
     try {
         const response = await onAirRequest<CashFlowResponse>(
-            `https://${world}.onair.company/api/v1/${endPoint}${companyId}/cashflow`,
+            `https://server1.onair.company/api/v1/${endPoint}${companyId}/cashflow`,
             apiKey
         );
 

@@ -6,7 +6,7 @@ export const getCompanyJobs = async (companyId: string, apiKey: string, world: s
 
     try {
         const response = await onAirRequest<JobResponse>(
-            `https://${world}.onair.company/api/v1/company/${companyId}/jobs/${(completed) ? 'completed' : 'pending'}`,
+            `https://server1.onair.company/api/v1/company/${companyId}/jobs/${(completed) ? 'completed' : 'pending'}`,
             apiKey
         );
 

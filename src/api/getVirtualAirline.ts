@@ -6,7 +6,7 @@ const endPoint = 'va/';
 export const getVirtualAirline = async (vaId: string, apiKey: string, world: string) => {
     try {
         const response = await onAirRequest<VirtualAirlineResponse>(
-            `https://${world}.onair.company/api/v1/${endPoint}${vaId}`,
+            `https://server1.onair.company/api/v1/${endPoint}${vaId}`,
             apiKey
         );
 

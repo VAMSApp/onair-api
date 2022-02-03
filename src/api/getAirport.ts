@@ -6,7 +6,7 @@ const endPoint = 'airports/';
 export const getAirport = async (icao: string, apiKey: string, world: string) => {
     try {
         const response = await onAirRequest<AirportResponse>(
-            `https://${world}.onair.company/api/v1/${endPoint}${icao}`,
+            `https://server1.onair.company/api/v1/${endPoint}${icao}`,
             apiKey
         );
 

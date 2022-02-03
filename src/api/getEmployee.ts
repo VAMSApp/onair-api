@@ -9,7 +9,7 @@ export const getEmployee = async (employeeId: string, apiKey: string, world: str
 
     try {
         const response = await onAirRequest<PeopleResponse>(
-            `https://${world}.onair.company/api/v1/employee/${employeeId}`,
+            `https://server1.onair.company/api/v1/employee/${employeeId}`,
             apiKey
         );
 

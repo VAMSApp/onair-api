@@ -141,7 +141,7 @@ describe('OnAirApi()', function() {
         });
     });
 
-    describe('getCompanyIncomeStatement(startDate: string, endDate: string)', function() {
+    describe('getCompanyIncomeStatement()', function() {
         it('when queried providing a startDate and endDate, it should return an object of the company\'s income statement.', async function() {
             if (apiKey !== undefined && companyId !== undefined && world !== undefined) {
                 const api: OnAirApi = new OnAirApi({ apiKey, world, companyId, vaId });
@@ -193,7 +193,7 @@ describe('OnAirApi()', function() {
         });
     });
 
-    describe.skip('getFlight()', function() {
+    describe('getFlight()', function() {
         it('when getFlight() is queried with valid data, it should return a Flight Object', async function() {
             if (apiKey !== undefined && companyId !== undefined && world !== undefined) {
                 const api: OnAirApi = new OnAirApi({ apiKey, world, companyId, vaId });
