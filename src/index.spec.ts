@@ -197,7 +197,7 @@ describe('OnAirApi()', function() {
         it('when getFlight() is queried with valid data, it should return a Flight Object', async function() {
             if (apiKey !== undefined && companyId !== undefined && world !== undefined) {
                 const api: OnAirApi = new OnAirApi({ apiKey, world, companyId, vaId });
-                const flightId = 'd8a921a5-4774-4530-b75e-14b41545cabc';
+                const flightId = 'f0017707-825d-497f-b820-0404bb40132c';
 
                 const flight: Flight = await api.getFlight(flightId);
 
