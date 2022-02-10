@@ -144,7 +144,7 @@ let companyFlights: Flight[] = await api.getCompanyFlights();
 
 
 ### getCompanyMissionFlightTracks()
-Fetches the flight gps tracks for all missions.
+Fetches the flight tracks for all missions.
 
 #### Usage
 ```typescript
