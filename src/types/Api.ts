@@ -13,6 +13,7 @@ export interface Api {
     getCompanyCashFlow: any,
     getCompanyIncomeStatement: any,
     getCompanyBalanceSheet: any,
+    getCompanyMissionFlightTracks: any,
     getCompany: any,
     getFlight: any,
     getVirtualAirlineMembers: any,

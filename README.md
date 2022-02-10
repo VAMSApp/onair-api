@@ -43,6 +43,7 @@ let company = await Api.getCompany();
 - [getCompanyFbos](#getCompanyFbos)
 - [getCompanyFleet](#getCompanyFleet)
 - [getCompanyFlights](#getCompanyFlights)
+- [getCompanyMissionFlightTracks](#getcompanymissionflighttracks)
 - [getCompanyJobs](#getcompanyjobscompleted--false)
 - [getCompanyEmployees](#getCompanyEmployees)
 - [getCompanyCashFlow](#getCompanyCashFlow)
@@ -140,6 +141,28 @@ let companyFlights: Flight[] = await api.getCompanyFlights();
 
 #### Example Response
  - [getCompanyFlights.md](docs/responses/getCompanyFlights.md)
+
+
+### getCompanyMissionFlightTracks()
+Fetches the flight gps tracks for all missions.
+
+#### Usage
+```typescript
+import OnAirApi, { FlightTrack, OnAirApiConfig, } from 'onair-api'
+
+
+const apiConfig: OnAirApiConfig = {
+  apiKey: 'YOUR-API-KEY',
+  companyId: 'YOUR-COMPANY-ID',
+  vaId: 'YOUR-VA-ID'
+};
+
+const api: Api = new OnAirApi(apiConfig);
+let companyMissionFlightTracks: FlightTrack[] = await api.getCompanyMissionFlightTracks();
+```
+
+#### Example Response
+ - [getCompanyMissionFlightTracks.md](docs/responses/getCompanyMissionFlightTracks.md)
 
 ### getCompanyJobs(completed = false)
 Fetches the pending jobs for a given companyId.

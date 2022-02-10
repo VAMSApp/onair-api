@@ -1,53 +1,59 @@
 {
-  "name": "onair-api",
-  "version": "1.0.13",
-  "description": "Node.js package to query the OnAir API",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/vams-app/onair-api"
-  },
-  "scripts": {
-    "watch": "tsc -w",
-    "prebuild": "rimraf dist",
-    "build": "tsc",
-    "prepublishOnly": "npm run build",
-    "version": "git add -A",
-    "postversion": "git push && git push --tags",
-    "lint": "eslint src --ext .ts",
-    "lintFix": "eslint src --ext .ts --fix",
-    "test": "mocha --timeout 10000 --require ts-node/register src/*.spec.ts src/**/*.spec.ts"
-  },
-  "author": {
-    "name": "Mike DeVita",
-    "email": "mike@devita.co"
-  },
-  "contributors": [
-    {
-      "name": "Will Kelly",
-      "email": "will@logicbox.net"
+    "name": "onair-api",
+    "version": "1.0.13",
+    "description": "Node.js package to query the OnAir API",
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/vams-app/onair-api"
+    },
+    "scripts": {
+        "watch": "tsc -w",
+        "prebuild": "rimraf dist",
+        "build": "tsc",
+        "prepublishOnly": "npm run build",
+        "version": "git add -A",
+        "postversion": "git push && git push --tags",
+        "lint": "eslint src --ext .ts",
+        "lintFix": "eslint src --ext .ts --fix",
+        "test": "mocha --timeout 10000 --require ts-node/register src/*.spec.ts src/**/*.spec.ts"
+    },
+    "author": {
+        "name": "Mike DeVita",
+        "email": "mike@devita.co"
+    },
+    "contributors": [
+        {
+            "name": "Will Kelly",
+            "email": "will@logicbox.net"
+        }
+    ],
+    "_moduleAliases": {
+        "@types": "types/*",
+        "@api": "api/*"
+    },
+    "license": "MIT",
+    "dependencies": {
+        "axios": "^0.24.0",
+        "dotenv": "^14.1.0",
+        "module-alias": "^2.2.2"
+    },
+    "devDependencies": {
+        "@types/chai": "^4.3.0",
+        "@types/mocha": "^9.1.0",
+        "@types/module-alias": "^2.0.1",
+        "@types/node": "^17.0.9",
+        "@typescript-eslint/eslint-plugin": "^5.10.1",
+        "@typescript-eslint/parser": "^5.10.1",
+        "chai": "^4.3.4",
+        "eslint": "^7.32.0",
+        "eslint-config-prettier": "^8.3.0",
+        "eslint-import-resolver-typescript": "^2.5.0",
+        "eslint-plugin-import": "^2.25.2",
+        "mocha": "^8.1.3",
+        "rimraf": "^3.0.2",
+        "ts-node": "^10.4.0",
+        "typescript": "^4.4.3"
     }
-  ],
-  "license": "MIT",
-  "dependencies": {
-    "axios": "^0.24.0",
-    "dotenv": "^14.1.0"
-  },
-  "devDependencies": {
-    "@types/chai": "^4.3.0",
-    "@types/mocha": "^9.1.0",
-    "@types/node": "^17.0.9",
-    "@typescript-eslint/eslint-plugin": "^5.10.1",
-    "@typescript-eslint/parser": "^5.10.1",
-    "chai": "^4.3.4",
-    "eslint": "^7.32.0",
-    "eslint-config-prettier": "^8.3.0",
-    "eslint-import-resolver-typescript": "^2.5.0",
-    "eslint-plugin-import": "^2.25.2",
-    "mocha": "^8.1.3",
-    "rimraf": "^3.0.2",
-    "ts-node": "^10.4.0",
-    "typescript": "^4.4.3"
-  }
 }

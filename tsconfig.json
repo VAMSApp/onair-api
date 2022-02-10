@@ -5,6 +5,11 @@
       "ESNext"
     ],
     "rootDir": "src",
+    "baseUrl": "src",
+    "paths": {
+        "@types": ["types/*"],
+        "@api": ["api/*"]
+    },
     "outDir": "dist",
     "module": "commonjs",
     "skipLibCheck": true,

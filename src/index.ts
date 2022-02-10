@@ -15,6 +15,7 @@ import {
     CashFlow,
     IncomeStatement,
     BalanceSheet,
+    FlightTrack,
 } from './types';
 
 export * from './types';
@@ -115,6 +116,14 @@ export default class OnAirApi {
         const balanceSheet: BalanceSheet = await Api.getCompanyBalanceSheet(this.CompanyId, this.ApiKey);
 
         return balanceSheet;
+    }
+
+    public async getCompanyMissionFlightTracks(): Promise<FlightTrack[]> {
+        if (!this.CompanyId) throw new Error('No Company ID provided');
+
+        const flightTracks: FlightTrack[] = await Api.getCompanyMissionFlightTracks(this.CompanyId, this.ApiKey);
+
+        return flightTracks;
     }
 
     public async getAircraft(aircraftId: string): Promise<Aircraft> {

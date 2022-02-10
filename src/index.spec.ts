@@ -1,7 +1,7 @@
 import { describe } from 'mocha';
 import { expect } from 'chai';
 import OnAirApi from './index';
-import { Aircraft, Airport, BalanceSheet, CashFlow, Company, Fbo, Flight, IncomeStatement, Job, Member, People, ShareHolder, VARole, VirtualAirline, } from './types';
+import { Aircraft, Airport, BalanceSheet, CashFlow, Company, FlightTrack, Fbo, Flight, IncomeStatement, Job, Member, People, ShareHolder, VARole, VirtualAirline, } from './types';
 
 const apiKey: string | undefined = process.env.COMPANY_APIKEY;
 const companyId: string | undefined = process.env.COMPANY_ID;
@@ -176,6 +176,18 @@ describe('OnAirApi()', function() {
                 const balancesheet: BalanceSheet = await api.getCompanyBalanceSheet();
 
                 expect(balancesheet).to.be.an('Object');
+            }
+        });
+    });
+
+    describe('getCompanyMissionFlightTracks()', function() {
+        it('when getCompanyMissionFlightTracks() is queried with valid data, it should return an object of the missions flight tracks.', async function() {
+            if (apiKey !== undefined && companyId !== undefined) {
+                const api: OnAirApi = new OnAirApi({ apiKey, companyId, vaId });
+
+                const missionFlightTracks: FlightTrack[] = await api.getCompanyMissionFlightTracks();
+
+                expect(missionFlightTracks).to.be.an('Array');
             }
         });
     });

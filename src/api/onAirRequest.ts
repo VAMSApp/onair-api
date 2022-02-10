@@ -1,12 +1,21 @@
 import axios, { AxiosResponse, AxiosRequestConfig} from 'axios';
-import { BalanceSheet, CashFlow, IncomeStatement, People } from '../types';
-import { Aircraft } from '../types/Aircraft';
-import { Airport } from '../types/Airport';
-import { Company } from '../types/Company';
-import { Fbo } from '../types/Fbo';
-import { Flight } from '../types/Flight';
-import { Job } from '../types/Job';
-import { Member, ShareHolder, VARole, VirtualAirline } from '../types/VirtualAirline';
+import {
+    BalanceSheet,
+    CashFlow,
+    IncomeStatement,
+    People,
+    Aircraft,
+    Airport,
+    Company,
+    Fbo,
+    Flight,
+    FlightTrack,
+    Job,
+    Member,
+    ShareHolder,
+    VARole,
+    VirtualAirline,
+} from '../types';
 
 interface OnAirResponse {
   Error: string;
@@ -64,6 +73,10 @@ export interface IncomeStatementResponse extends OnAirResponse {
 
 export interface BalanceSheetResponse extends OnAirResponse {
     Content: BalanceSheet
+}
+
+export interface FlightTrackResponse extends OnAirResponse {
+    Content: FlightTrack | FlightTrack[]
 }
 
 

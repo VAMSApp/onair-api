@@ -29,6 +29,11 @@ export interface FlightCrew {
     People: People[]
 }
 
+export interface FlightTrack {
+    Id: string,
+    MissionId: string,
+    FlightId: string,
+}
 export interface Flight {
   Id: string,
   AircraftAddonId: string,
