@@ -3,7 +3,7 @@ import onAirRequest, { VirtualAirlineVARoleResponse } from './onAirRequest';
 
 const endPoint = 'va/';
 
-export const getVirtualAirlineRoles = async (vaId: string, apiKey: string, world: string) => {
+export const getVirtualAirlineRoles = async (vaId: string, apiKey: string) => {
     try {
         const response = await onAirRequest<VirtualAirlineVARoleResponse>(
             `https://server1.onair.company/api/v1/${endPoint}${vaId}/roles`,

@@ -3,7 +3,7 @@ import onAirRequest, { VirtualAirlineResponse } from './onAirRequest';
 
 const endPoint = 'va/';
 
-export const getVirtualAirline = async (vaId: string, apiKey: string, world: string) => {
+export const getVirtualAirline = async (vaId: string, apiKey: string) => {
     try {
         const response = await onAirRequest<VirtualAirlineResponse>(
             `https://server1.onair.company/api/v1/${endPoint}${vaId}`,

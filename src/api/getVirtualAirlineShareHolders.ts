@@ -3,7 +3,7 @@ import onAirRequest, { VirtualAirlineShareHolderResponse } from './onAirRequest'
 
 const endPoint = 'va/';
 
-export const getVirtualAirlineShareHolders = async (vaId: string, apiKey: string, world: string) => {
+export const getVirtualAirlineShareHolders = async (vaId: string, apiKey: string) => {
     try {
         const response = await onAirRequest<VirtualAirlineShareHolderResponse>(
             `https://server1.onair.company/api/v1/${endPoint}${vaId}/shareholders`,

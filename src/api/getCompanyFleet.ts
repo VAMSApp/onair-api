@@ -3,7 +3,7 @@ import onAirRequest, { AircraftResponse } from './onAirRequest';
 
 const endPoint = 'company/';
 
-export const getCompanyFleet = async (companyId: string, apiKey: string, world: string) => {
+export const getCompanyFleet = async (companyId: string, apiKey: string) => {
     try {
         const response = await onAirRequest<AircraftResponse>(
             `https://server1.onair.company/api/v1/${endPoint}${companyId}/fleet`,

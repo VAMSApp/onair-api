@@ -2,7 +2,7 @@ import onAirRequest, { PeopleResponse } from './onAirRequest';
 import { People } from '../types';
 import { uuid4 } from '../utils';
 
-export const getEmployee = async (employeeId: string, apiKey: string, world: string): Promise<People> => {
+export const getEmployee = async (employeeId: string, apiKey: string): Promise<People> => {
     if (!uuid4.test(employeeId) ) {
         throw new Error('People ID is incorrect! It should be a 36 character UUID');
     }
