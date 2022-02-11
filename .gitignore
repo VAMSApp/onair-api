@@ -2,3 +2,4 @@
 node_modules
 dist/
 foo.ts
+*.code-workspace
