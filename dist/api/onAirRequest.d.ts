@@ -1,0 +1,60 @@
+import { AxiosResponse } from 'axios';
+import { BalanceSheet, CashFlow, IncomeStatement, People, Aircraft, Airport, Company, Fbo, Flight, FlightTrack, Job, Member, ShareHolder, VARole, VirtualAirline } from '../types';
+interface OnAirResponse {
+    Error: string;
+}
+export interface AircraftResponse extends OnAirResponse {
+    Content: Aircraft | Aircraft[];
+}
+export interface FlightResponse extends OnAirResponse {
+    Content: Flight | Flight[];
+}
+export interface AirportResponse extends OnAirResponse {
+    Content: Airport;
+}
+export interface CompanyResponse extends OnAirResponse {
+    Content: Company;
+}
+export interface FboResponse extends OnAirResponse {
+    Content: Fbo[];
+}
+export interface JobResponse extends OnAirResponse {
+    Content: Job | Job[];
+}
+export interface VirtualAirlineResponse extends OnAirResponse {
+    Content: VirtualAirline;
+}
+export interface VirtualAirlineMemberResponse extends OnAirResponse {
+    Content: Member | Member[];
+}
+export interface VirtualAirlineShareHolderResponse extends OnAirResponse {
+    Content: ShareHolder | ShareHolder[];
+}
+export interface VirtualAirlineVARoleResponse extends OnAirResponse {
+    Content: VARole | VARole[];
+}
+export interface PeopleResponse extends OnAirResponse {
+    Content: People | People[];
+}
+export interface CashFlowResponse extends OnAirResponse {
+    Content: CashFlow | CashFlow[];
+}
+export interface IncomeStatementResponse extends OnAirResponse {
+    Content: IncomeStatement | IncomeStatement[];
+}
+export interface BalanceSheetResponse extends OnAirResponse {
+    Content: BalanceSheet;
+}
+export interface FlightTrackResponse extends OnAirResponse {
+    Content: FlightTrack | FlightTrack[];
+}
+declare const _default: <T>(url: string, apiKey: string, requestData?: Record<string, unknown> | undefined) => Promise<AxiosResponse<T, any>>;
+/**
+ * Generic Get request to OnAir
+ *
+ * @param url
+ * @param apiKey
+ * @param requestData
+ * @returns Promise<AxiosResponse<T>>
+ */
+export default _default;

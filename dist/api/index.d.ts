@@ -1,0 +1,22 @@
+declare const Api: {
+    getAircraftFlights: (aircraftId: string, apiKey: string, page?: number, limit?: number) => Promise<import("..").Flight[]>;
+    getAircraft: (aircraftId: string, apiKey: string) => Promise<import("..").Aircraft>;
+    getAirport: (icao: string, apiKey: string) => Promise<import("..").Airport>;
+    getCompanyFbos: (companyId: string, apiKey: string) => Promise<import("..").Fbo[]>;
+    getCompanyFleet: (companyId: string, apiKey: string) => Promise<import("..").Aircraft[]>;
+    getCompanyFlights: (companyId: string, apiKey: string, page?: number, limit?: number) => Promise<import("..").Flight[]>;
+    getCompanyJobs: (companyId: string, apiKey: string, completed?: boolean) => Promise<import("..").Job[]>;
+    getCompanyEmployees: (companyId: string, apiKey: string) => Promise<import("..").People[]>;
+    getCompanyCashFlow: (companyId: string, apiKey: string) => Promise<import("..").CashFlow>;
+    getCompanyBalanceSheet: (companyId: string, apiKey: string) => Promise<import("..").BalanceSheet>;
+    getCompanyMissionFlightTracks: (companyId: string, apiKey: string) => Promise<import("..").FlightTrack[]>;
+    getCompany: (companyId: string, apiKey: string) => Promise<import("..").Company>;
+    getFlight: (flightId: string, apiKey: string) => Promise<import("..").Flight>;
+    getVirtualAirlineMembers: (vaId: string, apiKey: string) => Promise<import("..").Member[]>;
+    getVirtualAirline: (vaId: string, apiKey: string) => Promise<import("..").VirtualAirline>;
+    getVirtualAirlineShareHolders: (vaId: string, apiKey: string) => Promise<import("..").ShareHolder[]>;
+    getVirtualAirlineRoles: (vaId: string, apiKey: string) => Promise<import("..").VARole[]>;
+    getCompanyIncomeStatement: (startDate: string, endDate: string, companyId: string, apiKey: string) => Promise<import("..").IncomeStatement>;
+    getEmployee: (employeeId: string, apiKey: string) => Promise<import("..").People>;
+};
+export default Api;
