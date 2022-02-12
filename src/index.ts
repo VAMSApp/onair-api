@@ -16,11 +16,12 @@ import {
     IncomeStatement,
     BalanceSheet,
     FlightTrack,
+    WorkOrder,
 } from './types';
 
 export * from './types';
 
-export default class OnAirApi {
+export class OnAirApi {
     // Properties
     private ApiKey: string
     private CompanyId: string | undefined
@@ -126,6 +127,14 @@ export default class OnAirApi {
         return flightTracks;
     }
 
+    public async getCompanyWorkOrders(): Promise<WorkOrder[]> {
+        if (!this.CompanyId) throw new Error('No Company ID provided');
+
+        const workOrders: WorkOrder[] = await Api.getCompanyWorkOrders(this.CompanyId, this.ApiKey);
+
+        return workOrders;
+    }
+
     public async getAircraft(aircraftId: string): Promise<Aircraft> {
         if (!aircraftId) throw new Error('Aircraft ID not provided');
 
@@ -190,3 +199,4 @@ export default class OnAirApi {
     }
 }
 
+export default OnAirApi;

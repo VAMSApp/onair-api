@@ -49,6 +49,7 @@ let company = await Api.getCompany();
 - [getCompanyCashFlow](#getCompanyCashFlow)
 - [getCompanyIncomeStatement](#getcompanyincomestatementstartdate-string-enddate-string)
 - [getCompanyBalanceSheet](#getcompanybalancesheet)
+- [getCompanyWorkOrders](#getcompanyworkorders)
 - [getAircraft](#getAircraftaircraftId-string)
 - [getAircraftFlights](#getAircraftFlights)
 - [getAirport](#getAirportairportCode-string)
@@ -277,6 +278,27 @@ let balancesheet: BalanceSheet = await api.getCompanyBalanceSheet();
 
 #### Example Response
  - [getCompanyBalanceSheet.md](docs/responses/getCompanyBalanceSheet.md)
+
+
+### getCompanyWorkOrders()
+Fetches the company's currently generated work orders.
+#### Usage
+```typescript
+import OnAirApi, { WorkOrder, OnAirApiConfig, } from 'onair-api'
+
+
+const apiConfig: OnAirApiConfig = {
+  apiKey: 'YOUR-API-KEY',
+  companyId: 'YOUR-COMPANY-ID',
+  vaId: 'YOUR-VA-ID'
+};
+
+const api: Api = new OnAirApi(apiConfig);
+let workorders: WorkOrder = await api.getCompanyWorkOrders();
+```
+
+#### Example Response
+ - [getCompanyWorkOrders.md](docs/responses/getCompanyWorkOrders.md)
 
 
 ### getAircraft(aircraftId: string)

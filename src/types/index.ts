@@ -17,3 +17,5 @@ export * from './People';
 export * from './CashFlow';
 export * from './IncomeStatement';
 export * from './BalanceSheet';
+export * from './Crew';
+export * from './WorkOrder';

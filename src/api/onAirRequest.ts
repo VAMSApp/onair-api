@@ -15,6 +15,7 @@ import {
     ShareHolder,
     VARole,
     VirtualAirline,
+    WorkOrder,
 } from '../types';
 
 interface OnAirResponse {
@@ -78,6 +79,11 @@ export interface BalanceSheetResponse extends OnAirResponse {
 export interface FlightTrackResponse extends OnAirResponse {
     Content: FlightTrack | FlightTrack[]
 }
+
+export interface WorkOrderResponse extends OnAirResponse {
+    Content: WorkOrder | WorkOrder[]
+}
+
 
 
 /**

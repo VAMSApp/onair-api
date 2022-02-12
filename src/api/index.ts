@@ -17,6 +17,7 @@ import { getCompanyIncomeStatement } from './getCompanyIncomeStatement';
 import { getCompanyBalanceSheet } from './getCompanyBalanceSheet';
 import { getEmployee } from './getEmployee';
 import { getCompanyMissionFlightTracks } from './getCompanyMissionFlightTracks';
+import { getCompanyWorkOrders } from './getCompanyWorkOrders';
 
 const Api = {
     getAircraftFlights,
@@ -30,6 +31,7 @@ const Api = {
     getCompanyCashFlow,
     getCompanyBalanceSheet,
     getCompanyMissionFlightTracks,
+    getCompanyWorkOrders,
     getCompany,
     getFlight,
     getVirtualAirlineMembers,
