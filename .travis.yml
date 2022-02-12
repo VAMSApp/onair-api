@@ -21,7 +21,7 @@ jobs:
       - main
       - development
   - stage: Release
-    if: commit_message =~ /^Release/
+    if: commit_message =~ /^Release /
     script: npm run build
       deploy:
         provider: npm
