@@ -429,6 +429,7 @@ let vaMembers: Member[] = await api.getVirtualAirlineMembers();
 #### Example Response
   - [getVirtualAirlineMembers.md](docs/responses/getVirtualAirlineMembers.md)
 
+
 ### getVirtualAirlineShareHolders()
 Fetches the ShareHolders of a Virtual Airline for a given vaId.
 
