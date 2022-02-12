@@ -1,4 +1,4 @@
-import { Company, Flight, Fbo, Aircraft, Job, VirtualAirline, Member, Airport, OnAirApiConfig, People, ShareHolder, VARole, CashFlow, IncomeStatement, BalanceSheet, FlightTrack } from './types';
+import { Company, Flight, Fbo, Aircraft, Job, VirtualAirline, Member, Airport, OnAirApiConfig, People, ShareHolder, VARole, CashFlow, IncomeStatement, BalanceSheet, FlightTrack, WorkOrder } from './types';
 export * from './types';
 export declare class OnAirApi {
     private ApiKey;
@@ -15,6 +15,7 @@ export declare class OnAirApi {
     getCompanyIncomeStatement(startDate?: string | undefined, endDate?: string | undefined): Promise<IncomeStatement>;
     getCompanyBalanceSheet(): Promise<BalanceSheet>;
     getCompanyMissionFlightTracks(): Promise<FlightTrack[]>;
+    getCompanyWorkOrders(): Promise<WorkOrder[]>;
     getAircraft(aircraftId: string): Promise<Aircraft>;
     getAircraftFlights(aircraftId: string, page?: number, limit?: number): Promise<Flight[]>;
     getAirport(airportCode: string): Promise<Airport>;

@@ -1,5 +1,5 @@
 import { AxiosResponse } from 'axios';
-import { BalanceSheet, CashFlow, IncomeStatement, People, Aircraft, Airport, Company, Fbo, Flight, FlightTrack, Job, Member, ShareHolder, VARole, VirtualAirline } from '../types';
+import { BalanceSheet, CashFlow, IncomeStatement, People, Aircraft, Airport, Company, Fbo, Flight, FlightTrack, Job, Member, ShareHolder, VARole, VirtualAirline, WorkOrder } from '../types';
 interface OnAirResponse {
     Error: string;
 }
@@ -47,6 +47,9 @@ export interface BalanceSheetResponse extends OnAirResponse {
 }
 export interface FlightTrackResponse extends OnAirResponse {
     Content: FlightTrack | FlightTrack[];
+}
+export interface WorkOrderResponse extends OnAirResponse {
+    Content: WorkOrder | WorkOrder[];
 }
 declare const _default: <T>(url: string, apiKey: string, requestData?: Record<string, unknown> | undefined) => Promise<AxiosResponse<T, any>>;
 /**

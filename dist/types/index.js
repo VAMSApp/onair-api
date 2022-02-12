@@ -29,3 +29,5 @@ __exportStar(require("./People"), exports);
 __exportStar(require("./CashFlow"), exports);
 __exportStar(require("./IncomeStatement"), exports);
 __exportStar(require("./BalanceSheet"), exports);
+__exportStar(require("./Crew"), exports);
+__exportStar(require("./WorkOrder"), exports);

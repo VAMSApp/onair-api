@@ -233,6 +233,22 @@ var OnAirApi = /** @class */ (function () {
             });
         });
     };
+    OnAirApi.prototype.getCompanyWorkOrders = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            var workOrders;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        if (!this.CompanyId)
+                            throw new Error('No Company ID provided');
+                        return [4 /*yield*/, api_1.default.getCompanyWorkOrders(this.CompanyId, this.ApiKey)];
+                    case 1:
+                        workOrders = _a.sent();
+                        return [2 /*return*/, workOrders];
+                }
+            });
+        });
+    };
     OnAirApi.prototype.getAircraft = function (aircraftId) {
         return __awaiter(this, void 0, void 0, function () {
             var aircraft;

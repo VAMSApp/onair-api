@@ -10,6 +10,7 @@ declare const Api: {
     getCompanyCashFlow: (companyId: string, apiKey: string) => Promise<import("..").CashFlow>;
     getCompanyBalanceSheet: (companyId: string, apiKey: string) => Promise<import("..").BalanceSheet>;
     getCompanyMissionFlightTracks: (companyId: string, apiKey: string) => Promise<import("..").FlightTrack[]>;
+    getCompanyWorkOrders: (companyId: string, apiKey: string) => Promise<import("..").WorkOrder[]>;
     getCompany: (companyId: string, apiKey: string) => Promise<import("..").Company>;
     getFlight: (flightId: string, apiKey: string) => Promise<import("..").Flight>;
     getVirtualAirlineMembers: (vaId: string, apiKey: string) => Promise<import("..").Member[]>;

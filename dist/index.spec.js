@@ -324,19 +324,19 @@ var vaId = process.env.VIRTUAL_AIRLINE_ID;
             });
         });
     });
-    (0, mocha_1.describe)('getCompanyMissionFlightTracks()', function () {
-        it('when getCompanyMissionFlightTracks() is queried with valid data, it should return an object of the missions flight tracks.', function () {
+    (0, mocha_1.describe)('getCompanyWorkOrders()', function () {
+        it('when getCompanyWorkOrders() is queried with valid data, it should return an object of the work orders.', function () {
             return __awaiter(this, void 0, void 0, function () {
-                var api, missionFlightTracks;
+                var api, companyWorkOrders;
                 return __generator(this, function (_a) {
                     switch (_a.label) {
                         case 0:
                             if (!(apiKey !== undefined && companyId !== undefined)) return [3 /*break*/, 2];
                             api = new index_1.default({ apiKey: apiKey, companyId: companyId, vaId: vaId });
-                            return [4 /*yield*/, api.getCompanyMissionFlightTracks()];
+                            return [4 /*yield*/, api.getCompanyWorkOrders()];
                         case 1:
-                            missionFlightTracks = _a.sent();
-                            (0, chai_1.expect)(missionFlightTracks).to.be.an('Array');
+                            companyWorkOrders = _a.sent();
+                            (0, chai_1.expect)(companyWorkOrders).to.be.an('Array');
                             _a.label = 2;
                         case 2: return [2 /*return*/];
                     }
