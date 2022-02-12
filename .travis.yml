@@ -1,7 +1,6 @@
 language: node_js
 node_js:
 - '16'
-- '17'
 before_deploy: npm run build
 branches:
   only:
@@ -22,15 +21,15 @@ jobs:
       - main
       - development
   - stage: Release
-    if: commit_message =~ /^Release/
+    if: commit_message =~ /^Release /
     script: npm run build
     deploy:
       provider: npm
-      email: $NPM_EMAIL
+      email: mike@devita.co
       api_key:
         secure: ezPWAy1eQMgLZuOAgZoXSNLw77D3F81jZTrbxHvVlS8Lh+oJqvl715J3zxRke8qbKfZRp3mEpzTnoyfjSlWxVZt9DvekPp/WmhkYslLoxfJhHJWMF2AxNT5+SIGnvYZK07vZLIC+J1IWbvupW2fhtzElXG213ETXXWBOWMcz6LXCRdzesbAXfr7yPl4odCfLEdLSiU1lHw4M7JSO5KeUYo26wstOIRBWdYzr5pEqdtMpV0qKA1p0oaUiaY9TVw3muIhbP/n9y1H1tLArmiR0o0nUfK9gDMUk4JZQ9qCfzlOgH8n4jEJXkMOZISDEL2JaSP6Epp6oLfgQyAp80jeGB653lzvy8UXZMii3FfM12GxnTIxipFAJhuVbg7Noeqx8Den935lRr0pvs5vqgEEs5MT5i9zpG0s5drU0fvA6zKLh6xtwNwUmss7no+5mB2YKJMls696z3s0kBiVVnaUkHvb9hjx++s1kyG1hHyWTj/PEsmc3z6fQW4+iSU6p1otTE+FCFs2S1Ue/CfskOpJa4RPsLI54v764vG7shDQxMRqe4n+Q6Yi4KWu9DaUDsofnshPuZ7qd+eCSjxPJHEGRn4mW+5u6GZg/8X5y3k79U/NcD9pMe4iLhwTqvpxn+EBJRvzfq9bGtVaWGad2ruvPGRhTE3DUfq3d5Cc8kj61wkc=
       on:
-        tags: latest
+        tags: true
         repo: vams-app/onair-api
         branch: main
       skip_cleanup: 'true'
