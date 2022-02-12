@@ -366,6 +366,7 @@ let airport: Airport = await api.getAirport(airportCode);
  - [getAirport.md](docs/responses/getAirport.md)
 
 
+
 ### getFlight(flightId: string)
 Fetches Flight details for a given flightId.
 
@@ -386,6 +387,7 @@ let flight: Flight = await api.getFlight(flightId);
 
 #### Example Response
  - [getFlight.md](docs/responses/getFlight.md)
+
 
 ### getVirtualAirline()
 Fetches VirtualAirline details for a given vaId. Note: this requires the vaId to be provided during Api instantiation
