@@ -271,13 +271,39 @@ describe('OnAirApi()', function() {
     });
 
     describe('getVirtualAirlineRoles()', function() {
-        it('when getVirtualAirlineRoles() is queried with valid data, it should return a ShareHolder Array', async function() {
+        it('when getVirtualAirlineRoles() is queried with valid data, it should return a Role Array', async function() {
             if (apiKey !== undefined && companyId !== undefined) {
                 const api: OnAirApi = new OnAirApi({ apiKey, companyId, vaId });
 
                 const varoles: VARole[] = await api.getVirtualAirlineRoles();
 
                 expect(varoles).to.be.an('Array');
+            }
+        });
+    });
+
+    describe.only('getVirtualAirlineFlights()', function() {
+        it('when getVirtualAirlineFlights() is queried with valid data, it should return a Flights Array', async function() {
+            if (apiKey !== undefined && companyId !== undefined) {
+                const api: OnAirApi = new OnAirApi({ apiKey, companyId, vaId });
+
+                const vaflights: Flight[] = await api.getVirtualAirlineFlights();
+                console.log(vaflights.length)
+                expect(vaflights).to.be.an('Array');
+                expect(vaflights.length).to.be.above(2);
+            }
+        });
+    });
+
+    describe.only('getVirtualAirlineFleet()', function() {
+        it('when getVirtualAirlineFleet() is queried with valid data, it should return a Fleet Array', async function() {
+            if (apiKey !== undefined && companyId !== undefined) {
+                const api: OnAirApi = new OnAirApi({ apiKey, companyId, vaId });
+
+                const vaFleet: Aircraft[] = await api.getVirtualAirlineFleet();
+                console.log(vaFleet.length)
+                expect(vaFleet).to.be.an('Array');
+                expect(vaFleet.length).to.be.above(2);
             }
         });
     });

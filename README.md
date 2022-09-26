@@ -58,6 +58,8 @@ let company = await Api.getCompany();
 - [getVirtualAirline](#getVirtualAirline)
 - [getVirtualAirlineShareHolders](#getVirtualAirlineShareHolders)
 - [getVirtualAirlineRoles](#getVirtualAirlineRoles)
+- [getVirtualAirlineFlights](#getVirtualAirlineFlights)
+- [getVirtualAirlineFleet](#getVirtualAirlineFleet)
 - [getEmployee](#getemployeeemployeeid-string)
 
 ### getCompany()
@@ -449,6 +451,8 @@ let vaShareHolders: ShareHolder[] = await api.getVirtualAirlineShareHolders();
 
 #### Example Response
  - [getVirtualAirlineShareHolders.md](docs/responses/getVirtualAirlineShareHolders.md)
+
+
 ### getVirtualAirlineRoles()
 Fetches the Roles for a given vaId.
 
@@ -468,6 +472,49 @@ let roles: VARole[] = await api.getVirtualAirlineRoles();
 
 #### Example Response
  - [getVirtualAirlineRoles.md](docs/responses/getVirtualAirlineRoles.md)
+
+### getVirtualAirlineFlights()
+Fetches the Roles for a given vaId.
+
+#### Usage
+```typescript
+import OnAirApi, { Flight, OnAirApiConfig, } from 'onair-api'
+
+const apiConfig: OnAirApiConfig = {
+  apiKey: 'YOUR-API-KEY',
+  companyId: 'YOUR-COMPANY-ID',
+  vaId: 'YOUR-VA-ID'
+};
+
+const api: Api = new OnAirApi(apiConfig);
+let vaFlights: Flight[] = await api.getVirtualAirlineFlights();
+```
+
+#### Example Response
+ - [getVirtualAirlineFlights.md](docs/responses/getVirtualAirlineFlights.md)
+
+
+
+### getVirtualAirlineFleet()
+Fetches the Roles for a given vaId.
+
+#### Usage
+```typescript
+import OnAirApi, { Aircraft, OnAirApiConfig, } from 'onair-api'
+
+const apiConfig: OnAirApiConfig = {
+  apiKey: 'YOUR-API-KEY',
+  companyId: 'YOUR-COMPANY-ID',
+  vaId: 'YOUR-VA-ID'
+};
+
+const api: Api = new OnAirApi(apiConfig);
+let vaFleet: Aircraft[] = await api.getVirtualAirlineFleet();
+```
+
+#### Example Response
+ - [getVirtualAirlineFleet.md](docs/responses/getVirtualAirlineFleet.md)
+
 
 ### getEmployee(employeeId: string)
 Fetches details for a given employeeId.
