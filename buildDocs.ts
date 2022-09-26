@@ -24,9 +24,9 @@ function syncWriteFile(filename: string, data: any) {
 
 async function main() {
     const api: Api = new OnAirApi(apiConfig);
-    let x: Aircraft[] = await api.getVirtualAirlineFleet();
+    let x: Aircraft[] = await api.getVirtualAirlineJobs();
 
-    syncWriteFile('./docs/responses/getVirtualAirlineFleet.json', JSON.stringify(x, null, 2))
+    syncWriteFile('./docs/responses/getVirtualAirlineJobs.json', JSON.stringify(x, null, 2))
 }
 
 main()

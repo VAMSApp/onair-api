@@ -488,21 +488,21 @@ var vaId = process.env.VIRTUAL_AIRLINE_ID;
             });
         });
     });
-    mocha_1.describe.only('getVirtualAirlineFleet()', function () {
-        it('when getVirtualAirlineFleet() is queried with valid data, it should return a Fleet Array', function () {
+    mocha_1.describe.only('getVirtualAirlineJobs()', function () {
+        it('when getVirtualAirlineJobs() is queried with valid data, it should return a Job Array', function () {
             return __awaiter(this, void 0, void 0, function () {
-                var api, vaFleet;
+                var api, vaJobs;
                 return __generator(this, function (_a) {
                     switch (_a.label) {
                         case 0:
                             if (!(apiKey !== undefined && companyId !== undefined)) return [3 /*break*/, 2];
                             api = new index_1.default({ apiKey: apiKey, companyId: companyId, vaId: vaId });
-                            return [4 /*yield*/, api.getVirtualAirlineFleet()];
+                            return [4 /*yield*/, api.getVirtualAirlineJobs()];
                         case 1:
-                            vaFleet = _a.sent();
-                            console.log(vaFleet.length);
-                            (0, chai_1.expect)(vaFleet).to.be.an('Array');
-                            (0, chai_1.expect)(vaFleet.length).to.be.above(2);
+                            vaJobs = _a.sent();
+                            console.log(vaJobs.length);
+                            (0, chai_1.expect)(vaJobs).to.be.an('Array');
+                            (0, chai_1.expect)(vaJobs.length).to.be.above(2);
                             _a.label = 2;
                         case 2: return [2 /*return*/];
                     }

@@ -295,15 +295,15 @@ describe('OnAirApi()', function() {
         });
     });
 
-    describe.only('getVirtualAirlineFleet()', function() {
-        it('when getVirtualAirlineFleet() is queried with valid data, it should return a Fleet Array', async function() {
+    describe.only('getVirtualAirlineJobs()', function() {
+        it('when getVirtualAirlineJobs() is queried with valid data, it should return a Job Array', async function() {
             if (apiKey !== undefined && companyId !== undefined) {
                 const api: OnAirApi = new OnAirApi({ apiKey, companyId, vaId });
 
-                const vaFleet: Aircraft[] = await api.getVirtualAirlineFleet();
-                console.log(vaFleet.length)
-                expect(vaFleet).to.be.an('Array');
-                expect(vaFleet.length).to.be.above(2);
+                const vaJobs: Job[] = await api.getVirtualAirlineJobs();
+                console.log(vaJobs.length)
+                expect(vaJobs).to.be.an('Array');
+                expect(vaJobs.length).to.be.above(2);
             }
         });
     });

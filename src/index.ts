@@ -205,6 +205,13 @@ export class OnAirApi {
         return vaFleet;
     }
 
+    public async getVirtualAirlineJobs(): Promise<Job[]> {
+        if (!this.VaId) throw new Error('VA ID is not provided');
+
+        const vaFleet: Job[] = await Api.getVirtualAirlineJobs(this.VaId, this.ApiKey);
+        return vaFleet;
+    }
+
     public async getEmployee(employeeId: string): Promise<People> {
         if (!employeeId) throw new Error('Employee ID is not provided');
 

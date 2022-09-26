@@ -39,6 +39,9 @@ export interface VirtualAirlineFlightResponse extends OnAirResponse {
 export interface VirtualAirlineFleetResponse extends OnAirResponse {
     Content: Aircraft | Aircraft[];
 }
+export interface VirtualAirlineJobResponse extends OnAirResponse {
+    Content: Job | Job[];
+}
 export interface PeopleResponse extends OnAirResponse {
     Content: People | People[];
 }

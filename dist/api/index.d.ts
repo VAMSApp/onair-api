@@ -19,6 +19,7 @@ declare const Api: {
     getVirtualAirlineRoles: (vaId: string, apiKey: string) => Promise<import("..").VARole[]>;
     getVirtualAirlineFlights: (vaId: string, apiKey: string) => Promise<import("..").Flight[]>;
     getVirtualAirlineFleet: (vaId: string, apiKey: string) => Promise<import("..").Aircraft[]>;
+    getVirtualAirlineJobs: (vaId: string, apiKey: string) => Promise<import("..").Job[]>;
     getCompanyIncomeStatement: (startDate: string, endDate: string, companyId: string, apiKey: string) => Promise<import("..").IncomeStatement>;
     getEmployee: (employeeId: string, apiKey: string) => Promise<import("..").People>;
 };

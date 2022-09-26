@@ -516,6 +516,30 @@ let vaFleet: Aircraft[] = await api.getVirtualAirlineFleet();
  - [getVirtualAirlineFleet.md](docs/responses/getVirtualAirlineFleet.md)
 
 
+
+
+### getVirtualAirlineJobs()
+Fetches the current pending jobs for the given VA
+
+#### Usage
+```typescript
+import OnAirApi, { Aircraft, OnAirApiConfig, } from 'onair-api'
+
+const apiConfig: OnAirApiConfig = {
+  apiKey: 'YOUR-API-KEY',
+  companyId: 'YOUR-COMPANY-ID',
+  vaId: 'YOUR-VA-ID'
+};
+
+const api: Api = new OnAirApi(apiConfig);
+let vaFleet: Aircraft[] = await api.getVirtualAirlineJobs();
+```
+
+#### Example Response
+ - [getVirtualAirlineJobs.md](docs/responses/getVirtualAirlineJobs.md)
+
+
+
 ### getEmployee(employeeId: string)
 Fetches details for a given employeeId.
 

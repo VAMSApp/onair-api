@@ -14,6 +14,7 @@ import { getVirtualAirlineShareHolders } from './getVirtualAirlineShareHolders';
 import { getVirtualAirlineRoles } from './getVirtualAirlineRoles';
 import { getVirtualAirlineFlights } from './getVirtualAirlineFlights';
 import { getVirtualAirlineFleet } from './getVirtualAirlineFleet';
+import { getVirtualAirlineJobs } from './getVirtualAirlineJobs';
 import { getCompanyCashFlow } from './getCompanyCashFlow';
 import { getCompanyIncomeStatement } from './getCompanyIncomeStatement';
 import { getCompanyBalanceSheet } from './getCompanyBalanceSheet';
@@ -42,6 +43,7 @@ const Api = {
     getVirtualAirlineRoles,
     getVirtualAirlineFlights,
     getVirtualAirlineFleet,
+    getVirtualAirlineJobs,
     getCompanyIncomeStatement,
     getEmployee,
 };

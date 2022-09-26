@@ -35,31 +35,34 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-exports.__esModule = true;
-exports.getCompanyIncomeStatement = void 0;
-var onAirRequest_1 = require("./onAirRequest");
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.getVirtualAirlineJobs = void 0;
+var onAirRequest_1 = __importDefault(require("./onAirRequest"));
 var endPoint = 'company/';
-var getCompanyIncomeStatement = function (startDate, endDate, companyId, apiKey) { return __awaiter(void 0, void 0, void 0, function () {
+var getVirtualAirlineJobs = function (vaId, apiKey) { return __awaiter(void 0, void 0, void 0, function () {
     var response, e_1;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
                 _a.trys.push([0, 2, , 3]);
-                return [4 /*yield*/, (0, onAirRequest_1["default"])("https://server1.onair.company/api/v1/".concat(endPoint).concat(companyId, "/incomestatement?startDate=").concat(startDate, "&endDate=").concat(endDate), apiKey)];
+                return [4 /*yield*/, (0, onAirRequest_1.default)("https://server1.onair.company/api/v1/".concat(endPoint).concat(vaId, "/jobs/pending"), apiKey)];
             case 1:
                 response = _a.sent();
                 if (typeof response.data.Content !== 'undefined') {
                     return [2 /*return*/, response.data.Content];
                 }
                 else {
-                    throw new Error(response.data.Error ? response.data.Error : "Company Id \"".concat(companyId, "\"\" not found"));
+                    throw new Error(response.data.Error ? response.data.Error : "VA Id \"".concat(vaId, "\"\" not found"));
                 }
                 return [3 /*break*/, 3];
             case 2:
                 e_1 = _a.sent();
-                throw new Error(e_1.response.status === 400 ? "Company Id \"".concat(companyId, "\"\" not found") : e_1.message);
+                throw new Error(e_1.response.status === 400 ? "VA Id \"".concat(vaId, "\" not found") : e_1.message);
             case 3: return [2 /*return*/];
         }
     });
 }); };
-exports.getCompanyIncomeStatement = getCompanyIncomeStatement;
+exports.getVirtualAirlineJobs = getVirtualAirlineJobs;
