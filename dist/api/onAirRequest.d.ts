@@ -33,6 +33,12 @@ export interface VirtualAirlineShareHolderResponse extends OnAirResponse {
 export interface VirtualAirlineVARoleResponse extends OnAirResponse {
     Content: VARole | VARole[];
 }
+export interface VirtualAirlineFlightResponse extends OnAirResponse {
+    Content: Flight | Flight[];
+}
+export interface VirtualAirlineFleetResponse extends OnAirResponse {
+    Content: Aircraft | Aircraft[];
+}
 export interface PeopleResponse extends OnAirResponse {
     Content: People | People[];
 }

@@ -379,6 +379,38 @@ var OnAirApi = /** @class */ (function () {
             });
         });
     };
+    OnAirApi.prototype.getVirtualAirlineFlights = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            var vaflights;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        if (!this.VaId)
+                            throw new Error('VA ID is not provided');
+                        return [4 /*yield*/, api_1.default.getVirtualAirlineFlights(this.VaId, this.ApiKey)];
+                    case 1:
+                        vaflights = _a.sent();
+                        return [2 /*return*/, vaflights];
+                }
+            });
+        });
+    };
+    OnAirApi.prototype.getVirtualAirlineFleet = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            var vaFleet;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        if (!this.VaId)
+                            throw new Error('VA ID is not provided');
+                        return [4 /*yield*/, api_1.default.getVirtualAirlineFleet(this.VaId, this.ApiKey)];
+                    case 1:
+                        vaFleet = _a.sent();
+                        return [2 /*return*/, vaFleet];
+                }
+            });
+        });
+    };
     OnAirApi.prototype.getEmployee = function (employeeId) {
         return __awaiter(this, void 0, void 0, function () {
             var employee;

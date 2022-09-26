@@ -24,6 +24,8 @@ export declare class OnAirApi {
     getVirtualAirlineMembers(): Promise<Member[]>;
     getVirtualAirlineShareHolders(): Promise<ShareHolder[]>;
     getVirtualAirlineRoles(): Promise<VARole[]>;
+    getVirtualAirlineFlights(): Promise<Flight[]>;
+    getVirtualAirlineFleet(): Promise<Aircraft[]>;
     getEmployee(employeeId: string): Promise<People>;
 }
 export default OnAirApi;

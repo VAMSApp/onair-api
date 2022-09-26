@@ -447,7 +447,7 @@ var vaId = process.env.VIRTUAL_AIRLINE_ID;
         });
     });
     (0, mocha_1.describe)('getVirtualAirlineRoles()', function () {
-        it('when getVirtualAirlineRoles() is queried with valid data, it should return a ShareHolder Array', function () {
+        it('when getVirtualAirlineRoles() is queried with valid data, it should return a Role Array', function () {
             return __awaiter(this, void 0, void 0, function () {
                 var api, varoles;
                 return __generator(this, function (_a) {
@@ -459,6 +459,50 @@ var vaId = process.env.VIRTUAL_AIRLINE_ID;
                         case 1:
                             varoles = _a.sent();
                             (0, chai_1.expect)(varoles).to.be.an('Array');
+                            _a.label = 2;
+                        case 2: return [2 /*return*/];
+                    }
+                });
+            });
+        });
+    });
+    mocha_1.describe.only('getVirtualAirlineFlights()', function () {
+        it('when getVirtualAirlineFlights() is queried with valid data, it should return a Flights Array', function () {
+            return __awaiter(this, void 0, void 0, function () {
+                var api, vaflights;
+                return __generator(this, function (_a) {
+                    switch (_a.label) {
+                        case 0:
+                            if (!(apiKey !== undefined && companyId !== undefined)) return [3 /*break*/, 2];
+                            api = new index_1.default({ apiKey: apiKey, companyId: companyId, vaId: vaId });
+                            return [4 /*yield*/, api.getVirtualAirlineFlights()];
+                        case 1:
+                            vaflights = _a.sent();
+                            console.log(vaflights.length);
+                            (0, chai_1.expect)(vaflights).to.be.an('Array');
+                            (0, chai_1.expect)(vaflights.length).to.be.above(2);
+                            _a.label = 2;
+                        case 2: return [2 /*return*/];
+                    }
+                });
+            });
+        });
+    });
+    mocha_1.describe.only('getVirtualAirlineFleet()', function () {
+        it('when getVirtualAirlineFleet() is queried with valid data, it should return a Fleet Array', function () {
+            return __awaiter(this, void 0, void 0, function () {
+                var api, vaFleet;
+                return __generator(this, function (_a) {
+                    switch (_a.label) {
+                        case 0:
+                            if (!(apiKey !== undefined && companyId !== undefined)) return [3 /*break*/, 2];
+                            api = new index_1.default({ apiKey: apiKey, companyId: companyId, vaId: vaId });
+                            return [4 /*yield*/, api.getVirtualAirlineFleet()];
+                        case 1:
+                            vaFleet = _a.sent();
+                            console.log(vaFleet.length);
+                            (0, chai_1.expect)(vaFleet).to.be.an('Array');
+                            (0, chai_1.expect)(vaFleet.length).to.be.above(2);
                             _a.label = 2;
                         case 2: return [2 /*return*/];
                     }
