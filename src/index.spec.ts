@@ -282,7 +282,7 @@ describe('OnAirApi()', function() {
         });
     });
 
-    describe.only('getVirtualAirlineFlights()', function() {
+    describe('getVirtualAirlineFlights()', function() {
         it('when getVirtualAirlineFlights() is queried with valid data, it should return a Flights Array', async function() {
             if (apiKey !== undefined && companyId !== undefined) {
                 const api: OnAirApi = new OnAirApi({ apiKey, companyId, vaId });
@@ -295,7 +295,7 @@ describe('OnAirApi()', function() {
         });
     });
 
-    describe.only('getVirtualAirlineJobs()', function() {
+    describe('getVirtualAirlineJobs()', function() {
         it('when getVirtualAirlineJobs() is queried with valid data, it should return a Job Array', async function() {
             if (apiKey !== undefined && companyId !== undefined) {
                 const api: OnAirApi = new OnAirApi({ apiKey, companyId, vaId });
@@ -304,6 +304,18 @@ describe('OnAirApi()', function() {
                 console.log(vaJobs.length)
                 expect(vaJobs).to.be.an('Array');
                 expect(vaJobs.length).to.be.above(2);
+            }
+        });
+    });
+
+    describe('getVirtualAirlineFbos()', function() {
+        it('when getVirtualAirlineFbos() is queried with valid data, it should return an Array of Fbo Objects', async function() {
+            if (apiKey !== undefined && companyId !== undefined && vaId !== undefined) {
+                const api: OnAirApi = new OnAirApi({ apiKey, companyId, vaId });
+
+                const fbos: Fbo[] = await api.getVirtualAirlineFbos();
+
+                expect(fbos).to.be.an('Array');
             }
         });
     });

@@ -39,34 +39,30 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getVirtualAirlineFlights = void 0;
+exports.getVirtualAirlineFbos = void 0;
 var onAirRequest_1 = __importDefault(require("./onAirRequest"));
 var endPoint = 'company/';
-var getVirtualAirlineFlights = function (vaId, apiKey, page, limit) {
-    if (page === void 0) { page = 1; }
-    if (limit === void 0) { limit = 20; }
-    return __awaiter(void 0, void 0, void 0, function () {
-        var response, e_1;
-        return __generator(this, function (_a) {
-            switch (_a.label) {
-                case 0:
-                    _a.trys.push([0, 2, , 3]);
-                    return [4 /*yield*/, (0, onAirRequest_1.default)("https://server1.onair.company/api/v1/".concat(endPoint).concat(vaId, "/flights"), apiKey)];
-                case 1:
-                    response = _a.sent();
-                    if (typeof response.data.Content !== 'undefined') {
-                        return [2 /*return*/, response.data.Content];
-                    }
-                    else {
-                        throw new Error(response.data.Error ? response.data.Error : "VA Id \"".concat(vaId, "\"\" not found"));
-                    }
-                    return [3 /*break*/, 3];
-                case 2:
-                    e_1 = _a.sent();
-                    throw new Error(e_1.response.status === 400 ? "VA Id \"".concat(vaId, "\" not found") : e_1.message);
-                case 3: return [2 /*return*/];
-            }
-        });
+var getVirtualAirlineFbos = function (vaId, apiKey) { return __awaiter(void 0, void 0, void 0, function () {
+    var response, e_1;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0:
+                _a.trys.push([0, 2, , 3]);
+                return [4 /*yield*/, (0, onAirRequest_1.default)("https://server1.onair.company/api/v1/".concat(endPoint).concat(vaId, "/fbos"), apiKey)];
+            case 1:
+                response = _a.sent();
+                if (typeof response.data.Content !== 'undefined') {
+                    return [2 /*return*/, response.data.Content];
+                }
+                else {
+                    throw new Error(response.data.Error ? response.data.Error : "VA Id \"".concat(vaId, "\"\" not found"));
+                }
+                return [3 /*break*/, 3];
+            case 2:
+                e_1 = _a.sent();
+                throw new Error(e_1.response.status === 400 ? "VA Id \"".concat(vaId, "\"\" not found") : e_1.message);
+            case 3: return [2 /*return*/];
+        }
     });
-};
-exports.getVirtualAirlineFlights = getVirtualAirlineFlights;
+}); };
+exports.getVirtualAirlineFbos = getVirtualAirlineFbos;

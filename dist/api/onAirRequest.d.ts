@@ -42,6 +42,9 @@ export interface VirtualAirlineFleetResponse extends OnAirResponse {
 export interface VirtualAirlineJobResponse extends OnAirResponse {
     Content: Job | Job[];
 }
+export interface VirtualAirlineFboResponse extends OnAirResponse {
+    Content: Fbo | Fbo[];
+}
 export interface PeopleResponse extends OnAirResponse {
     Content: People | People[];
 }

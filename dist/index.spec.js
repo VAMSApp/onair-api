@@ -466,7 +466,7 @@ var vaId = process.env.VIRTUAL_AIRLINE_ID;
             });
         });
     });
-    mocha_1.describe.only('getVirtualAirlineFlights()', function () {
+    (0, mocha_1.describe)('getVirtualAirlineFlights()', function () {
         it('when getVirtualAirlineFlights() is queried with valid data, it should return a Flights Array', function () {
             return __awaiter(this, void 0, void 0, function () {
                 var api, vaflights;
@@ -488,7 +488,7 @@ var vaId = process.env.VIRTUAL_AIRLINE_ID;
             });
         });
     });
-    mocha_1.describe.only('getVirtualAirlineJobs()', function () {
+    (0, mocha_1.describe)('getVirtualAirlineJobs()', function () {
         it('when getVirtualAirlineJobs() is queried with valid data, it should return a Job Array', function () {
             return __awaiter(this, void 0, void 0, function () {
                 var api, vaJobs;
@@ -503,6 +503,26 @@ var vaId = process.env.VIRTUAL_AIRLINE_ID;
                             console.log(vaJobs.length);
                             (0, chai_1.expect)(vaJobs).to.be.an('Array');
                             (0, chai_1.expect)(vaJobs.length).to.be.above(2);
+                            _a.label = 2;
+                        case 2: return [2 /*return*/];
+                    }
+                });
+            });
+        });
+    });
+    (0, mocha_1.describe)('getVirtualAirlineFbos()', function () {
+        it('when getVirtualAirlineFbos() is queried with valid data, it should return an Array of Fbo Objects', function () {
+            return __awaiter(this, void 0, void 0, function () {
+                var api, fbos;
+                return __generator(this, function (_a) {
+                    switch (_a.label) {
+                        case 0:
+                            if (!(apiKey !== undefined && companyId !== undefined && vaId !== undefined)) return [3 /*break*/, 2];
+                            api = new index_1.default({ apiKey: apiKey, companyId: companyId, vaId: vaId });
+                            return [4 /*yield*/, api.getVirtualAirlineFbos()];
+                        case 1:
+                            fbos = _a.sent();
+                            (0, chai_1.expect)(fbos).to.be.an('Array');
                             _a.label = 2;
                         case 2: return [2 /*return*/];
                     }

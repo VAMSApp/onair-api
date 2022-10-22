@@ -17,6 +17,7 @@ var getVirtualAirlineRoles_1 = require("./getVirtualAirlineRoles");
 var getVirtualAirlineFlights_1 = require("./getVirtualAirlineFlights");
 var getVirtualAirlineFleet_1 = require("./getVirtualAirlineFleet");
 var getVirtualAirlineJobs_1 = require("./getVirtualAirlineJobs");
+var getVirtualAirlineFbos_1 = require("./getVirtualAirlineFbos");
 var getCompanyCashFlow_1 = require("./getCompanyCashFlow");
 var getCompanyIncomeStatement_1 = require("./getCompanyIncomeStatement");
 var getCompanyBalanceSheet_1 = require("./getCompanyBalanceSheet");
@@ -45,6 +46,7 @@ var Api = {
     getVirtualAirlineFlights: getVirtualAirlineFlights_1.getVirtualAirlineFlights,
     getVirtualAirlineFleet: getVirtualAirlineFleet_1.getVirtualAirlineFleet,
     getVirtualAirlineJobs: getVirtualAirlineJobs_1.getVirtualAirlineJobs,
+    getVirtualAirlineFbos: getVirtualAirlineFbos_1.getVirtualAirlineFbos,
     getCompanyIncomeStatement: getCompanyIncomeStatement_1.getCompanyIncomeStatement,
     getEmployee: getEmployee_1.getEmployee,
 };

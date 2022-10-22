@@ -379,7 +379,9 @@ var OnAirApi = /** @class */ (function () {
             });
         });
     };
-    OnAirApi.prototype.getVirtualAirlineFlights = function () {
+    OnAirApi.prototype.getVirtualAirlineFlights = function (page, limit) {
+        if (page === void 0) { page = 1; }
+        if (limit === void 0) { limit = 20; }
         return __awaiter(this, void 0, void 0, function () {
             var vaflights;
             return __generator(this, function (_a) {
@@ -423,6 +425,22 @@ var OnAirApi = /** @class */ (function () {
                     case 1:
                         vaFleet = _a.sent();
                         return [2 /*return*/, vaFleet];
+                }
+            });
+        });
+    };
+    OnAirApi.prototype.getVirtualAirlineFbos = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            var vaFbos;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        if (!this.VaId)
+                            throw new Error('VA ID is not provided');
+                        return [4 /*yield*/, api_1.default.getVirtualAirlineFbos(this.VaId, this.ApiKey)];
+                    case 1:
+                        vaFbos = _a.sent();
+                        return [2 /*return*/, vaFbos];
                 }
             });
         });

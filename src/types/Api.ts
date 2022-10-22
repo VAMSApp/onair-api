@@ -24,6 +24,7 @@ export interface Api {
     getVirtualAirlineFlights: any,
     getVirtualAirlineFleet: any,
     getVirtualAirlineJobs: any,
+    getVirtualAirlineFbos: any,
     getEmployee: any,
 }
 

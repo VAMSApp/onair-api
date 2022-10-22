@@ -191,7 +191,7 @@ export class OnAirApi {
         return varoles;
     }
 
-    public async getVirtualAirlineFlights(): Promise<Flight[]> {
+    public async getVirtualAirlineFlights(page = 1, limit = 20): Promise<Flight[]> {
         if (!this.VaId) throw new Error('VA ID is not provided');
 
         const vaflights: Flight[] = await Api.getVirtualAirlineFlights(this.VaId, this.ApiKey);
@@ -210,6 +210,13 @@ export class OnAirApi {
 
         const vaFleet: Job[] = await Api.getVirtualAirlineJobs(this.VaId, this.ApiKey);
         return vaFleet;
+    }
+
+    public async getVirtualAirlineFbos(): Promise<Fbo[]> {
+        if (!this.VaId) throw new Error('VA ID is not provided');
+
+        const vaFbos: Fbo[] = await Api.getVirtualAirlineFbos(this.VaId, this.ApiKey);
+        return vaFbos;
     }
 
     public async getEmployee(employeeId: string): Promise<People> {
