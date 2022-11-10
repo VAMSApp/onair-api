@@ -164,28 +164,28 @@ export class OnAirApi {
     }
 
     public async getVirtualAirline(vaId?:string): Promise<VirtualAirline> {
-        if (!this.VaId) throw new Error('VA ID is not provided');
+        if (!vaId || !this.VaId) throw new Error('VA ID is not provided');
 
         const virtualAirline: VirtualAirline = await Api.getVirtualAirline(vaId || this.VaId, this.ApiKey);
         return virtualAirline;
     }
 
     public async getVirtualAirlineMembers(vaId?:string): Promise<Member[]> {
-        if (!this.VaId) throw new Error('VA ID is not provided');
+        if (!vaId || !this.VaId) throw new Error('VA ID is not provided');
 
         const members: Member[] = await Api.getVirtualAirlineMembers(vaId || this.VaId, this.ApiKey);
         return members;
     }
 
     public async getVirtualAirlineShareHolders(vaId?:string): Promise<ShareHolder[]> {
-        if (!this.VaId) throw new Error('VA ID is not provided');
+        if (!vaId || !this.VaId) throw new Error('VA ID is not provided');
 
         const shareholders: ShareHolder[] = await Api.getVirtualAirlineShareHolders(vaId || this.VaId, this.ApiKey);
         return shareholders;
     }
 
     public async getVirtualAirlineRoles(vaId?:string): Promise<VARole[]> {
-        if (!this.VaId) throw new Error('VA ID is not provided');
+        if (!vaId || !this.VaId) throw new Error('VA ID is not provided');
 
         const varoles: VARole[] = await Api.getVirtualAirlineRoles(vaId || this.VaId, this.ApiKey);
         return varoles;
@@ -199,21 +199,21 @@ export class OnAirApi {
     }
 
     public async getVirtualAirlineFleet(vaId?:string): Promise<Aircraft[]> {
-        if (!this.VaId) throw new Error('VA ID is not provided');
+        if (!vaId || !this.VaId) throw new Error('VA ID is not provided');
 
         const vaFleet: Aircraft[] = await Api.getVirtualAirlineFleet(vaId || this.VaId, this.ApiKey);
         return vaFleet;
     }
 
     public async getVirtualAirlineJobs(vaId?:string): Promise<Job[]> {
-        if (!this.VaId) throw new Error('VA ID is not provided');
+        if (!vaId || !this.VaId) throw new Error('VA ID is not provided');
 
         const vaFleet: Job[] = await Api.getVirtualAirlineJobs(vaId || this.VaId, this.ApiKey);
         return vaFleet;
     }
 
     public async getVirtualAirlineFbos(vaId?:string): Promise<Fbo[]> {
-        if (!this.VaId) throw new Error('VA ID is not provided');
+        if (!vaId || !this.VaId) throw new Error('VA ID is not provided');
 
         const vaFbos: Fbo[] = await Api.getVirtualAirlineFbos(vaId || this.VaId, this.ApiKey);
         return vaFbos;

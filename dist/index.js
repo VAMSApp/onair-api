@@ -110,7 +110,7 @@ var OnAirApi = /** @class */ (function () {
             });
         });
     };
-    OnAirApi.prototype.getCompanyFlights = function (companyId, page, limit) {
+    OnAirApi.prototype.getCompanyFlights = function (page, limit) {
         if (page === void 0) { page = 1; }
         if (limit === void 0) { limit = 20; }
         return __awaiter(this, void 0, void 0, function () {
@@ -120,7 +120,7 @@ var OnAirApi = /** @class */ (function () {
                     case 0:
                         if (!this.CompanyId)
                             throw new Error('No Company ID provided');
-                        return [4 /*yield*/, api_1.default.getCompanyFlights(companyId || this.CompanyId, this.ApiKey, page, limit)];
+                        return [4 /*yield*/, api_1.default.getCompanyFlights(this.CompanyId, this.ApiKey, page, limit)];
                     case 1:
                         companyFlights = _a.sent();
                         return [2 /*return*/, companyFlights];
@@ -201,7 +201,7 @@ var OnAirApi = /** @class */ (function () {
             });
         });
     };
-    OnAirApi.prototype.getCompanyBalanceSheet = function () {
+    OnAirApi.prototype.getCompanyBalanceSheet = function (companyId) {
         return __awaiter(this, void 0, void 0, function () {
             var balanceSheet;
             return __generator(this, function (_a) {
@@ -209,7 +209,7 @@ var OnAirApi = /** @class */ (function () {
                     case 0:
                         if (!this.CompanyId)
                             throw new Error('No Company ID provided');
-                        return [4 /*yield*/, api_1.default.getCompanyBalanceSheet(this.CompanyId, this.ApiKey)];
+                        return [4 /*yield*/, api_1.default.getCompanyBalanceSheet(companyId || this.CompanyId, this.ApiKey)];
                     case 1:
                         balanceSheet = _a.sent();
                         return [2 /*return*/, balanceSheet];
@@ -217,7 +217,7 @@ var OnAirApi = /** @class */ (function () {
             });
         });
     };
-    OnAirApi.prototype.getCompanyMissionFlightTracks = function () {
+    OnAirApi.prototype.getCompanyMissionFlightTracks = function (companyId) {
         return __awaiter(this, void 0, void 0, function () {
             var flightTracks;
             return __generator(this, function (_a) {
@@ -225,7 +225,7 @@ var OnAirApi = /** @class */ (function () {
                     case 0:
                         if (!this.CompanyId)
                             throw new Error('No Company ID provided');
-                        return [4 /*yield*/, api_1.default.getCompanyMissionFlightTracks(this.CompanyId, this.ApiKey)];
+                        return [4 /*yield*/, api_1.default.getCompanyMissionFlightTracks(companyId || this.CompanyId, this.ApiKey)];
                     case 1:
                         flightTracks = _a.sent();
                         return [2 /*return*/, flightTracks];
@@ -233,7 +233,7 @@ var OnAirApi = /** @class */ (function () {
             });
         });
     };
-    OnAirApi.prototype.getCompanyWorkOrders = function () {
+    OnAirApi.prototype.getCompanyWorkOrders = function (companyId) {
         return __awaiter(this, void 0, void 0, function () {
             var workOrders;
             return __generator(this, function (_a) {
@@ -241,7 +241,7 @@ var OnAirApi = /** @class */ (function () {
                     case 0:
                         if (!this.CompanyId)
                             throw new Error('No Company ID provided');
-                        return [4 /*yield*/, api_1.default.getCompanyWorkOrders(this.CompanyId, this.ApiKey)];
+                        return [4 /*yield*/, api_1.default.getCompanyWorkOrders(companyId || this.CompanyId, this.ApiKey)];
                     case 1:
                         workOrders = _a.sent();
                         return [2 /*return*/, workOrders];
@@ -315,7 +315,7 @@ var OnAirApi = /** @class */ (function () {
             });
         });
     };
-    OnAirApi.prototype.getVirtualAirline = function () {
+    OnAirApi.prototype.getVirtualAirline = function (vaId) {
         return __awaiter(this, void 0, void 0, function () {
             var virtualAirline;
             return __generator(this, function (_a) {
@@ -323,7 +323,7 @@ var OnAirApi = /** @class */ (function () {
                     case 0:
                         if (!this.VaId)
                             throw new Error('VA ID is not provided');
-                        return [4 /*yield*/, api_1.default.getVirtualAirline(this.VaId, this.ApiKey)];
+                        return [4 /*yield*/, api_1.default.getVirtualAirline(vaId || this.VaId, this.ApiKey)];
                     case 1:
                         virtualAirline = _a.sent();
                         return [2 /*return*/, virtualAirline];
@@ -331,7 +331,7 @@ var OnAirApi = /** @class */ (function () {
             });
         });
     };
-    OnAirApi.prototype.getVirtualAirlineMembers = function () {
+    OnAirApi.prototype.getVirtualAirlineMembers = function (vaId) {
         return __awaiter(this, void 0, void 0, function () {
             var members;
             return __generator(this, function (_a) {
@@ -339,7 +339,7 @@ var OnAirApi = /** @class */ (function () {
                     case 0:
                         if (!this.VaId)
                             throw new Error('VA ID is not provided');
-                        return [4 /*yield*/, api_1.default.getVirtualAirlineMembers(this.VaId, this.ApiKey)];
+                        return [4 /*yield*/, api_1.default.getVirtualAirlineMembers(vaId || this.VaId, this.ApiKey)];
                     case 1:
                         members = _a.sent();
                         return [2 /*return*/, members];
@@ -347,7 +347,7 @@ var OnAirApi = /** @class */ (function () {
             });
         });
     };
-    OnAirApi.prototype.getVirtualAirlineShareHolders = function () {
+    OnAirApi.prototype.getVirtualAirlineShareHolders = function (vaId) {
         return __awaiter(this, void 0, void 0, function () {
             var shareholders;
             return __generator(this, function (_a) {
@@ -355,7 +355,7 @@ var OnAirApi = /** @class */ (function () {
                     case 0:
                         if (!this.VaId)
                             throw new Error('VA ID is not provided');
-                        return [4 /*yield*/, api_1.default.getVirtualAirlineShareHolders(this.VaId, this.ApiKey)];
+                        return [4 /*yield*/, api_1.default.getVirtualAirlineShareHolders(vaId || this.VaId, this.ApiKey)];
                     case 1:
                         shareholders = _a.sent();
                         return [2 /*return*/, shareholders];
@@ -363,7 +363,7 @@ var OnAirApi = /** @class */ (function () {
             });
         });
     };
-    OnAirApi.prototype.getVirtualAirlineRoles = function () {
+    OnAirApi.prototype.getVirtualAirlineRoles = function (vaId) {
         return __awaiter(this, void 0, void 0, function () {
             var varoles;
             return __generator(this, function (_a) {
@@ -371,7 +371,7 @@ var OnAirApi = /** @class */ (function () {
                     case 0:
                         if (!this.VaId)
                             throw new Error('VA ID is not provided');
-                        return [4 /*yield*/, api_1.default.getVirtualAirlineRoles(this.VaId, this.ApiKey)];
+                        return [4 /*yield*/, api_1.default.getVirtualAirlineRoles(vaId || this.VaId, this.ApiKey)];
                     case 1:
                         varoles = _a.sent();
                         return [2 /*return*/, varoles];
@@ -397,7 +397,7 @@ var OnAirApi = /** @class */ (function () {
             });
         });
     };
-    OnAirApi.prototype.getVirtualAirlineFleet = function () {
+    OnAirApi.prototype.getVirtualAirlineFleet = function (vaId) {
         return __awaiter(this, void 0, void 0, function () {
             var vaFleet;
             return __generator(this, function (_a) {
@@ -405,7 +405,7 @@ var OnAirApi = /** @class */ (function () {
                     case 0:
                         if (!this.VaId)
                             throw new Error('VA ID is not provided');
-                        return [4 /*yield*/, api_1.default.getVirtualAirlineFleet(this.VaId, this.ApiKey)];
+                        return [4 /*yield*/, api_1.default.getVirtualAirlineFleet(vaId || this.VaId, this.ApiKey)];
                     case 1:
                         vaFleet = _a.sent();
                         return [2 /*return*/, vaFleet];
@@ -413,7 +413,7 @@ var OnAirApi = /** @class */ (function () {
             });
         });
     };
-    OnAirApi.prototype.getVirtualAirlineJobs = function () {
+    OnAirApi.prototype.getVirtualAirlineJobs = function (vaId) {
         return __awaiter(this, void 0, void 0, function () {
             var vaFleet;
             return __generator(this, function (_a) {
@@ -421,7 +421,7 @@ var OnAirApi = /** @class */ (function () {
                     case 0:
                         if (!this.VaId)
                             throw new Error('VA ID is not provided');
-                        return [4 /*yield*/, api_1.default.getVirtualAirlineJobs(this.VaId, this.ApiKey)];
+                        return [4 /*yield*/, api_1.default.getVirtualAirlineJobs(vaId || this.VaId, this.ApiKey)];
                     case 1:
                         vaFleet = _a.sent();
                         return [2 /*return*/, vaFleet];
@@ -429,7 +429,7 @@ var OnAirApi = /** @class */ (function () {
             });
         });
     };
-    OnAirApi.prototype.getVirtualAirlineFbos = function () {
+    OnAirApi.prototype.getVirtualAirlineFbos = function (vaId) {
         return __awaiter(this, void 0, void 0, function () {
             var vaFbos;
             return __generator(this, function (_a) {
@@ -437,7 +437,7 @@ var OnAirApi = /** @class */ (function () {
                     case 0:
                         if (!this.VaId)
                             throw new Error('VA ID is not provided');
-                        return [4 /*yield*/, api_1.default.getVirtualAirlineFbos(this.VaId, this.ApiKey)];
+                        return [4 /*yield*/, api_1.default.getVirtualAirlineFbos(vaId || this.VaId, this.ApiKey)];
                     case 1:
                         vaFbos = _a.sent();
                         return [2 /*return*/, vaFbos];
