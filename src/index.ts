@@ -18,14 +18,14 @@ import {
     FlightTrack,
     WorkOrder,
 } from './types';
-
+import { Guid } from './utils/Guid';
 export * from './types';
 
 export class OnAirApi {
     // Properties
     private ApiKey: string
-    private CompanyId: string | undefined
-    private VaId: string | undefined
+    private CompanyId: string
+    private VaId?: string
 
     // Constructor
     constructor(config: OnAirApiConfig) {
@@ -36,10 +36,15 @@ export class OnAirApi {
         } = config;
 
         if (!apiKey) throw new Error('No API Key provided');
-
+        if (!Guid.isGuid(apiKey)) throw new Error('Invalid API Key provided');
         this.ApiKey = apiKey;
+
+        if (!companyId) throw new Error('No Company ID provided');
+        if (!Guid.isGuid(companyId)) throw new Error('Invalid Company ID provided');
         this.CompanyId = companyId;
-        this.VaId = vaId;
+
+        if (vaId && !Guid.isGuid(vaId)) throw new Error('Invalid VA ID provided');
+        this.VaId = (vaId) ? vaId : undefined;
     }
 
     public async getCompany(companyId?:string): Promise<Company> {
