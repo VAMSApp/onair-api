@@ -321,7 +321,7 @@ describe('OnAirApi()', function() {
         });
     });
 
-    describe.only('getVirtualAirlineNotifications()', function() {
+    describe('getVirtualAirlineNotifications()', function() {
         it('when getVirtualAirlineNotifications() is queried with valid data, it should return an Array of Notification Objects', async function() {
             if (apiKey !== undefined && companyId !== undefined && vaId !== undefined) {
                 const api: OnAirApi = new OnAirApi({ apiKey, companyId, vaId });
