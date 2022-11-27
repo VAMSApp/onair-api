@@ -528,6 +528,27 @@ var vaId = process.env.VIRTUAL_AIRLINE_ID;
             });
         });
     });
+    mocha_1.describe.only('getVirtualAirlineNotifications()', function () {
+        it('when getVirtualAirlineNotifications() is queried with valid data, it should return an Array of Notification Objects', function () {
+            return __awaiter(this, void 0, void 0, function () {
+                var api, notifications;
+                return __generator(this, function (_a) {
+                    switch (_a.label) {
+                        case 0:
+                            if (!(apiKey !== undefined && companyId !== undefined && vaId !== undefined)) return [3 /*break*/, 2];
+                            api = new index_1.default({ apiKey: apiKey, companyId: companyId, vaId: vaId });
+                            return [4 /*yield*/, api.getVirtualAirlineNotifications()];
+                        case 1:
+                            notifications = _a.sent();
+                            (0, chai_1.expect)(notifications).to.be.an('Array');
+                            (0, chai_1.expect)(notifications[0]).to.be.an('Object').that.has.all.keys('Id', 'PeopleId', 'CompanyId', 'IsRead', 'IsNotification', 'ZuluEventTime', 'Category', 'Action', 'Description', 'Amount', 'AccountId');
+                            _a.label = 2;
+                        case 2: return [2 /*return*/];
+                    }
+                });
+            });
+        });
+    });
     (0, mocha_1.describe)('getEmployee()', function () {
         it('when getEmployee() is queried with valid data, it should return an employees details within a People object', function () {
             return __awaiter(this, void 0, void 0, function () {

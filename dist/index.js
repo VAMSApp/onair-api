@@ -70,6 +70,31 @@ var OnAirApi = /** @class */ (function () {
         if (vaId && !vaId.match(utils_1.uuid4))
             throw new Error('Invalid VA ID provided');
         this.VaId = (vaId) ? vaId : undefined;
+        this.getCompany = this.getCompany.bind(this);
+        this.getCompanyFleet = this.getCompanyFleet.bind(this);
+        this.getCompanyFbos = this.getCompanyFbos.bind(this);
+        this.getCompanyFlights = this.getCompanyFlights.bind(this);
+        this.getCompanyJobs = this.getCompanyJobs.bind(this);
+        this.getCompanyEmployees = this.getCompanyEmployees.bind(this);
+        this.getCompanyCashFlow = this.getCompanyCashFlow.bind(this);
+        this.getCompanyIncomeStatement = this.getCompanyIncomeStatement.bind(this);
+        this.getCompanyBalanceSheet = this.getCompanyBalanceSheet.bind(this);
+        this.getCompanyMissionFlightTracks = this.getCompanyMissionFlightTracks.bind(this);
+        this.getCompanyWorkOrders = this.getCompanyWorkOrders.bind(this);
+        this.getAircraft = this.getAircraft.bind(this);
+        this.getAircraftFlights = this.getAircraftFlights.bind(this);
+        this.getAirport = this.getAirport.bind(this);
+        this.getFlight = this.getFlight.bind(this);
+        this.getVirtualAirline = this.getVirtualAirline.bind(this);
+        this.getVirtualAirlineMembers = this.getVirtualAirlineMembers.bind(this);
+        this.getVirtualAirlineShareHolders = this.getVirtualAirlineShareHolders.bind(this);
+        this.getVirtualAirlineRoles = this.getVirtualAirlineRoles.bind(this);
+        this.getVirtualAirlineFlights = this.getVirtualAirlineFlights.bind(this);
+        this.getVirtualAirlineFleet = this.getVirtualAirlineFleet.bind(this);
+        this.getVirtualAirlineJobs = this.getVirtualAirlineJobs.bind(this);
+        this.getVirtualAirlineFbos = this.getVirtualAirlineFbos.bind(this);
+        this.getVirtualAirlineNotifications = this.getVirtualAirlineNotifications.bind(this);
+        this.getEmployee = this.getEmployee.bind(this);
     }
     OnAirApi.prototype.getCompany = function (companyId) {
         if (companyId === void 0) { companyId = this.CompanyId; }
@@ -461,6 +486,23 @@ var OnAirApi = /** @class */ (function () {
                     case 1:
                         vaFbos = _a.sent();
                         return [2 /*return*/, vaFbos];
+                }
+            });
+        });
+    };
+    OnAirApi.prototype.getVirtualAirlineNotifications = function (vaId) {
+        return __awaiter(this, void 0, void 0, function () {
+            var vaNotiifcations;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        vaId = vaId || this.VaId;
+                        if (!vaId)
+                            throw new Error('VA ID is not provided');
+                        return [4 /*yield*/, api_1.default.getVirtualAirlineNotifications(vaId, this.ApiKey)];
+                    case 1:
+                        vaNotiifcations = _a.sent();
+                        return [2 /*return*/, vaNotiifcations];
                 }
             });
         });

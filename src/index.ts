@@ -46,6 +46,33 @@ export class OnAirApi {
 
         if (vaId && !vaId.match(uuid4)) throw new Error('Invalid VA ID provided');
         this.VaId = (vaId) ? vaId : undefined;
+
+
+        this.getCompany = this.getCompany.bind(this);
+        this.getCompanyFleet = this.getCompanyFleet.bind(this);
+        this.getCompanyFbos = this.getCompanyFbos.bind(this);
+        this.getCompanyFlights = this.getCompanyFlights.bind(this);
+        this.getCompanyJobs = this.getCompanyJobs.bind(this);
+        this.getCompanyEmployees = this.getCompanyEmployees.bind(this);
+        this.getCompanyCashFlow = this.getCompanyCashFlow.bind(this);
+        this.getCompanyIncomeStatement = this.getCompanyIncomeStatement.bind(this);
+        this.getCompanyBalanceSheet = this.getCompanyBalanceSheet.bind(this);
+        this.getCompanyMissionFlightTracks = this.getCompanyMissionFlightTracks.bind(this);
+        this.getCompanyWorkOrders = this.getCompanyWorkOrders.bind(this);
+        this.getAircraft = this.getAircraft.bind(this);
+        this.getAircraftFlights = this.getAircraftFlights.bind(this);
+        this.getAirport = this.getAirport.bind(this);
+        this.getFlight = this.getFlight.bind(this);
+        this.getVirtualAirline = this.getVirtualAirline.bind(this);
+        this.getVirtualAirlineMembers = this.getVirtualAirlineMembers.bind(this);
+        this.getVirtualAirlineShareHolders = this.getVirtualAirlineShareHolders.bind(this);
+        this.getVirtualAirlineRoles = this.getVirtualAirlineRoles.bind(this);
+        this.getVirtualAirlineFlights = this.getVirtualAirlineFlights.bind(this);
+        this.getVirtualAirlineFleet = this.getVirtualAirlineFleet.bind(this);
+        this.getVirtualAirlineJobs = this.getVirtualAirlineJobs.bind(this);
+        this.getVirtualAirlineFbos = this.getVirtualAirlineFbos.bind(this);
+        this.getVirtualAirlineNotifications = this.getVirtualAirlineNotifications.bind(this);
+        this.getEmployee = this.getEmployee.bind(this);
     }
 
     public async getCompany(companyId:string = this.CompanyId): Promise<Company> {
@@ -226,9 +253,10 @@ export class OnAirApi {
     }
 
     public async getVirtualAirlineNotifications(vaId?:string): Promise<Notification[]> {
-        if (!vaId || !this.VaId) throw new Error('VA ID is not provided');
+        vaId = vaId || this.VaId
+        if (!vaId) throw new Error('VA ID is not provided');
 
-        const vaNotiifcations: Notification[] = await Api.getVirtualAirlineNotifications(vaId || this.VaId, this.ApiKey);
+        const vaNotiifcations: Notification[] = await Api.getVirtualAirlineNotifications(vaId, this.ApiKey);
         return vaNotiifcations;
     }
 
