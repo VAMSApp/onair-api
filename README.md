@@ -15,7 +15,7 @@ A Typescript/Javascript wrapper around the OnAir Airline Manager's API.
 * companyId - *Optional*, but required for all `getCompany*` methods
 * vaId - *Optional*, only required if using either of the VA methods `getVirtualAirline` or `getVirtualAirlineMembers`
 
-### Example using Javascript
+## Example using Javascript
 ```javascript
 import OnAirApi from 'onair-api'
 
@@ -43,7 +43,6 @@ let company = await Api.getCompany();
 - [getCompanyFbos](#getCompanyFbos)
 - [getCompanyFleet](#getCompanyFleet)
 - [getCompanyFlights](#getCompanyFlights)
-- [getCompanyMissionFlightTracks](#getcompanymissionflighttracks)
 - [getCompanyJobs](#getcompanyjobscompleted--false)
 - [getCompanyEmployees](#getCompanyEmployees)
 - [getCompanyCashFlow](#getCompanyCashFlow)
@@ -60,9 +59,11 @@ let company = await Api.getCompany();
 - [getVirtualAirlineRoles](#getVirtualAirlineRoles)
 - [getVirtualAirlineFlights](#getVirtualAirlineFlights)
 - [getVirtualAirlineFleet](#getVirtualAirlineFleet)
+- [getVirtualAirlineJobs](#getVirtualAirlineJobs)
+- [getVirtualAirlineNotifications](#getVirtualAirlineNotifications)
 - [getEmployee](#getemployeeemployeeid-string)
 
-### getCompany()
+### [getCompany(companyId?:string)](src/api/getCompany.ts)
 Fetches the company details for the given companyId.
 #### Usage
 ```typescript
@@ -77,13 +78,15 @@ const apiConfig: OnAirApiConfig = {
 
 const api: Api = new OnAirApi(apiConfig);
 let companyDetails: Company = await api.getCompany();
+// or pass another companyId as the first argument
+let companyDetails: Company[] = await api.getCompanyFbos(companyId);
 ```
 #### Example Response
  - [getCompany.md](docs/responses/getCompany.md)
 
 
 
-### getCompanyFbos(companyId?:string)
+### [getCompanyFbos(companyId?:string)](src/api/getCompanyFbos.ts)
 Fetches the FBOs for a given companyId.
 #### Usage
 ```typescript
@@ -106,7 +109,7 @@ let companyFbos: Fbo[] = await api.getCompanyFbos(companyId);
  - [getCompanyFbos.md](docs/responses/getCompanyFbos.md)
 
 
-### getCompanyFleet(companyId?:string)
+### [getCompanyFleet(companyId?:string)](src/api/getCompanyFleet.ts)
 Fetches the aircraft that are owned, leased, or rented for a given companyId.
 
 #### Usage
@@ -128,7 +131,7 @@ let companyFleet: Aircraft[] = await api.getCompanyFleet(companyId);
  - [getCompanyFleet.md](docs/responses/getCompanyFleet.md)
 
 
-### getCompanyFlights(companyId?:string, page:number = 1, limit:number = 20)
+### [getCompanyFlights(companyId?:string, page:number = 1, ](src/api/getCompanyFlights.ts)limit:number = 20)
 Fetches the Flights for a given companyId.
 
 #### Usage
@@ -151,7 +154,7 @@ let companyFlights: Flight[] = await api.getCompanyFlights(companyId)
 #### Example Response
  - [getCompanyFlights.md](docs/responses/getCompanyFlights.md)
 
-### getCompanyJobs(companyId?, completed = false)
+### [getCompanyJobs(companyId?, completed = false)](src/api/getCompanyJobs.ts)
 Fetches the pending jobs for a given companyId.
 Pass `true` as the first argument to return completed jobs.
 
@@ -179,7 +182,7 @@ let companyJobs: Job[] = await api.getCompanyJobs(companyId, true);
 #### Example Response
  - [getCompanyJobs.md](docs/responses/getCompanyJobs.md)
 
-### getCompanyEmployees()
+### [getCompanyEmployees()](src/api/getCompanyEmployees.ts)
 Fetches the Persons currently employed by a given companyId.
 #### Usage
 ```typescript
@@ -199,7 +202,7 @@ let companyEmployees: People[] = await api.getCompanyEmployees();
 #### Example Response
  - [getCompanyEmployees.md](docs/responses/getCompanyEmployees.md)
 
-### getCompanyCashFlow()
+### [getCompanyCashFlow()](src/api/getCompanyCashFlow.ts)
 Fetches the cash flow for a given companyId.
 #### Usage
 ```typescript
@@ -221,7 +224,7 @@ let companyCashFlow: CashFlow[] = await api.getCompanyCashFlow();
 
 ---
 
-### getCompanyIncomeStatement(startDate: string, endDate: string)
+### [getCompanyIncomeStatement(startDate: string, endDate: string)](src/api/getCompanyIncomeStatement.ts)
 Fetches the income statement within a given range for a companyId.
 If no startDate or endDate is provided it will return the last 30 days.
 
@@ -249,7 +252,7 @@ let companyIncomeStatement2: IncomeStatement = await api.getCompanyIncomeStateme
 #### Example Response
  - [getCompanyIncomeStatement.md](docs/responses/getCompanyIncomeStatement.md)
 
-### getCompanyBalanceSheet()
+### [getCompanyBalanceSheet()](src/api/getCompanyBalanceSheet.ts)
 Fetches the company's current balance sheet. Which provides a current snapshot of the financial status of a company.
 #### Usage
 ```typescript
@@ -270,7 +273,7 @@ let balancesheet: BalanceSheet = await api.getCompanyBalanceSheet();
  - [getCompanyBalanceSheet.md](docs/responses/getCompanyBalanceSheet.md)
 
 
-### getCompanyWorkOrders()
+### [getCompanyWorkOrders()](src/api/getCompanyWorkOrders.ts)
 Fetches the company's currently generated work orders.
 #### Usage
 ```typescript
@@ -291,7 +294,7 @@ let workorders: WorkOrder = await api.getCompanyWorkOrders();
  - [getCompanyWorkOrders.md](docs/responses/getCompanyWorkOrders.md)
 
 
-### getAircraft(aircraftId: string)
+### [getAircraft(aircraftId: string)](src/api/getAircraft.ts)
 Fetches the Aircraft details for a given aircraftId.
 
 #### Usage
@@ -313,7 +316,7 @@ let companyAircraft: Aircraft = await api.getAircraft(aircraftId);
  - [getAircraft](docs/responses/getAircraft.md)
 
 
-### getAircraftFlights(aircraftId: string)
+### [getAircraftFlights(aircraftId: string)](src/api/getAircraftFlights.ts)
 Fetches the Flights flown for a given aircraftId.
 
 #### Usage
@@ -334,7 +337,7 @@ let companyAircraftFlights: Flight[] = await api.getAircraftFlights(aircraftId);
 #### Example Response
  - [getAircraftFlights.md](docs/responses/getAircraftFlights.md)
 
-### getAirport(airportCode: string)
+### [getAirport(airportCode: string)](src/api/getAirport.ts)
 Fetches Airport details for a given airport Code.
 
 #### Usage
@@ -357,7 +360,7 @@ let airport: Airport = await api.getAirport(airportCode);
 
 
 
-### getFlight(flightId: string)
+### [getFlight(flightId: string)](src/api/getFlight.ts)
 Fetches Flight details for a given flightId.
 
 #### Usage
@@ -379,7 +382,7 @@ let flight: Flight = await api.getFlight(flightId);
  - [getFlight.md](docs/responses/getFlight.md)
 
 
-### getVirtualAirline()
+### [getVirtualAirline()](src/api/getVirtualAirline.ts)
 Fetches VirtualAirline details for a given vaId. Note: this requires the vaId to be provided during Api instantiation
 
 #### Usage
@@ -400,7 +403,7 @@ let va: VirtualAirline = await api.getVirtualAirline();
  - [getVirtualAirline.md](docs/responses/getVirtualAirline.md)
 
 
-### getVirtualAirlineMembers()
+### [getVirtualAirlineMembers()](src/api/getVirtualAirlineMembers.ts)
 Fetches the members of a Virtual Airline for a given vaId.
 
 #### Usage
@@ -420,7 +423,7 @@ let vaMembers: Member[] = await api.getVirtualAirlineMembers();
   - [getVirtualAirlineMembers.md](docs/responses/getVirtualAirlineMembers.md)
 
 
-### getVirtualAirlineShareHolders()
+### [getVirtualAirlineShareHolders()](src/api/getVirtualAirlineShareHolders.ts)
 Fetches the ShareHolders of a Virtual Airline for a given vaId.
 
 #### Usage
@@ -441,7 +444,7 @@ let vaShareHolders: ShareHolder[] = await api.getVirtualAirlineShareHolders();
  - [getVirtualAirlineShareHolders.md](docs/responses/getVirtualAirlineShareHolders.md)
 
 
-### getVirtualAirlineRoles()
+### [getVirtualAirlineRoles()](src/api/getVirtualAirlineRoles.ts)
 Fetches the Roles for a given vaId.
 
 #### Usage
@@ -461,7 +464,7 @@ let roles: VARole[] = await api.getVirtualAirlineRoles();
 #### Example Response
  - [getVirtualAirlineRoles.md](docs/responses/getVirtualAirlineRoles.md)
 
-### getVirtualAirlineFlights()
+### [getVirtualAirlineFlights()](src/api/getVirtualAirlineFlights.ts)
 Fetches the Roles for a given vaId.
 
 #### Usage
@@ -483,7 +486,7 @@ let vaFlights: Flight[] = await api.getVirtualAirlineFlights();
 
 
 
-### getVirtualAirlineFleet()
+### [getVirtualAirlineFleet()](src/api/getVirtualAirlineFleet.ts)
 Fetches the Roles for a given vaId.
 
 #### Usage
@@ -506,12 +509,12 @@ let vaFleet: Aircraft[] = await api.getVirtualAirlineFleet();
 
 
 
-### getVirtualAirlineJobs()
+### [getVirtualAirlineJobs()](src/api/getVirtualAirlineJobs.ts)
 Fetches the current pending jobs for the given VA
 
 #### Usage
 ```typescript
-import OnAirApi, { Aircraft, OnAirApiConfig, } from 'onair-api'
+import OnAirApi, { Job, OnAirApiConfig, } from 'onair-api'
 
 const apiConfig: OnAirApiConfig = {
   apiKey: 'YOUR-API-KEY',
@@ -520,7 +523,7 @@ const apiConfig: OnAirApiConfig = {
 };
 
 const api: Api = new OnAirApi(apiConfig);
-let vaFleet: Aircraft[] = await api.getVirtualAirlineJobs();
+let vaJobs: Job[] = await api.getVirtualAirlineJobs();
 ```
 
 #### Example Response
@@ -528,7 +531,31 @@ let vaFleet: Aircraft[] = await api.getVirtualAirlineJobs();
 
 
 
-### getEmployee(employeeId: string)
+
+### [getVirtualAirlineNotifications()](src/api/getVirtualAirlineNotifications.ts)
+Fetches the recent VA notifications
+
+#### Usage
+```typescript
+import OnAirApi, { Notification, OnAirApiConfig, } from 'onair-api'
+
+const apiConfig: OnAirApiConfig = {
+  apiKey: 'YOUR-API-KEY',
+  companyId: 'YOUR-COMPANY-ID',
+  vaId: 'YOUR-VA-ID'
+};
+
+const api: Api = new OnAirApi(apiConfig);
+let vaNotifications: Notification[] = await api.getVirtualAirlineNotifications();
+```
+
+#### Example Response
+ - [getVirtualAirlineNotifications.md](docs/responses/getVirtualAirlineNotifications.md)
+
+
+
+
+### [getEmployee(employeeId: string)](src/api/getEmployee.ts)
 Fetches details for a given employeeId.
 
 #### Usage

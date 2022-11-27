@@ -1,7 +1,8 @@
 ## getCompanyFlights()
 
 ### response
-```javascript[
+```javascript
+[
   {
     Id: 'f0017707-825d-497f-b820-0404bb40132c',
     AircraftAddonId: '34265d55-3526-4732-957e-bae551eb8e3b',

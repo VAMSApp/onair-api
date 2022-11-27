@@ -12,6 +12,7 @@ import {
     IncomeStatement,
     Job,
     Member,
+    Notification,
     People,
     ShareHolder,
     VARole,
@@ -316,6 +317,31 @@ describe('OnAirApi()', function() {
                 const fbos: Fbo[] = await api.getVirtualAirlineFbos();
 
                 expect(fbos).to.be.an('Array');
+            }
+        });
+    });
+
+    describe.only('getVirtualAirlineNotifications()', function() {
+        it('when getVirtualAirlineNotifications() is queried with valid data, it should return an Array of Notification Objects', async function() {
+            if (apiKey !== undefined && companyId !== undefined && vaId !== undefined) {
+                const api: OnAirApi = new OnAirApi({ apiKey, companyId, vaId });
+
+                const notifications: Notification[] = await api.getVirtualAirlineNotifications();
+
+                expect(notifications).to.be.an('Array')
+                expect(notifications[0]).to.be.an('Object').that.has.all.keys(
+                    'Id',
+                    'PeopleId',
+                    'CompanyId',
+                    'IsRead',
+                    'IsNotification',
+                    'ZuluEventTime',
+                    'Category',
+                    'Action',
+                    'Description',
+                    'Amount',
+                    'AccountId',
+                );
             }
         });
     });

@@ -16,6 +16,7 @@ import {
     VARole,
     VirtualAirline,
     WorkOrder,
+    Notification,
 } from '../types';
 
 interface OnAirResponse {
@@ -100,6 +101,9 @@ export interface WorkOrderResponse extends OnAirResponse {
     Content: WorkOrder | WorkOrder[]
 }
 
+export interface VirtualAirlineNotificationResponse extends OnAirResponse {
+    Content: Notification | Notification[]
+}
 
 
 /**

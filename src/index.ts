@@ -17,6 +17,7 @@ import {
     BalanceSheet,
     FlightTrack,
     WorkOrder,
+    Notification,
 } from './types';
 import { uuid4 } from './utils';
 export * from './types';
@@ -222,6 +223,13 @@ export class OnAirApi {
 
         const vaFbos: Fbo[] = await Api.getVirtualAirlineFbos(vaId || this.VaId, this.ApiKey);
         return vaFbos;
+    }
+
+    public async getVirtualAirlineNotifications(vaId?:string): Promise<Notification[]> {
+        if (!vaId || !this.VaId) throw new Error('VA ID is not provided');
+
+        const vaNotiifcations: Notification[] = await Api.getVirtualAirlineNotifications(vaId || this.VaId, this.ApiKey);
+        return vaNotiifcations;
     }
 
     public async getEmployee(employeeId: string): Promise<People> {

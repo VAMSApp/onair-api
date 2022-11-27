@@ -1,5 +1,5 @@
 export interface Runway {
-  Id: string;
+  Id: string,
   AirportId: string,
   Name: string,
   Latitude: string,
