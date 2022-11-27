@@ -46,13 +46,19 @@ var getVirtualAirlineFlights = function (vaId, apiKey, page, limit) {
     if (page === void 0) { page = 1; }
     if (limit === void 0) { limit = 20; }
     return __awaiter(void 0, void 0, void 0, function () {
-        var response, e_1;
+        var startIndex, response, e_1;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
-                    _a.trys.push([0, 2, , 3]);
-                    return [4 /*yield*/, (0, onAirRequest_1.default)("https://server1.onair.company/api/v1/".concat(endPoint).concat(vaId, "/flights"), apiKey)];
+                    startIndex = page > 1 ? limit * page : 0;
+                    _a.label = 1;
                 case 1:
+                    _a.trys.push([1, 3, , 4]);
+                    return [4 /*yield*/, (0, onAirRequest_1.default)("https://server1.onair.company/api/v1/".concat(endPoint).concat(vaId, "/flights"), apiKey, {
+                            startIndex: startIndex,
+                            limit: limit
+                        })];
+                case 2:
                     response = _a.sent();
                     if (typeof response.data.Content !== 'undefined') {
                         return [2 /*return*/, response.data.Content];
@@ -60,11 +66,11 @@ var getVirtualAirlineFlights = function (vaId, apiKey, page, limit) {
                     else {
                         throw new Error(response.data.Error ? response.data.Error : "VA Id \"".concat(vaId, "\"\" not found"));
                     }
-                    return [3 /*break*/, 3];
-                case 2:
+                    return [3 /*break*/, 4];
+                case 3:
                     e_1 = _a.sent();
                     throw new Error(e_1.response.status === 400 ? "VA Id \"".concat(vaId, "\" not found") : e_1.message);
-                case 3: return [2 /*return*/];
+                case 4: return [2 /*return*/];
             }
         });
     });

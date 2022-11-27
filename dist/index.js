@@ -409,7 +409,7 @@ var OnAirApi = /** @class */ (function () {
                     case 0:
                         if (!this.VaId)
                             throw new Error('VA ID is not provided');
-                        return [4 /*yield*/, api_1.default.getVirtualAirlineFlights(vaId || this.VaId, this.ApiKey)];
+                        return [4 /*yield*/, api_1.default.getVirtualAirlineFlights(vaId || this.VaId, this.ApiKey, page, limit)];
                     case 1:
                         vaflights = _a.sent();
                         return [2 /*return*/, vaflights];
