@@ -47,24 +47,24 @@ export class OnAirApi {
         this.VaId = (vaId) ? vaId : undefined;
     }
 
-    public async getCompany(companyId?:string): Promise<Company> {
-        if (!this.CompanyId) throw new Error('No Company ID provided');
+    public async getCompany(companyId:string = this.CompanyId): Promise<Company> {
+        if (!companyId) throw new Error('No Company ID provided');
 
-        const company: Company = await Api.getCompany(companyId || this.CompanyId, this.ApiKey);
+        const company: Company = await Api.getCompany(companyId, this.ApiKey);
         return company;
     }
 
-    public async getCompanyFleet(companyId?:string): Promise<Aircraft[]> {
-        if (!this.CompanyId) throw new Error('No Company ID provided');
+    public async getCompanyFleet(companyId:string = this.CompanyId): Promise<Aircraft[]> {
+        if (!companyId) throw new Error('No Company ID provided');
 
-        const companyFleet: Aircraft[] = await Api.getCompanyFleet(companyId || this.CompanyId, this.ApiKey);
+        const companyFleet: Aircraft[] = await Api.getCompanyFleet(companyId, this.ApiKey);
         return companyFleet;
     }
 
-    public async getCompanyFbos(companyId?:string): Promise<Fbo[]> {
-        if (!this.CompanyId) throw new Error('No Company ID provided');
+    public async getCompanyFbos(companyId:string = this.CompanyId): Promise<Fbo[]> {
+        if (!companyId) throw new Error('No Company ID provided');
 
-        const companyFbos: Fbo[] = await Api.getCompanyFbos(companyId || this.CompanyId, this.ApiKey);
+        const companyFbos: Fbo[] = await Api.getCompanyFbos(companyId, this.ApiKey);
         return companyFbos;
     }
 
@@ -82,18 +82,18 @@ export class OnAirApi {
         return companyJobs;
     }
 
-    public async getCompanyEmployees(companyId?:string): Promise<People[]> {
-        if (!this.CompanyId) throw new Error('No Company ID provided');
+    public async getCompanyEmployees(companyId:string = this.CompanyId): Promise<People[]> {
+        if (!companyId) throw new Error('No Company ID provided');
 
-        const companyEmployees: People[] = await Api.getCompanyEmployees(companyId || this.CompanyId, this.ApiKey);
+        const companyEmployees: People[] = await Api.getCompanyEmployees(companyId, this.ApiKey);
 
         return companyEmployees;
     }
 
-    public async getCompanyCashFlow(companyId?:string): Promise<CashFlow> {
-        if (!this.CompanyId) throw new Error('No Company ID provided');
+    public async getCompanyCashFlow(companyId:string = this.CompanyId): Promise<CashFlow> {
+        if (!companyId) throw new Error('No Company ID provided');
 
-        const cashFlow: CashFlow = await Api.getCompanyCashFlow(companyId || this.CompanyId, this.ApiKey);
+        const cashFlow: CashFlow = await Api.getCompanyCashFlow(companyId, this.ApiKey);
 
         return cashFlow;
     }
@@ -116,26 +116,26 @@ export class OnAirApi {
         return incomeStatement;
     }
 
-    public async getCompanyBalanceSheet(companyId?:string): Promise<BalanceSheet> {
-        if (!this.CompanyId) throw new Error('No Company ID provided');
+    public async getCompanyBalanceSheet(companyId:string = this.CompanyId): Promise<BalanceSheet> {
+        if (!companyId) throw new Error('No Company ID provided');
 
-        const balanceSheet: BalanceSheet = await Api.getCompanyBalanceSheet(companyId || this.CompanyId, this.ApiKey);
+        const balanceSheet: BalanceSheet = await Api.getCompanyBalanceSheet(companyId, this.ApiKey);
 
         return balanceSheet;
     }
 
-    public async getCompanyMissionFlightTracks(companyId?:string): Promise<FlightTrack[]> {
-        if (!this.CompanyId) throw new Error('No Company ID provided');
+    public async getCompanyMissionFlightTracks(companyId:string = this.CompanyId): Promise<FlightTrack[]> {
+        if (!companyId) throw new Error('No Company ID provided');
 
-        const flightTracks: FlightTrack[] = await Api.getCompanyMissionFlightTracks(companyId || this.CompanyId, this.ApiKey);
+        const flightTracks: FlightTrack[] = await Api.getCompanyMissionFlightTracks(companyId, this.ApiKey);
 
         return flightTracks;
     }
 
-    public async getCompanyWorkOrders(companyId?:string): Promise<WorkOrder[]> {
-        if (!this.CompanyId) throw new Error('No Company ID provided');
+    public async getCompanyWorkOrders(companyId:string = this.CompanyId): Promise<WorkOrder[]> {
+        if (!companyId) throw new Error('No Company ID provided');
 
-        const workOrders: WorkOrder[] = await Api.getCompanyWorkOrders(companyId || this.CompanyId, this.ApiKey);
+        const workOrders: WorkOrder[] = await Api.getCompanyWorkOrders(companyId, this.ApiKey);
 
         return workOrders;
     }
