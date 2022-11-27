@@ -51,6 +51,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.OnAirApi = void 0;
 var api_1 = __importDefault(require("./api"));
+var utils_1 = require("./utils");
 __exportStar(require("./types"), exports);
 var OnAirApi = /** @class */ (function () {
     // Constructor
@@ -58,19 +59,28 @@ var OnAirApi = /** @class */ (function () {
         var apiKey = config.apiKey, companyId = config.companyId, vaId = config.vaId;
         if (!apiKey)
             throw new Error('No API Key provided');
+        if (!apiKey.match(utils_1.uuid4))
+            throw new Error('Invalid API Key provided');
         this.ApiKey = apiKey;
+        if (!companyId)
+            throw new Error('No Company ID provided');
+        if (!companyId.match(utils_1.uuid4))
+            throw new Error('Invalid Company ID provided');
         this.CompanyId = companyId;
-        this.VaId = vaId;
+        if (vaId && !vaId.match(utils_1.uuid4))
+            throw new Error('Invalid VA ID provided');
+        this.VaId = (vaId) ? vaId : undefined;
     }
     OnAirApi.prototype.getCompany = function (companyId) {
+        if (companyId === void 0) { companyId = this.CompanyId; }
         return __awaiter(this, void 0, void 0, function () {
             var company;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        if (!this.CompanyId)
+                        if (!companyId)
                             throw new Error('No Company ID provided');
-                        return [4 /*yield*/, api_1.default.getCompany(companyId || this.CompanyId, this.ApiKey)];
+                        return [4 /*yield*/, api_1.default.getCompany(companyId, this.ApiKey)];
                     case 1:
                         company = _a.sent();
                         return [2 /*return*/, company];
@@ -79,14 +89,15 @@ var OnAirApi = /** @class */ (function () {
         });
     };
     OnAirApi.prototype.getCompanyFleet = function (companyId) {
+        if (companyId === void 0) { companyId = this.CompanyId; }
         return __awaiter(this, void 0, void 0, function () {
             var companyFleet;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        if (!this.CompanyId)
+                        if (!companyId)
                             throw new Error('No Company ID provided');
-                        return [4 /*yield*/, api_1.default.getCompanyFleet(companyId || this.CompanyId, this.ApiKey)];
+                        return [4 /*yield*/, api_1.default.getCompanyFleet(companyId, this.ApiKey)];
                     case 1:
                         companyFleet = _a.sent();
                         return [2 /*return*/, companyFleet];
@@ -95,14 +106,15 @@ var OnAirApi = /** @class */ (function () {
         });
     };
     OnAirApi.prototype.getCompanyFbos = function (companyId) {
+        if (companyId === void 0) { companyId = this.CompanyId; }
         return __awaiter(this, void 0, void 0, function () {
             var companyFbos;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        if (!this.CompanyId)
+                        if (!companyId)
                             throw new Error('No Company ID provided');
-                        return [4 /*yield*/, api_1.default.getCompanyFbos(companyId || this.CompanyId, this.ApiKey)];
+                        return [4 /*yield*/, api_1.default.getCompanyFbos(companyId, this.ApiKey)];
                     case 1:
                         companyFbos = _a.sent();
                         return [2 /*return*/, companyFbos];
@@ -110,7 +122,8 @@ var OnAirApi = /** @class */ (function () {
             });
         });
     };
-    OnAirApi.prototype.getCompanyFlights = function (page, limit) {
+    OnAirApi.prototype.getCompanyFlights = function (companyId, page, limit) {
+        if (companyId === void 0) { companyId = this.CompanyId; }
         if (page === void 0) { page = 1; }
         if (limit === void 0) { limit = 20; }
         return __awaiter(this, void 0, void 0, function () {
@@ -118,9 +131,9 @@ var OnAirApi = /** @class */ (function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        if (!this.CompanyId)
+                        if (!companyId)
                             throw new Error('No Company ID provided');
-                        return [4 /*yield*/, api_1.default.getCompanyFlights(this.CompanyId, this.ApiKey, page, limit)];
+                        return [4 /*yield*/, api_1.default.getCompanyFlights(companyId, this.ApiKey, page, limit)];
                     case 1:
                         companyFlights = _a.sent();
                         return [2 /*return*/, companyFlights];
@@ -128,16 +141,17 @@ var OnAirApi = /** @class */ (function () {
             });
         });
     };
-    OnAirApi.prototype.getCompanyJobs = function (completed) {
+    OnAirApi.prototype.getCompanyJobs = function (companyId, completed) {
+        if (companyId === void 0) { companyId = this.CompanyId; }
         if (completed === void 0) { completed = false; }
         return __awaiter(this, void 0, void 0, function () {
             var companyJobs;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        if (!this.CompanyId)
+                        if (!companyId)
                             throw new Error('No Company ID provided');
-                        return [4 /*yield*/, api_1.default.getCompanyJobs(this.CompanyId, this.ApiKey, completed)];
+                        return [4 /*yield*/, api_1.default.getCompanyJobs(companyId, this.ApiKey, completed)];
                     case 1:
                         companyJobs = _a.sent();
                         return [2 /*return*/, companyJobs];
@@ -146,14 +160,15 @@ var OnAirApi = /** @class */ (function () {
         });
     };
     OnAirApi.prototype.getCompanyEmployees = function (companyId) {
+        if (companyId === void 0) { companyId = this.CompanyId; }
         return __awaiter(this, void 0, void 0, function () {
             var companyEmployees;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        if (!this.CompanyId)
+                        if (!companyId)
                             throw new Error('No Company ID provided');
-                        return [4 /*yield*/, api_1.default.getCompanyEmployees(companyId || this.CompanyId, this.ApiKey)];
+                        return [4 /*yield*/, api_1.default.getCompanyEmployees(companyId, this.ApiKey)];
                     case 1:
                         companyEmployees = _a.sent();
                         return [2 /*return*/, companyEmployees];
@@ -162,14 +177,15 @@ var OnAirApi = /** @class */ (function () {
         });
     };
     OnAirApi.prototype.getCompanyCashFlow = function (companyId) {
+        if (companyId === void 0) { companyId = this.CompanyId; }
         return __awaiter(this, void 0, void 0, function () {
             var cashFlow;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        if (!this.CompanyId)
+                        if (!companyId)
                             throw new Error('No Company ID provided');
-                        return [4 /*yield*/, api_1.default.getCompanyCashFlow(companyId || this.CompanyId, this.ApiKey)];
+                        return [4 /*yield*/, api_1.default.getCompanyCashFlow(companyId, this.ApiKey)];
                     case 1:
                         cashFlow = _a.sent();
                         return [2 /*return*/, cashFlow];
@@ -177,13 +193,14 @@ var OnAirApi = /** @class */ (function () {
             });
         });
     };
-    OnAirApi.prototype.getCompanyIncomeStatement = function (startDate, endDate) {
+    OnAirApi.prototype.getCompanyIncomeStatement = function (companyId, startDate, endDate) {
+        if (companyId === void 0) { companyId = this.CompanyId; }
         return __awaiter(this, void 0, void 0, function () {
             var currentDate, priorDate, incomeStatement;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        if (!this.CompanyId)
+                        if (!companyId)
                             throw new Error('No Company ID provided');
                         if (!startDate) {
                             currentDate = new Date();
@@ -193,7 +210,7 @@ var OnAirApi = /** @class */ (function () {
                         if (!endDate) {
                             endDate = new Date().toISOString();
                         }
-                        return [4 /*yield*/, api_1.default.getCompanyIncomeStatement(startDate, endDate, this.CompanyId, this.ApiKey)];
+                        return [4 /*yield*/, api_1.default.getCompanyIncomeStatement(startDate, endDate, companyId, this.ApiKey)];
                     case 1:
                         incomeStatement = _a.sent();
                         return [2 /*return*/, incomeStatement];
@@ -202,14 +219,15 @@ var OnAirApi = /** @class */ (function () {
         });
     };
     OnAirApi.prototype.getCompanyBalanceSheet = function (companyId) {
+        if (companyId === void 0) { companyId = this.CompanyId; }
         return __awaiter(this, void 0, void 0, function () {
             var balanceSheet;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        if (!this.CompanyId)
+                        if (!companyId)
                             throw new Error('No Company ID provided');
-                        return [4 /*yield*/, api_1.default.getCompanyBalanceSheet(companyId || this.CompanyId, this.ApiKey)];
+                        return [4 /*yield*/, api_1.default.getCompanyBalanceSheet(companyId, this.ApiKey)];
                     case 1:
                         balanceSheet = _a.sent();
                         return [2 /*return*/, balanceSheet];
@@ -218,14 +236,15 @@ var OnAirApi = /** @class */ (function () {
         });
     };
     OnAirApi.prototype.getCompanyMissionFlightTracks = function (companyId) {
+        if (companyId === void 0) { companyId = this.CompanyId; }
         return __awaiter(this, void 0, void 0, function () {
             var flightTracks;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        if (!this.CompanyId)
+                        if (!companyId)
                             throw new Error('No Company ID provided');
-                        return [4 /*yield*/, api_1.default.getCompanyMissionFlightTracks(companyId || this.CompanyId, this.ApiKey)];
+                        return [4 /*yield*/, api_1.default.getCompanyMissionFlightTracks(companyId, this.ApiKey)];
                     case 1:
                         flightTracks = _a.sent();
                         return [2 /*return*/, flightTracks];
@@ -234,14 +253,15 @@ var OnAirApi = /** @class */ (function () {
         });
     };
     OnAirApi.prototype.getCompanyWorkOrders = function (companyId) {
+        if (companyId === void 0) { companyId = this.CompanyId; }
         return __awaiter(this, void 0, void 0, function () {
             var workOrders;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        if (!this.CompanyId)
+                        if (!companyId)
                             throw new Error('No Company ID provided');
-                        return [4 /*yield*/, api_1.default.getCompanyWorkOrders(companyId || this.CompanyId, this.ApiKey)];
+                        return [4 /*yield*/, api_1.default.getCompanyWorkOrders(companyId, this.ApiKey)];
                     case 1:
                         workOrders = _a.sent();
                         return [2 /*return*/, workOrders];
@@ -321,7 +341,7 @@ var OnAirApi = /** @class */ (function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        if (!this.VaId)
+                        if (!vaId || !this.VaId)
                             throw new Error('VA ID is not provided');
                         return [4 /*yield*/, api_1.default.getVirtualAirline(vaId || this.VaId, this.ApiKey)];
                     case 1:
@@ -337,7 +357,7 @@ var OnAirApi = /** @class */ (function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        if (!this.VaId)
+                        if (!vaId || !this.VaId)
                             throw new Error('VA ID is not provided');
                         return [4 /*yield*/, api_1.default.getVirtualAirlineMembers(vaId || this.VaId, this.ApiKey)];
                     case 1:
@@ -353,7 +373,7 @@ var OnAirApi = /** @class */ (function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        if (!this.VaId)
+                        if (!vaId || !this.VaId)
                             throw new Error('VA ID is not provided');
                         return [4 /*yield*/, api_1.default.getVirtualAirlineShareHolders(vaId || this.VaId, this.ApiKey)];
                     case 1:
@@ -369,7 +389,7 @@ var OnAirApi = /** @class */ (function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        if (!this.VaId)
+                        if (!vaId || !this.VaId)
                             throw new Error('VA ID is not provided');
                         return [4 /*yield*/, api_1.default.getVirtualAirlineRoles(vaId || this.VaId, this.ApiKey)];
                     case 1:
@@ -379,7 +399,7 @@ var OnAirApi = /** @class */ (function () {
             });
         });
     };
-    OnAirApi.prototype.getVirtualAirlineFlights = function (page, limit) {
+    OnAirApi.prototype.getVirtualAirlineFlights = function (vaId, page, limit) {
         if (page === void 0) { page = 1; }
         if (limit === void 0) { limit = 20; }
         return __awaiter(this, void 0, void 0, function () {
@@ -389,7 +409,7 @@ var OnAirApi = /** @class */ (function () {
                     case 0:
                         if (!this.VaId)
                             throw new Error('VA ID is not provided');
-                        return [4 /*yield*/, api_1.default.getVirtualAirlineFlights(this.VaId, this.ApiKey)];
+                        return [4 /*yield*/, api_1.default.getVirtualAirlineFlights(vaId || this.VaId, this.ApiKey)];
                     case 1:
                         vaflights = _a.sent();
                         return [2 /*return*/, vaflights];
@@ -403,7 +423,7 @@ var OnAirApi = /** @class */ (function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        if (!this.VaId)
+                        if (!vaId || !this.VaId)
                             throw new Error('VA ID is not provided');
                         return [4 /*yield*/, api_1.default.getVirtualAirlineFleet(vaId || this.VaId, this.ApiKey)];
                     case 1:
@@ -419,7 +439,7 @@ var OnAirApi = /** @class */ (function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        if (!this.VaId)
+                        if (!vaId || !this.VaId)
                             throw new Error('VA ID is not provided');
                         return [4 /*yield*/, api_1.default.getVirtualAirlineJobs(vaId || this.VaId, this.ApiKey)];
                     case 1:
@@ -435,7 +455,7 @@ var OnAirApi = /** @class */ (function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        if (!this.VaId)
+                        if (!vaId || !this.VaId)
                             throw new Error('VA ID is not provided');
                         return [4 /*yield*/, api_1.default.getVirtualAirlineFbos(vaId || this.VaId, this.ApiKey)];
                     case 1:

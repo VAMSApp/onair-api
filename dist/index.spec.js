@@ -203,7 +203,7 @@ var vaId = process.env.VIRTUAL_AIRLINE_ID;
                 });
             });
         });
-        it('when getCompanyJobs() is queried with valid data, passing true as the first argument, it should return an Array of completed Jobs', function () {
+        it('when getCompanyJobs() is queried with valid data, passing the companyId as the first argument and true as the second argument, it should return an Array of completed Jobs for the provided companyId', function () {
             return __awaiter(this, void 0, void 0, function () {
                 var api, jobs;
                 return __generator(this, function (_a) {
@@ -211,7 +211,7 @@ var vaId = process.env.VIRTUAL_AIRLINE_ID;
                         case 0:
                             if (!(apiKey !== undefined && companyId !== undefined)) return [3 /*break*/, 2];
                             api = new index_1.default({ apiKey: apiKey, companyId: companyId, vaId: vaId });
-                            return [4 /*yield*/, api.getCompanyJobs(true)];
+                            return [4 /*yield*/, api.getCompanyJobs(companyId, true)];
                         case 1:
                             jobs = _a.sent();
                             (0, chai_1.expect)(jobs).to.be.an('Array');
@@ -478,7 +478,6 @@ var vaId = process.env.VIRTUAL_AIRLINE_ID;
                             return [4 /*yield*/, api.getVirtualAirlineFlights()];
                         case 1:
                             vaflights = _a.sent();
-                            console.log(vaflights.length);
                             (0, chai_1.expect)(vaflights).to.be.an('Array');
                             (0, chai_1.expect)(vaflights.length).to.be.above(2);
                             _a.label = 2;
@@ -500,7 +499,6 @@ var vaId = process.env.VIRTUAL_AIRLINE_ID;
                             return [4 /*yield*/, api.getVirtualAirlineJobs()];
                         case 1:
                             vaJobs = _a.sent();
-                            console.log(vaJobs.length);
                             (0, chai_1.expect)(vaJobs).to.be.an('Array');
                             (0, chai_1.expect)(vaJobs.length).to.be.above(2);
                             _a.label = 2;

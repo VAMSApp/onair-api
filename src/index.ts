@@ -199,7 +199,7 @@ export class OnAirApi {
     public async getVirtualAirlineFlights(vaId?:string, page = 1, limit = 20): Promise<Flight[]> {
         if (!this.VaId) throw new Error('VA ID is not provided');
 
-        const vaflights: Flight[] = await Api.getVirtualAirlineFlights(vaId || this.VaId, this.ApiKey);
+        const vaflights: Flight[] = await Api.getVirtualAirlineFlights(vaId || this.VaId, this.ApiKey, page, limit);
         return vaflights;
     }
 
