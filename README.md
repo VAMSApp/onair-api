@@ -83,7 +83,7 @@ let companyDetails: Company = await api.getCompany();
 
 
 
-### getCompanyFbos()
+### getCompanyFbos(companyId?:string)
 Fetches the FBOs for a given companyId.
 #### Usage
 ```typescript
@@ -98,13 +98,15 @@ const apiConfig: OnAirApiConfig = {
 
 const api: Api = new OnAirApi(apiConfig);
 let companyFbos: Fbo[] = await api.getCompanyFbos();
+// or pass another companyId as the first argument
+let companyFbos: Fbo[] = await api.getCompanyFbos(companyId);
 ```
 
 #### Example Response
  - [getCompanyFbos.md](docs/responses/getCompanyFbos.md)
 
 
-### getCompanyFleet()
+### getCompanyFleet(companyId?:string)
 Fetches the aircraft that are owned, leased, or rented for a given companyId.
 
 #### Usage
@@ -119,12 +121,14 @@ const apiConfig: OnAirApiConfig = {
 
 const api: Api = new OnAirApi(apiConfig);
 let companyFleet: Aircraft[] = await api.getCompanyFleet();
+// or pass another companyId as the first argument
+let companyFleet: Aircraft[] = await api.getCompanyFleet(companyId);
 ```
 #### Example Response
  - [getCompanyFleet.md](docs/responses/getCompanyFleet.md)
 
 
-### getCompanyFlights()
+### getCompanyFlights(companyId?:string, page:number = 1, limit:number = 20)
 Fetches the Flights for a given companyId.
 
 #### Usage
@@ -140,34 +144,14 @@ const apiConfig: OnAirApiConfig = {
 
 const api: Api = new OnAirApi(apiConfig);
 let companyFlights: Flight[] = await api.getCompanyFlights();
+// or pass another companyId as the first argument
+let companyFlights: Flight[] = await api.getCompanyFlights(companyId)
 ```
 
 #### Example Response
  - [getCompanyFlights.md](docs/responses/getCompanyFlights.md)
 
-
-### getCompanyMissionFlightTracks()
-Fetches the flight tracks for all missions.
-
-#### Usage
-```typescript
-import OnAirApi, { FlightTrack, OnAirApiConfig, } from 'onair-api'
-
-
-const apiConfig: OnAirApiConfig = {
-  apiKey: 'YOUR-API-KEY',
-  companyId: 'YOUR-COMPANY-ID',
-  vaId: 'YOUR-VA-ID'
-};
-
-const api: Api = new OnAirApi(apiConfig);
-let companyMissionFlightTracks: FlightTrack[] = await api.getCompanyMissionFlightTracks();
-```
-
-#### Example Response
- - [getCompanyMissionFlightTracks.md](docs/responses/getCompanyMissionFlightTracks.md)
-
-### getCompanyJobs(completed = false)
+### getCompanyJobs(companyId?, completed = false)
 Fetches the pending jobs for a given companyId.
 Pass `true` as the first argument to return completed jobs.
 
@@ -183,8 +167,12 @@ const apiConfig: OnAirApiConfig = {
 
 const api: Api = new OnAirApi(apiConfig);
 let companyJobs: Job[] = await api.getCompanyJobs();
-// pass true as the first argument to return the completed jobs
-let completedCompanyJobs: Job[] = await api.getCompanyJobs(true);
+// or pass in another companyId as the first argument to get the completed jobs for that company
+let companyJobs: Job[] = await api.getCompanyJobs(companyId);
+
+// pass true as the second argument to return the completed jobs for the Api instanciated companyId
+let completedCompanyJobs: Job[] = await api.getCompanyJobs(undefined, true);
+let companyJobs: Job[] = await api.getCompanyJobs(companyId, true);
 
 ```
 

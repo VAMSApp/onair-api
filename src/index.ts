@@ -18,7 +18,7 @@ import {
     FlightTrack,
     WorkOrder,
 } from './types';
-import { Guid } from './utils/Guid';
+import { uuid4 } from './utils';
 export * from './types';
 
 export class OnAirApi {
@@ -36,14 +36,14 @@ export class OnAirApi {
         } = config;
 
         if (!apiKey) throw new Error('No API Key provided');
-        if (!Guid.isGuid(apiKey)) throw new Error('Invalid API Key provided');
+        if (!apiKey.match(uuid4)) throw new Error('Invalid API Key provided');
         this.ApiKey = apiKey;
 
         if (!companyId) throw new Error('No Company ID provided');
-        if (!Guid.isGuid(companyId)) throw new Error('Invalid Company ID provided');
+        if (!companyId.match(uuid4)) throw new Error('Invalid Company ID provided');
         this.CompanyId = companyId;
 
-        if (vaId && !Guid.isGuid(vaId)) throw new Error('Invalid VA ID provided');
+        if (vaId && !vaId.match(uuid4)) throw new Error('Invalid VA ID provided');
         this.VaId = (vaId) ? vaId : undefined;
     }
 
@@ -68,17 +68,17 @@ export class OnAirApi {
         return companyFbos;
     }
 
-    public async getCompanyFlights(page = 1, limit = 20): Promise<Flight[]> {
-        if (!this.CompanyId) throw new Error('No Company ID provided');
+    public async getCompanyFlights(companyId:string = this.CompanyId, page = 1, limit = 20): Promise<Flight[]> {
+        if (!companyId) throw new Error('No Company ID provided');
 
-        const companyFlights: Flight[] = await Api.getCompanyFlights(this.CompanyId, this.ApiKey, page, limit);
+        const companyFlights: Flight[] = await Api.getCompanyFlights(companyId, this.ApiKey, page, limit);
         return companyFlights;
     }
 
-    public async getCompanyJobs(completed = false): Promise<Job[]> {
-        if (!this.CompanyId) throw new Error('No Company ID provided');
+    public async getCompanyJobs(companyId:string = this.CompanyId, completed = false): Promise<Job[]> {
+        if (!companyId) throw new Error('No Company ID provided');
 
-        const companyJobs: Job[] = await Api.getCompanyJobs(this.CompanyId, this.ApiKey, completed);
+        const companyJobs: Job[] = await Api.getCompanyJobs(companyId, this.ApiKey, completed);
         return companyJobs;
     }
 
@@ -98,8 +98,8 @@ export class OnAirApi {
         return cashFlow;
     }
 
-    public async getCompanyIncomeStatement(startDate?: string | undefined, endDate?: string | undefined): Promise<IncomeStatement> {
-        if (!this.CompanyId) throw new Error('No Company ID provided');
+    public async getCompanyIncomeStatement(companyId:string = this.CompanyId, startDate?: string | undefined, endDate?: string | undefined): Promise<IncomeStatement> {
+        if (!companyId) throw new Error('No Company ID provided');
 
         if (!startDate) {
             const currentDate = new Date();
@@ -111,7 +111,7 @@ export class OnAirApi {
             endDate = new Date().toISOString();
         }
 
-        const incomeStatement: IncomeStatement = await Api.getCompanyIncomeStatement(startDate, endDate, this.CompanyId, this.ApiKey);
+        const incomeStatement: IncomeStatement = await Api.getCompanyIncomeStatement(startDate, endDate, companyId, this.ApiKey);
 
         return incomeStatement;
     }
@@ -196,10 +196,10 @@ export class OnAirApi {
         return varoles;
     }
 
-    public async getVirtualAirlineFlights(page = 1, limit = 20): Promise<Flight[]> {
+    public async getVirtualAirlineFlights(vaId?:string, page = 1, limit = 20): Promise<Flight[]> {
         if (!this.VaId) throw new Error('VA ID is not provided');
 
-        const vaflights: Flight[] = await Api.getVirtualAirlineFlights(this.VaId, this.ApiKey);
+        const vaflights: Flight[] = await Api.getVirtualAirlineFlights(vaId || this.VaId, this.ApiKey);
         return vaflights;
     }
 

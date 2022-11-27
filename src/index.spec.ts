@@ -121,11 +121,11 @@ describe('OnAirApi()', function() {
             }
         });
 
-        it('when getCompanyJobs() is queried with valid data, passing true as the first argument, it should return an Array of completed Jobs', async function() {
+        it('when getCompanyJobs() is queried with valid data, passing the companyId as the first argument and true as the second argument, it should return an Array of completed Jobs for the provided companyId', async function() {
             if (apiKey !== undefined && companyId !== undefined) {
                 const api: OnAirApi = new OnAirApi({ apiKey, companyId, vaId });
 
-                const jobs: Job[] = await api.getCompanyJobs(true);
+                const jobs: Job[] = await api.getCompanyJobs(companyId, true);
 
                 expect(jobs).to.be.an('Array');
             }
@@ -288,7 +288,7 @@ describe('OnAirApi()', function() {
                 const api: OnAirApi = new OnAirApi({ apiKey, companyId, vaId });
 
                 const vaflights: Flight[] = await api.getVirtualAirlineFlights();
-                console.log(vaflights.length)
+
                 expect(vaflights).to.be.an('Array');
                 expect(vaflights.length).to.be.above(2);
             }
@@ -301,7 +301,7 @@ describe('OnAirApi()', function() {
                 const api: OnAirApi = new OnAirApi({ apiKey, companyId, vaId });
 
                 const vaJobs: Job[] = await api.getVirtualAirlineJobs();
-                console.log(vaJobs.length)
+
                 expect(vaJobs).to.be.an('Array');
                 expect(vaJobs.length).to.be.above(2);
             }
