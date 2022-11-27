@@ -528,7 +528,7 @@ var vaId = process.env.VIRTUAL_AIRLINE_ID;
             });
         });
     });
-    mocha_1.describe.only('getVirtualAirlineNotifications()', function () {
+    (0, mocha_1.describe)('getVirtualAirlineNotifications()', function () {
         it('when getVirtualAirlineNotifications() is queried with valid data, it should return an Array of Notification Objects', function () {
             return __awaiter(this, void 0, void 0, function () {
                 var api, notifications;
