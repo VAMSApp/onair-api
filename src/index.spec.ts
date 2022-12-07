@@ -46,39 +46,44 @@ describe('OnAirApi()', function() {
             try {
                 const api: OnAirApi = new OnAirApi({ apiKey, companyId, vaId });
                 expect(api).to.be.an('Object');
+                expect(api).to.have.keys([
+                    'ApiKey',
+                    'CompanyId',
+                    'VaId',
+                    'getAircraft',
+                    'getAircraftFlights',
+                    'getAirport',
+                    'getCompany',
+                    'getCompanyBalanceSheet',
+                    'getCompanyCashFlow',
+                    'getCompanyEmployees',
+                    'getCompanyFbos',
+                    'getCompanyFleet',
+                    'getCompanyFlights',
+                    'getCompanyIncomeStatement',
+                    'getCompanyJobs',
+                    'getCompanyMissionFlightTracks',
+                    'getCompanyWorkOrders',
+                    'getEmployee',
+                    'getFlight',
+                    'getVirtualAirline',
+                    'getVirtualAirlineFbos',
+                    'getVirtualAirlineFleet',
+                    'getVirtualAirlineFlights',
+                    'getVirtualAirlineIncomeStatement',
+                    'getVirtualAirlineJobs',
+                    'getVirtualAirlineMembers',
+                    'getVirtualAirlineNotifications',
+                    'getVirtualAirlineRoles',
+                    'getVirtualAirlineShareHolders',
+                    'isValidGuid',
+                ])
             } catch (e) {
                 console.log(e);
 
             }
 
-            // expect(api).to.have.keys([
-            //     'isValidGuid',
-            //     'getCompany',
-            //     'getCompanyFleet',
-            //     'getCompanyFbos',
-            //     'getCompanyFlights',
-            //     'getCompanyJobs',
-            //     'getCompanyEmployees',
-            //     'getCompanyCashFlow',
-            //     'getCompanyIncomeStatement',
-            //     'getCompanyBalanceSheet',
-            //     'getCompanyMissionFlightTracks',
-            //     'getCompanyWorkOrders',
-            //     'getAircraft',
-            //     'getAircraftFlights',
-            //     'getAirport',
-            //     'getFlight',
-            //     'getVirtualAirline',
-            //     'getVirtualAirlineMembers',
-            //     'getVirtualAirlineShareHolders',
-            //     'getVirtualAirlineRoles',
-            //     'getVirtualAirlineFlights',
-            //     'getVirtualAirlineFleet',
-            //     'getVirtualAirlineJobs',
-            //     'getVirtualAirlineFbos',
-            //     'getVirtualAirlineNotifications',
-            //     'getEmployee',
-            // ])
+
         }
     });
 });
