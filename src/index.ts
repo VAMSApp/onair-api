@@ -1,4 +1,3 @@
-import Logger from './utils/Logger';
 import {
     OnAirApiConfig,
     CompanyResponse,
@@ -23,7 +22,6 @@ import {
     IOnAirApi,
     EmployeesResponse,
 } from './types';
-import uuid from 'uuid';
 import { getCompany, getCompanyFleet, getCompanyFbos, getCompanyFlights, getCompanyJobs, getCompanyEmployees, getCompanyCashFlow, getCompanyIncomeStatement, getCompanyBalanceSheet, getCompanyMissionFlightTracks, getCompanyWorkOrders, getAircraft, getAircraftFlights, getAirport, getFlight, getVirtualAirline, getVirtualAirlineMembers, getVirtualAirlineShareHolders, getVirtualAirlineRoles, getVirtualAirlineFlights, getVirtualAirlineFleet, getVirtualAirlineJobs, getVirtualAirlineFbos, getVirtualAirlineNotifications, getEmployee } from './api';
 import { isValidGuid } from './utils';
 export * from './types';
@@ -33,7 +31,6 @@ export class OnAirApi implements IOnAirApi {
     private ApiKey: string
     private CompanyId: string
     private VaId?: string
-    public Logger: Logger|undefined;
 
     // Constructor
     constructor(config: OnAirApiConfig) {
@@ -53,11 +50,6 @@ export class OnAirApi implements IOnAirApi {
         this.ApiKey = apiKey;
         this.CompanyId = companyId;
         this.VaId = (vaId) ? vaId : undefined;
-
-        this.Logger = new Logger({
-            logLevel: (config.options) ? config.options.logLevel : 'info',
-            logToConsole: (config.options) ? config.options.logConsole : false,
-        });
 
         this.getCompany = this.getCompany.bind(this);
         this.getCompanyFleet = this.getCompanyFleet.bind(this);
@@ -208,11 +200,9 @@ export class OnAirApi implements IOnAirApi {
 
     public async getAircraft(aircraftId:string): Promise<AircraftResponse> {
         if (!aircraftId) throw new Error('Aircraft ID not provided');
-        this.Logger?.debug(`Getting aircraft by string '${aircraftId}'`);
         if (!this.isValidGuid(aircraftId)) throw new Error('Invalid Aircraft ID provided');
 
         const aircraft: AircraftResponse = await getAircraft(aircraftId, this.ApiKey).then((response) => {
-            this.Logger?.debug(`Aircraft '${aircraftId}' retrieved`);
             return response;
         });
 
