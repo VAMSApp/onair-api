@@ -1,3 +1,5 @@
+
+
 export interface CashFlowEntry {
     Id: string,
     CompanyId: string,

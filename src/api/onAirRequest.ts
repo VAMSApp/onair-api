@@ -19,89 +19,89 @@ import {
     Notification,
 } from '../types';
 
-interface OnAirResponse {
+interface OnAirApiResponse {
   Error: string;
 }
 
-export interface AircraftResponse extends OnAirResponse {
+export interface AircraftApiResponse extends OnAirApiResponse {
   Content: Aircraft | Aircraft[];
 }
 
-export interface FlightResponse extends OnAirResponse {
+export interface FlightApiResponse extends OnAirApiResponse {
   Content: Flight | Flight[];
 }
 
-export interface AirportResponse extends OnAirResponse {
+export interface AirportApiResponse extends OnAirApiResponse {
   Content: Airport;
 }
 
-export interface CompanyResponse extends OnAirResponse {
+export interface CompanyApiResponse extends OnAirApiResponse {
   Content: Company;
 }
 
-export interface FboResponse extends OnAirResponse {
+export interface FboApiResponse extends OnAirApiResponse {
   Content: Fbo[];
 }
 
-export interface JobResponse extends OnAirResponse {
+export interface JobApiResponse extends OnAirApiResponse {
   Content: Job | Job[];
 }
 
-export interface VirtualAirlineResponse extends OnAirResponse {
+export interface VirtualAirlineApiResponse extends OnAirApiResponse {
   Content: VirtualAirline;
 }
-export interface VirtualAirlineMemberResponse extends OnAirResponse {
+export interface VirtualAirlineMemberApiResponse extends OnAirApiResponse {
   Content: Member | Member[];
 }
 
-export interface VirtualAirlineShareHolderResponse extends OnAirResponse {
+export interface VirtualAirlineShareHolderApiResponse extends OnAirApiResponse {
     Content: ShareHolder | ShareHolder[];
 }
 
-export interface VirtualAirlineVARoleResponse extends OnAirResponse {
+export interface VirtualAirlineVARoleApiResponse extends OnAirApiResponse {
     Content: VARole | VARole[];
 }
 
-export interface VirtualAirlineFlightResponse extends OnAirResponse {
+export interface VirtualAirlineFlightApiResponse extends OnAirApiResponse {
     Content: Flight | Flight[];
 }
 
-export interface VirtualAirlineFleetResponse extends OnAirResponse {
+export interface VirtualAirlineFleetApiResponse extends OnAirApiResponse {
     Content: Aircraft | Aircraft[];
 }
 
-export interface VirtualAirlineJobResponse extends OnAirResponse {
+export interface VirtualAirlineJobApiResponse extends OnAirApiResponse {
     Content: Job | Job[];
 }
 
-export interface VirtualAirlineFboResponse extends OnAirResponse {
+export interface VirtualAirlineFboApiResponse extends OnAirApiResponse {
     Content: Fbo | Fbo[];
 }
 
-export interface PeopleResponse extends OnAirResponse {
+export interface PeopleApiResponse extends OnAirApiResponse {
   Content: People | People[]
 }
 
-export interface CashFlowResponse extends OnAirResponse {
+export interface CashFlowApiResponse extends OnAirApiResponse {
     Content: CashFlow | CashFlow[]
 }
-export interface IncomeStatementResponse extends OnAirResponse {
+export interface IncomeStatementApiResponse extends OnAirApiResponse {
     Content: IncomeStatement | IncomeStatement[]
 }
 
-export interface BalanceSheetResponse extends OnAirResponse {
+export interface BalanceSheetApiResponse extends OnAirApiResponse {
     Content: BalanceSheet
 }
 
-export interface FlightTrackResponse extends OnAirResponse {
+export interface FlightTrackApiResponse extends OnAirApiResponse {
     Content: FlightTrack | FlightTrack[]
 }
 
-export interface WorkOrderResponse extends OnAirResponse {
+export interface WorkOrderApiResponse extends OnAirApiResponse {
     Content: WorkOrder | WorkOrder[]
 }
 
-export interface VirtualAirlineNotificationResponse extends OnAirResponse {
+export interface VirtualAirlineNotificationApiResponse extends OnAirApiResponse {
     Content: Notification | Notification[]
 }
 
@@ -117,13 +117,15 @@ export interface VirtualAirlineNotificationResponse extends OnAirResponse {
 export default async <T>(url: string, apiKey: string, requestData?: Record<string, unknown> | undefined): Promise<AxiosResponse<T>> => {
     const axiosConfig: AxiosRequestConfig = {
         headers: {
-            'oa-apikey': apiKey,
+            'oa-apikey': apiKey.toString(),
             'Accept': 'application/json',
             'User-Agent': `onair-api middleware for OnAir Company v${process.env.npm_package_version}`
         },
     };
+
     if (typeof requestData !== 'undefined') {
         axiosConfig.params = requestData;
     }
+
     return await axios.get<T>(url, axiosConfig);
 };

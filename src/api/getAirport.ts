@@ -1,13 +1,19 @@
-import { Airport } from '../types';
-import onAirRequest, { AirportResponse } from './onAirRequest';
+import { isValidGuid } from '../utils';
+import { Airport, GetAirport, } from '../types';1;
+import onAirRequest, { AirportApiResponse } from './onAirRequest';
 
 const endPoint = 'airports/';
 
-export const getAirport = async (icao: string, apiKey: string) => {
+export const getAirport:GetAirport = async (icao: string, apiKey: string) => {
+    if (!icao) throw new Error('No ICAO code provided')
+    if (!apiKey) throw new Error('No Api Key provided');
+    if (!isValidGuid(apiKey)) throw new Error('Invalid Api Key provided');
+
     try {
-        const response = await onAirRequest<AirportResponse>(
+
+        const response = await onAirRequest<AirportApiResponse>(
             `https://server1.onair.company/api/v1/${endPoint}${icao}`,
-            apiKey
+            apiKey,
         );
 
         if (typeof response.data.Content !== 'undefined') {

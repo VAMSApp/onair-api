@@ -1,13 +1,20 @@
-import { Member } from '../types';
-import onAirRequest, { VirtualAirlineMemberResponse } from './onAirRequest';
+import { GetVirtualAirlineMembers, Member } from '../types';
+import onAirRequest, { VirtualAirlineMemberApiResponse } from './onAirRequest';
+import { isValidGuid } from '../utils';
 
 const endPoint = 'va/';
 
-export const getVirtualAirlineMembers = async (vaId: string, apiKey: string) => {
+export const getVirtualAirlineMembers:GetVirtualAirlineMembers = async (vaId: string, apiKey: string) => {
+    if (!vaId) throw new Error('No VA Id provided');
+    if (!apiKey) throw new Error('No Api Key provided');
+    if (!isValidGuid(vaId)) throw new Error('Invalid VA Id provided');
+    if (!isValidGuid(apiKey)) throw new Error('Invalid Api Key provided');
+
     try {
-        const response = await onAirRequest<VirtualAirlineMemberResponse>(
+
+        const response = await onAirRequest<VirtualAirlineMemberApiResponse>(
             `https://server1.onair.company/api/v1/${endPoint}${vaId}/members`,
-            apiKey
+            apiKey,
         );
 
         if (typeof response.data.Content !== 'undefined') {

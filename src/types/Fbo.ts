@@ -1,5 +1,7 @@
-import { Airport } from './Airport';
-import { Company } from './Company';
+import {
+    Airport,
+    Company,
+} from '.';
 
 interface World {
   Id: string,
@@ -20,7 +22,7 @@ export interface Fbo {
   Company: Company,
   WorldId: string,
   World: World,
-  Airport: Airport, //use 
+  Airport: Airport, //use
   AirportId: string,
   Name: string, //use
   CargoWeightCapacity: number,

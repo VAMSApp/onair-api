@@ -1,55 +1,25 @@
-import { getAircraftFlights, } from './getAircraftFlights';
-import { getAircraft, } from './getAircraft';
-import { getAirport, } from './getAirport';
-import { getCompanyFbos, } from './getCompanyFbos';
-import { getCompanyFleet, } from './getCompanyFleet';
-import { getCompanyFlights, } from './getCompanyFlights';
-import { getCompanyJobs, } from './getCompanyJobs';
-import { getCompany, } from './getCompany';
-import { getFlight, } from './getFlight';
-import { getVirtualAirlineMembers, } from './getVirtualAirlineMembers';
-import { getVirtualAirline, } from './getVirtualAirline';
-import { getCompanyEmployees, } from './getCompanyEmployees';
-import { getVirtualAirlineShareHolders } from './getVirtualAirlineShareHolders';
-import { getVirtualAirlineRoles } from './getVirtualAirlineRoles';
-import { getVirtualAirlineFlights } from './getVirtualAirlineFlights';
-import { getVirtualAirlineFleet } from './getVirtualAirlineFleet';
-import { getVirtualAirlineJobs } from './getVirtualAirlineJobs';
-import { getVirtualAirlineFbos } from './getVirtualAirlineFbos';
-import { getCompanyCashFlow } from './getCompanyCashFlow';
-import { getCompanyIncomeStatement } from './getCompanyIncomeStatement';
-import { getCompanyBalanceSheet } from './getCompanyBalanceSheet';
-import { getEmployee } from './getEmployee';
-import { getCompanyMissionFlightTracks } from './getCompanyMissionFlightTracks';
-import { getCompanyWorkOrders } from './getCompanyWorkOrders';
-import { getVirtualAirlineNotifications } from './getVirtualAirlineNotifications';
-
-const Api = {
-    getAircraftFlights,
-    getAircraft,
-    getAirport,
-    getCompanyFbos,
-    getCompanyFleet,
-    getCompanyFlights,
-    getCompanyJobs,
-    getCompanyEmployees,
-    getCompanyCashFlow,
-    getCompanyBalanceSheet,
-    getCompanyMissionFlightTracks,
-    getCompanyWorkOrders,
-    getCompany,
-    getFlight,
-    getVirtualAirlineMembers,
-    getVirtualAirline,
-    getVirtualAirlineShareHolders,
-    getVirtualAirlineRoles,
-    getVirtualAirlineFlights,
-    getVirtualAirlineFleet,
-    getVirtualAirlineJobs,
-    getVirtualAirlineFbos,
-    getVirtualAirlineNotifications,
-    getCompanyIncomeStatement,
-    getEmployee,
-};
-
-export default Api;
+export * from './getCompany';
+export * from './getCompanyFleet';
+export * from './getCompanyFbos';
+export * from './getCompanyFlights';
+export * from './getCompanyJobs';
+export * from './getCompanyEmployees';
+export * from './getCompanyCashFlow';
+export * from './getCompanyIncomeStatement';
+export * from './getCompanyBalanceSheet';
+export * from './getCompanyMissionFlightTracks';
+export * from './getCompanyWorkOrders';
+export * from './getAircraft';
+export * from './getAircraftFlights';
+export * from './getAirport';
+export * from './getFlight';
+export * from './getVirtualAirline';
+export * from './getVirtualAirlineMembers';
+export * from './getVirtualAirlineShareHolders';
+export * from './getVirtualAirlineRoles';
+export * from './getVirtualAirlineFlights';
+export * from './getVirtualAirlineFleet';
+export * from './getVirtualAirlineJobs';
+export * from './getVirtualAirlineFbos';
+export * from './getVirtualAirlineNotifications';
+export * from './getEmployee';

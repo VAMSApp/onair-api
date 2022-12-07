@@ -1,13 +1,20 @@
-import { Aircraft } from '../types';
-import onAirRequest, { AircraftResponse } from './onAirRequest';
+import { Aircraft, GetCompanyFleet, } from '../types';1;
+import onAirRequest, { AircraftApiResponse } from './onAirRequest';
+import { isValidGuid } from '../utils';
 
 const endPoint = 'company/';
 
-export const getCompanyFleet = async (companyId: string, apiKey: string) => {
+export const getCompanyFleet:GetCompanyFleet = async (companyId: string, apiKey: string) => {
+    if (!companyId) throw new Error('No Company Id provided');
+    if (!apiKey) throw new Error('No Api Key provided');
+    if (!isValidGuid(companyId)) throw new Error('Invalid Company Id provided');
+    if (!isValidGuid(apiKey)) throw new Error('Invalid Api Key provided');
+
     try {
-        const response = await onAirRequest<AircraftResponse>(
+
+        const response = await onAirRequest<AircraftApiResponse>(
             `https://server1.onair.company/api/v1/${endPoint}${companyId}/fleet`,
-            apiKey
+            apiKey,
         );
 
         if (typeof response.data.Content !== 'undefined') {

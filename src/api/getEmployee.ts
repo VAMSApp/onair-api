@@ -1,16 +1,19 @@
-import onAirRequest, { PeopleResponse } from './onAirRequest';
-import { People } from '../types';
-import { uuid4 } from '../utils';
+import onAirRequest, { PeopleApiResponse } from './onAirRequest';
+import { GetEmployee, People } from '../types';
+import { isValidGuid } from '../utils';
 
-export const getEmployee = async (employeeId: string, apiKey: string): Promise<People> => {
-    if (!uuid4.test(employeeId) ) {
-        throw new Error('People ID is incorrect! It should be a 36 character UUID');
-    }
+const endPoint = 'employee/';
+export const getEmployee:GetEmployee = async (employeeId: string, apiKey: string) => {
+    if (!employeeId) throw new Error('No Employee Id provided');
+    if (!apiKey) throw new Error('No Api Key provided');
+    if (!isValidGuid(employeeId)) throw new Error('Invalid Employee Id provided');
+    if (!isValidGuid(apiKey)) throw new Error('Invalid Api Key provided');
 
     try {
-        const response = await onAirRequest<PeopleResponse>(
-            `https://server1.onair.company/api/v1/employee/${employeeId}`,
-            apiKey
+
+        const response = await onAirRequest<PeopleApiResponse>(
+            `https://server1.onair.company/api/v1/${endPoint}${employeeId}`,
+            apiKey,
         );
 
         if (typeof response.data.Content !== 'undefined') {
@@ -19,7 +22,8 @@ export const getEmployee = async (employeeId: string, apiKey: string): Promise<P
             throw new Error(response.data.Error ? response.data.Error : `People ID ${employeeId} not found`);
         }
     } catch (e) {
-        throw new Error(e.message);
+        console.error(`OnAirApi::getEmployee() Error getting Details for Employee Id "${employeeId}"`, e);
+        throw new Error(e);
     }
 };
 

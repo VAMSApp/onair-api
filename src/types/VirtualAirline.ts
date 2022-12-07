@@ -71,6 +71,8 @@ export interface Member {
     FlightHours: number,
     Color: string,
     AcceptChallengeMode: boolean,
+    ReputationImpact: number,
+    LastVAFlightDate: string,
 }
 
 export interface ShareHolder extends Member {

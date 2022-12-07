@@ -1,14 +1,20 @@
-import { BalanceSheet } from '../types';
-import onAirRequest, { BalanceSheetResponse } from './onAirRequest';
+import { BalanceSheet, GetCompanyBalanceSheet, } from '../types';1;
+import onAirRequest, { BalanceSheetApiResponse } from './onAirRequest';
+import { isValidGuid } from '../utils';
 
 const endPoint = 'company/';
 
-export const getCompanyBalanceSheet = async (companyId: string, apiKey: string) => {
+export const getCompanyBalanceSheet:GetCompanyBalanceSheet = async (companyId: string, apiKey: string) => {
+    if (!companyId) throw new Error('No Company Id provided');
+    if (!apiKey) throw new Error('No Api Key provided');
+    if (!isValidGuid(companyId)) throw new Error('Invalid Company Id provided');
+    if (!isValidGuid(apiKey)) throw new Error('Invalid Api Key provided');
 
     try {
-        const response = await onAirRequest<BalanceSheetResponse>(
+
+        const response = await onAirRequest<BalanceSheetApiResponse>(
             `https://server1.onair.company/api/v1/${endPoint}${companyId}/balancesheet`,
-            apiKey
+            apiKey,
         );
 
         if (typeof response.data.Content !== 'undefined') {

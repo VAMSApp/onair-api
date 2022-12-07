@@ -1,16 +1,20 @@
-import onAirRequest, { FlightResponse } from './onAirRequest';
-import { Flight } from '../types';
-import { uuid4 } from '../utils';
+import onAirRequest, { FlightApiResponse } from './onAirRequest';
+import { Flight, GetFlight, } from '../types';
+import { isValidGuid } from '../utils';
 
-export const getFlight = async (flightId: string, apiKey: string): Promise<Flight> => {
-    if (!uuid4.test(flightId) ) {
-        throw new Error('Flight ID is incorrect! It should be a 36 character UUID');
-    }
+const endPoint = 'flights/';
+export const getFlight:GetFlight = async (flightId: string, apiKey: string) => {
+    if (!flightId) throw new Error('No Flight Id provided');
+    if (!apiKey) throw new Error('No Api Key provided');
+    if (!isValidGuid(flightId)) throw new Error('Invalid Flight Id provided');
+    if (!isValidGuid(apiKey)) throw new Error('Invalid Api Key provided');
+
 
     try {
-        const response = await onAirRequest<FlightResponse>(
-            `https://server1.onair.company/api/v1/flights/${flightId}`,
-            apiKey
+
+        const response = await onAirRequest<FlightApiResponse>(
+            `https://server1.onair.company/api/v1/${endPoint}${flightId}`,
+            apiKey,
         );
 
         if (typeof response.data.Content !== 'undefined') {

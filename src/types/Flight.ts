@@ -34,6 +34,7 @@ export interface FlightTrack {
     MissionId: string,
     FlightId: string,
 }
+
 export interface Flight {
   Id: string,
   AircraftAddonId: string,
@@ -53,6 +54,7 @@ export interface Flight {
   Category: number,
   ResultComments: string,
   StartTime: string,
+  EndTime?: string,
   EngineOnTime: string,
   EngineOffTime: string,
   AirborneTime: string,

@@ -1,13 +1,21 @@
-import { WorkOrder, } from '../types';
-import onAirRequest, { WorkOrderResponse } from './onAirRequest';
+import { GetCompanyWorkOrders, WorkOrder, } from '../types';
+import onAirRequest, { WorkOrderApiResponse } from './onAirRequest';
+import { isValidGuid } from '../utils';
 
+const endPoint = 'company/';
 
-export const getCompanyWorkOrders = async (companyId: string, apiKey: string) => {
+export const getCompanyWorkOrders:GetCompanyWorkOrders = async (companyId: string, apiKey: string) => {
+    if (!companyId) throw new Error('No Company Id provided');
+    if (!apiKey) throw new Error('No Api Key provided');
+    if (!isValidGuid(companyId)) throw new Error('Invalid Company Id provided');
+    if (!isValidGuid(apiKey)) throw new Error('Invalid Api Key provided');
+
 
     try {
-        const response = await onAirRequest<WorkOrderResponse>(
-            `https://server1.onair.company/api/v1/company/${companyId}/workorders`,
-            apiKey
+
+        const response = await onAirRequest<WorkOrderApiResponse>(
+            `https://server1.onair.company/api/v1/${endPoint}${companyId}/workorders`,
+            apiKey,
         );
 
         if (typeof response.data.Content !== 'undefined') {

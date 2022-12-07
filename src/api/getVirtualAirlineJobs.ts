@@ -1,13 +1,20 @@
-import { Job } from '../types';
-import onAirRequest, { VirtualAirlineJobResponse } from './onAirRequest';
+import { GetVirtualAirlineJobs, Job } from '../types';
+import onAirRequest, { VirtualAirlineJobApiResponse } from './onAirRequest';
+import { isValidGuid } from '../utils';
 
 const endPoint = 'company/';
 
-export const getVirtualAirlineJobs = async (vaId: string, apiKey: string) => {
+export const getVirtualAirlineJobs:GetVirtualAirlineJobs = async (vaId: string, apiKey: string) => {
+    if (!vaId) throw new Error('No VA Id provided');
+    if (!apiKey) throw new Error('No Api Key provided');
+    if (!isValidGuid(vaId)) throw new Error('Invalid VA Id provided');
+    if (!isValidGuid(apiKey)) throw new Error('Invalid Api Key provided');
+
     try {
-        const response = await onAirRequest<VirtualAirlineJobResponse>(
+
+        const response = await onAirRequest<VirtualAirlineJobApiResponse>(
             `https://server1.onair.company/api/v1/${endPoint}${vaId}/jobs/pending`,
-            apiKey
+            apiKey,
         );
 
         if (typeof response.data.Content !== 'undefined') {

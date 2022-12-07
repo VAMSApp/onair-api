@@ -1,13 +1,20 @@
-import { Notification } from '../types';
-import onAirRequest, { VirtualAirlineNotificationResponse } from './onAirRequest';
+import { GetVirtualAirlineNotifications, Notification } from '../types';
+import onAirRequest, { VirtualAirlineNotificationApiResponse } from './onAirRequest';
+import { isValidGuid } from '../utils';
 
 const endPoint = 'company/';
 
-export const getVirtualAirlineNotifications = async (vaId: string, apiKey: string) => {
+export const getVirtualAirlineNotifications:GetVirtualAirlineNotifications = async (vaId: string, apiKey: string) => {
+    if (!vaId) throw new Error('No VA Id provided');
+    if (!apiKey) throw new Error('No Api Key provided');
+    if (!isValidGuid(vaId)) throw new Error('Invalid VA Id provided');
+    if (!isValidGuid(apiKey)) throw new Error('Invalid Api Key provided');
+
     try {
-        const response = await onAirRequest<VirtualAirlineNotificationResponse>(
+
+        const response = await onAirRequest<VirtualAirlineNotificationApiResponse>(
             `https://server1.onair.company/api/v1/${endPoint}${vaId}/notifications`,
-            apiKey
+            apiKey,
         );
 
         if (typeof response.data.Content !== 'undefined') {
@@ -16,6 +23,7 @@ export const getVirtualAirlineNotifications = async (vaId: string, apiKey: strin
             throw new Error(response.data.Error ? response.data.Error : `VA Id "${vaId}"" not found`);
         }
     } catch (e) {
-        throw new Error(e.response.status === 400 ? `VA Id "${vaId}" not found` : e.message);
+        console.error(`OnAirApi::getVirtualAirlineNotifications() Error getting notifications for VA Id "${vaId}"`, e);
+        throw e;
     }
 };

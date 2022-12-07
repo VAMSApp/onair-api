@@ -1,4 +1,4 @@
-import { Crew, Company, Aircraft, Charter } from '.';
+import { Crew, Company, Aircraft, Charter, } from '.';
 
 export interface WorkOrder {
     Id: string,

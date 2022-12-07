@@ -1,4 +1,4 @@
-import { Airport } from './Airport';
+import { Airport, Aircraft, Member, } from '.';
 
 export interface CharterType {
     Id: string,
@@ -13,8 +13,11 @@ export interface Charter {
     MissionId: string,
     CharterTypeId: string,
     CharterType: CharterType,
-    CurrentAirportId: string,
-    CurrentAirport: Airport,
+    CurrentAircraftId?: string;
+    CurrentAircraft?: Aircraft;
+    CurrentAirportId?: string;
+    CurrentAirport?: Airport;
+    AssignedToVAMember?: Member;
     PassengersNumber: number,
     DepartureAirportId: string,
     DepartureAirport: Airport,

@@ -1,13 +1,20 @@
-import { Fbo } from '../types';
-import onAirRequest, { FboResponse } from './onAirRequest';
+import { Fbo, GetCompanyFbos, } from '../types';1;
+import onAirRequest, { FboApiResponse } from './onAirRequest';
+import { isValidGuid } from '../utils';
 
 const endPoint = 'company/';
 
-export const getCompanyFbos = async (companyId: string, apiKey: string) => {
+export const getCompanyFbos:GetCompanyFbos = async (companyId: string, apiKey: string) => {
+    if (!companyId) throw new Error('No Company Id provided');
+    if (!apiKey) throw new Error('No Api Key provided');
+    if (!isValidGuid(companyId)) throw new Error('Invalid Company Id provided');
+    if (!isValidGuid(apiKey)) throw new Error('Invalid Api Key provided');
+
     try {
-        const response = await onAirRequest<FboResponse>(
+
+        const response = await onAirRequest<FboApiResponse>(
             `https://server1.onair.company/api/v1/${endPoint}${companyId}/fbos`,
-            apiKey
+            apiKey,
         );
 
         if (typeof response.data.Content !== 'undefined') {

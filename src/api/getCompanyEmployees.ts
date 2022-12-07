@@ -1,13 +1,20 @@
-import { People } from '../types';
-import onAirRequest, { PeopleResponse } from './onAirRequest';
+import { GetCompanyEmployees, People } from '../types';
+import onAirRequest, { PeopleApiResponse } from './onAirRequest';
+import { isValidGuid } from '../utils';
 
 const endPoint = 'company/';
 
-export const getCompanyEmployees = async (companyId: string, apiKey: string) => {
+export const getCompanyEmployees:GetCompanyEmployees = async (companyId: string, apiKey: string) => {
+    if (!companyId) throw new Error('No Company Id provided');
+    if (!apiKey) throw new Error('No Api Key provided');
+    if (!isValidGuid(companyId)) throw new Error('Invalid Company Id provided');
+    if (!isValidGuid(apiKey)) throw new Error('Invalid Api Key provided');
+
     try {
-        const response = await onAirRequest<PeopleResponse>(
+
+        const response = await onAirRequest<PeopleApiResponse>(
             `https://server1.onair.company/api/v1/${endPoint}${companyId}/employees`,
-            apiKey
+            apiKey,
         );
 
         if (typeof response.data.Content !== 'undefined') {

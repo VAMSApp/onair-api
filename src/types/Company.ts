@@ -1,3 +1,5 @@
+
+
 export interface Company {
   Id: string,
   WorldId: string,

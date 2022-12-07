@@ -1,4 +1,4 @@
-import { CashFlowEntry } from '.';
+import { CashFlowEntry, } from '.';
 
 export interface ISCashFlowEntry extends CashFlowEntry {
     Id: string,

@@ -17,7 +17,8 @@
         "postversion": "git push && git push --tags",
         "lint": "eslint src --ext .ts",
         "lintFix": "eslint src --ext .ts --fix",
-        "test": "mocha --timeout 10000 --require ts-node/register src/*.spec.ts src/**/*.spec.ts"
+        "test": "clear && mocha --timeout 10000 --require ts-node/register src/*.spec.ts src/**/*.spec.ts",
+        "test:watch": "mocha -w --timeout 10000 --require ts-node/register src/*.spec.ts src/**/*.spec.ts"
     },
     "author": {
         "name": "Mike DeVita",
@@ -35,10 +36,14 @@
     },
     "license": "MIT",
     "dependencies": {
+        "@types/uuid": "^9.0.0",
         "async": "^3.2.4",
         "axios": "^0.24.0",
+        "chalk": "^4.1.2",
         "dotenv": "^14.1.0",
-        "module-alias": "^2.2.2"
+        "module-alias": "^2.2.2",
+        "uuid": "^9.0.0",
+        "winston": "^3.8.2"
     },
     "devDependencies": {
         "@types/async": "^3.2.15",
