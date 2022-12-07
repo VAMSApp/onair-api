@@ -22,7 +22,34 @@ import {
     IOnAirApi,
     EmployeesResponse,
 } from './types';
-import { getCompany, getCompanyFleet, getCompanyFbos, getCompanyFlights, getCompanyJobs, getCompanyEmployees, getCompanyCashFlow, getCompanyIncomeStatement, getCompanyBalanceSheet, getCompanyMissionFlightTracks, getCompanyWorkOrders, getAircraft, getAircraftFlights, getAirport, getFlight, getVirtualAirline, getVirtualAirlineMembers, getVirtualAirlineShareHolders, getVirtualAirlineRoles, getVirtualAirlineFlights, getVirtualAirlineFleet, getVirtualAirlineJobs, getVirtualAirlineFbos, getVirtualAirlineNotifications, getEmployee } from './api';
+import {
+    getCompany,
+    getCompanyFleet,
+    getCompanyFbos,
+    getCompanyFlights,
+    getCompanyJobs,
+    getCompanyEmployees,
+    getCompanyCashFlow,
+    getCompanyIncomeStatement,
+    getCompanyBalanceSheet,
+    getCompanyMissionFlightTracks,
+    getCompanyWorkOrders,
+    getAircraft,
+    getAircraftFlights,
+    getAirport,
+    getFlight,
+    getVirtualAirline,
+    getVirtualAirlineMembers,
+    getVirtualAirlineShareHolders,
+    getVirtualAirlineRoles,
+    getVirtualAirlineFlights,
+    getVirtualAirlineFleet,
+    getVirtualAirlineJobs,
+    getVirtualAirlineFbos,
+    getVirtualAirlineNotifications,
+    getVirtualAirlineIncomeStatement,
+    getEmployee
+} from './api';
 import { isValidGuid } from './utils';
 export * from './types';
 
@@ -75,6 +102,8 @@ export class OnAirApi implements IOnAirApi {
         this.getVirtualAirlineJobs = this.getVirtualAirlineJobs.bind(this);
         this.getVirtualAirlineFbos = this.getVirtualAirlineFbos.bind(this);
         this.getVirtualAirlineNotifications = this.getVirtualAirlineNotifications.bind(this);
+        this.getVirtualAirlineIncomeStatement = this.getVirtualAirlineIncomeStatement.bind(this);
+
         this.getEmployee = this.getEmployee.bind(this);
         this.isValidGuid = this.isValidGuid.bind(this);
     }
@@ -311,6 +340,26 @@ export class OnAirApi implements IOnAirApi {
 
         const vaNotiifcations: NotificationsResponse = await getVirtualAirlineNotifications(vaId, this.ApiKey);
         return vaNotiifcations;
+    }
+
+    public async getVirtualAirlineIncomeStatement(vaId?:string, startDate?: string | undefined, endDate?: string | undefined):Promise<IncomeStatementResponse> {
+        if (!vaId) vaId = this.VaId;
+        if (!vaId) throw new Error('No VA Id provided');
+        if (!this.isValidGuid(vaId)) throw new Error('Invalid VA Id provided');
+
+        if (!startDate) {
+            const currentDate = new Date();
+            const priorDate = new Date().setDate(currentDate.getDate() - 30);
+            startDate = new Date(priorDate).toISOString();
+        }
+
+        if (!endDate) {
+            endDate = new Date().toISOString();
+        }
+
+        const incomeStatement: IncomeStatementResponse = await getVirtualAirlineIncomeStatement(startDate, endDate, vaId, this.ApiKey);
+
+        return incomeStatement;
     }
 
     public async getEmployee(employeeId:string): Promise<EmployeeResponse> {

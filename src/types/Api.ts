@@ -80,6 +80,7 @@ export type GetVirtualAirlineFleet = (vaId: string, apiKey: string) => Promise<F
 export type GetVirtualAirlineJobs = (vaId: string, apiKey: string) => Promise<JobsResponse>;
 export type GetVirtualAirlineFbos = (vaId: string, apiKey: string) => Promise<FbosResponse>;
 export type GetVirtualAirlineNotifications = (vaId: string, apiKey: string) => Promise<NotificationsResponse>;
+export type GetVirtualAirlineIncomeStatement = (vaId: string, apiKey: string, startDate?: string, endDate?: string) => Promise<IncomeStatementResponse>;
 export type GetEmployee = (employeeId: string, apiKey: string) => Promise<EmployeeResponse>;
 
 export interface IOnAirApi {
@@ -108,6 +109,7 @@ export interface IOnAirApi {
     getVirtualAirlineJobs: (vaId?:string) => Promise<JobsResponse>
     getVirtualAirlineFbos: (vaId?:string) => Promise<FbosResponse>
     getVirtualAirlineNotifications: (vaId?:string) => Promise<NotificationsResponse>
+    getVirtualAirlineIncomeStatement: (vaId?:string, startDate?: string | undefined, endDate?: string | undefined) => Promise<IncomeStatementResponse>
     getEmployee: (employeeId:string) => Promise<EmployeeResponse>
 }
 

@@ -22,4 +22,5 @@ export * from './getVirtualAirlineFleet';
 export * from './getVirtualAirlineJobs';
 export * from './getVirtualAirlineFbos';
 export * from './getVirtualAirlineNotifications';
+export * from './getVirtualAirlineIncomeStatement';
 export * from './getEmployee';
