@@ -61,6 +61,7 @@ let company = await Api.getCompany();
 - [getVirtualAirlineFleet](#getVirtualAirlineFleet)
 - [getVirtualAirlineJobs](#getVirtualAirlineJobs)
 - [getVirtualAirlineNotifications](#getVirtualAirlineNotifications)
+- [getVirtualAirlineIncomeStatement](#getvirtualairlineincomestatementstartdate-string-enddate-string)
 - [getEmployee](#getemployeeemployeeid-string)
 
 ### [getCompany(companyId?:string)](src/api/getCompany.ts)
@@ -251,6 +252,7 @@ let companyIncomeStatement2: IncomeStatement = await api.getCompanyIncomeStateme
 
 #### Example Response
  - [getCompanyIncomeStatement.md](docs/responses/getCompanyIncomeStatement.md)
+
 
 ### [getCompanyBalanceSheet()](src/api/getCompanyBalanceSheet.ts)
 Fetches the company's current balance sheet. Which provides a current snapshot of the financial status of a company.
@@ -553,6 +555,35 @@ let vaNotifications: Notification[] = await api.getVirtualAirlineNotifications()
  - [getVirtualAirlineNotifications.md](docs/responses/getVirtualAirlineNotifications.md)
 
 
+
+
+### [getVirtualAirlineIncomeStatement(vaId?:string, startDate?:string|undefined, endDate?:string|undefined)](src/api/getVirtualAirlineIncomeStatement.ts)
+Fetches the income statement within a given range for a given vaId.
+If no startDate or endDate is provided it will return the last 30 days. If either startDate or endDate is provided, it will return the last 30 days from the provided date.
+
+#### Usage
+```typescript
+import OnAirApi, { IncomeStatement, OnAirApiConfig, } from 'onair-api'
+
+const apiConfig: OnAirApiConfig = {
+  apiKey: 'YOUR-API-KEY',
+  companyId: 'YOUR-COMPANY-ID',
+  vaId: 'YOUR-VA-ID'
+};
+
+const api: Api = new OnAirApi(apiConfig);
+// no startDate or endDate provided, returns the last 30 days
+let virtualAirlineIncomeStatement: IncomeStatement = await api.getVirtualAirlineIncomeStatement();
+// or
+// providing a startDate and endDate
+const startDate = '2021-12-01T00:00:00';
+const endDate = '2022-01-30T02:58:39.104Z';
+
+let virtualAirlineIncomeStatement2: IncomeStatement = await api.getVirtualAirlineIncomeStatement(startDate, endDate)
+```
+
+#### Example Response
+ - [getVirtualAirlineIncomeStatement.md](docs/responses/getVirtualAirlineIncomeStatement.md)
 
 
 ### [getEmployee(employeeId: string)](src/api/getEmployee.ts)

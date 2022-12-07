@@ -20,8 +20,16 @@ function addDays(dateStr:string = new Date().toISOString(), days:number = 30):Da
 export const getVirtualAirlineIncomeStatement:GetVirtualAirlineIncomeStatement = async (vaId: string, apiKey: string, startDate?: string, endDate?: string) => {
     if (!vaId) throw new Error('No VA Id provided');
     if (!apiKey) throw new Error('No Api Key provided');
-    if (!isValidGuid(vaId)) throw new Error('Invalid VA Id provided');
-    if (!isValidGuid(apiKey)) throw new Error('Invalid Api Key provided');
+    if (!isValidGuid(vaId)) {
+        const err = `Invalid VA Id provided: ${vaId}`
+        console.error(err);
+        throw new Error(err);
+    }
+    if (!isValidGuid(apiKey)) {
+        const err = 'Invalid Api Key provided'
+        console.error(err);
+        throw new Error(err);
+    }
     try {
         const currentDate:Date = new Date();
         const currentDateStr:string = currentDate.toISOString();

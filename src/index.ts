@@ -357,7 +357,7 @@ export class OnAirApi implements IOnAirApi {
             endDate = new Date().toISOString();
         }
 
-        const incomeStatement: IncomeStatementResponse = await getVirtualAirlineIncomeStatement(startDate, endDate, vaId, this.ApiKey);
+        const incomeStatement: IncomeStatementResponse = await getVirtualAirlineIncomeStatement(vaId, this.ApiKey);
 
         return incomeStatement;
     }

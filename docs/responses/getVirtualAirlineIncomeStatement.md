@@ -1,11 +1,11 @@
-## getVirtualAirlineNotifications()
+## getVirtualAirlineIncomeStatement()
 
 
 ### response
 ```javascript
 {
-  "StartDate": "2022-12-07T22:49:34.155Z",
-  "EndDate": "2022-11-07T22:49:34.155Z",
+  "StartDate": "2022-12-07T22:54:33.744Z",
+  "EndDate": "2022-11-07T22:54:33.744Z",
   "Content": {
     "REVAccounts": [
       {
