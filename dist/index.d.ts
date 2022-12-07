@@ -1,0 +1,36 @@
+import { OnAirApiConfig, CompanyResponse, FleetResponse, FbosResponse, FlightsResponse, JobsResponse, EmployeeResponse, CashFlowResponse, BalanceSheetResponse, IncomeStatementResponse, WorkOrdersResponse, AirportResponse, FlightResponse, NotificationsResponse, VirtualAirlineResponse, MembersResponse, ShareHoldersResponse, VARolesResponse, MissionFlightTracksResponse, AircraftResponse, IOnAirApi, EmployeesResponse } from './types';
+export * from './types';
+export declare class OnAirApi implements IOnAirApi {
+    private ApiKey;
+    private CompanyId;
+    private VaId?;
+    constructor(config: OnAirApiConfig);
+    isValidGuid(guid: string): boolean;
+    getCompany(companyId?: string): Promise<CompanyResponse>;
+    getCompanyFleet(companyId?: string): Promise<FleetResponse>;
+    getCompanyFbos(companyId?: string): Promise<FbosResponse>;
+    getCompanyFlights(companyId?: string, page?: number, limit?: number): Promise<FlightsResponse>;
+    getCompanyJobs(companyId?: string, completed?: boolean): Promise<JobsResponse>;
+    getCompanyEmployees(companyId?: string): Promise<EmployeesResponse>;
+    getCompanyCashFlow(companyId?: string): Promise<CashFlowResponse>;
+    getCompanyIncomeStatement(companyId?: string, startDate?: string | undefined, endDate?: string | undefined): Promise<IncomeStatementResponse>;
+    getCompanyBalanceSheet(companyId?: string): Promise<BalanceSheetResponse>;
+    getCompanyMissionFlightTracks(companyId?: string): Promise<MissionFlightTracksResponse>;
+    getCompanyWorkOrders(companyId?: string): Promise<WorkOrdersResponse>;
+    getAircraft(aircraftId: string): Promise<AircraftResponse>;
+    getAircraftFlights(aircraftId: string, page?: number, limit?: number): Promise<FlightsResponse>;
+    getAirport(airportCode: string): Promise<AirportResponse>;
+    getFlight(flightId: string): Promise<FlightResponse>;
+    getVirtualAirline(vaId?: string): Promise<VirtualAirlineResponse>;
+    getVirtualAirlineMembers(vaId?: string): Promise<MembersResponse>;
+    getVirtualAirlineShareHolders(vaId?: string): Promise<ShareHoldersResponse>;
+    getVirtualAirlineRoles(vaId?: string): Promise<VARolesResponse>;
+    getVirtualAirlineFlights(vaId?: string, page?: number, limit?: number): Promise<FlightsResponse>;
+    getVirtualAirlineFleet(vaId?: string): Promise<FleetResponse>;
+    getVirtualAirlineJobs(vaId?: string): Promise<JobsResponse>;
+    getVirtualAirlineFbos(vaId?: string): Promise<FbosResponse>;
+    getVirtualAirlineNotifications(vaId?: string): Promise<NotificationsResponse>;
+    getVirtualAirlineIncomeStatement(vaId?: string, startDate?: string | undefined, endDate?: string | undefined): Promise<IncomeStatementResponse>;
+    getEmployee(employeeId: string): Promise<EmployeeResponse>;
+}
+export default OnAirApi;
