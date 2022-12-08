@@ -1,5 +1,7 @@
-import { OnAirApiConfig, CompanyResponse, FleetResponse, FbosResponse, FlightsResponse, JobsResponse, EmployeeResponse, CashFlowResponse, BalanceSheetResponse, IncomeStatementResponse, WorkOrdersResponse, AirportResponse, FlightResponse, NotificationsResponse, VirtualAirlineResponse, MembersResponse, ShareHoldersResponse, VARolesResponse, MissionFlightTracksResponse, AircraftResponse, IOnAirApi, EmployeesResponse } from './types';
+import { OnAirApiConfig, CompanyResponse, FleetResponse, FbosResponse, FlightsResponse, JobsResponse, EmployeeResponse, CashFlowResponse, BalanceSheetResponse, IncomeStatementResponse, WorkOrdersResponse, AirportResponse, FlightResponse, VirtualAirlineResponse, MembersResponse, ShareHoldersResponse, VARolesResponse, MissionFlightTracksResponse, AircraftResponse, EmployeesResponse, Notification } from './types';
+import { IOnAirApi } from './interfaces';
 export * from './types';
+export * from './interfaces';
 export declare class OnAirApi implements IOnAirApi {
     private ApiKey;
     private CompanyId;
@@ -17,6 +19,7 @@ export declare class OnAirApi implements IOnAirApi {
     getCompanyBalanceSheet(companyId?: string): Promise<BalanceSheetResponse>;
     getCompanyMissionFlightTracks(companyId?: string): Promise<MissionFlightTracksResponse>;
     getCompanyWorkOrders(companyId?: string): Promise<WorkOrdersResponse>;
+    getCompanyNotifications(companyId?: string): Promise<Notification[]>;
     getAircraft(aircraftId: string): Promise<AircraftResponse>;
     getAircraftFlights(aircraftId: string, page?: number, limit?: number): Promise<FlightsResponse>;
     getAirport(airportCode: string): Promise<AirportResponse>;
@@ -29,7 +32,7 @@ export declare class OnAirApi implements IOnAirApi {
     getVirtualAirlineFleet(vaId?: string): Promise<FleetResponse>;
     getVirtualAirlineJobs(vaId?: string): Promise<JobsResponse>;
     getVirtualAirlineFbos(vaId?: string): Promise<FbosResponse>;
-    getVirtualAirlineNotifications(vaId?: string): Promise<NotificationsResponse>;
+    getVirtualAirlineNotifications(vaId?: string): Promise<Notification[]>;
     getVirtualAirlineIncomeStatement(vaId?: string, startDate?: string | undefined, endDate?: string | undefined): Promise<IncomeStatementResponse>;
     getEmployee(employeeId: string): Promise<EmployeeResponse>;
 }

@@ -21,7 +21,6 @@ import {
     MemberResponse,
     MembersResponse,
     NotificationResponse,
-    NotificationsResponse,
     EmployeeResponse,
     ShareHolder,
     VARoleResponse,

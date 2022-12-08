@@ -1,4 +1,4 @@
-import { VirtualAirline, Flight, Aircraft, Airport, Fbo, Company, Job, BalanceSheet, CashFlow, IncomeStatement, Member, Notification, People, ShareHolder, WorkOrder, VARole, FlightTrack } from './';
+import { VirtualAirline, Flight, Aircraft, Airport, Fbo, Company, Job, BalanceSheet, CashFlow, IncomeStatement, Member, Notification, People, ShareHolder, WorkOrder, VARole, FlightTrack, AircraftType, AircraftClass, AircraftEngine } from './';
 export declare type IncomeStatementResponse = {
     StartDate: string;
     EndDate: string;
@@ -9,6 +9,10 @@ export declare type VirtualAirlineResponse = VirtualAirline | null;
 export declare type FlightResponse = Flight | null;
 export declare type FlightsResponse = Flight[];
 export declare type AircraftResponse = Aircraft | null;
+export declare type AircraftEngineResponse = AircraftEngine | null;
+export declare type AircraftEnginesResponse = AircraftEngine[];
+export declare type AircraftTypeResponse = AircraftType;
+export declare type AircraftClassResponse = AircraftClass;
 export declare type FleetResponse = Aircraft[];
 export declare type AirportResponse = Airport | null;
 export declare type AirportsResponse = Airport[];
@@ -24,8 +28,7 @@ export declare type MemberResponse = Member | null;
 export declare type MembersResponse = Member[];
 export declare type FlightTrackResponse = FlightTrack | null;
 export declare type FlightTracksResponse = FlightTrack[];
-export declare type NotificationResponse = Notification | null;
-export declare type NotificationsResponse = Notification[];
+export declare type NotificationResponse = Notification | Notification[] | null;
 export declare type EmployeeResponse = People | null;
 export declare type EmployeesResponse = People[];
 export declare type ShareHolderResponse = ShareHolder | null;
@@ -48,6 +51,7 @@ export declare type GetCompanyBalanceSheet = (companyId: string, apiKey: string)
 export declare type GetCompanyWorkOrders = (companyId: string, apiKey: string) => Promise<WorkOrdersResponse>;
 export declare type GetCompanyMissionFlightTracks = (companyId: string, apiKey: string) => Promise<MissionFlightTracksResponse>;
 export declare type GetCompany = (companyId: string, apiKey: string) => Promise<CompanyResponse>;
+export declare type GetCompanyNotifications = (vaId: string, apiKey: string) => Promise<Notification[]>;
 export declare type GetFlight = (flightId: string, apiKey: string) => Promise<FlightResponse>;
 export declare type GetVirtualAirlineMembers = (vaId: string, apiKey: string) => Promise<MembersResponse>;
 export declare type GetVirtualAirline = (vaId: string, apiKey: string) => Promise<VirtualAirlineResponse>;
@@ -57,45 +61,16 @@ export declare type GetVirtualAirlineFlights = (vaId: string, apiKey: string, pa
 export declare type GetVirtualAirlineFleet = (vaId: string, apiKey: string) => Promise<FleetResponse>;
 export declare type GetVirtualAirlineJobs = (vaId: string, apiKey: string) => Promise<JobsResponse>;
 export declare type GetVirtualAirlineFbos = (vaId: string, apiKey: string) => Promise<FbosResponse>;
-export declare type GetVirtualAirlineNotifications = (vaId: string, apiKey: string) => Promise<NotificationsResponse>;
+export declare type GetVirtualAirlineNotifications = (vaId: string, apiKey: string) => Promise<Notification[]>;
 export declare type GetVirtualAirlineIncomeStatement = (vaId: string, apiKey: string, startDate?: string, endDate?: string) => Promise<IncomeStatementResponse>;
 export declare type GetEmployee = (employeeId: string, apiKey: string) => Promise<EmployeeResponse>;
-export interface IOnAirApi {
-    isValidGuid(guid: string): boolean;
-    getCompany: (companyId?: string) => Promise<CompanyResponse>;
-    getCompanyFleet: (companyId?: string) => Promise<FleetResponse>;
-    getCompanyFbos: (companyId?: string) => Promise<FbosResponse>;
-    getCompanyFlights: (companyId?: string, page?: number, limit?: number) => Promise<FlightsResponse>;
-    getCompanyJobs: (companyId?: string, completed?: boolean) => Promise<JobsResponse>;
-    getCompanyEmployees: (companyId?: string) => Promise<EmployeesResponse>;
-    getCompanyCashFlow: (companyId?: string) => Promise<CashFlowResponse>;
-    getCompanyIncomeStatement: (companyId?: string, startDate?: string | undefined, endDate?: string | undefined) => Promise<IncomeStatementResponse>;
-    getCompanyBalanceSheet: (companyId?: string) => Promise<BalanceSheetResponse>;
-    getCompanyMissionFlightTracks: (companyId?: string) => Promise<MissionFlightTracksResponse>;
-    getCompanyWorkOrders: (companyId?: string) => Promise<WorkOrdersResponse>;
-    getAircraft: (aircraftId: string) => Promise<AircraftResponse>;
-    getAircraftFlights: (aircraftId: string, page?: number, limit?: number) => Promise<FlightsResponse>;
-    getAirport: (airportCode: string) => Promise<AirportResponse>;
-    getFlight: (flightId: string) => Promise<FlightResponse>;
-    getVirtualAirline: (vaId?: string) => Promise<VirtualAirlineResponse>;
-    getVirtualAirlineMembers: (vaId?: string) => Promise<MembersResponse>;
-    getVirtualAirlineShareHolders: (vaId?: string) => Promise<ShareHoldersResponse>;
-    getVirtualAirlineRoles: (vaId?: string) => Promise<VARolesResponse>;
-    getVirtualAirlineFlights: (vaId?: string, page?: number, limit?: number) => Promise<FlightsResponse>;
-    getVirtualAirlineFleet: (vaId?: string) => Promise<FleetResponse>;
-    getVirtualAirlineJobs: (vaId?: string) => Promise<JobsResponse>;
-    getVirtualAirlineFbos: (vaId?: string) => Promise<FbosResponse>;
-    getVirtualAirlineNotifications: (vaId?: string) => Promise<NotificationsResponse>;
-    getVirtualAirlineIncomeStatement: (vaId?: string, startDate?: string | undefined, endDate?: string | undefined) => Promise<IncomeStatementResponse>;
-    getEmployee: (employeeId: string) => Promise<EmployeeResponse>;
-}
-export interface OnAirApiConfigOptions {
+export declare type OnAirApiConfigOptions = {
     logLevel: string;
     logConsole?: boolean;
-}
-export interface OnAirApiConfig {
+};
+export declare type OnAirApiConfig = {
     apiKey: string;
     companyId?: string | undefined;
     vaId?: string | undefined;
     options?: OnAirApiConfigOptions;
-}
+};

@@ -58,7 +58,7 @@ function addDays(dateStr, days) {
     return result;
 }
 var getVirtualAirlineIncomeStatement = function (vaId, apiKey, startDate, endDate) { return __awaiter(void 0, void 0, void 0, function () {
-    var err, err, currentDate, currentDateStr, StartDateStr, EndDateStr, url, oaResponse, response, e_1;
+    var currentDate, currentDateStr, StartDateStr, EndDateStr, url, oaResponse, response, err_1, msg, errorMessage;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
@@ -66,16 +66,10 @@ var getVirtualAirlineIncomeStatement = function (vaId, apiKey, startDate, endDat
                     throw new Error('No VA Id provided');
                 if (!apiKey)
                     throw new Error('No Api Key provided');
-                if (!(0, utils_1.isValidGuid)(vaId)) {
-                    err = "Invalid VA Id provided: ".concat(vaId);
-                    console.error(err);
-                    throw new Error(err);
-                }
-                if (!(0, utils_1.isValidGuid)(apiKey)) {
-                    err = 'Invalid Api Key provided';
-                    console.error(err);
-                    throw new Error(err);
-                }
+                if (!(0, utils_1.isValidGuid)(vaId))
+                    throw new Error("Invalid VA Id provided. VAId: '".concat(vaId, "'"));
+                if (!(0, utils_1.isValidGuid)(apiKey))
+                    throw new Error("Invalid Api Key provided. ApiKey: '".concat(apiKey, "'"));
                 _a.label = 1;
             case 1:
                 _a.trys.push([1, 3, , 4]);
@@ -117,8 +111,14 @@ var getVirtualAirlineIncomeStatement = function (vaId, apiKey, startDate, endDat
                 };
                 return [2 /*return*/, response];
             case 3:
-                e_1 = _a.sent();
-                throw new Error(e_1.oaResponse.status === 400 ? "Company Id \"".concat(vaId, "\"\" not found") : e_1.message);
+                err_1 = _a.sent();
+                msg = "OnAirApi::getVirtualAirlineIncomeStatement() Error getting income statement for VA Id '".concat(vaId, "'.");
+                if (err_1) {
+                    errorMessage = err_1 instanceof Error ? err_1.message : err_1;
+                    msg += " Error: ".concat(errorMessage);
+                }
+                console.error(msg);
+                throw new Error(msg);
             case 4: return [2 /*return*/];
         }
     });

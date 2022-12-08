@@ -58,6 +58,7 @@ import {
 } from './api';
 import { isValidGuid } from './utils';
 export * from './types';
+export * from './interfaces';
 
 export class OnAirApi implements IOnAirApi {
     // Properties

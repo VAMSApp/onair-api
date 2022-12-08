@@ -1,7 +1,7 @@
 import { describe } from 'mocha';
 import { expect } from 'chai';
 import { getCompanyNotifications } from './getCompanyNotifications';
-import { NotificationsResponse, } from '../types';
+import { Notification, } from '../types';
 
 const {
     COMPANY_APIKEY,
@@ -20,7 +20,7 @@ describe('getCompanyNotifications', () => {
     });
 
     it('should return an array of the notification\'s for the given vaId', async () => {
-        const x:NotificationsResponse = await getCompanyNotifications(CompanyId, ApiKey);
+        const x:Notification[] = await getCompanyNotifications(CompanyId, ApiKey);
 
         expect(x).to.be.an('array');
         if (x.length > 0) {

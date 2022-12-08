@@ -9,6 +9,7 @@ export * from './getCompanyIncomeStatement';
 export * from './getCompanyBalanceSheet';
 export * from './getCompanyMissionFlightTracks';
 export * from './getCompanyWorkOrders';
+export * from './getCompanyNotifications';
 export * from './getAircraft';
 export * from './getAircraftFlights';
 export * from './getAirport';

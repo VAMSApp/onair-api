@@ -50,6 +50,7 @@ exports.OnAirApi = void 0;
 var api_1 = require("./api");
 var utils_1 = require("./utils");
 __exportStar(require("./types"), exports);
+__exportStar(require("./interfaces"), exports);
 var OnAirApi = /** @class */ (function () {
     // Constructor
     function OnAirApi(config) {
@@ -80,6 +81,7 @@ var OnAirApi = /** @class */ (function () {
         this.getCompanyBalanceSheet = this.getCompanyBalanceSheet.bind(this);
         this.getCompanyMissionFlightTracks = this.getCompanyMissionFlightTracks.bind(this);
         this.getCompanyWorkOrders = this.getCompanyWorkOrders.bind(this);
+        this.getCompanyNotifications = this.getCompanyNotifications.bind(this);
         this.getAircraft = this.getAircraft.bind(this);
         this.getAircraftFlights = this.getAircraftFlights.bind(this);
         this.getAirport = this.getAirport.bind(this);
@@ -331,6 +333,25 @@ var OnAirApi = /** @class */ (function () {
             });
         });
     };
+    OnAirApi.prototype.getCompanyNotifications = function (companyId) {
+        return __awaiter(this, void 0, void 0, function () {
+            var vaNotiifcations;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        companyId = companyId || this.CompanyId;
+                        if (!companyId)
+                            throw new Error('VA ID is not provided');
+                        if (!this.isValidGuid(companyId))
+                            throw new Error('Invalid VA ID provided');
+                        return [4 /*yield*/, (0, api_1.getCompanyNotifications)(companyId, this.ApiKey)];
+                    case 1:
+                        vaNotiifcations = _a.sent();
+                        return [2 /*return*/, vaNotiifcations];
+                }
+            });
+        });
+    };
     OnAirApi.prototype.getAircraft = function (aircraftId) {
         return __awaiter(this, void 0, void 0, function () {
             var aircraft;
@@ -561,7 +582,7 @@ var OnAirApi = /** @class */ (function () {
     };
     OnAirApi.prototype.getVirtualAirlineNotifications = function (vaId) {
         return __awaiter(this, void 0, void 0, function () {
-            var vaNotiifcations;
+            var vaNotifications;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
@@ -572,8 +593,8 @@ var OnAirApi = /** @class */ (function () {
                             throw new Error('Invalid VA ID provided');
                         return [4 /*yield*/, (0, api_1.getVirtualAirlineNotifications)(vaId, this.ApiKey)];
                     case 1:
-                        vaNotiifcations = _a.sent();
-                        return [2 /*return*/, vaNotiifcations];
+                        vaNotifications = _a.sent();
+                        return [2 /*return*/, vaNotifications];
                 }
             });
         });

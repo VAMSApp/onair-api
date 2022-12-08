@@ -74,7 +74,7 @@ var apiKey = COMPANY_APIKEY;
 var companyId = COMPANY_ID;
 var vaId = VIRTUAL_AIRLINE_ID;
 (0, mocha_1.describe)('OnAirApi()', function () {
-    it('when instantiated with valid data, it should return an OnAirApi object with the expected methods', function () {
+    it('when instantiated with valid data, it should return an OnAirApi object with the expected properties', function () {
         return __awaiter(this, void 0, void 0, function () {
             var api;
             return __generator(this, function (_a) {
@@ -100,6 +100,7 @@ var vaId = VIRTUAL_AIRLINE_ID;
                             'getCompanyJobs',
                             'getCompanyMissionFlightTracks',
                             'getCompanyWorkOrders',
+                            'getCompanyNotifications',
                             'getEmployee',
                             'getFlight',
                             'getVirtualAirline',
@@ -118,6 +119,20 @@ var vaId = VIRTUAL_AIRLINE_ID;
                     catch (e) {
                         console.log(e);
                     }
+                }
+                return [2 /*return*/];
+            });
+        });
+    });
+    it('when instantiated with invalid data, it should throw an error', function () {
+        return __awaiter(this, void 0, void 0, function () {
+            var api;
+            return __generator(this, function (_a) {
+                try {
+                    api = new index_1.default({ apiKey: '', companyId: '', vaId: '' });
+                }
+                catch (e) {
+                    (0, chai_1.expect)(e).to.be.an('Error');
                 }
                 return [2 /*return*/];
             });

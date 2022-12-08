@@ -21,6 +21,7 @@ __exportStar(require("./getCompanyIncomeStatement"), exports);
 __exportStar(require("./getCompanyBalanceSheet"), exports);
 __exportStar(require("./getCompanyMissionFlightTracks"), exports);
 __exportStar(require("./getCompanyWorkOrders"), exports);
+__exportStar(require("./getCompanyNotifications"), exports);
 __exportStar(require("./getAircraft"), exports);
 __exportStar(require("./getAircraftFlights"), exports);
 __exportStar(require("./getAirport"), exports);

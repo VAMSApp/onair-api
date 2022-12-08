@@ -117,38 +117,46 @@ var VaId = VIRTUAL_AIRLINE_ID;
         });
     }); });
     it('should throw an error if the provided VA Id is invalid', function () { return __awaiter(void 0, void 0, void 0, function () {
-        var e_1;
+        var vaId, ErrorMessage, e_1;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
-                    _a.trys.push([0, 2, , 3]);
-                    return [4 /*yield*/, (0, _1.getVirtualAirlineIncomeStatement)('invalidVaId', ApiKey)];
+                    vaId = 'invalidVaId';
+                    ErrorMessage = "Invalid VA Id provided. VAId: '".concat(vaId, "'");
+                    _a.label = 1;
                 case 1:
-                    _a.sent();
-                    return [3 /*break*/, 3];
+                    _a.trys.push([1, 3, , 4]);
+                    return [4 /*yield*/, (0, _1.getVirtualAirlineIncomeStatement)(vaId, ApiKey)];
                 case 2:
+                    _a.sent();
+                    return [3 /*break*/, 4];
+                case 3:
                     e_1 = _a.sent();
-                    (0, chai_1.expect)(e_1.message).to.equal('Invalid VA Id provided');
-                    return [3 /*break*/, 3];
-                case 3: return [2 /*return*/];
+                    (0, chai_1.expect)(e_1.message).to.equal(ErrorMessage);
+                    return [3 /*break*/, 4];
+                case 4: return [2 /*return*/];
             }
         });
     }); });
     it('should throw an error if the provided API Key is invalid', function () { return __awaiter(void 0, void 0, void 0, function () {
-        var e_2;
+        var apiKey, ErrorMessage, e_2;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
-                    _a.trys.push([0, 2, , 3]);
-                    return [4 /*yield*/, (0, _1.getVirtualAirlineIncomeStatement)(VaId, 'invalidApiKey')];
+                    apiKey = 'invalidApiKey';
+                    ErrorMessage = "Invalid Api Key provided. ApiKey: '".concat(apiKey, "'");
+                    _a.label = 1;
                 case 1:
-                    _a.sent();
-                    return [3 /*break*/, 3];
+                    _a.trys.push([1, 3, , 4]);
+                    return [4 /*yield*/, (0, _1.getVirtualAirlineIncomeStatement)(VaId, apiKey)];
                 case 2:
+                    _a.sent();
+                    return [3 /*break*/, 4];
+                case 3:
                     e_2 = _a.sent();
-                    (0, chai_1.expect)(e_2.message).to.equal('Invalid Api Key provided');
-                    return [3 /*break*/, 3];
-                case 3: return [2 /*return*/];
+                    (0, chai_1.expect)(e_2.message).to.equal(ErrorMessage);
+                    return [3 /*break*/, 4];
+                case 4: return [2 /*return*/];
             }
         });
     }); });

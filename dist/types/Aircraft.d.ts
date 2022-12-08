@@ -1,6 +1,15 @@
 import { Airport, Company } from '.';
 export declare const engineTypes: string[];
 export declare const aircraftStatuses: string[];
+export interface AircraftEngine {
+    Id: string;
+    AircraftId: string;
+    Number: number;
+    Condition: number;
+    MaxCondition: number;
+    EngineHours: number;
+    LastCheckup: string;
+}
 export interface AircraftStatus {
     Id: number;
     Name: string;
@@ -148,7 +157,7 @@ export interface Aircraft {
     LastParkingFeePayment: string;
     IsControlledByAI: boolean;
     HoursBefore100HInspection: number;
-    Engines: Record<string, unknown>[];
+    Engines: AircraftEngine[] | any;
     ConfigFirstSeats: number;
     ConfigBusSeats: number;
     ConfigEcoSeats: number;

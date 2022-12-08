@@ -93,7 +93,6 @@ var CompanyId = COMPANY_ID;
                             'IsLastMinute',
                             'IsFavorited',
                         ]);
-                        (0, chai_1.expect)(jobs[0].Id).to.equal('fe2f795f-36bd-4718-bfa0-4c01ae0a3fdb');
                     }
                     return [2 /*return*/];
             }

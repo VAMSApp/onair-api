@@ -63,7 +63,11 @@ export interface FlightTrackApiResponse extends OnAirApiResponse {
 export interface WorkOrderApiResponse extends OnAirApiResponse {
     Content: WorkOrder | WorkOrder[];
 }
-export interface VirtualAirlineNotificationApiResponse extends OnAirApiResponse {
+export interface VirtualAirlineNotificationApiResponse extends NotificationApiResponse {
+}
+export interface CompanyNotificationApiResponse extends NotificationApiResponse {
+}
+export interface NotificationApiResponse extends OnAirApiResponse {
     Content: Notification | Notification[];
 }
 declare const _default: <T>(url: string, apiKey: string, requestData?: Record<string, unknown> | undefined) => Promise<AxiosResponse<T, any>>;
