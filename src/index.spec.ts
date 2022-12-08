@@ -10,20 +10,25 @@ import {
     CashFlowResponse,
     CompanyResponse,
     EmployeesResponse,
-    Fbo,
+    FboResponse,
     FbosResponse,
     FleetResponse,
     FlightResponse,
     FlightsResponse,
     IncomeStatementResponse,
+    JobResponse,
     JobsResponse,
-    Member,
-    Notification,
+    MemberResponse,
+    MembersResponse,
+    NotificationResponse,
+    NotificationsResponse,
     EmployeeResponse,
     ShareHolder,
-    VARole,
+    VARoleResponse,
+    VARolesResponse,
     VirtualAirlineResponse,
-    WorkOrder,
+    WorkOrderResponse,
+    WorkOrdersResponse,
 } from './types';
 
 const {
@@ -41,7 +46,7 @@ const companyId: string = COMPANY_ID;
 const vaId: string = VIRTUAL_AIRLINE_ID;
 
 describe('OnAirApi()', function() {
-    it('when instantiated with valid data, it should return an OnAirApi object with the expected methods', async function() {
+    it('when instantiated with valid data, it should return an OnAirApi object with the expected properties', async function() {
         if (apiKey !== undefined && companyId !== undefined) {
             try {
                 const api: OnAirApi = new OnAirApi({ apiKey, companyId, vaId });
@@ -64,6 +69,7 @@ describe('OnAirApi()', function() {
                     'getCompanyJobs',
                     'getCompanyMissionFlightTracks',
                     'getCompanyWorkOrders',
+                    'getCompanyNotifications',
                     'getEmployee',
                     'getFlight',
                     'getVirtualAirline',
@@ -82,8 +88,16 @@ describe('OnAirApi()', function() {
                 console.log(e);
 
             }
-
-
         }
     });
+
+    it('when instantiated with invalid data, it should throw an error', async function() {
+        try {
+            const api: OnAirApi = new OnAirApi({ apiKey: '', companyId: '', vaId: '' });
+        } catch (e) {
+            expect(e).to.be.an('Error');
+        }
+    });
+
+
 });

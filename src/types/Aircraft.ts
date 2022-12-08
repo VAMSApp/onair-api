@@ -1,3 +1,4 @@
+import { any } from 'async';
 import { Airport, Company, } from '.';
 
 export const engineTypes:string[] = [
@@ -17,6 +18,17 @@ export const aircraftStatuses:string[] = [
     'Warp',
     'Ferry'
 ];
+
+export interface AircraftEngine {
+    Id: string; //  "cd263f83-6f53-45c2-93b2-2294c726b73d",
+    AircraftId: string; //  "78376bac-ee9d-4048-9699-04f20a9ee062",
+    Number: number; //  1,
+    Condition: number; //  0.93896211666666662,
+    MaxCondition: number; //  0.99796540388888888,
+    EngineHours: number; //  1547.8649027777778,
+    LastCheckup: string; //  "2022-10-23T12:15:08.147"
+}
+
 export interface AircraftStatus {
   Id: number,
   Name: string
@@ -169,7 +181,7 @@ export interface Aircraft {
   LastParkingFeePayment: string,
   IsControlledByAI: boolean,
   HoursBefore100HInspection: number,
-  Engines: Record<string, unknown>[],
+  Engines: AircraftEngine[]|any,
   ConfigFirstSeats: number,
   ConfigBusSeats: number,
   ConfigEcoSeats: number,

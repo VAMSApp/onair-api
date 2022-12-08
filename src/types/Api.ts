@@ -17,6 +17,9 @@ import {
     WorkOrder,
     VARole,
     FlightTrack,
+    AircraftType,
+    AircraftClass,
+    AircraftEngine,
 } from './';
 
 export type IncomeStatementResponse = {
@@ -30,6 +33,10 @@ export type VirtualAirlineResponse = VirtualAirline | null;
 export type FlightResponse = Flight | null;
 export type FlightsResponse = Flight[];
 export type AircraftResponse = Aircraft | null;
+export type AircraftEngineResponse = AircraftEngine | null;
+export type AircraftEnginesResponse = AircraftEngine[];
+export type AircraftTypeResponse = AircraftType;
+export type AircraftClassResponse = AircraftClass;
 export type FleetResponse = Aircraft[];
 export type AirportResponse = Airport | null;
 export type AirportsResponse = Airport[];
@@ -45,8 +52,7 @@ export type MemberResponse = Member | null;
 export type MembersResponse = Member[];
 export type FlightTrackResponse = FlightTrack | null;
 export type FlightTracksResponse = FlightTrack[];
-export type NotificationResponse = Notification | null;
-export type NotificationsResponse = Notification[];
+export type NotificationResponse = Notification|Notification[]|null;
 export type EmployeeResponse = People | null;
 export type EmployeesResponse = People[];
 export type ShareHolderResponse = ShareHolder | null;
@@ -70,6 +76,7 @@ export type GetCompanyBalanceSheet = (companyId: string, apiKey: string) => Prom
 export type GetCompanyWorkOrders = (companyId: string, apiKey: string) => Promise<WorkOrdersResponse>;
 export type GetCompanyMissionFlightTracks = (companyId: string, apiKey: string) => Promise<MissionFlightTracksResponse>;
 export type GetCompany = (companyId: string, apiKey: string) => Promise<CompanyResponse>;
+export type GetCompanyNotifications = (vaId: string, apiKey: string) => Promise<Notification[]>;
 export type GetFlight = (flightId: string, apiKey: string) => Promise<FlightResponse>;
 export type GetVirtualAirlineMembers = (vaId: string, apiKey: string) => Promise<MembersResponse>;
 export type GetVirtualAirline = (vaId: string, apiKey: string) => Promise<VirtualAirlineResponse>;
@@ -79,46 +86,17 @@ export type GetVirtualAirlineFlights = (vaId: string, apiKey: string, page?: num
 export type GetVirtualAirlineFleet = (vaId: string, apiKey: string) => Promise<FleetResponse>;
 export type GetVirtualAirlineJobs = (vaId: string, apiKey: string) => Promise<JobsResponse>;
 export type GetVirtualAirlineFbos = (vaId: string, apiKey: string) => Promise<FbosResponse>;
-export type GetVirtualAirlineNotifications = (vaId: string, apiKey: string) => Promise<NotificationsResponse>;
+export type GetVirtualAirlineNotifications = (vaId: string, apiKey: string) => Promise<Notification[]>;
 export type GetVirtualAirlineIncomeStatement = (vaId: string, apiKey: string, startDate?: string, endDate?: string) => Promise<IncomeStatementResponse>;
 export type GetEmployee = (employeeId: string, apiKey: string) => Promise<EmployeeResponse>;
 
-export interface IOnAirApi {
-    isValidGuid(guid:string): boolean;
-    getCompany: (companyId?:string) => Promise<CompanyResponse>;
-    getCompanyFleet: (companyId?:string) => Promise<FleetResponse>;
-    getCompanyFbos: (companyId?:string) => Promise<FbosResponse>
-    getCompanyFlights: (companyId?:string, page?:number, limit?:number) => Promise<FlightsResponse>
-    getCompanyJobs: (companyId?:string, completed?:boolean) => Promise<JobsResponse>
-    getCompanyEmployees: (companyId?:string) => Promise<EmployeesResponse>
-    getCompanyCashFlow: (companyId?:string) => Promise<CashFlowResponse>
-    getCompanyIncomeStatement: (companyId?:string, startDate?: string | undefined, endDate?: string | undefined) => Promise<IncomeStatementResponse>
-    getCompanyBalanceSheet: (companyId?:string) => Promise<BalanceSheetResponse>
-    getCompanyMissionFlightTracks: (companyId?:string) => Promise<MissionFlightTracksResponse>
-    getCompanyWorkOrders: (companyId?:string) => Promise<WorkOrdersResponse>
-    getAircraft: (aircraftId:string) => Promise<AircraftResponse>
-    getAircraftFlights: (aircraftId:string, page?:number, limit?:number) => Promise<FlightsResponse>
-    getAirport: (airportCode:string) => Promise<AirportResponse>
-    getFlight: (flightId:string) => Promise<FlightResponse>
-    getVirtualAirline: (vaId?:string) => Promise<VirtualAirlineResponse>
-    getVirtualAirlineMembers: (vaId?:string) => Promise<MembersResponse>
-    getVirtualAirlineShareHolders: (vaId?:string) => Promise<ShareHoldersResponse>
-    getVirtualAirlineRoles: (vaId?:string) => Promise<VARolesResponse>
-    getVirtualAirlineFlights: (vaId?:string, page?:number, limit?:number) => Promise<FlightsResponse>
-    getVirtualAirlineFleet: (vaId?:string) => Promise<FleetResponse>
-    getVirtualAirlineJobs: (vaId?:string) => Promise<JobsResponse>
-    getVirtualAirlineFbos: (vaId?:string) => Promise<FbosResponse>
-    getVirtualAirlineNotifications: (vaId?:string) => Promise<NotificationsResponse>
-    getVirtualAirlineIncomeStatement: (vaId?:string, startDate?: string | undefined, endDate?: string | undefined) => Promise<IncomeStatementResponse>
-    getEmployee: (employeeId:string) => Promise<EmployeeResponse>
-}
 
-export interface OnAirApiConfigOptions {
+export type OnAirApiConfigOptions = {
     logLevel: string,
     logConsole?: boolean,
 }
 
-export interface OnAirApiConfig {
+export type OnAirApiConfig = {
     apiKey: string,
     companyId?: string | undefined,
     vaId?: string | undefined,

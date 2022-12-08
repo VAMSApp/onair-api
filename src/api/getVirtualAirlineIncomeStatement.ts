@@ -20,16 +20,9 @@ function addDays(dateStr:string = new Date().toISOString(), days:number = 30):Da
 export const getVirtualAirlineIncomeStatement:GetVirtualAirlineIncomeStatement = async (vaId: string, apiKey: string, startDate?: string, endDate?: string) => {
     if (!vaId) throw new Error('No VA Id provided');
     if (!apiKey) throw new Error('No Api Key provided');
-    if (!isValidGuid(vaId)) {
-        const err = `Invalid VA Id provided: ${vaId}`
-        console.error(err);
-        throw new Error(err);
-    }
-    if (!isValidGuid(apiKey)) {
-        const err = 'Invalid Api Key provided'
-        console.error(err);
-        throw new Error(err);
-    }
+    if (!isValidGuid(vaId)) throw new Error(`Invalid VA Id provided. VAId: '${vaId}'`);
+    if (!isValidGuid(apiKey)) throw new Error(`Invalid Api Key provided. ApiKey: '${apiKey}'`);
+
     try {
         const currentDate:Date = new Date();
         const currentDateStr:string = currentDate.toISOString();
@@ -75,9 +68,19 @@ export const getVirtualAirlineIncomeStatement:GetVirtualAirlineIncomeStatement =
             EndDate: EndDateStr,
             Content: oaResponse.data.Content,
         };
+
         return response;
 
-    } catch (e) {
-        throw new Error(e.oaResponse.status === 400 ? `Company Id "${vaId}"" not found` : e.message);
+    } catch (err) {
+        let msg = `OnAirApi::getVirtualAirlineIncomeStatement() Error getting income statement for VA Id '${vaId}'.`;
+
+        if (err) {
+            const errorMessage = err instanceof Error ? err.message : err;
+            msg += ` Error: ${errorMessage}`;
+        }
+
+        console.error(msg);
+
+        throw new Error(msg);
     }
 };

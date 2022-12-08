@@ -49,6 +49,7 @@ let company = await Api.getCompany();
 - [getCompanyIncomeStatement](#getcompanyincomestatementstartdate-string-enddate-string)
 - [getCompanyBalanceSheet](#getcompanybalancesheet)
 - [getCompanyWorkOrders](#getcompanyworkorders)
+- [getCompanyNotifications](#getCompanyNotifications)
 - [getAircraft](#getAircraftaircraftId-string)
 - [getAircraftFlights](#getAircraftFlights)
 - [getAirport](#getAirportairportCode-string)
@@ -296,6 +297,35 @@ let workorders: WorkOrder = await api.getCompanyWorkOrders();
  - [getCompanyWorkOrders.md](docs/responses/getCompanyWorkOrders.md)
 
 
+
+
+
+### [getCompanyNotifications()](src/api/getCompanyNotifications.ts)
+Fetches the recent notifications for the given companyId
+
+#### Usage
+```typescript
+import OnAirApi, { Notification, OnAirApiConfig, } from 'onair-api'
+
+const apiConfig: OnAirApiConfig = {
+  apiKey: 'YOUR-API-KEY',
+  companyId: 'YOUR-COMPANY-ID',
+  vaId: 'YOUR-VA-ID'
+};
+
+const api: Api = new OnAirApi(apiConfig);
+// by default, will return the notifications for the Api instantiated companyId
+let companyNotifications: Notification[] = await api.getCompanyNotifications();
+// or
+// pass a companyId as the first argument to load the notifications for the given Company
+let someOtherCompaniesNotifications: Notification[] = await api.getCompanyNotifications('SOME-OTHER-COMPANY-ID');
+```
+
+#### Example Response
+ - [getCompanyNotifications.md](docs/responses/getCompanyNotifications.md)
+
+
+
 ### [getAircraft(aircraftId: string)](src/api/getAircraft.ts)
 Fetches the Aircraft details for a given aircraftId.
 
@@ -535,7 +565,7 @@ let vaJobs: Job[] = await api.getVirtualAirlineJobs();
 
 
 ### [getVirtualAirlineNotifications()](src/api/getVirtualAirlineNotifications.ts)
-Fetches the recent VA notifications
+Fetches the recent notifications for the given vaId
 
 #### Usage
 ```typescript
@@ -548,7 +578,11 @@ const apiConfig: OnAirApiConfig = {
 };
 
 const api: Api = new OnAirApi(apiConfig);
+// by default, will return the notifications for the Api instantiated VA using the passed vaId
 let vaNotifications: Notification[] = await api.getVirtualAirlineNotifications();
+// or
+// pass a valid VirtualAirline Id as the first argument to load the notifications for the given VA
+let someOtherVAsNotifications: Notification[] = await api.getVirtualAirlineNotifications('SOME-OTHER-VA-ID');
 ```
 
 #### Example Response

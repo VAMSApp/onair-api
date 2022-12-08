@@ -6,11 +6,6 @@
     ],
     "rootDir": "./src/",
     "baseUrl": "./src/",
-    "paths": {
-        "@utils/*": ["utils/*.ts"],
-        "@types": ["types/index.ts"],
-        "@api": ["api/*"]
-    },
     "outDir": "dist",
     "module": "commonjs",
     "skipLibCheck": true,

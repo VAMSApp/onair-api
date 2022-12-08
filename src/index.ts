@@ -12,16 +12,21 @@ import {
     WorkOrdersResponse,
     AirportResponse,
     FlightResponse,
-    NotificationsResponse,
+    NotificationResponse,
     VirtualAirlineResponse,
     MembersResponse,
     ShareHoldersResponse,
     VARolesResponse,
     MissionFlightTracksResponse,
     AircraftResponse,
-    IOnAirApi,
     EmployeesResponse,
+    Notification,
 } from './types';
+
+import {
+    IOnAirApi,
+} from './interfaces';
+
 import {
     getCompany,
     getCompanyFleet,
@@ -34,6 +39,7 @@ import {
     getCompanyBalanceSheet,
     getCompanyMissionFlightTracks,
     getCompanyWorkOrders,
+    getCompanyNotifications,
     getAircraft,
     getAircraftFlights,
     getAirport,
@@ -89,6 +95,7 @@ export class OnAirApi implements IOnAirApi {
         this.getCompanyBalanceSheet = this.getCompanyBalanceSheet.bind(this);
         this.getCompanyMissionFlightTracks = this.getCompanyMissionFlightTracks.bind(this);
         this.getCompanyWorkOrders = this.getCompanyWorkOrders.bind(this);
+        this.getCompanyNotifications = this.getCompanyNotifications.bind(this);
         this.getAircraft = this.getAircraft.bind(this);
         this.getAircraftFlights = this.getAircraftFlights.bind(this);
         this.getAirport = this.getAirport.bind(this);
@@ -227,6 +234,15 @@ export class OnAirApi implements IOnAirApi {
         return workOrders;
     }
 
+    public async getCompanyNotifications(companyId?:string): Promise<Notification[]> {
+        companyId = companyId || this.CompanyId;
+        if (!companyId) throw new Error('VA ID is not provided');
+        if (!this.isValidGuid(companyId)) throw new Error('Invalid VA ID provided');
+
+        const vaNotiifcations: Notification[] = await getCompanyNotifications(companyId, this.ApiKey);
+        return vaNotiifcations;
+    }
+
     public async getAircraft(aircraftId:string): Promise<AircraftResponse> {
         if (!aircraftId) throw new Error('Aircraft ID not provided');
         if (!this.isValidGuid(aircraftId)) throw new Error('Invalid Aircraft ID provided');
@@ -333,13 +349,13 @@ export class OnAirApi implements IOnAirApi {
         return vaFbos;
     }
 
-    public async getVirtualAirlineNotifications(vaId?:string): Promise<NotificationsResponse> {
+    public async getVirtualAirlineNotifications(vaId?:string): Promise<Notification[]> {
         vaId = vaId || this.VaId;
         if (!vaId) throw new Error('VA ID is not provided');
         if (!this.isValidGuid(vaId)) throw new Error('Invalid VA ID provided');
 
-        const vaNotiifcations: NotificationsResponse = await getVirtualAirlineNotifications(vaId, this.ApiKey);
-        return vaNotiifcations;
+        const vaNotifications: Notification[] = await getVirtualAirlineNotifications(vaId, this.ApiKey);
+        return vaNotifications;
     }
 
     public async getVirtualAirlineIncomeStatement(vaId?:string, startDate?: string | undefined, endDate?: string | undefined):Promise<IncomeStatementResponse> {

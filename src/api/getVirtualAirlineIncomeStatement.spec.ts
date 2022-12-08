@@ -11,8 +11,8 @@ const {
 if (!COMPANY_APIKEY) throw new Error('No COMPANY_APIKEY provided');
 if (!VIRTUAL_AIRLINE_ID) throw new Error('No VIRTUAL_AIRLINE_ID provided');
 
-const ApiKey: string = COMPANY_APIKEY;
-const VaId: string = VIRTUAL_AIRLINE_ID;
+let ApiKey: string = COMPANY_APIKEY;
+let VaId: string = VIRTUAL_AIRLINE_ID;
 
 describe('getVirtualAirlineIncomeStatement', () => {
     it('should be a function', () => {
@@ -65,18 +65,24 @@ describe('getVirtualAirlineIncomeStatement', () => {
     });
 
     it('should throw an error if the provided VA Id is invalid', async () => {
+        const vaId = 'invalidVaId'
+        const ErrorMessage:string = `Invalid VA Id provided. VAId: '${vaId}'`;
+
         try {
-            await getVirtualAirlineIncomeStatement('invalidVaId', ApiKey);
+            await getVirtualAirlineIncomeStatement(vaId, ApiKey);
         } catch (e) {
-            expect(e.message).to.equal('Invalid VA Id provided');
+            expect(e.message).to.equal(ErrorMessage);
         }
     });
 
     it('should throw an error if the provided API Key is invalid', async () => {
+        const apiKey = 'invalidApiKey'
+        const ErrorMessage:string = `Invalid Api Key provided. ApiKey: '${apiKey}'`;
+
         try {
-            await getVirtualAirlineIncomeStatement(VaId, 'invalidApiKey');
+            await getVirtualAirlineIncomeStatement(VaId, apiKey);
         } catch (e) {
-            expect(e.message).to.equal('Invalid Api Key provided');
+            expect(e.message).to.equal(ErrorMessage);
         }
     });
 });
