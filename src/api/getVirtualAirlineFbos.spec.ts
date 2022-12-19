@@ -1,7 +1,7 @@
 import { describe } from 'mocha';
 import { expect } from 'chai';
 import { getVirtualAirlineFbos } from './getVirtualAirlineFbos';
-import { FbosResponse, } from '../types';
+import { Fbo, } from '../types';
 
 const {
     COMPANY_APIKEY,
@@ -20,7 +20,7 @@ describe('getVirtualAirlineFbos', () => {
     });
 
     it('should return an array of FBo\'s owned by the given vaId', async () => {
-        const x:FbosResponse = await getVirtualAirlineFbos(VaId, ApiKey);
+        const x:Fbo[] = await getVirtualAirlineFbos(VaId, ApiKey);
 
         expect(x).to.be.an('array');
         if (x.length > 0) {

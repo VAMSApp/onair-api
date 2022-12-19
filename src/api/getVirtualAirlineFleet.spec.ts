@@ -1,7 +1,7 @@
 import { describe } from 'mocha';
 import { expect } from 'chai';
 import { getVirtualAirlineFleet } from './getVirtualAirlineFleet';
-import { FleetResponse, } from '../types';
+import { Aircraft, } from '../types';
 
 const {
     COMPANY_APIKEY,
@@ -20,7 +20,7 @@ describe('getVirtualAirlineFleet', () => {
     });
 
     it('should return an array of Aircraft\'s that are owned by the given vaId', async () => {
-        const x:FleetResponse = await getVirtualAirlineFleet(VaId, ApiKey);
+        const x:Aircraft[] = await getVirtualAirlineFleet(VaId, ApiKey);
 
         expect(x).to.be.an('array');
         if (x.length > 0) {

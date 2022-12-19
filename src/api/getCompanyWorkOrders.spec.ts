@@ -1,7 +1,7 @@
 import { describe } from 'mocha';
 import { expect } from 'chai';
 import { getCompanyWorkOrders } from './getCompanyWorkOrders';
-import { WorkOrdersResponse } from '../types';
+import { WorkOrder } from '../types';
 
 const {
     COMPANY_APIKEY,
@@ -20,7 +20,7 @@ describe('getCompanyWorkOrders', () => {
     });
 
     it('should return an array of WorkOrders for the given companyId', async () => {
-        const workOrders:WorkOrdersResponse = await getCompanyWorkOrders(CompanyId, ApiKey);
+        const workOrders:WorkOrder[] = await getCompanyWorkOrders(CompanyId, ApiKey);
 
         expect(workOrders).to.be.an('array');
 

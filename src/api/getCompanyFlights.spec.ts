@@ -1,7 +1,7 @@
 import { describe } from 'mocha';
 import { expect } from 'chai';
 import { getCompanyFlights } from './getCompanyFlights';
-import { FlightsResponse } from '../types';
+import { Flight } from '../types';
 
 const {
     COMPANY_APIKEY,
@@ -20,7 +20,7 @@ describe('getCompanyFlights', () => {
     });
 
     it('should return an array of Flights for the given companyId', async () => {
-        const flights:FlightsResponse = await getCompanyFlights(CompanyId, ApiKey);
+        const flights:Flight[] = await getCompanyFlights(CompanyId, ApiKey);
 
         expect(flights).to.be.an('array');
 

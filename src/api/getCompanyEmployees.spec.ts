@@ -1,7 +1,7 @@
 import { describe } from 'mocha';
 import { expect } from 'chai';
 import { getCompanyEmployees } from './getCompanyEmployees';
-import { EmployeesResponse } from '../types';
+import { People as Employee } from '../types';
 
 const {
     COMPANY_APIKEY,
@@ -20,7 +20,7 @@ describe('getCompanyEmployees', () => {
     });
 
     it('should return an array of Employees for the given companyId', async () => {
-        const Employees:EmployeesResponse = await getCompanyEmployees(CompanyId, ApiKey);
+        const Employees:Employee[] = await getCompanyEmployees(CompanyId, ApiKey);
 
         expect(Employees).to.be.an('array');
         expect(Employees[0]).to.have.any.keys([

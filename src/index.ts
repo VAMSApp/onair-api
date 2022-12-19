@@ -1,26 +1,26 @@
 import {
     OnAirApiConfig,
     CompanyResponse,
-    FleetResponse,
-    FbosResponse,
-    FlightsResponse,
-    JobsResponse,
     EmployeeResponse,
     CashFlowResponse,
     BalanceSheetResponse,
     IncomeStatementResponse,
-    WorkOrdersResponse,
     AirportResponse,
     FlightResponse,
-    NotificationResponse,
     VirtualAirlineResponse,
-    MembersResponse,
-    ShareHoldersResponse,
-    VARolesResponse,
-    MissionFlightTracksResponse,
     AircraftResponse,
-    EmployeesResponse,
     Notification,
+    Aircraft,
+    People,
+    People as Employee,
+    Fbo,
+    Flight,
+    FlightTrack,
+    Job,
+    Member,
+    ShareHolder,
+    VARole,
+    WorkOrder,
 } from './types';
 
 import {
@@ -129,48 +129,48 @@ export class OnAirApi implements IOnAirApi {
         return company;
     }
 
-    public async getCompanyFleet(companyId?:string): Promise<FleetResponse> {
+    public async getCompanyFleet(companyId?:string): Promise<Aircraft[]> {
         if (!companyId) companyId = this.CompanyId;
         if (!companyId) throw new Error('No Company Id provided');
         if (!this.isValidGuid(companyId)) throw new Error('Invalid Company Id provided');
 
-        const companyFleet:FleetResponse = await getCompanyFleet(companyId, this.ApiKey);
+        const companyFleet:Aircraft[] = await getCompanyFleet(companyId, this.ApiKey);
         return companyFleet;
     }
 
-    public async getCompanyFbos(companyId?:string): Promise<FbosResponse> {
+    public async getCompanyFbos(companyId?:string): Promise<Fbo[]> {
         if (!companyId) companyId = this.CompanyId;
         if (!companyId) throw new Error('No Company Id provided');
         if (!this.isValidGuid(companyId)) throw new Error('Invalid Company Id provided');
 
-        const companyFbos:FbosResponse = await getCompanyFbos(companyId, this.ApiKey);
+        const companyFbos:Fbo[] = await getCompanyFbos(companyId, this.ApiKey);
         return companyFbos;
     }
 
-    public async getCompanyFlights(companyId?:string, page = 1, limit = 20): Promise<FlightsResponse> {
+    public async getCompanyFlights(companyId?:string, page = 1, limit = 20): Promise<Flight[]> {
         if (!companyId) companyId = this.CompanyId;
         if (!companyId) throw new Error('No Company Id provided');
         if (!this.isValidGuid(companyId)) throw new Error('Invalid Company Id provided');
 
-        const companyFlights:FlightsResponse = await getCompanyFlights(companyId, this.ApiKey, page, limit);
+        const companyFlights:Flight[] = await getCompanyFlights(companyId, this.ApiKey, page, limit);
         return companyFlights;
     }
 
-    public async getCompanyJobs(companyId?:string, completed = false): Promise<JobsResponse> {
+    public async getCompanyJobs(companyId?:string, completed = false): Promise<Job[]> {
         if (!companyId) companyId = this.CompanyId;
         if (!companyId) throw new Error('No Company Id provided');
         if (!this.isValidGuid(companyId)) throw new Error('Invalid Company Id provided');
 
-        const companyJobs:JobsResponse = await getCompanyJobs(companyId, this.ApiKey, completed);
+        const companyJobs:Job[] = await getCompanyJobs(companyId, this.ApiKey, completed);
         return companyJobs;
     }
 
-    public async getCompanyEmployees(companyId?:string): Promise<EmployeesResponse> {
+    public async getCompanyEmployees(companyId?:string): Promise<Employee[]> {
         if (!companyId) companyId = this.CompanyId;
         if (!companyId) throw new Error('No Company Id provided');
         if (!this.isValidGuid(companyId)) throw new Error('Invalid Company Id provided');
 
-        const companyEmployees:EmployeesResponse = await getCompanyEmployees(companyId, this.ApiKey);
+        const companyEmployees:Employee[] = await getCompanyEmployees(companyId, this.ApiKey);
 
         return companyEmployees;
     }
@@ -215,22 +215,22 @@ export class OnAirApi implements IOnAirApi {
         return balanceSheet;
     }
 
-    public async getCompanyMissionFlightTracks(companyId?:string):Promise<MissionFlightTracksResponse> {
+    public async getCompanyMissionFlightTracks(companyId?:string):Promise<FlightTrack[]> {
         if (!companyId) companyId = this.CompanyId;
         if (!companyId) throw new Error('No Company Id provided');
         if (!this.isValidGuid(companyId)) throw new Error('Invalid Company Id provided');
 
-        const flightTracks: MissionFlightTracksResponse = await getCompanyMissionFlightTracks(companyId, this.ApiKey);
+        const flightTracks: FlightTrack[] = await getCompanyMissionFlightTracks(companyId, this.ApiKey);
 
         return flightTracks;
     }
 
-    public async getCompanyWorkOrders(companyId?:string):Promise<WorkOrdersResponse> {
+    public async getCompanyWorkOrders(companyId?:string):Promise<WorkOrder[]> {
         if (!companyId) companyId = this.CompanyId;
         if (!companyId) throw new Error('No Company Id provided');
         if (!this.isValidGuid(companyId)) throw new Error('Invalid Company Id provided');
 
-        const workOrders: WorkOrdersResponse = await getCompanyWorkOrders(companyId, this.ApiKey);
+        const workOrders: WorkOrder[] = await getCompanyWorkOrders(companyId, this.ApiKey);
 
         return workOrders;
     }
@@ -255,11 +255,11 @@ export class OnAirApi implements IOnAirApi {
         return aircraft;
     }
 
-    public async getAircraftFlights(aircraftId:string, page = 1, limit = 20):Promise<FlightsResponse> {
+    public async getAircraftFlights(aircraftId:string, page = 1, limit = 20):Promise<Flight[]> {
         if (!aircraftId) throw new Error('Aircraft ID not provided');
         if (!this.isValidGuid(aircraftId)) throw new Error('Invalid Aircraft ID provided');
 
-        const flights: FlightsResponse = await getAircraftFlights(aircraftId, this.ApiKey, page, limit);
+        const flights: Flight[] = await getAircraftFlights(aircraftId, this.ApiKey, page, limit);
         return flights;
     }
 
@@ -287,66 +287,66 @@ export class OnAirApi implements IOnAirApi {
         return virtualAirline;
     }
 
-    public async getVirtualAirlineMembers(vaId?:string): Promise<MembersResponse> {
+    public async getVirtualAirlineMembers(vaId?:string): Promise<Member[]> {
         vaId = vaId || this.VaId;
         if (!vaId) throw new Error('VA ID is not provided');
         if (!this.isValidGuid(vaId)) throw new Error('Invalid VA ID provided');
 
-        const members: MembersResponse = await getVirtualAirlineMembers(vaId, this.ApiKey);
+        const members: Member[] = await getVirtualAirlineMembers(vaId, this.ApiKey);
         return members;
     }
 
-    public async getVirtualAirlineShareHolders(vaId?:string): Promise<ShareHoldersResponse> {
+    public async getVirtualAirlineShareHolders(vaId?:string): Promise<ShareHolder[]> {
         vaId = vaId || this.VaId;
         if (!vaId) throw new Error('VA ID is not provided');
         if (!this.isValidGuid(vaId)) throw new Error('Invalid VA ID provided');
 
-        const shareholders: ShareHoldersResponse = await getVirtualAirlineShareHolders(vaId, this.ApiKey);
+        const shareholders: ShareHolder[] = await getVirtualAirlineShareHolders(vaId, this.ApiKey);
         return shareholders;
     }
 
-    public async getVirtualAirlineRoles(vaId?:string): Promise<VARolesResponse> {
+    public async getVirtualAirlineRoles(vaId?:string): Promise<VARole[]> {
         vaId = vaId || this.VaId;
         if (!vaId) throw new Error('VA ID is not provided');
         if (!this.isValidGuid(vaId)) throw new Error('Invalid VA ID provided');
 
-        const varoles: VARolesResponse = await getVirtualAirlineRoles(vaId, this.ApiKey);
+        const varoles: VARole[] = await getVirtualAirlineRoles(vaId, this.ApiKey);
         return varoles;
     }
 
-    public async getVirtualAirlineFlights(vaId?:string, page = 1, limit = 20): Promise<FlightsResponse> {
+    public async getVirtualAirlineFlights(vaId?:string, page = 1, limit = 20): Promise<Flight[]> {
         vaId = vaId || this.VaId;
         if (!vaId) throw new Error('VA ID is not provided');
         if (!this.isValidGuid(vaId)) throw new Error('Invalid VA ID provided');
 
-        const vaflights: FlightsResponse = await getVirtualAirlineFlights(vaId, this.ApiKey, page, limit);
+        const vaflights: Flight[] = await getVirtualAirlineFlights(vaId, this.ApiKey, page, limit);
         return vaflights;
     }
 
-    public async getVirtualAirlineFleet(vaId?:string): Promise<FleetResponse> {
+    public async getVirtualAirlineFleet(vaId?:string): Promise<Aircraft[]> {
         vaId = vaId || this.VaId;
         if (!vaId) throw new Error('VA ID is not provided');
         if (!this.isValidGuid(vaId)) throw new Error('Invalid VA ID provided');
 
-        const vaFleet: FleetResponse = await getVirtualAirlineFleet(vaId, this.ApiKey);
+        const vaFleet: Aircraft[] = await getVirtualAirlineFleet(vaId, this.ApiKey);
         return vaFleet;
     }
 
-    public async getVirtualAirlineJobs(vaId?:string): Promise<JobsResponse> {
+    public async getVirtualAirlineJobs(vaId?:string): Promise<Job[]> {
         vaId = vaId || this.VaId;
         if (!vaId) throw new Error('VA ID is not provided');
         if (!this.isValidGuid(vaId)) throw new Error('Invalid VA ID provided');
 
-        const vaJobs: JobsResponse = await getVirtualAirlineJobs(vaId, this.ApiKey);
+        const vaJobs: Job[] = await getVirtualAirlineJobs(vaId, this.ApiKey);
         return vaJobs;
     }
 
-    public async getVirtualAirlineFbos(vaId?:string): Promise<FbosResponse> {
+    public async getVirtualAirlineFbos(vaId?:string): Promise<Fbo[]> {
         vaId = vaId || this.VaId;
         if (!vaId) throw new Error('VA ID is not provided');
         if (!this.isValidGuid(vaId)) throw new Error('Invalid VA ID provided');
 
-        const vaFbos: FbosResponse = await getVirtualAirlineFbos(vaId, this.ApiKey);
+        const vaFbos: Fbo[] = await getVirtualAirlineFbos(vaId, this.ApiKey);
         return vaFbos;
     }
 

@@ -1,7 +1,7 @@
 import { describe } from 'mocha';
 import { expect } from 'chai';
 import { getCompanyMissionFlightTracks } from './getCompanyMissionFlightTracks';
-import { MissionFlightTracksResponse } from '../types';
+import { FlightTrack } from '../types';
 
 const {
     COMPANY_APIKEY,
@@ -20,7 +20,7 @@ describe('getCompanyMissionFlightTracks', () => {
     });
 
     it('should return an array of FlightTracks for the given companyId', async () => {
-        const jobs:MissionFlightTracksResponse = await getCompanyMissionFlightTracks(CompanyId, ApiKey);
+        const jobs:FlightTrack[] = await getCompanyMissionFlightTracks(CompanyId, ApiKey);
 
         expect(jobs).to.be.an('array');
 

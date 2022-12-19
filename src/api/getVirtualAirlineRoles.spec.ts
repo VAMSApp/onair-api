@@ -1,7 +1,7 @@
 import { describe } from 'mocha';
 import { expect } from 'chai';
 import { getVirtualAirlineRoles } from './getVirtualAirlineRoles';
-import { VARolesResponse, } from '../types';
+import { VARole, } from '../types';
 
 const {
     COMPANY_APIKEY,
@@ -20,7 +20,7 @@ describe('getVirtualAirlineRoles', () => {
     });
 
     it('should return an array of the currently defined role\'s for the given vaId', async () => {
-        const x:VARolesResponse = await getVirtualAirlineRoles(VaId, ApiKey);
+        const x:VARole[] = await getVirtualAirlineRoles(VaId, ApiKey);
 
         expect(x).to.be.an('array');
         if (x.length > 0) {

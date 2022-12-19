@@ -1,7 +1,7 @@
 import { describe } from 'mocha';
 import { expect } from 'chai';
 import { getCompanyFbos } from './getCompanyFbos';
-import { FbosResponse } from '../types';
+import { Fbo } from '../types';
 
 const {
     COMPANY_APIKEY,
@@ -20,7 +20,7 @@ describe('getCompanyFbos', () => {
     });
 
     it('should return an array of Fbo\'s for the given companyId', async () => {
-        const fbos:FbosResponse = await getCompanyFbos(CompanyId, ApiKey);
+        const fbos:Fbo[] = await getCompanyFbos(CompanyId, ApiKey);
 
         expect(fbos).to.be.an('array');
 

@@ -1,7 +1,7 @@
 import { describe } from 'mocha';
 import { expect } from 'chai';
 import { getCompanyFleet } from './getCompanyFleet';
-import { FleetResponse } from '../types';
+import { Aircraft } from '../types';
 
 const {
     COMPANY_APIKEY,
@@ -20,7 +20,7 @@ describe('getCompanyFleet', () => {
     });
 
     it('should return an array of Aircraft for the given companyId', async () => {
-        const fleet:FleetResponse = await getCompanyFleet(CompanyId, ApiKey);
+        const fleet:Aircraft[] = await getCompanyFleet(CompanyId, ApiKey);
 
         expect(fleet).to.be.an('array');
 

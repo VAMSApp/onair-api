@@ -1,7 +1,7 @@
 import { describe } from 'mocha';
 import { expect } from 'chai';
 import { getVirtualAirlineJobs } from './getVirtualAirlineJobs';
-import { JobsResponse, } from '../types';
+import { Job, } from '../types';
 
 const {
     COMPANY_APIKEY,
@@ -20,7 +20,7 @@ describe('getVirtualAirlineJobs', () => {
     });
 
     it('should return an array of Job\'s that are currently pending for the given vaId', async () => {
-        const x:JobsResponse = await getVirtualAirlineJobs(VaId, ApiKey);
+        const x:Job[] = await getVirtualAirlineJobs(VaId, ApiKey);
 
         expect(x).to.be.an('array');
         if (x.length > 0) {

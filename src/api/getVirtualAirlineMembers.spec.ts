@@ -1,7 +1,7 @@
 import { describe } from 'mocha';
 import { expect } from 'chai';
 import { getVirtualAirlineMembers } from './getVirtualAirlineMembers';
-import { MembersResponse, } from '../types';
+import { Member, } from '../types';
 
 const {
     COMPANY_APIKEY,
@@ -20,7 +20,7 @@ describe('getVirtualAirlineMembers', () => {
     });
 
     it('should return an array of the current Member\'s for the given vaId', async () => {
-        const x:MembersResponse = await getVirtualAirlineMembers(VaId, ApiKey);
+        const x:Member[] = await getVirtualAirlineMembers(VaId, ApiKey);
 
         expect(x).to.be.an('array');
         if (x.length > 0) {

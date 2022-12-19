@@ -3,32 +3,6 @@ dotenv.config();
 import { describe } from 'mocha';
 import { expect } from 'chai';
 import OnAirApi from './index';
-import {
-    AircraftResponse,
-    AirportResponse,
-    BalanceSheetResponse,
-    CashFlowResponse,
-    CompanyResponse,
-    EmployeesResponse,
-    FboResponse,
-    FbosResponse,
-    FleetResponse,
-    FlightResponse,
-    FlightsResponse,
-    IncomeStatementResponse,
-    JobResponse,
-    JobsResponse,
-    MemberResponse,
-    MembersResponse,
-    NotificationResponse,
-    EmployeeResponse,
-    ShareHolder,
-    VARoleResponse,
-    VARolesResponse,
-    VirtualAirlineResponse,
-    WorkOrderResponse,
-    WorkOrdersResponse,
-} from './types';
 
 const {
     COMPANY_APIKEY,

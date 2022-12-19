@@ -1,7 +1,7 @@
 import { describe } from 'mocha';
 import { expect } from 'chai';
 import { getCompanyJobs } from './getCompanyJobs';
-import { JobsResponse } from '../types';
+import { Job } from '../types';
 
 const {
     COMPANY_APIKEY,
@@ -20,7 +20,7 @@ describe('getCompanyJobs', () => {
     });
 
     it('should return an array of pending Jobs for the given companyId', async () => {
-        const jobs:JobsResponse = await getCompanyJobs(CompanyId, ApiKey);
+        const jobs:Job[] = await getCompanyJobs(CompanyId, ApiKey);
 
         expect(jobs).to.be.an('array');
 
@@ -63,7 +63,7 @@ describe('getCompanyJobs', () => {
     });
 
     it('should return an array of completed Jobs for the given companyId', async () => {
-        const jobs:JobsResponse = await getCompanyJobs(CompanyId, ApiKey, true);
+        const jobs:Job[] = await getCompanyJobs(CompanyId, ApiKey, true);
 
         expect(jobs).to.be.an('array');
 
