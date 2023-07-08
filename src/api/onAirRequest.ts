@@ -101,11 +101,9 @@ export interface WorkOrderApiResponse extends OnAirApiResponse {
     Content: WorkOrder | WorkOrder[]
 }
 
-export interface VirtualAirlineNotificationApiResponse extends NotificationApiResponse {
-}
+export type VirtualAirlineNotificationApiResponse = NotificationApiResponse
 
-export interface CompanyNotificationApiResponse extends NotificationApiResponse {
-}
+export type CompanyNotificationApiResponse = NotificationApiResponse
 
 export interface NotificationApiResponse extends OnAirApiResponse {
     Content: Notification | Notification[]

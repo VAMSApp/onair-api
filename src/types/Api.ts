@@ -75,7 +75,7 @@ export type GetVirtualAirlineFbos = (vaId: string, apiKey: string) => Promise<Fb
 export type GetVirtualAirlineNotifications = (vaId: string, apiKey: string) => Promise<Notification[]>;
 export type GetVirtualAirlineIncomeStatement = (vaId: string, apiKey: string, startDate?: string, endDate?: string) => Promise<IncomeStatementResponse>;
 export type GetEmployee = (employeeId: string, apiKey: string) => Promise<EmployeeResponse>;
-
+export type GetCompanyAircraftWorkOrders = (companyId: string, aircraftId: string, apiKey: string) => Promise<WorkOrder[]>;
 
 export type OnAirApiConfigOptions = {
     logLevel: string,

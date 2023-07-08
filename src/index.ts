@@ -11,7 +11,6 @@ import {
     AircraftResponse,
     Notification,
     Aircraft,
-    People,
     People as Employee,
     Fbo,
     Flight,
@@ -39,6 +38,7 @@ import {
     getCompanyBalanceSheet,
     getCompanyMissionFlightTracks,
     getCompanyWorkOrders,
+    getCompanyAircraftWorkOrders,
     getCompanyNotifications,
     getAircraft,
     getAircraftFlights,
@@ -96,6 +96,7 @@ export class OnAirApi implements IOnAirApi {
         this.getCompanyBalanceSheet = this.getCompanyBalanceSheet.bind(this);
         this.getCompanyMissionFlightTracks = this.getCompanyMissionFlightTracks.bind(this);
         this.getCompanyWorkOrders = this.getCompanyWorkOrders.bind(this);
+        this.getCompanyAircraftWorkOrders = this.getCompanyAircraftWorkOrders.bind(this);
         this.getCompanyNotifications = this.getCompanyNotifications.bind(this);
         this.getAircraft = this.getAircraft.bind(this);
         this.getAircraftFlights = this.getAircraftFlights.bind(this);
@@ -231,6 +232,19 @@ export class OnAirApi implements IOnAirApi {
         if (!this.isValidGuid(companyId)) throw new Error('Invalid Company Id provided');
 
         const workOrders: WorkOrder[] = await getCompanyWorkOrders(companyId, this.ApiKey);
+
+        return workOrders;
+    }
+
+    public async getCompanyAircraftWorkOrders(aircraftId: string, companyId?:string):Promise<WorkOrder[]> {
+        if (!aircraftId) throw new Error('No Aircraft Id provided');
+        if (!this.isValidGuid(aircraftId)) throw new Error('Invalid Aircraft Id provided');
+
+        if (!companyId) companyId = this.CompanyId;
+        if (!companyId) throw new Error('No Company Id provided');
+        if (!this.isValidGuid(companyId)) throw new Error('Invalid Company Id provided');
+
+        const workOrders: WorkOrder[] = await getCompanyAircraftWorkOrders(companyId, aircraftId, this.ApiKey);
 
         return workOrders;
     }

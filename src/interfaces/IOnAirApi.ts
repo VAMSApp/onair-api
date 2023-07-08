@@ -18,9 +18,8 @@ import {
     Member,
     VARole,
     WorkOrder,
-    People,
     People as Employee
-} from "../types";
+} from '../types';
 
 export interface IOnAirApi {
     isValidGuid(guid:string): boolean;
@@ -35,6 +34,7 @@ export interface IOnAirApi {
     getCompanyBalanceSheet: (companyId?:string) => Promise<BalanceSheetResponse>
     getCompanyMissionFlightTracks: (companyId?:string) => Promise<FlightTrack[]>
     getCompanyWorkOrders: (companyId?:string) => Promise<WorkOrder[]>
+    getCompanyAircraftWorkOrders: (aircraftId:string, companyId?:string) => Promise<WorkOrder[]>
     getCompanyNotifications: (companyId?:string) => Promise<Notification[]>
     getAircraft: (aircraftId:string) => Promise<AircraftResponse>
     getAircraftFlights: (aircraftId:string, page?:number, limit?:number) => Promise<Flight[]>
