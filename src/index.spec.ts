@@ -42,6 +42,7 @@ describe('OnAirApi()', function() {
                     'getCompanyJobs',
                     'getCompanyMissionFlightTracks',
                     'getCompanyWorkOrders',
+                    'getCompanyAircraftWorkOrders',
                     'getCompanyNotifications',
                     'getEmployee',
                     'getFlight',
@@ -55,6 +56,7 @@ describe('OnAirApi()', function() {
                     'getVirtualAirlineNotifications',
                     'getVirtualAirlineRoles',
                     'getVirtualAirlineShareHolders',
+                    'getVirtualAirlineWorkOrders',
                     'isValidGuid',
                 ]);
             } catch (e) {

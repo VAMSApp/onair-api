@@ -54,6 +54,7 @@ import {
     getVirtualAirlineFbos,
     getVirtualAirlineNotifications,
     getVirtualAirlineIncomeStatement,
+    getVirtualAirlineWorkOrders,
     getEmployee
 } from './api';
 import { isValidGuid } from './utils';
@@ -112,6 +113,7 @@ export class OnAirApi implements IOnAirApi {
         this.getVirtualAirlineFbos = this.getVirtualAirlineFbos.bind(this);
         this.getVirtualAirlineNotifications = this.getVirtualAirlineNotifications.bind(this);
         this.getVirtualAirlineIncomeStatement = this.getVirtualAirlineIncomeStatement.bind(this);
+        this.getVirtualAirlineWorkOrders = this.getVirtualAirlineWorkOrders.bind(this);
 
         this.getEmployee = this.getEmployee.bind(this);
         this.isValidGuid = this.isValidGuid.bind(this);
@@ -391,6 +393,16 @@ export class OnAirApi implements IOnAirApi {
         const incomeStatement: IncomeStatementResponse = await getVirtualAirlineIncomeStatement(vaId, this.ApiKey);
 
         return incomeStatement;
+    }
+
+    public async getVirtualAirlineWorkOrders(virtualAirlineId?:string):Promise<WorkOrder[]> {
+        if (!virtualAirlineId) virtualAirlineId = this.VaId;
+        if (!virtualAirlineId) throw new Error('No Virtual Airline Id provided');
+        if (!this.isValidGuid(virtualAirlineId)) throw new Error('Invalid Virtual Airline Id provided');
+
+        const workOrders: WorkOrder[] = await getVirtualAirlineWorkOrders(virtualAirlineId, this.ApiKey);
+
+        return workOrders;
     }
 
     public async getEmployee(employeeId:string): Promise<EmployeeResponse> {

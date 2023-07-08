@@ -50,6 +50,7 @@ export interface JobApiResponse extends OnAirApiResponse {
 export interface VirtualAirlineApiResponse extends OnAirApiResponse {
   Content: VirtualAirline;
 }
+
 export interface VirtualAirlineMemberApiResponse extends OnAirApiResponse {
   Content: Member | Member[];
 }
