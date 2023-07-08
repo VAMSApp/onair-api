@@ -35,49 +35,51 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-var mocha_1 = require("mocha");
-var chai_1 = require("chai");
-var getAirport_1 = require("./getAirport");
-var COMPANY_APIKEY = process.env.COMPANY_APIKEY;
-if (!COMPANY_APIKEY)
-    throw new Error('No COMPANY_APIKEY provided');
-var ApiKey = COMPANY_APIKEY;
-(0, mocha_1.describe)('getAirport', function () {
-    it('should be a function', function () {
-        (0, chai_1.expect)(typeof getAirport_1.getAirport).to.equal('function');
+exports.getCompanyAircraftWorkOrders = void 0;
+var onAirRequest_1 = __importDefault(require("./onAirRequest"));
+var utils_1 = require("../utils");
+var endPoint = 'company/';
+var getCompanyAircraftWorkOrders = function (companyId, aircraftId, apiKey) { return __awaiter(void 0, void 0, void 0, function () {
+    var response, msg, e_1, msg;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0:
+                if (!companyId)
+                    throw new Error('No Company Id provided');
+                if (!aircraftId)
+                    throw new Error('No Aircraft Id provided');
+                if (!apiKey)
+                    throw new Error('No Api Key provided');
+                if (!(0, utils_1.isValidGuid)(companyId))
+                    throw new Error('Invalid Company ID format provided');
+                if (!(0, utils_1.isValidGuid)(aircraftId))
+                    throw new Error('Invalid Aircraft ID format provided');
+                if (!(0, utils_1.isValidGuid)(apiKey))
+                    throw new Error('Invalid Api Key format provided');
+                _a.label = 1;
+            case 1:
+                _a.trys.push([1, 3, , 4]);
+                return [4 /*yield*/, (0, onAirRequest_1.default)("https://server1.onair.company/api/v1/".concat(endPoint).concat(companyId, "/workorders/").concat(aircraftId), apiKey)];
+            case 2:
+                response = _a.sent();
+                if (typeof response.data.Content !== 'undefined') {
+                    return [2 /*return*/, response.data.Content];
+                }
+                else {
+                    msg = (response.data.Error) ? response.data.Error : 'Company or Aircraft Id not found';
+                    throw new Error(msg);
+                }
+                return [3 /*break*/, 4];
+            case 3:
+                e_1 = _a.sent();
+                msg = (e_1.response.status === 400) ? 'Company or Aircraft Id not found' : e_1.message;
+                throw new Error(msg);
+            case 4: return [2 /*return*/];
+        }
     });
-    it('should return a matching Airport for the given Airport ICAO', function () { return __awaiter(void 0, void 0, void 0, function () {
-        var airport;
-        return __generator(this, function (_a) {
-            switch (_a.label) {
-                case 0: return [4 /*yield*/, (0, getAirport_1.getAirport)('KLOV', ApiKey)];
-                case 1:
-                    airport = _a.sent();
-                    if (!airport || airport === null)
-                        throw new Error('No airport returned');
-                    (0, chai_1.expect)(airport).to.be.an('object');
-                    (0, chai_1.expect)(airport.Id).to.be.a('string');
-                    return [2 /*return*/];
-            }
-        });
-    }); });
-    it('should throw an error if the provided apiKey is invalid', function () { return __awaiter(void 0, void 0, void 0, function () {
-        var e_1;
-        return __generator(this, function (_a) {
-            switch (_a.label) {
-                case 0:
-                    _a.trys.push([0, 2, , 3]);
-                    return [4 /*yield*/, (0, getAirport_1.getAirport)('KLOV', 'InvalidApiKey')];
-                case 1:
-                    _a.sent();
-                    return [3 /*break*/, 3];
-                case 2:
-                    e_1 = _a.sent();
-                    (0, chai_1.expect)(e_1.message).to.equal('Invalid Api Key provided');
-                    return [3 /*break*/, 3];
-                case 3: return [2 /*return*/];
-            }
-        });
-    }); });
-});
+}); };
+exports.getCompanyAircraftWorkOrders = getCompanyAircraftWorkOrders;

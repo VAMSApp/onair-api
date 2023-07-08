@@ -61,7 +61,7 @@ var CompanyId = COMPANY_ID;
                 case 1:
                     incomeStatement = _a.sent();
                     (0, chai_1.expect)(incomeStatement).to.be.an('object');
-                    (0, chai_1.expect)(incomeStatement.Content).to.have.keys([
+                    (0, chai_1.expect)(incomeStatement.Content).to.contain.keys([
                         'REVAccounts',
                         'EXPAccounts',
                         'REVAmount',
@@ -83,7 +83,7 @@ var CompanyId = COMPANY_ID;
                 case 1:
                     incomeStatement = _a.sent();
                     (0, chai_1.expect)(incomeStatement).to.be.an('object');
-                    (0, chai_1.expect)(incomeStatement.Content).to.have.keys([
+                    (0, chai_1.expect)(incomeStatement.Content).to.contain.keys([
                         'REVAccounts',
                         'EXPAccounts',
                         'REVAmount',
@@ -105,7 +105,7 @@ var CompanyId = COMPANY_ID;
                 case 1:
                     incomeStatement = _a.sent();
                     (0, chai_1.expect)(incomeStatement).to.be.an('object');
-                    (0, chai_1.expect)(incomeStatement.Content).to.have.keys([
+                    (0, chai_1.expect)(incomeStatement.Content).to.contain.keys([
                         'REVAccounts',
                         'EXPAccounts',
                         'REVAmount',

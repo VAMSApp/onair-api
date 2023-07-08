@@ -157,7 +157,7 @@ export interface Aircraft {
     LastParkingFeePayment: string;
     IsControlledByAI: boolean;
     HoursBefore100HInspection: number;
-    Engines: AircraftEngine[] | any;
+    Engines: AircraftEngine[];
     ConfigFirstSeats: number;
     ConfigBusSeats: number;
     ConfigEcoSeats: number;

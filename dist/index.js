@@ -81,6 +81,7 @@ var OnAirApi = /** @class */ (function () {
         this.getCompanyBalanceSheet = this.getCompanyBalanceSheet.bind(this);
         this.getCompanyMissionFlightTracks = this.getCompanyMissionFlightTracks.bind(this);
         this.getCompanyWorkOrders = this.getCompanyWorkOrders.bind(this);
+        this.getCompanyAircraftWorkOrders = this.getCompanyAircraftWorkOrders.bind(this);
         this.getCompanyNotifications = this.getCompanyNotifications.bind(this);
         this.getAircraft = this.getAircraft.bind(this);
         this.getAircraftFlights = this.getAircraftFlights.bind(this);
@@ -96,6 +97,8 @@ var OnAirApi = /** @class */ (function () {
         this.getVirtualAirlineFbos = this.getVirtualAirlineFbos.bind(this);
         this.getVirtualAirlineNotifications = this.getVirtualAirlineNotifications.bind(this);
         this.getVirtualAirlineIncomeStatement = this.getVirtualAirlineIncomeStatement.bind(this);
+        this.getVirtualAirlineWorkOrders = this.getVirtualAirlineWorkOrders.bind(this);
+        this.getFboJobs = this.getFboJobs.bind(this);
         this.getEmployee = this.getEmployee.bind(this);
         this.isValidGuid = this.isValidGuid.bind(this);
     }
@@ -333,9 +336,33 @@ var OnAirApi = /** @class */ (function () {
             });
         });
     };
+    OnAirApi.prototype.getCompanyAircraftWorkOrders = function (aircraftId, companyId) {
+        return __awaiter(this, void 0, void 0, function () {
+            var workOrders;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        if (!aircraftId)
+                            throw new Error('No Aircraft Id provided');
+                        if (!this.isValidGuid(aircraftId))
+                            throw new Error('Invalid Aircraft Id provided');
+                        if (!companyId)
+                            companyId = this.CompanyId;
+                        if (!companyId)
+                            throw new Error('No Company Id provided');
+                        if (!this.isValidGuid(companyId))
+                            throw new Error('Invalid Company Id provided');
+                        return [4 /*yield*/, (0, api_1.getCompanyAircraftWorkOrders)(companyId, aircraftId, this.ApiKey)];
+                    case 1:
+                        workOrders = _a.sent();
+                        return [2 /*return*/, workOrders];
+                }
+            });
+        });
+    };
     OnAirApi.prototype.getCompanyNotifications = function (companyId) {
         return __awaiter(this, void 0, void 0, function () {
-            var vaNotiifcations;
+            var x;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
@@ -346,8 +373,8 @@ var OnAirApi = /** @class */ (function () {
                             throw new Error('Invalid VA ID provided');
                         return [4 /*yield*/, (0, api_1.getCompanyNotifications)(companyId, this.ApiKey)];
                     case 1:
-                        vaNotiifcations = _a.sent();
-                        return [2 /*return*/, vaNotiifcations];
+                        x = _a.sent();
+                        return [2 /*return*/, x];
                 }
             });
         });
@@ -627,6 +654,26 @@ var OnAirApi = /** @class */ (function () {
             });
         });
     };
+    OnAirApi.prototype.getVirtualAirlineWorkOrders = function (virtualAirlineId) {
+        return __awaiter(this, void 0, void 0, function () {
+            var workOrders;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        if (!virtualAirlineId)
+                            virtualAirlineId = this.VaId;
+                        if (!virtualAirlineId)
+                            throw new Error('No Virtual Airline Id provided');
+                        if (!this.isValidGuid(virtualAirlineId))
+                            throw new Error('Invalid Virtual Airline Id provided');
+                        return [4 /*yield*/, (0, api_1.getVirtualAirlineWorkOrders)(virtualAirlineId, this.ApiKey)];
+                    case 1:
+                        workOrders = _a.sent();
+                        return [2 /*return*/, workOrders];
+                }
+            });
+        });
+    };
     OnAirApi.prototype.getEmployee = function (employeeId) {
         return __awaiter(this, void 0, void 0, function () {
             var employee;
@@ -639,6 +686,22 @@ var OnAirApi = /** @class */ (function () {
                     case 1:
                         employee = _a.sent();
                         return [2 /*return*/, employee];
+                }
+            });
+        });
+    };
+    OnAirApi.prototype.getFboJobs = function (fboId) {
+        return __awaiter(this, void 0, void 0, function () {
+            var fboJobs;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        if (!fboId)
+                            throw new Error('FBO ID is not provided');
+                        return [4 /*yield*/, (0, api_1.getFboJobs)(fboId, this.ApiKey)];
+                    case 1:
+                        fboJobs = _a.sent();
+                        return [2 /*return*/, fboJobs];
                 }
             });
         });

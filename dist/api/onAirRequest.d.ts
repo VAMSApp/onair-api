@@ -63,10 +63,8 @@ export interface FlightTrackApiResponse extends OnAirApiResponse {
 export interface WorkOrderApiResponse extends OnAirApiResponse {
     Content: WorkOrder | WorkOrder[];
 }
-export interface VirtualAirlineNotificationApiResponse extends NotificationApiResponse {
-}
-export interface CompanyNotificationApiResponse extends NotificationApiResponse {
-}
+export declare type VirtualAirlineNotificationApiResponse = NotificationApiResponse;
+export declare type CompanyNotificationApiResponse = NotificationApiResponse;
 export interface NotificationApiResponse extends OnAirApiResponse {
     Content: Notification | Notification[];
 }

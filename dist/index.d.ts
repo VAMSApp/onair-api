@@ -1,4 +1,4 @@
-import { OnAirApiConfig, CompanyResponse, FleetResponse, FbosResponse, FlightsResponse, Job, EmployeeResponse, CashFlowResponse, BalanceSheetResponse, IncomeStatementResponse, WorkOrdersResponse, AirportResponse, FlightResponse, VirtualAirlineResponse, MembersResponse, ShareHoldersResponse, VARolesResponse, MissionFlightTracksResponse, AircraftResponse, Employee, Notification } from './types';
+import { OnAirApiConfig, CompanyResponse, EmployeeResponse, CashFlowResponse, BalanceSheetResponse, IncomeStatementResponse, AirportResponse, FlightResponse, VirtualAirlineResponse, AircraftResponse, Notification, Aircraft, People as Employee, Fbo, Flight, FlightTrack, Job, Member, ShareHolder, VARole, WorkOrder } from './types';
 import { IOnAirApi } from './interfaces';
 export * from './types';
 export * from './interfaces';
@@ -19,6 +19,7 @@ export declare class OnAirApi implements IOnAirApi {
     getCompanyBalanceSheet(companyId?: string): Promise<BalanceSheetResponse>;
     getCompanyMissionFlightTracks(companyId?: string): Promise<FlightTrack[]>;
     getCompanyWorkOrders(companyId?: string): Promise<WorkOrder[]>;
+    getCompanyAircraftWorkOrders(aircraftId: string, companyId?: string): Promise<WorkOrder[]>;
     getCompanyNotifications(companyId?: string): Promise<Notification[]>;
     getAircraft(aircraftId: string): Promise<AircraftResponse>;
     getAircraftFlights(aircraftId: string, page?: number, limit?: number): Promise<Flight[]>;
@@ -34,6 +35,8 @@ export declare class OnAirApi implements IOnAirApi {
     getVirtualAirlineFbos(vaId?: string): Promise<Fbo[]>;
     getVirtualAirlineNotifications(vaId?: string): Promise<Notification[]>;
     getVirtualAirlineIncomeStatement(vaId?: string, startDate?: string | undefined, endDate?: string | undefined): Promise<IncomeStatementResponse>;
+    getVirtualAirlineWorkOrders(virtualAirlineId?: string): Promise<WorkOrder[]>;
     getEmployee(employeeId: string): Promise<EmployeeResponse>;
+    getFboJobs(fboId: string): Promise<Job[]>;
 }
 export default OnAirApi;

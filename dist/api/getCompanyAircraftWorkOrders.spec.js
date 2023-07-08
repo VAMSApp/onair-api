@@ -38,32 +38,42 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var mocha_1 = require("mocha");
 var chai_1 = require("chai");
-var getCompanyFbos_1 = require("./getCompanyFbos");
-var _a = process.env, COMPANY_APIKEY = _a.COMPANY_APIKEY, COMPANY_ID = _a.COMPANY_ID;
+var getCompanyAircraftWorkOrders_1 = require("./getCompanyAircraftWorkOrders");
+var _a = process.env, COMPANY_APIKEY = _a.COMPANY_APIKEY, COMPANY_ID = _a.COMPANY_ID, AIRCRAFT_ID = _a.AIRCRAFT_ID;
 if (!COMPANY_APIKEY)
     throw new Error('No COMPANY_APIKEY provided');
 if (!COMPANY_ID)
     throw new Error('No COMPANY_ID provided');
+if (!AIRCRAFT_ID)
+    throw new Error('No AIRCRAFT_ID provided');
 var ApiKey = COMPANY_APIKEY;
 var CompanyId = COMPANY_ID;
-(0, mocha_1.describe)('getCompanyFbos', function () {
+var AircraftId = AIRCRAFT_ID;
+(0, mocha_1.describe)('getCompanyAircraftWorkOrders', function () {
     it('should be a function', function () {
-        (0, chai_1.expect)(typeof getCompanyFbos_1.getCompanyFbos).to.equal('function');
+        (0, chai_1.expect)(typeof getCompanyAircraftWorkOrders_1.getCompanyAircraftWorkOrders).to.equal('function');
     });
-    it('should return an array of Fbo\'s for the given companyId', function () { return __awaiter(void 0, void 0, void 0, function () {
-        var fbos;
+    it('should return an array of WorkOrders for the given companyId', function () { return __awaiter(void 0, void 0, void 0, function () {
+        var workOrders;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, (0, getCompanyFbos_1.getCompanyFbos)(CompanyId, ApiKey)];
+                case 0: return [4 /*yield*/, (0, getCompanyAircraftWorkOrders_1.getCompanyAircraftWorkOrders)(CompanyId, AircraftId, ApiKey)];
                 case 1:
-                    fbos = _a.sent();
-                    (0, chai_1.expect)(fbos).to.be.an('array');
-                    if (fbos.length > 0) {
-                        (0, chai_1.expect)(fbos[0]).to.contain.keys([
+                    workOrders = _a.sent();
+                    (0, chai_1.expect)(workOrders).to.be.an('array');
+                    if (workOrders.length > 0) {
+                        (0, chai_1.expect)(workOrders[0]).to.have.any.keys([
                             'Id',
-                            'AirportId',
+                            'AircraftId',
+                            'CompanyId',
+                            'StartDate',
                             'Name',
+                            'Crews',
+                            'DepartureAirportId',
+                            'Status',
                         ]);
+                        (0, chai_1.expect)(workOrders[0].AircraftId).to.equal(AircraftId);
+                        (0, chai_1.expect)(workOrders[0].CompanyId).to.equal(CompanyId);
                     }
                     return [2 /*return*/];
             }
@@ -75,31 +85,49 @@ var CompanyId = COMPANY_ID;
             switch (_a.label) {
                 case 0:
                     _a.trys.push([0, 2, , 3]);
-                    return [4 /*yield*/, (0, getCompanyFbos_1.getCompanyFbos)('invalidCompanyId', ApiKey)];
+                    return [4 /*yield*/, (0, getCompanyAircraftWorkOrders_1.getCompanyAircraftWorkOrders)('invalidCompanyId', AircraftId, ApiKey)];
                 case 1:
                     _a.sent();
                     return [3 /*break*/, 3];
                 case 2:
                     e_1 = _a.sent();
-                    (0, chai_1.expect)(e_1.message).to.equal('Invalid Company Id provided');
+                    (0, chai_1.expect)(e_1.message).to.equal('Invalid Company ID format provided');
+                    return [3 /*break*/, 3];
+                case 3: return [2 /*return*/];
+            }
+        });
+    }); });
+    it('should throw an error if the provided Aircraft ID is invalid', function () { return __awaiter(void 0, void 0, void 0, function () {
+        var e_2;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    _a.trys.push([0, 2, , 3]);
+                    return [4 /*yield*/, (0, getCompanyAircraftWorkOrders_1.getCompanyAircraftWorkOrders)(CompanyId, 'invalidAircraftId', ApiKey)];
+                case 1:
+                    _a.sent();
+                    return [3 /*break*/, 3];
+                case 2:
+                    e_2 = _a.sent();
+                    (0, chai_1.expect)(e_2.message).to.equal('Invalid Aircraft ID format provided');
                     return [3 /*break*/, 3];
                 case 3: return [2 /*return*/];
             }
         });
     }); });
     it('should throw an error if the provided API Key is invalid', function () { return __awaiter(void 0, void 0, void 0, function () {
-        var e_2;
+        var e_3;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
                     _a.trys.push([0, 2, , 3]);
-                    return [4 /*yield*/, (0, getCompanyFbos_1.getCompanyFbos)(CompanyId, 'invalidApiKey')];
+                    return [4 /*yield*/, (0, getCompanyAircraftWorkOrders_1.getCompanyAircraftWorkOrders)(CompanyId, AircraftId, 'invalidApiKey')];
                 case 1:
                     _a.sent();
                     return [3 /*break*/, 3];
                 case 2:
-                    e_2 = _a.sent();
-                    (0, chai_1.expect)(e_2.message).to.equal('Invalid Api Key provided');
+                    e_3 = _a.sent();
+                    (0, chai_1.expect)(e_3.message).to.equal('Invalid Api Key format provided');
                     return [3 /*break*/, 3];
                 case 3: return [2 /*return*/];
             }

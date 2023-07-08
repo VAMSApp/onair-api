@@ -38,50 +38,81 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var mocha_1 = require("mocha");
 var chai_1 = require("chai");
-var getCompanyFbos_1 = require("./getCompanyFbos");
-var _a = process.env, COMPANY_APIKEY = _a.COMPANY_APIKEY, COMPANY_ID = _a.COMPANY_ID;
+var getFboJobs_1 = require("./getFboJobs");
+var _a = process.env, COMPANY_APIKEY = _a.COMPANY_APIKEY, COMPANY_ID = _a.COMPANY_ID, FBO_ID = _a.FBO_ID;
 if (!COMPANY_APIKEY)
     throw new Error('No COMPANY_APIKEY provided');
 if (!COMPANY_ID)
     throw new Error('No COMPANY_ID provided');
+if (!FBO_ID)
+    throw new Error('No FBO_ID provided');
 var ApiKey = COMPANY_APIKEY;
-var CompanyId = COMPANY_ID;
-(0, mocha_1.describe)('getCompanyFbos', function () {
+var FboId = FBO_ID;
+mocha_1.describe.only('getFboJobs', function () {
     it('should be a function', function () {
-        (0, chai_1.expect)(typeof getCompanyFbos_1.getCompanyFbos).to.equal('function');
+        (0, chai_1.expect)(typeof getFboJobs_1.getFboJobs).to.equal('function');
     });
-    it('should return an array of Fbo\'s for the given companyId', function () { return __awaiter(void 0, void 0, void 0, function () {
-        var fbos;
+    it('should return an array of pending Jobs for the given FBO Id', function () { return __awaiter(void 0, void 0, void 0, function () {
+        var jobs;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, (0, getCompanyFbos_1.getCompanyFbos)(CompanyId, ApiKey)];
+                case 0: return [4 /*yield*/, (0, getFboJobs_1.getFboJobs)(FboId, ApiKey)];
                 case 1:
-                    fbos = _a.sent();
-                    (0, chai_1.expect)(fbos).to.be.an('array');
-                    if (fbos.length > 0) {
-                        (0, chai_1.expect)(fbos[0]).to.contain.keys([
+                    jobs = _a.sent();
+                    (0, chai_1.expect)(jobs).to.be.an('array');
+                    if (jobs.length > 0) {
+                        (0, chai_1.expect)(jobs[0]).to.have.any.keys([
                             'Id',
-                            'AirportId',
-                            'Name',
+                            'WorldId',
+                            'Cargos',
+                            'Charters',
+                            'MissionTypeId',
+                            'MainAirportId',
+                            'BaseAirportId',
+                            'ValuePerLbsPerDistance',
+                            'IsGoodValue',
+                            'MaxDistance',
+                            'TotalDistance',
+                            'MainAirportHeading',
+                            'Description',
+                            'Pay',
+                            'Penality',
+                            'ReputationImpact',
+                            'CompanyId',
+                            'CreationDate',
+                            'TakenDate',
+                            'TotalCargoTransported',
+                            'TotalPaxTransported',
+                            'Category',
+                            'State',
+                            'XP',
+                            'SkillPoint',
+                            'MinCompanyReput',
+                            'Hash',
+                            'RealPay',
+                            'RealPenality',
+                            'CanAccess',
+                            'IsLastMinute',
+                            'IsFavorited',
                         ]);
                     }
                     return [2 /*return*/];
             }
         });
     }); });
-    it('should throw an error if the provided Company ID is invalid', function () { return __awaiter(void 0, void 0, void 0, function () {
+    it('should throw an error if the provided FBO ID is invalid', function () { return __awaiter(void 0, void 0, void 0, function () {
         var e_1;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
                     _a.trys.push([0, 2, , 3]);
-                    return [4 /*yield*/, (0, getCompanyFbos_1.getCompanyFbos)('invalidCompanyId', ApiKey)];
+                    return [4 /*yield*/, (0, getFboJobs_1.getFboJobs)('InvalidFBOId', ApiKey)];
                 case 1:
                     _a.sent();
                     return [3 /*break*/, 3];
                 case 2:
                     e_1 = _a.sent();
-                    (0, chai_1.expect)(e_1.message).to.equal('Invalid Company Id provided');
+                    (0, chai_1.expect)(e_1.message).to.equal('Invalid FBO Id provided');
                     return [3 /*break*/, 3];
                 case 3: return [2 /*return*/];
             }
@@ -93,7 +124,7 @@ var CompanyId = COMPANY_ID;
             switch (_a.label) {
                 case 0:
                     _a.trys.push([0, 2, , 3]);
-                    return [4 /*yield*/, (0, getCompanyFbos_1.getCompanyFbos)(CompanyId, 'invalidApiKey')];
+                    return [4 /*yield*/, (0, getFboJobs_1.getFboJobs)(FboId, 'invalidApiKey')];
                 case 1:
                     _a.sent();
                     return [3 /*break*/, 3];

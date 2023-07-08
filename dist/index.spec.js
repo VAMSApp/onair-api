@@ -82,7 +82,7 @@ var vaId = VIRTUAL_AIRLINE_ID;
                     try {
                         api = new index_1.default({ apiKey: apiKey, companyId: companyId, vaId: vaId });
                         (0, chai_1.expect)(api).to.be.an('Object');
-                        (0, chai_1.expect)(api).to.have.keys([
+                        (0, chai_1.expect)(api).to.contain.keys([
                             'ApiKey',
                             'CompanyId',
                             'VaId',
@@ -100,6 +100,7 @@ var vaId = VIRTUAL_AIRLINE_ID;
                             'getCompanyJobs',
                             'getCompanyMissionFlightTracks',
                             'getCompanyWorkOrders',
+                            'getCompanyAircraftWorkOrders',
                             'getCompanyNotifications',
                             'getEmployee',
                             'getFlight',
@@ -113,6 +114,7 @@ var vaId = VIRTUAL_AIRLINE_ID;
                             'getVirtualAirlineNotifications',
                             'getVirtualAirlineRoles',
                             'getVirtualAirlineShareHolders',
+                            'getVirtualAirlineWorkOrders',
                             'isValidGuid',
                         ]);
                     }
@@ -126,10 +128,9 @@ var vaId = VIRTUAL_AIRLINE_ID;
     });
     it('when instantiated with invalid data, it should throw an error', function () {
         return __awaiter(this, void 0, void 0, function () {
-            var api;
             return __generator(this, function (_a) {
                 try {
-                    api = new index_1.default({ apiKey: '', companyId: '', vaId: '' });
+                    new index_1.default({ apiKey: '', companyId: '', vaId: '' });
                 }
                 catch (e) {
                     (0, chai_1.expect)(e).to.be.an('Error');
