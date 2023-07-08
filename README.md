@@ -11,9 +11,9 @@ A Typescript/Javascript wrapper around the OnAir Airline Manager's API.
 
 **The required apiKey and optional companyId** can be found in the lower left corner of the options screen within the OnAir Desktop client, if You need additional help locating these ID's check the [How To](https://github.com/vams-app/onair-api/wiki/How-To-find-your-OnAir-Company-and-VA-Id's-and-Api-Key) in the wiki.
 
-* apiKey
-* companyId - *Optional*, but required for all `getCompany*` methods
-* vaId - *Optional*, only required if using either of the VA methods `getVirtualAirline` or `getVirtualAirlineMembers`
+* apiKey - required, used on all Api calls to authenticate the caller
+* companyId - *Optional*, except for all `getCompany*` methods
+* vaId - *Optional*, except for all `getVirtualAirline*` methods
 
 ## Example using Javascript
 ```javascript
@@ -36,6 +36,24 @@ let company = await Api.getCompany();
 // do something with the company data
 
 ```
+
+## Example using Typescript
+```typescript
+import OnAirApi, { Company, OnAirApiConfig, } from 'onair-api'
+
+const apiConfig: OnAirApiConfig = {
+  apiKey: 'YOUR-API-KEY',
+  companyId: 'YOUR-COMPANY-ID',
+  vaId: 'YOUR-VA-ID'
+};
+
+const api: Api = new OnAirApi(apiConfig);
+let companyDetails: Company = await api.getCompany();
+// or pass another companyId as the first argument
+let companyDetails: Company[] = await api.getCompanyFbos(companyId);
+```
+
+
 ---
 ## Methods
 
@@ -49,6 +67,7 @@ let company = await Api.getCompany();
 - [getCompanyIncomeStatement](#getcompanyincomestatementstartdate-string-enddate-string)
 - [getCompanyBalanceSheet](#getcompanybalancesheet)
 - [getCompanyWorkOrders](#getcompanyworkorders)
+- [getCompanyAircraftWorkOrders](#getcompanyaircraftworkordersaircraftId-string)
 - [getCompanyNotifications](#getCompanyNotifications)
 - [getAircraft](#getAircraftaircraftId-string)
 - [getAircraftFlights](#getAircraftFlights)
@@ -61,9 +80,11 @@ let company = await Api.getCompany();
 - [getVirtualAirlineFlights](#getVirtualAirlineFlights)
 - [getVirtualAirlineFleet](#getVirtualAirlineFleet)
 - [getVirtualAirlineJobs](#getVirtualAirlineJobs)
+- [getVirtualAirlineWorkOrders](#getVirtualAirlineWorkOrders)
 - [getVirtualAirlineNotifications](#getVirtualAirlineNotifications)
 - [getVirtualAirlineIncomeStatement](#getvirtualairlineincomestatementstartdate-string-enddate-string)
 - [getEmployee](#getemployeeemployeeid-string)
+- [getFboJobs](#getfbojobsfboid-string)
 
 ### [getCompany(companyId?:string)](src/api/getCompany.ts)
 Fetches the company details for the given companyId.
