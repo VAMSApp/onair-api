@@ -41,16 +41,25 @@ let company = await Api.getCompany();
 ```typescript
 import OnAirApi, { Company, OnAirApiConfig, } from 'onair-api'
 
+// build the OnAirApiConfig object
 const apiConfig: OnAirApiConfig = {
   apiKey: 'YOUR-API-KEY',
   companyId: 'YOUR-COMPANY-ID',
   vaId: 'YOUR-VA-ID'
 };
 
+// instantiate a new OnAirApi class
 const api: Api = new OnAirApi(apiConfig);
+/**
+ * call one of the Api methods, like getCompany
+ * which will query the OnAir API using the above credentials
+ * and returns the company details
+ */
 let companyDetails: Company = await api.getCompany();
 // or pass another companyId as the first argument
-let companyDetails: Company[] = await api.getCompanyFbos(companyId);
+let companyDetails: Company[] = await api.getCompany('35f37dab-59ef-4fdb-b5d5-e7851def1276');
+
+// then do something with the company data
 ```
 
 
