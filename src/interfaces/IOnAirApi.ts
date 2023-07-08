@@ -52,4 +52,5 @@ export interface IOnAirApi {
     getVirtualAirlineIncomeStatement: (vaId?:string, startDate?: string | undefined, endDate?: string | undefined) => Promise<IncomeStatementResponse>
     getVirtualAirlineWorkOrders: (vaId?:string) => Promise<WorkOrder[]>
     getEmployee: (employeeId:string) => Promise<EmployeeResponse>
+    getFboJobs: (fboId:string) => Promise<Job[]>
 }

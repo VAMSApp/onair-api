@@ -692,6 +692,30 @@ let employee_details: People = await api.getEmployee(employeeId);
 
 
 
+### [getFboJobs(fboId: string)](src/api/getFboJobs.ts)
+Fetches pending jobs for a given fboId.
+
+#### Usage
+```typescript
+import OnAirApi, { Job, OnAirApiConfig, } from 'onair-api'
+
+const apiConfig: OnAirApiConfig = {
+  apiKey: 'YOUR-API-KEY',
+  companyId: 'YOUR-COMPANY-ID',
+  vaId: 'YOUR-VA-ID'
+};
+
+const api: Api = new OnAirApi(apiConfig);
+const fboId = '35f37dab-59ef-4fdb-b5d5-e7851def1276';
+let pendingFBOJobs: Job[] = await api.getFboJobs(fboId);
+```
+
+#### Example Response
+ - [getFboJobs.md](docs/responses/getFboJobs.md)
+
+
+
+
 
 ---
 

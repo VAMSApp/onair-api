@@ -77,6 +77,7 @@ export type GetVirtualAirlineIncomeStatement = (vaId: string, apiKey: string, st
 export type GetVirtualAirlineWorkOrders = (companyId: string, apiKey: string) => Promise<WorkOrder[]>;
 export type GetEmployee = (employeeId: string, apiKey: string) => Promise<EmployeeResponse>;
 export type GetCompanyAircraftWorkOrders = (companyId: string, aircraftId: string, apiKey: string) => Promise<WorkOrder[]>;
+export type GetFboJobs = (fboId: string, apiKey: string) => Promise<Job[]>;
 
 export type OnAirApiConfigOptions = {
     logLevel: string,

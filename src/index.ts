@@ -55,7 +55,8 @@ import {
     getVirtualAirlineNotifications,
     getVirtualAirlineIncomeStatement,
     getVirtualAirlineWorkOrders,
-    getEmployee
+    getEmployee,
+    getFboJobs
 } from './api';
 import { isValidGuid } from './utils';
 export * from './types';
@@ -114,6 +115,7 @@ export class OnAirApi implements IOnAirApi {
         this.getVirtualAirlineNotifications = this.getVirtualAirlineNotifications.bind(this);
         this.getVirtualAirlineIncomeStatement = this.getVirtualAirlineIncomeStatement.bind(this);
         this.getVirtualAirlineWorkOrders = this.getVirtualAirlineWorkOrders.bind(this);
+        this.getFboJobs = this.getFboJobs.bind(this);
 
         this.getEmployee = this.getEmployee.bind(this);
         this.isValidGuid = this.isValidGuid.bind(this);
@@ -256,8 +258,8 @@ export class OnAirApi implements IOnAirApi {
         if (!companyId) throw new Error('VA ID is not provided');
         if (!this.isValidGuid(companyId)) throw new Error('Invalid VA ID provided');
 
-        const vaNotiifcations: Notification[] = await getCompanyNotifications(companyId, this.ApiKey);
-        return vaNotiifcations;
+        const x: Notification[] = await getCompanyNotifications(companyId, this.ApiKey);
+        return x;
     }
 
     public async getAircraft(aircraftId:string): Promise<AircraftResponse> {
@@ -410,6 +412,13 @@ export class OnAirApi implements IOnAirApi {
 
         const employee: EmployeeResponse = await getEmployee(employeeId, this.ApiKey);
         return employee;
+    }
+
+    public async getFboJobs(fboId:string): Promise<Job[]> {
+        if (!fboId) throw new Error('FBO ID is not provided');
+
+        const fboJobs: Job[] = await getFboJobs(fboId, this.ApiKey);
+        return fboJobs;
     }
 
 }
