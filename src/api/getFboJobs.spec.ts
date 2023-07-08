@@ -16,7 +16,7 @@ if (!FBO_ID) throw new Error('No FBO_ID provided');
 const ApiKey:string = COMPANY_APIKEY;
 const FboId:string = FBO_ID;
 
-describe.only('getFboJobs', () => {
+describe('getFboJobs', () => {
     it('should be a function', () => {
         expect(typeof getFboJobs).to.equal('function');
     });
