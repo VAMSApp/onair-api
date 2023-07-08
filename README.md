@@ -300,6 +300,31 @@ let workorders: WorkOrder = await api.getCompanyWorkOrders();
 
 
 
+### [getCompanyAircraftWorkOrders(aircraftId:string, companyId?:string)](src/api/getCompanyAircraftWorkOrders.ts)
+Fetches the company's currently generated work orders for a given aircraft.
+#### Usage
+```typescript
+import OnAirApi, { WorkOrder, OnAirApiConfig, } from 'onair-api'
+
+
+const apiConfig: OnAirApiConfig = {
+  apiKey: 'YOUR-API-KEY',
+  companyId: 'YOUR-COMPANY-ID',
+  vaId: 'YOUR-VA-ID'
+};
+
+const api: Api = new OnAirApi(apiConfig);
+const aircraftId = '73baa73c-01e3-4aae-b99b-29cff83c7f37';
+let workorders: WorkOrder = await api.getCompanyAircraftWorkOrders(aircraftId);
+```
+
+#### Example Response
+ - [getCompanyAircraftWorkOrders.md](docs/responses/getCompanyAircraftWorkOrders.md)
+
+
+
+
+
 ### [getCompanyNotifications()](src/api/getCompanyNotifications.ts)
 Fetches the recent notifications for the given companyId
 
@@ -560,6 +585,30 @@ let vaJobs: Job[] = await api.getVirtualAirlineJobs();
 
 #### Example Response
  - [getVirtualAirlineJobs.md](docs/responses/getVirtualAirlineJobs.md)
+
+
+
+
+### [getVirtualAirlineWorkOrders(virtualAirlineId?:string)](src/api/getVirtualAirlineWorkOrders.ts)
+Fetches the Virtual Airline's currently generated work orders.
+#### Usage
+```typescript
+import OnAirApi, { WorkOrder, OnAirApiConfig, } from 'onair-api'
+
+
+const apiConfig: OnAirApiConfig = {
+  apiKey: 'YOUR-API-KEY',
+  companyId: 'YOUR-COMPANY-ID',
+  vaId: 'YOUR-VA-ID'
+};
+
+const api: Api = new OnAirApi(apiConfig);
+let workorders: WorkOrder = await api.getVirtualAirlineWorkOrders();
+```
+
+#### Example Response
+ - [getVirtualAirlineWorkOrders.md](docs/responses/getVirtualAirlineWorkOrders.md)
+
 
 
 
