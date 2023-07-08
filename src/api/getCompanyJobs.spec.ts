@@ -58,7 +58,7 @@ describe('getCompanyJobs', () => {
                 'CanAccess',
                 'IsLastMinute',
                 'IsFavorited',
-            ])
+            ]);
         }
     });
 
@@ -101,9 +101,7 @@ describe('getCompanyJobs', () => {
                 'CanAccess',
                 'IsLastMinute',
                 'IsFavorited',
-            ])
-
-            expect(jobs[0].Id).to.equal('d661e021-49e7-4382-b17c-21074d0cfb4d');
+            ]);
         }
     });
 

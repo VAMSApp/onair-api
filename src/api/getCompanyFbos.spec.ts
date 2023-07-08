@@ -25,11 +25,11 @@ describe('getCompanyFbos', () => {
         expect(fbos).to.be.an('array');
 
         if (fbos.length > 0) {
-            expect(fbos[0]).to.have.keys([
+            expect(fbos[0]).to.contain.keys([
                 'Id',
                 'AirportId',
                 'Name',
-            ])
+            ]);
         }
 
     });

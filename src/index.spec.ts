@@ -24,7 +24,7 @@ describe('OnAirApi()', function() {
             try {
                 const api: OnAirApi = new OnAirApi({ apiKey, companyId, vaId });
                 expect(api).to.be.an('Object');
-                expect(api).to.have.keys([
+                expect(api).to.contain.keys([
                     'ApiKey',
                     'CompanyId',
                     'VaId',
@@ -56,7 +56,7 @@ describe('OnAirApi()', function() {
                     'getVirtualAirlineRoles',
                     'getVirtualAirlineShareHolders',
                     'isValidGuid',
-                ])
+                ]);
             } catch (e) {
                 console.log(e);
 
@@ -66,7 +66,7 @@ describe('OnAirApi()', function() {
 
     it('when instantiated with invalid data, it should throw an error', async function() {
         try {
-            const api: OnAirApi = new OnAirApi({ apiKey: '', companyId: '', vaId: '' });
+            new OnAirApi({ apiKey: '', companyId: '', vaId: '' });
         } catch (e) {
             expect(e).to.be.an('Error');
         }

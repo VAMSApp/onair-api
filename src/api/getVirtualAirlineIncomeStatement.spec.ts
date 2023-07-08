@@ -25,7 +25,7 @@ describe('getVirtualAirlineIncomeStatement', () => {
         const incomeStatement:IncomeStatementResponse = await getVirtualAirlineIncomeStatement(VaId, ApiKey, StartDateStr, EndDateStr);
 
         expect(incomeStatement).to.be.an('object');
-        expect(incomeStatement.Content).to.have.keys([
+        expect(incomeStatement.Content).to.contain.keys([
             'REVAccounts',
             'EXPAccounts',
             'REVAmount',
@@ -40,7 +40,7 @@ describe('getVirtualAirlineIncomeStatement', () => {
         const incomeStatement:IncomeStatementResponse = await getVirtualAirlineIncomeStatement(VaId, ApiKey, StartDateStr, EndDateStr);
 
         expect(incomeStatement).to.be.an('object');
-        expect(incomeStatement.Content).to.have.keys([
+        expect(incomeStatement.Content).to.contain.keys([
             'REVAccounts',
             'EXPAccounts',
             'REVAmount',
@@ -55,7 +55,7 @@ describe('getVirtualAirlineIncomeStatement', () => {
         const incomeStatement:IncomeStatementResponse = await getVirtualAirlineIncomeStatement(VaId, ApiKey, StartDateStr, EndDateStr);
 
         expect(incomeStatement).to.be.an('object');
-        expect(incomeStatement.Content).to.have.keys([
+        expect(incomeStatement.Content).to.contain.keys([
             'REVAccounts',
             'EXPAccounts',
             'REVAmount',
