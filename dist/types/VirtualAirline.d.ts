@@ -1,5 +1,6 @@
 import { Aircraft } from './Aircraft';
 import { Company } from './Company';
+import { People } from './People';
 export interface VARole {
     Id: string;
     VAId: string;
@@ -9,6 +10,10 @@ export interface VARole {
     Color: string;
     PayPercent: number;
     IsHidden: boolean;
+    RestrictLoadingVAJobsIntoNonVAAircraft: boolean;
+    RestrictLoadingNonVAJobsIntoVAAircraft: boolean;
+    PayWeekly: number;
+    PayPerFlightHour: number;
 }
 export interface VirtualAirline {
     InitalOwnerEquity: number;
@@ -58,6 +63,7 @@ export interface Member {
     CompanyId: string;
     Company: Company;
     Aircrafts: Aircraft[];
+    Peoples: People[];
     VARoleId: string;
     VARole: VARole;
     TotalCargosTransportedLbs: number;
@@ -69,7 +75,7 @@ export interface Member {
     Color: string;
     AcceptChallengeMode: boolean;
     ReputationImpact: number;
-    LastVAFlightDate: string;
+    LastWeeklyPay: string;
 }
 export interface ShareHolder extends Member {
     OwnerEquity: number;

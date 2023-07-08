@@ -48,7 +48,7 @@ if (!FBO_ID)
     throw new Error('No FBO_ID provided');
 var ApiKey = COMPANY_APIKEY;
 var FboId = FBO_ID;
-mocha_1.describe.only('getFboJobs', function () {
+(0, mocha_1.describe)('getFboJobs', function () {
     it('should be a function', function () {
         (0, chai_1.expect)(typeof getFboJobs_1.getFboJobs).to.equal('function');
     });
