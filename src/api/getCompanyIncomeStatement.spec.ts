@@ -31,7 +31,7 @@ describe('getCompanyIncomeStatement', () => {
             'REVAmount',
             'EXPAmount',
             'NetIncomeAmount',
-        ])
+        ]);
     });
 
     it('if the startDate is provided, and no endDate is provided, by default it should return an IncomeStatement for the 30 days prior to the startDate for the given companyId', async () => {
@@ -46,7 +46,7 @@ describe('getCompanyIncomeStatement', () => {
             'REVAmount',
             'EXPAmount',
             'NetIncomeAmount',
-        ])
+        ]);
     });
 
     it('if the startDate is not provided but the endDate is provided, by default it should return an IncomeStatement for the 30 days ahead of the endDate for the given companyId', async () => {
@@ -61,7 +61,7 @@ describe('getCompanyIncomeStatement', () => {
             'REVAmount',
             'EXPAmount',
             'NetIncomeAmount',
-        ])
+        ]);
     });
 
     it('should throw an error if the provided Company ID is invalid', async () => {

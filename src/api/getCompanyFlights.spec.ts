@@ -33,7 +33,7 @@ describe('getCompanyFlights', () => {
                 'DepartureAirportId',
                 'ArrivalIntendedAirportId',
                 'ArrivalAlternateAirportId',
-            ])
+            ]);
         }
 
     });

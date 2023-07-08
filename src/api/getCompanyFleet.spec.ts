@@ -29,7 +29,7 @@ describe('getCompanyFleet', () => {
                 'Id',
                 'AircraftTypeId',
                 'WorldId',
-            ])
+            ]);
         }
 
     });

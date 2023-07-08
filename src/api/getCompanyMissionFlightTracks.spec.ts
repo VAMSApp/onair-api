@@ -29,7 +29,7 @@ describe('getCompanyMissionFlightTracks', () => {
                 'Id',
                 'MissionId',
                 'FlightId',
-            ])
+            ]);
         }
     });
 

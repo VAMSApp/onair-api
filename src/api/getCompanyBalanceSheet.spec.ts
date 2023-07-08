@@ -24,7 +24,7 @@ describe('getCompanyBalanceSheet', () => {
         if (!BalanceSheet || BalanceSheet === null) throw new Error('No BalanceSheet returned');
 
         expect(BalanceSheet).to.be.an('object');
-        expect(BalanceSheet).to.have.any.keys(['ASSAccounts','LIAAccounts','ASSAmount','LIAAmount','DeltaBalance',])
+        expect(BalanceSheet).to.have.any.keys(['ASSAccounts','LIAAccounts','ASSAmount','LIAAmount','DeltaBalance',]);
 
     });
 

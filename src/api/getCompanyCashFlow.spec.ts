@@ -29,7 +29,7 @@ describe('getCompanyCashFlow', () => {
             'CompanyCurrentCash',
             'LastReportAmount',
             'LastReportDate',
-        ])
+        ]);
 
     });
 

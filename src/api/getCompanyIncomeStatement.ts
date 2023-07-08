@@ -1,18 +1,18 @@
-import { GetCompanyIncomeStatement, IncomeStatement, IncomeStatementResponse } from '../types';
+import { GetCompanyIncomeStatement, IncomeStatementResponse } from '../types';
 import onAirRequest, { IncomeStatementApiResponse } from './onAirRequest';
 import { isValidGuid } from '../utils';
 import { AxiosResponse } from 'axios';
 
 const endPoint = 'company/';
 
-function subtractDays(dateStr:string = new Date().toISOString(), days:number = 30):Date{
-    var result = new Date(dateStr);
+function subtractDays(dateStr:string = new Date().toISOString(), days = 30):Date{
+    const result = new Date(dateStr);
     result.setDate(result.getDate() - days);
     return result;
 }
 
-function addDays(dateStr:string = new Date().toISOString(), days:number = 30):Date{
-    var result = new Date(dateStr);
+function addDays(dateStr:string = new Date().toISOString(), days = 30):Date{
+    const result = new Date(dateStr);
     result.setDate(result.getDate() + days);
     return result;
 }
@@ -25,8 +25,8 @@ export const getCompanyIncomeStatement:GetCompanyIncomeStatement = async (compan
     try {
         const currentDate:Date = new Date();
         const currentDateStr:string = currentDate.toISOString();
-        let StartDateStr:string = '';
-        let EndDateStr:string = '';
+        let StartDateStr = '';
+        let EndDateStr = '';
 
         // if the startDate variable exists, and the endDate variable is undefined
         // set the endDate equal to the startDate minus 30 days
@@ -51,9 +51,9 @@ export const getCompanyIncomeStatement:GetCompanyIncomeStatement = async (compan
         StartDateStr = startDate;
         EndDateStr = endDate;
 
-        let url:string = `https://server1.onair.company/api/v1/${endPoint}${companyId}/incomestatement?startDate=${StartDateStr}&endDate=${EndDateStr}`
+        const url = `https://server1.onair.company/api/v1/${endPoint}${companyId}/incomestatement?startDate=${StartDateStr}&endDate=${EndDateStr}`;
 
-        const oaResponse:AxiosResponse<IncomeStatementApiResponse, any> = await onAirRequest<IncomeStatementApiResponse>(
+        const oaResponse:AxiosResponse<IncomeStatementApiResponse, unknown> = await onAirRequest<IncomeStatementApiResponse>(
             url,
             apiKey,
         );
@@ -62,7 +62,7 @@ export const getCompanyIncomeStatement:GetCompanyIncomeStatement = async (compan
             throw new Error(oaResponse.data.Error ? oaResponse.data.Error : `Company Id "${companyId}"" not found`);
         }
 
-        let response:IncomeStatementResponse|undefined = {
+        const response:IncomeStatementResponse|undefined = {
             StartDate: StartDateStr,
             EndDate: EndDateStr,
             Content: oaResponse.data.Content,

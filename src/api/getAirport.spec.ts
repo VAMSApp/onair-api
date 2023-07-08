@@ -5,7 +5,6 @@ import { AirportResponse } from '../types';
 
 const {
     COMPANY_APIKEY,
-    AIRCRAFT_ID,
 } = process.env;
 
 if (!COMPANY_APIKEY) throw new Error('No COMPANY_APIKEY provided');

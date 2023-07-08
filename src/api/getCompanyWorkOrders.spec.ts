@@ -34,7 +34,7 @@ describe('getCompanyWorkOrders', () => {
                 'Crews',
                 'DepartureAirportId',
                 'Status',
-            ])
+            ]);
         }
     });
 

@@ -11,8 +11,8 @@ const {
 if (!COMPANY_APIKEY) throw new Error('No COMPANY_APIKEY provided');
 if (!VIRTUAL_AIRLINE_ID) throw new Error('No VIRTUAL_AIRLINE_ID provided');
 
-let ApiKey: string = COMPANY_APIKEY;
-let VaId: string = VIRTUAL_AIRLINE_ID;
+const ApiKey: string = COMPANY_APIKEY;
+const VaId: string = VIRTUAL_AIRLINE_ID;
 
 describe('getVirtualAirlineIncomeStatement', () => {
     it('should be a function', () => {
@@ -31,7 +31,7 @@ describe('getVirtualAirlineIncomeStatement', () => {
             'REVAmount',
             'EXPAmount',
             'NetIncomeAmount',
-        ])
+        ]);
     });
 
     it('if the startDate is provided, and no endDate is provided, by default it should return an IncomeStatement for the 30 days prior to the startDate for the given vaId', async () => {
@@ -46,7 +46,7 @@ describe('getVirtualAirlineIncomeStatement', () => {
             'REVAmount',
             'EXPAmount',
             'NetIncomeAmount',
-        ])
+        ]);
     });
 
     it('if the startDate is not provided but the endDate is provided, by default it should return an IncomeStatement for the 30 days ahead of the endDate for the given vaId', async () => {
@@ -61,12 +61,12 @@ describe('getVirtualAirlineIncomeStatement', () => {
             'REVAmount',
             'EXPAmount',
             'NetIncomeAmount',
-        ])
+        ]);
     });
 
     it('should throw an error if the provided VA Id is invalid', async () => {
-        const vaId = 'invalidVaId'
-        const ErrorMessage:string = `Invalid VA Id provided. VAId: '${vaId}'`;
+        const vaId = 'invalidVaId';
+        const ErrorMessage = `Invalid VA Id provided. VAId: '${vaId}'`;
 
         try {
             await getVirtualAirlineIncomeStatement(vaId, ApiKey);
@@ -76,8 +76,8 @@ describe('getVirtualAirlineIncomeStatement', () => {
     });
 
     it('should throw an error if the provided API Key is invalid', async () => {
-        const apiKey = 'invalidApiKey'
-        const ErrorMessage:string = `Invalid Api Key provided. ApiKey: '${apiKey}'`;
+        const apiKey = 'invalidApiKey';
+        const ErrorMessage = `Invalid Api Key provided. ApiKey: '${apiKey}'`;
 
         try {
             await getVirtualAirlineIncomeStatement(VaId, apiKey);

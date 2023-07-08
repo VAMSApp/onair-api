@@ -26,7 +26,7 @@ describe('getCompanyEmployees', () => {
         expect(Employees[0]).to.have.any.keys([
             'Id',
             'Pseudo',
-        ])
+        ]);
 
     });
 

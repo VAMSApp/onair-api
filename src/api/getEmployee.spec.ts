@@ -52,7 +52,7 @@ describe('getEmployee', () => {
             'IsOnline',
             'FlightDutyEnd',
             'FlightHoursGrandTotal',
-        ])
+        ]);
     });
 
     it('should throw an error if the provided Employee ID is invalid', async () => {
