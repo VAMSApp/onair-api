@@ -45,7 +45,7 @@ export declare type GetVirtualAirlineShareHolders = (vaId: string, apiKey: strin
 export declare type GetVirtualAirlineRoles = (vaId: string, apiKey: string) => Promise<VARole[]>;
 export declare type GetVirtualAirlineFlights = (vaId: string, apiKey: string, page?: number | undefined, limit?: number | undefined) => Promise<Flight[]>;
 export declare type GetVirtualAirlineFleet = (vaId: string, apiKey: string) => Promise<Aircraft[]>;
-export declare type GetVirtualAirlineJobs = (vaId: string, apiKey: string) => Promise<Job[]>;
+export declare type GetVirtualAirlineJobs = (vaId: string, apiKey: string, showCompleted?: boolean) => Promise<Job[]>;
 export declare type GetVirtualAirlineFbos = (vaId: string, apiKey: string) => Promise<Fbo[]>;
 export declare type GetVirtualAirlineNotifications = (vaId: string, apiKey: string) => Promise<Notification[]>;
 export declare type GetVirtualAirlineIncomeStatement = (vaId: string, apiKey: string, startDate?: string, endDate?: string) => Promise<IncomeStatementResponse>;

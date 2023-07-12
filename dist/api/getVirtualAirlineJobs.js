@@ -43,37 +43,40 @@ exports.getVirtualAirlineJobs = void 0;
 var onAirRequest_1 = __importDefault(require("./onAirRequest"));
 var utils_1 = require("../utils");
 var endPoint = 'company/';
-var getVirtualAirlineJobs = function (vaId, apiKey) { return __awaiter(void 0, void 0, void 0, function () {
-    var response, e_1;
-    return __generator(this, function (_a) {
-        switch (_a.label) {
-            case 0:
-                if (!vaId)
-                    throw new Error('No VA Id provided');
-                if (!apiKey)
-                    throw new Error('No Api Key provided');
-                if (!(0, utils_1.isValidGuid)(vaId))
-                    throw new Error('Invalid VA Id provided');
-                if (!(0, utils_1.isValidGuid)(apiKey))
-                    throw new Error('Invalid Api Key provided');
-                _a.label = 1;
-            case 1:
-                _a.trys.push([1, 3, , 4]);
-                return [4 /*yield*/, (0, onAirRequest_1.default)("https://server1.onair.company/api/v1/".concat(endPoint).concat(vaId, "/jobs/pending"), apiKey)];
-            case 2:
-                response = _a.sent();
-                if (typeof response.data.Content !== 'undefined') {
-                    return [2 /*return*/, response.data.Content];
-                }
-                else {
-                    throw new Error(response.data.Error ? response.data.Error : "VA Id \"".concat(vaId, "\"\" not found"));
-                }
-                return [3 /*break*/, 4];
-            case 3:
-                e_1 = _a.sent();
-                throw new Error(e_1.response.status === 400 ? "VA Id \"".concat(vaId, "\" not found") : e_1.message);
-            case 4: return [2 /*return*/];
-        }
+var getVirtualAirlineJobs = function (vaId, apiKey, completed) {
+    if (completed === void 0) { completed = false; }
+    return __awaiter(void 0, void 0, void 0, function () {
+        var response, e_1;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    if (!vaId)
+                        throw new Error('No VA Id provided');
+                    if (!apiKey)
+                        throw new Error('No Api Key provided');
+                    if (!(0, utils_1.isValidGuid)(vaId))
+                        throw new Error('Invalid VA Id provided');
+                    if (!(0, utils_1.isValidGuid)(apiKey))
+                        throw new Error('Invalid Api Key provided');
+                    _a.label = 1;
+                case 1:
+                    _a.trys.push([1, 3, , 4]);
+                    return [4 /*yield*/, (0, onAirRequest_1.default)("https://server1.onair.company/api/v1/".concat(endPoint).concat(vaId, "/jobs/").concat((completed) ? 'completed' : 'pending'), apiKey)];
+                case 2:
+                    response = _a.sent();
+                    if (typeof response.data.Content !== 'undefined') {
+                        return [2 /*return*/, response.data.Content];
+                    }
+                    else {
+                        throw new Error(response.data.Error ? response.data.Error : "VA Id \"".concat(vaId, "\"\" not found"));
+                    }
+                    return [3 /*break*/, 4];
+                case 3:
+                    e_1 = _a.sent();
+                    throw new Error(e_1.response.status === 400 ? "VA Id \"".concat(vaId, "\" not found") : e_1.message);
+                case 4: return [2 /*return*/];
+            }
+        });
     });
-}); };
+};
 exports.getVirtualAirlineJobs = getVirtualAirlineJobs;

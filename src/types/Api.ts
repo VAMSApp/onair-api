@@ -70,7 +70,7 @@ export type GetVirtualAirlineShareHolders = (vaId: string, apiKey: string) => Pr
 export type GetVirtualAirlineRoles = (vaId: string, apiKey: string) => Promise<VARole[]>;
 export type GetVirtualAirlineFlights = (vaId: string, apiKey: string, page?: number|undefined, limit?: number|undefined) => Promise<Flight[]>;
 export type GetVirtualAirlineFleet = (vaId: string, apiKey: string) => Promise<Aircraft[]>;
-export type GetVirtualAirlineJobs = (vaId: string, apiKey: string) => Promise<Job[]>;
+export type GetVirtualAirlineJobs = (vaId: string, apiKey: string, showCompleted?:boolean) => Promise<Job[]>;
 export type GetVirtualAirlineFbos = (vaId: string, apiKey: string) => Promise<Fbo[]>;
 export type GetVirtualAirlineNotifications = (vaId: string, apiKey: string) => Promise<Notification[]>;
 export type GetVirtualAirlineIncomeStatement = (vaId: string, apiKey: string, startDate?: string, endDate?: string) => Promise<IncomeStatementResponse>;

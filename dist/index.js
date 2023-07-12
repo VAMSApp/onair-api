@@ -569,7 +569,8 @@ var OnAirApi = /** @class */ (function () {
             });
         });
     };
-    OnAirApi.prototype.getVirtualAirlineJobs = function (vaId) {
+    OnAirApi.prototype.getVirtualAirlineJobs = function (vaId, completed) {
+        if (completed === void 0) { completed = false; }
         return __awaiter(this, void 0, void 0, function () {
             var vaJobs;
             return __generator(this, function (_a) {
@@ -580,7 +581,7 @@ var OnAirApi = /** @class */ (function () {
                             throw new Error('VA ID is not provided');
                         if (!this.isValidGuid(vaId))
                             throw new Error('Invalid VA ID provided');
-                        return [4 /*yield*/, (0, api_1.getVirtualAirlineJobs)(vaId, this.ApiKey)];
+                        return [4 /*yield*/, (0, api_1.getVirtualAirlineJobs)(vaId, this.ApiKey, completed)];
                     case 1:
                         vaJobs = _a.sent();
                         return [2 /*return*/, vaJobs];

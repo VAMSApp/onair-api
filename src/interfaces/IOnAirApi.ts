@@ -46,7 +46,7 @@ export interface IOnAirApi {
     getVirtualAirlineRoles: (vaId?:string) => Promise<VARole[]>
     getVirtualAirlineFlights: (vaId?:string, page?:number, limit?:number) => Promise<Flight[]>
     getVirtualAirlineFleet: (vaId?:string) => Promise<Aircraft[]>
-    getVirtualAirlineJobs: (vaId?:string) => Promise<Job[]>
+    getVirtualAirlineJobs: (vaId?:string, completed?:boolean) => Promise<Job[]>
     getVirtualAirlineFbos: (vaId?:string) => Promise<Fbo[]>
     getVirtualAirlineNotifications: (vaId?:string) => Promise<Notification[]>
     getVirtualAirlineIncomeStatement: (vaId?:string, startDate?: string | undefined, endDate?: string | undefined) => Promise<IncomeStatementResponse>

@@ -350,12 +350,12 @@ export class OnAirApi implements IOnAirApi {
         return vaFleet;
     }
 
-    public async getVirtualAirlineJobs(vaId?:string): Promise<Job[]> {
+    public async getVirtualAirlineJobs(vaId?:string, completed = false): Promise<Job[]> {
         vaId = vaId || this.VaId;
         if (!vaId) throw new Error('VA ID is not provided');
         if (!this.isValidGuid(vaId)) throw new Error('Invalid VA ID provided');
 
-        const vaJobs: Job[] = await getVirtualAirlineJobs(vaId, this.ApiKey);
+        const vaJobs: Job[] = await getVirtualAirlineJobs(vaId, this.ApiKey, completed);
         return vaJobs;
     }
 

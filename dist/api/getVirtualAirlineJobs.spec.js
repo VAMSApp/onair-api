@@ -46,7 +46,7 @@ if (!VIRTUAL_AIRLINE_ID)
     throw new Error('No VIRTUAL_AIRLINE_ID provided');
 var ApiKey = COMPANY_APIKEY;
 var VaId = VIRTUAL_AIRLINE_ID;
-(0, mocha_1.describe)('getVirtualAirlineJobs', function () {
+mocha_1.describe.only('getVirtualAirlineJobs', function () {
     it('should be a function', function () {
         (0, chai_1.expect)(typeof getVirtualAirlineJobs_1.getVirtualAirlineJobs).to.equal('function');
     });
@@ -59,7 +59,89 @@ var VaId = VIRTUAL_AIRLINE_ID;
                     x = _a.sent();
                     (0, chai_1.expect)(x).to.be.an('array');
                     if (x.length > 0) {
-                        (0, chai_1.expect)(x[0].Id).to.be.a('string');
+                        (0, chai_1.expect)(x[0]).to.have.any.keys([
+                            'Id',
+                            'WorldId',
+                            'Cargos',
+                            'Charters',
+                            'MissionTypeId',
+                            'MainAirportId',
+                            'BaseAirportId',
+                            'ValuePerLbsPerDistance',
+                            'IsGoodValue',
+                            'MaxDistance',
+                            'TotalDistance',
+                            'MainAirportHeading',
+                            'Description',
+                            'Pay',
+                            'Penality',
+                            'ReputationImpact',
+                            'CompanyId',
+                            'CreationDate',
+                            'TakenDate',
+                            'TotalCargoTransported',
+                            'TotalPaxTransported',
+                            'Category',
+                            'State',
+                            'XP',
+                            'SkillPoint',
+                            'MinCompanyReput',
+                            'Hash',
+                            'RealPay',
+                            'RealPenality',
+                            'CanAccess',
+                            'IsLastMinute',
+                            'IsFavorited',
+                        ]);
+                    }
+                    return [2 /*return*/];
+            }
+        });
+    }); });
+    it('should return an array of Job\'s that are currently completed for the given vaId', function () { return __awaiter(void 0, void 0, void 0, function () {
+        var x;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, (0, getVirtualAirlineJobs_1.getVirtualAirlineJobs)(VaId, ApiKey, true)];
+                case 1:
+                    x = _a.sent();
+                    (0, chai_1.expect)(x).to.be.an('array');
+                    (0, chai_1.expect)(x).to.be.an('array');
+                    if (x.length > 0) {
+                        (0, chai_1.expect)(x[0]).to.have.any.keys([
+                            'Id',
+                            'WorldId',
+                            'Cargos',
+                            'Charters',
+                            'MissionTypeId',
+                            'MainAirportId',
+                            'BaseAirportId',
+                            'ValuePerLbsPerDistance',
+                            'IsGoodValue',
+                            'MaxDistance',
+                            'TotalDistance',
+                            'MainAirportHeading',
+                            'Description',
+                            'Pay',
+                            'Penality',
+                            'ReputationImpact',
+                            'CompanyId',
+                            'CreationDate',
+                            'TakenDate',
+                            'TotalCargoTransported',
+                            'TotalPaxTransported',
+                            'Category',
+                            'State',
+                            'XP',
+                            'SkillPoint',
+                            'MinCompanyReput',
+                            'Hash',
+                            'RealPay',
+                            'RealPenality',
+                            'CanAccess',
+                            'IsLastMinute',
+                            'IsFavorited',
+                        ]);
                     }
                     return [2 /*return*/];
             }

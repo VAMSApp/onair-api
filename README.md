@@ -596,8 +596,8 @@ let vaFleet: Aircraft[] = await api.getVirtualAirlineFleet();
 
 
 
-### [getVirtualAirlineJobs()](src/api/getVirtualAirlineJobs.ts)
-Fetches the current pending jobs for the given VA
+### [getVirtualAirlineJobs(vaId?:string, completed = false)](src/api/getVirtualAirlineJobs.ts)
+Fetches the current pending jobs for the given VA, if the second parameter is passed as true, it will return the completed jobs.
 
 #### Usage
 ```typescript

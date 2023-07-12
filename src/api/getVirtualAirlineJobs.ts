@@ -4,7 +4,7 @@ import { isValidGuid } from '../utils';
 
 const endPoint = 'company/';
 
-export const getVirtualAirlineJobs:GetVirtualAirlineJobs = async (vaId: string, apiKey: string) => {
+export const getVirtualAirlineJobs:GetVirtualAirlineJobs = async (vaId: string, apiKey: string, completed = false) => {
     if (!vaId) throw new Error('No VA Id provided');
     if (!apiKey) throw new Error('No Api Key provided');
     if (!isValidGuid(vaId)) throw new Error('Invalid VA Id provided');
@@ -13,7 +13,7 @@ export const getVirtualAirlineJobs:GetVirtualAirlineJobs = async (vaId: string, 
     try {
 
         const response = await onAirRequest<VirtualAirlineJobApiResponse>(
-            `https://server1.onair.company/api/v1/${endPoint}${vaId}/jobs/pending`,
+            `https://server1.onair.company/api/v1/${endPoint}${vaId}/jobs/${(completed) ? 'completed' : 'pending'}`,
             apiKey,
         );
 
