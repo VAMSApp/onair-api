@@ -4,7 +4,7 @@ import { isValidGuid } from '../utils';
 
 const endPoint = 'company/';
 
-export const getCompanyAircraftWorkOrders:GetCompanyAircraftWorkOrders = async (companyId: string, aircraftId: string, apiKey: string) => {
+export const getCompanyAircraftWorkOrders:GetCompanyAircraftWorkOrders = async (companyId: string, aircraftId: string, apiKey: string):Promise<WorkOrder[]> => {
     if (!companyId) throw new Error('No Company Id provided');
     if (!aircraftId) throw new Error('No Aircraft Id provided');
     if (!apiKey) throw new Error('No Api Key provided');

@@ -4,7 +4,7 @@ import { isValidGuid } from '../utils';
 
 const endPoint = 'fbo/';
 
-export const getFboJobs:GetFboJobs = async (fboId: string, apiKey: string) => {
+export const getFboJobs:GetFboJobs = async (fboId: string, apiKey: string):Promise<Job[]> => {
     if (!fboId) throw new Error('No FBO Id provided');
     if (!apiKey) throw new Error('No Api Key provided');
     if (!isValidGuid(fboId)) throw new Error('Invalid FBO Id provided');

@@ -1,18 +1,26 @@
 import onAirRequest, { FlightApiResponse } from './onAirRequest';
-import { Flight, GetAircraftFlights, } from '../types';
+import { Flight, GetAircraftFlights, QueryOptions, } from '../types';
 import { isValidGuid } from '../utils';
 
 const endPoint = 'aircraft/';
 
-export const getAircraftFlights:GetAircraftFlights = async (aircraftId: string, apiKey: string, page = 1, limit = 10) => {
+export const getAircraftFlights:GetAircraftFlights = async (aircraftId: string, apiKey: string, page = 1, limit?:number):Promise<Flight[]> => {
     if (!aircraftId) throw new Error('No aircraftId provided');
     if (!apiKey) throw new Error('No apiKey provided');
     if (!isValidGuid(aircraftId)) throw new Error('Invalid Aircraft Id provided');
     if (!isValidGuid(apiKey)) throw new Error('Invalid Api Key provided');
-
-    const startIndex = page > 1 ? limit * page : 0;
+    const startIndex = (typeof limit !== 'undefined') ? (page > 1) ? limit * page : 0 : 0;
 
     try {
+        const queryOpts:QueryOptions = {};
+        
+        if (typeof startIndex !== 'undefined') {
+            queryOpts.startIndex = startIndex;
+        }
+
+        if (typeof limit !== 'undefined') {
+            queryOpts.limit = limit;
+        }
 
         const response = await onAirRequest<FlightApiResponse>(
             `https://server1.onair.company/api/v1/${endPoint}${aircraftId.toString()}/flights`,

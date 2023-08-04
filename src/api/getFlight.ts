@@ -3,7 +3,7 @@ import { Flight, GetFlight, } from '../types';
 import { isValidGuid } from '../utils';
 
 const endPoint = 'flights/';
-export const getFlight:GetFlight = async (flightId: string, apiKey: string) => {
+export const getFlight:GetFlight = async (flightId: string, apiKey: string):Promise<Flight> => {
     if (!flightId) throw new Error('No Flight Id provided');
     if (!apiKey) throw new Error('No Api Key provided');
     if (!isValidGuid(flightId)) throw new Error('Invalid Flight Id provided');

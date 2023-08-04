@@ -4,7 +4,7 @@ import { isValidGuid } from '../utils';
 
 const endPoint = 'aircraft/';
 
-export const getAircraft:GetAircraft = async (aircraftId: string, apiKey: string) => {
+export const getAircraft:GetAircraft = async (aircraftId: string, apiKey: string):Promise<Aircraft|null> => {
     if (!aircraftId) throw new Error('No aircraftId provided');
     if (!apiKey) throw new Error('No apiKey provided');
     if (!isValidGuid(aircraftId)) throw new Error('Invalid Aircraft Id provided');

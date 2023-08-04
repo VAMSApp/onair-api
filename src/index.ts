@@ -152,7 +152,7 @@ export class OnAirApi implements IOnAirApi {
         return companyFbos;
     }
 
-    public async getCompanyFlights(companyId?:string, page = 1, limit = 20): Promise<Flight[]> {
+    public async getCompanyFlights(companyId?:string, page = 1, limit?:number): Promise<Flight[]> {
         if (!companyId) companyId = this.CompanyId;
         if (!companyId) throw new Error('No Company Id provided');
         if (!this.isValidGuid(companyId)) throw new Error('Invalid Company Id provided');
@@ -273,7 +273,7 @@ export class OnAirApi implements IOnAirApi {
         return aircraft;
     }
 
-    public async getAircraftFlights(aircraftId:string, page = 1, limit = 20):Promise<Flight[]> {
+    public async getAircraftFlights(aircraftId:string, page = 1, limit?:number):Promise<Flight[]> {
         if (!aircraftId) throw new Error('Aircraft ID not provided');
         if (!this.isValidGuid(aircraftId)) throw new Error('Invalid Aircraft ID provided');
 
@@ -332,7 +332,7 @@ export class OnAirApi implements IOnAirApi {
         return varoles;
     }
 
-    public async getVirtualAirlineFlights(vaId?:string, page = 1, limit = 20): Promise<Flight[]> {
+    public async getVirtualAirlineFlights(vaId?:string, page = 1, limit?:number): Promise<Flight[]> {
         vaId = vaId || this.VaId;
         if (!vaId) throw new Error('VA ID is not provided');
         if (!this.isValidGuid(vaId)) throw new Error('Invalid VA ID provided');

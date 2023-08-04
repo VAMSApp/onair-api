@@ -17,7 +17,7 @@ function addDays(dateStr:string = new Date().toISOString(), days = 30):Date{
     return result;
 }
 
-export const getCompanyIncomeStatement:GetCompanyIncomeStatement = async (companyId: string, apiKey: string, startDate?: string, endDate?: string) => {
+export const getCompanyIncomeStatement:GetCompanyIncomeStatement = async (companyId: string, apiKey: string, startDate?: string, endDate?: string):Promise<IncomeStatementResponse> => {
     if (!companyId) throw new Error('No Company Id provided');
     if (!apiKey) throw new Error('No Api Key provided');
     if (!isValidGuid(companyId)) throw new Error('Invalid Company Id provided');
@@ -62,11 +62,12 @@ export const getCompanyIncomeStatement:GetCompanyIncomeStatement = async (compan
             throw new Error(oaResponse.data.Error ? oaResponse.data.Error : `Company Id "${companyId}"" not found`);
         }
 
-        const response:IncomeStatementResponse|undefined = {
+        const response:IncomeStatementResponse = {
             StartDate: StartDateStr,
             EndDate: EndDateStr,
             Content: oaResponse.data.Content,
         };
+
         return response;
 
     } catch (e) {

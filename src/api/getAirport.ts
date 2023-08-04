@@ -4,7 +4,7 @@ import onAirRequest, { AirportApiResponse } from './onAirRequest';
 
 const endPoint = 'airports/';
 
-export const getAirport:GetAirport = async (icao: string, apiKey: string) => {
+export const getAirport:GetAirport = async (icao: string, apiKey: string):Promise<Airport> => {
     if (!icao) throw new Error('No ICAO code provided');
     if (!apiKey) throw new Error('No Api Key provided');
     if (!isValidGuid(apiKey)) throw new Error('Invalid Api Key provided');

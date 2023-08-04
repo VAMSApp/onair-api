@@ -17,7 +17,7 @@ function addDays(dateStr:string = new Date().toISOString(), days = 30):Date{
     return result;
 }
 
-export const getVirtualAirlineIncomeStatement:GetVirtualAirlineIncomeStatement = async (vaId: string, apiKey: string, startDate?: string, endDate?: string) => {
+export const getVirtualAirlineIncomeStatement:GetVirtualAirlineIncomeStatement = async (vaId: string, apiKey: string, startDate?: string, endDate?: string):Promise<IncomeStatementResponse> => {
     if (!vaId) throw new Error('No VA Id provided');
     if (!apiKey) throw new Error('No Api Key provided');
     if (!isValidGuid(vaId)) throw new Error(`Invalid VA Id provided. VAId: '${vaId}'`);
@@ -63,7 +63,7 @@ export const getVirtualAirlineIncomeStatement:GetVirtualAirlineIncomeStatement =
             throw new Error(oaResponse.data.Error ? oaResponse.data.Error : `Company Id "${vaId}"" not found`);
         }
 
-        const response:IncomeStatementResponse|undefined = {
+        const response:IncomeStatementResponse = {
             StartDate: StartDateStr,
             EndDate: EndDateStr,
             Content: oaResponse.data.Content,

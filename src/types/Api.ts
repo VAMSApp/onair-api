@@ -90,3 +90,9 @@ export type OnAirApiConfig = {
     vaId?: string | undefined,
     options?: OnAirApiConfigOptions,
 }
+
+export type QueryOptions = {
+    startIndex?: number;
+    limit?: number;
+    page?: number;
+};

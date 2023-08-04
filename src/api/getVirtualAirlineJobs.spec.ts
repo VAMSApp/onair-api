@@ -14,7 +14,7 @@ if (!VIRTUAL_AIRLINE_ID) throw new Error('No VIRTUAL_AIRLINE_ID provided');
 const ApiKey: string = COMPANY_APIKEY;
 const VaId: string = VIRTUAL_AIRLINE_ID;
 
-describe.only('getVirtualAirlineJobs', () => {
+describe('getVirtualAirlineJobs', () => {
     it('should be a function', () => {
         expect(typeof getVirtualAirlineJobs).to.equal('function');
     });

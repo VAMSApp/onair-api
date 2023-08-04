@@ -4,7 +4,7 @@ import { isValidGuid } from '../utils';
 
 const endPoint = 'company/';
 
-export const getCompanyFbos:GetCompanyFbos = async (companyId: string, apiKey: string) => {
+export const getCompanyFbos:GetCompanyFbos = async (companyId: string, apiKey: string):Promise<Fbo[]> => {
     if (!companyId) throw new Error('No Company Id provided');
     if (!apiKey) throw new Error('No Api Key provided');
     if (!isValidGuid(companyId)) throw new Error('Invalid Company Id provided');

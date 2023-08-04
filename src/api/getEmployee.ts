@@ -3,7 +3,7 @@ import { GetEmployee, People } from '../types';
 import { isValidGuid } from '../utils';
 
 const endPoint = 'employee/';
-export const getEmployee:GetEmployee = async (employeeId: string, apiKey: string) => {
+export const getEmployee:GetEmployee = async (employeeId: string, apiKey: string):Promise<People> => {
     if (!employeeId) throw new Error('No Employee Id provided');
     if (!apiKey) throw new Error('No Api Key provided');
     if (!isValidGuid(employeeId)) throw new Error('Invalid Employee Id provided');
