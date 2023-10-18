@@ -13,6 +13,8 @@ export * from './getCompanyAircraftWorkOrders';
 export * from './getCompanyNotifications';
 export * from './getAircraft';
 export * from './getAircraftFlights';
+export * from './getAircraftTypes';
+export * from './getAircraftAtAirport';
 export * from './getAirport';
 export * from './getFlight';
 export * from './getVirtualAirline';

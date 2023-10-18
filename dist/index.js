@@ -85,6 +85,8 @@ var OnAirApi = /** @class */ (function () {
         this.getCompanyNotifications = this.getCompanyNotifications.bind(this);
         this.getAircraft = this.getAircraft.bind(this);
         this.getAircraftFlights = this.getAircraftFlights.bind(this);
+        this.getAircraftTypes = this.getAircraftTypes.bind(this);
+        this.getAircraftAtAirport = this.getAircraftAtAirport.bind(this);
         this.getAirport = this.getAirport.bind(this);
         this.getFlight = this.getFlight.bind(this);
         this.getVirtualAirline = this.getVirtualAirline.bind(this);
@@ -413,6 +415,40 @@ var OnAirApi = /** @class */ (function () {
                     case 1:
                         flights = _a.sent();
                         return [2 /*return*/, flights];
+                }
+            });
+        });
+    };
+    OnAirApi.prototype.getAircraftTypes = function (aircraftTypeId) {
+        return __awaiter(this, void 0, void 0, function () {
+            var aircraftTypes;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        if (!aircraftTypeId)
+                            throw new Error('Aircraft Type Id not provided');
+                        if (!this.isValidGuid(aircraftTypeId))
+                            throw new Error('Invalid Aircraft Type Id provided');
+                        return [4 /*yield*/, (0, api_1.getAircraftTypes)(aircraftTypeId, this.ApiKey)];
+                    case 1:
+                        aircraftTypes = _a.sent();
+                        return [2 /*return*/, aircraftTypes];
+                }
+            });
+        });
+    };
+    OnAirApi.prototype.getAircraftAtAirport = function (icao) {
+        return __awaiter(this, void 0, void 0, function () {
+            var aircraft;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        if (!icao)
+                            throw new Error('Airport ICAO is not provided');
+                        return [4 /*yield*/, (0, api_1.getAircraftAtAirport)(icao, this.ApiKey)];
+                    case 1:
+                        aircraft = _a.sent();
+                        return [2 /*return*/, aircraft];
                 }
             });
         });

@@ -1,10 +1,13 @@
 import { AxiosResponse } from 'axios';
-import { BalanceSheet, CashFlow, IncomeStatement, People, Aircraft, Airport, Company, Fbo, Flight, FlightTrack, Job, Member, ShareHolder, VARole, VirtualAirline, WorkOrder, Notification } from '../types';
+import { BalanceSheet, CashFlow, IncomeStatement, People, Aircraft, AircraftType, Airport, Company, Fbo, Flight, FlightTrack, Job, Member, ShareHolder, VARole, VirtualAirline, WorkOrder, Notification } from '../types';
 interface OnAirApiResponse {
     Error: string;
 }
 export interface AircraftApiResponse extends OnAirApiResponse {
     Content: Aircraft | Aircraft[];
+}
+export interface AircraftTypeApiResponse extends OnAirApiResponse {
+    Content: AircraftType | AircraftType[] | null;
 }
 export interface FlightApiResponse extends OnAirApiResponse {
     Content: Flight | Flight[];

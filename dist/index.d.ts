@@ -1,4 +1,4 @@
-import { OnAirApiConfig, CompanyResponse, EmployeeResponse, CashFlowResponse, BalanceSheetResponse, IncomeStatementResponse, AirportResponse, FlightResponse, VirtualAirlineResponse, AircraftResponse, Notification, Aircraft, People as Employee, Fbo, Flight, FlightTrack, Job, Member, ShareHolder, VARole, WorkOrder } from './types';
+import { OnAirApiConfig, CompanyResponse, EmployeeResponse, CashFlowResponse, BalanceSheetResponse, IncomeStatementResponse, AirportResponse, FlightResponse, VirtualAirlineResponse, AircraftResponse, Notification, Aircraft, People as Employee, Fbo, Flight, FlightTrack, Job, Member, ShareHolder, VARole, WorkOrder, AircraftType } from './types';
 import { IOnAirApi } from './interfaces';
 export * from './types';
 export * from './interfaces';
@@ -23,6 +23,8 @@ export declare class OnAirApi implements IOnAirApi {
     getCompanyNotifications(companyId?: string): Promise<Notification[]>;
     getAircraft(aircraftId: string): Promise<AircraftResponse>;
     getAircraftFlights(aircraftId: string, page?: number, limit?: number): Promise<Flight[]>;
+    getAircraftTypes(aircraftTypeId: string): Promise<AircraftType | AircraftType[] | null>;
+    getAircraftAtAirport(icao: string): Promise<AircraftResponse>;
     getAirport(airportCode: string): Promise<AirportResponse>;
     getFlight(flightId: string): Promise<FlightResponse>;
     getVirtualAirline(vaId?: string): Promise<VirtualAirlineResponse>;

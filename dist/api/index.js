@@ -25,6 +25,8 @@ __exportStar(require("./getCompanyAircraftWorkOrders"), exports);
 __exportStar(require("./getCompanyNotifications"), exports);
 __exportStar(require("./getAircraft"), exports);
 __exportStar(require("./getAircraftFlights"), exports);
+__exportStar(require("./getAircraftTypes"), exports);
+__exportStar(require("./getAircraftAtAirport"), exports);
 __exportStar(require("./getAirport"), exports);
 __exportStar(require("./getFlight"), exports);
 __exportStar(require("./getVirtualAirline"), exports);

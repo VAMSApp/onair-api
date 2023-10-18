@@ -88,6 +88,8 @@ var vaId = VIRTUAL_AIRLINE_ID;
                             'VaId',
                             'getAircraft',
                             'getAircraftFlights',
+                            'getAircraftTypes',
+                            'getAircraftAtAirport',
                             'getAirport',
                             'getCompany',
                             'getCompanyBalanceSheet',
