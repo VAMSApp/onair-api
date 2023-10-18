@@ -5,6 +5,7 @@ import {
     IncomeStatement,
     People,
     Aircraft,
+    AircraftType,
     Airport,
     Company,
     Fbo,
@@ -25,6 +26,10 @@ interface OnAirApiResponse {
 
 export interface AircraftApiResponse extends OnAirApiResponse {
   Content: Aircraft | Aircraft[];
+}
+
+export interface AircraftTypeApiResponse extends OnAirApiResponse {
+    Content: AircraftType | AircraftType[] | null;
 }
 
 export interface FlightApiResponse extends OnAirApiResponse {

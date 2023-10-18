@@ -30,6 +30,8 @@ describe('OnAirApi()', function() {
                     'VaId',
                     'getAircraft',
                     'getAircraftFlights',
+                    'getAircraftTypes',
+                    'getAircraftAtAirport',
                     'getAirport',
                     'getCompany',
                     'getCompanyBalanceSheet',

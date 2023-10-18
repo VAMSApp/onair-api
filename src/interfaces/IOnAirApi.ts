@@ -18,7 +18,8 @@ import {
     Member,
     VARole,
     WorkOrder,
-    People as Employee
+    People as Employee,
+    AircraftType
 } from '../types';
 
 export interface IOnAirApi {
@@ -38,6 +39,8 @@ export interface IOnAirApi {
     getCompanyNotifications: (companyId?:string) => Promise<Notification[]>
     getAircraft: (aircraftId:string) => Promise<AircraftResponse>
     getAircraftFlights: (aircraftId:string, page?:number, limit?:number) => Promise<Flight[]>
+    getAircraftTypes: (aircraftTypeId:string) => Promise<AircraftType|AircraftType[]|null>
+    getAircraftAtAirport: (icao:string) => Promise<AircraftResponse>
     getAirport: (airportCode:string) => Promise<AirportResponse>
     getFlight: (flightId:string) => Promise<FlightResponse>
     getVirtualAirline: (vaId?:string) => Promise<VirtualAirlineResponse>

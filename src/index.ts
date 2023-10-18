@@ -20,6 +20,7 @@ import {
     ShareHolder,
     VARole,
     WorkOrder,
+    AircraftType,
 } from './types';
 
 import {
@@ -42,6 +43,8 @@ import {
     getCompanyNotifications,
     getAircraft,
     getAircraftFlights,
+    getAircraftTypes,
+    getAircraftAtAirport,
     getAirport,
     getFlight,
     getVirtualAirline,
@@ -102,6 +105,8 @@ export class OnAirApi implements IOnAirApi {
         this.getCompanyNotifications = this.getCompanyNotifications.bind(this);
         this.getAircraft = this.getAircraft.bind(this);
         this.getAircraftFlights = this.getAircraftFlights.bind(this);
+        this.getAircraftTypes = this.getAircraftTypes.bind(this);
+        this.getAircraftAtAirport = this.getAircraftAtAirport.bind(this);
         this.getAirport = this.getAirport.bind(this);
         this.getFlight = this.getFlight.bind(this);
         this.getVirtualAirline = this.getVirtualAirline.bind(this);
@@ -279,6 +284,21 @@ export class OnAirApi implements IOnAirApi {
 
         const flights: Flight[] = await getAircraftFlights(aircraftId, this.ApiKey, page, limit);
         return flights;
+    }
+
+    public async getAircraftTypes(aircraftTypeId:string):Promise<AircraftType|AircraftType[]|null> {
+        if (!aircraftTypeId) throw new Error('Aircraft Type Id not provided');
+        if (!this.isValidGuid(aircraftTypeId)) throw new Error('Invalid Aircraft Type Id provided');
+
+        const aircraftTypes: AircraftType|AircraftType[]|null = await getAircraftTypes(aircraftTypeId, this.ApiKey);
+        return aircraftTypes;
+    }
+
+    public async getAircraftAtAirport(icao:string):Promise<AircraftResponse> {
+        if (!icao) throw new Error('Airport ICAO is not provided');
+
+        const aircraft: Aircraft|Aircraft[]|null = await getAircraftAtAirport(icao, this.ApiKey);
+        return aircraft;
     }
 
     public async getAirport(airportCode:string): Promise<AirportResponse> {
