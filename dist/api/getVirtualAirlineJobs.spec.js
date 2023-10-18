@@ -46,7 +46,7 @@ if (!VIRTUAL_AIRLINE_ID)
     throw new Error('No VIRTUAL_AIRLINE_ID provided');
 var ApiKey = COMPANY_APIKEY;
 var VaId = VIRTUAL_AIRLINE_ID;
-mocha_1.describe.only('getVirtualAirlineJobs', function () {
+(0, mocha_1.describe)('getVirtualAirlineJobs', function () {
     it('should be a function', function () {
         (0, chai_1.expect)(typeof getVirtualAirlineJobs_1.getVirtualAirlineJobs).to.equal('function');
     });

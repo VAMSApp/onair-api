@@ -167,7 +167,6 @@ var OnAirApi = /** @class */ (function () {
     };
     OnAirApi.prototype.getCompanyFlights = function (companyId, page, limit) {
         if (page === void 0) { page = 1; }
-        if (limit === void 0) { limit = 20; }
         return __awaiter(this, void 0, void 0, function () {
             var companyFlights;
             return __generator(this, function (_a) {
@@ -401,7 +400,6 @@ var OnAirApi = /** @class */ (function () {
     };
     OnAirApi.prototype.getAircraftFlights = function (aircraftId, page, limit) {
         if (page === void 0) { page = 1; }
-        if (limit === void 0) { limit = 20; }
         return __awaiter(this, void 0, void 0, function () {
             var flights;
             return __generator(this, function (_a) {
@@ -531,7 +529,6 @@ var OnAirApi = /** @class */ (function () {
     };
     OnAirApi.prototype.getVirtualAirlineFlights = function (vaId, page, limit) {
         if (page === void 0) { page = 1; }
-        if (limit === void 0) { limit = 20; }
         return __awaiter(this, void 0, void 0, function () {
             var vaflights;
             return __generator(this, function (_a) {

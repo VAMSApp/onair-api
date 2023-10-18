@@ -50,11 +50,42 @@ var VaId = VIRTUAL_AIRLINE_ID;
     it('should be a function', function () {
         (0, chai_1.expect)(typeof getVirtualAirlineFlights_1.getVirtualAirlineFlights).to.equal('function');
     });
-    it('should return an array of Flight\'s by the given vaId', function () { return __awaiter(void 0, void 0, void 0, function () {
+    it('should return an array of completed Flight\'s by the given vaId', function () { return __awaiter(void 0, void 0, void 0, function () {
         var x;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0: return [4 /*yield*/, (0, getVirtualAirlineFlights_1.getVirtualAirlineFlights)(VaId, ApiKey)];
+                case 1:
+                    x = _a.sent();
+                    (0, chai_1.expect)(x).to.be.an('array');
+                    if (x.length > 0) {
+                        (0, chai_1.expect)(x[0].Id).to.be.a('string');
+                    }
+                    return [2 /*return*/];
+            }
+        });
+    }); });
+    it('should return an array with one Flight by the given vaId', function () { return __awaiter(void 0, void 0, void 0, function () {
+        var x;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, (0, getVirtualAirlineFlights_1.getVirtualAirlineFlights)(VaId, ApiKey, undefined, 1)];
+                case 1:
+                    x = _a.sent();
+                    (0, chai_1.expect)(x).to.be.an('array');
+                    if (x.length > 0) {
+                        (0, chai_1.expect)(x[0].Id).to.be.a('string');
+                    }
+                    (0, chai_1.expect)(x.length).to.equal(1);
+                    return [2 /*return*/];
+            }
+        });
+    }); });
+    it('should return an array of Flight\'s by the given vaId and page', function () { return __awaiter(void 0, void 0, void 0, function () {
+        var x;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, (0, getVirtualAirlineFlights_1.getVirtualAirlineFlights)(VaId, ApiKey, 2)];
                 case 1:
                     x = _a.sent();
                     (0, chai_1.expect)(x).to.be.an('array');

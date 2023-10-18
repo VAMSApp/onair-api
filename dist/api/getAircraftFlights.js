@@ -45,9 +45,8 @@ var utils_1 = require("../utils");
 var endPoint = 'aircraft/';
 var getAircraftFlights = function (aircraftId, apiKey, page, limit) {
     if (page === void 0) { page = 1; }
-    if (limit === void 0) { limit = 10; }
     return __awaiter(void 0, void 0, void 0, function () {
-        var startIndex, response, e_1;
+        var startIndex, queryOpts, response, e_1;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
@@ -59,10 +58,17 @@ var getAircraftFlights = function (aircraftId, apiKey, page, limit) {
                         throw new Error('Invalid Aircraft Id provided');
                     if (!(0, utils_1.isValidGuid)(apiKey))
                         throw new Error('Invalid Api Key provided');
-                    startIndex = page > 1 ? limit * page : 0;
+                    startIndex = (typeof limit !== 'undefined') ? (page > 1) ? limit * page : 0 : 0;
                     _a.label = 1;
                 case 1:
                     _a.trys.push([1, 3, , 4]);
+                    queryOpts = {};
+                    if (typeof startIndex !== 'undefined') {
+                        queryOpts.startIndex = startIndex;
+                    }
+                    if (typeof limit !== 'undefined') {
+                        queryOpts.limit = limit;
+                    }
                     return [4 /*yield*/, (0, onAirRequest_1.default)("https://server1.onair.company/api/v1/".concat(endPoint).concat(aircraftId.toString(), "/flights"), apiKey, {
                             startIndex: startIndex,
                             limit: limit

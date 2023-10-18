@@ -63,3 +63,8 @@ export declare type OnAirApiConfig = {
     vaId?: string | undefined;
     options?: OnAirApiConfigOptions;
 };
+export declare type QueryOptions = {
+    startIndex?: number;
+    limit?: number;
+    page?: number;
+};
