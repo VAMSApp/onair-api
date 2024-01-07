@@ -37,8 +37,8 @@
     "license": "MIT",
     "dependencies": {
         "@types/uuid": "^9.0.0",
-        "async": "^3.2.4",
-        "axios": "^0.24.0",
+        "async": "^3.2.5",
+        "axios": "^1.6.5",
         "chalk": "^4.1.2",
         "dotenv": "^14.1.0",
         "module-alias": "^2.2.2",
