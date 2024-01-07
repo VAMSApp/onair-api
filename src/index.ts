@@ -20,8 +20,9 @@ import {
     ShareHolder,
     VARole,
     WorkOrder,
-    MaintenanceCost,
-    EconomicDetail,
+    AircraftTypeResponse,
+    MaintenanceCostResponse,
+    EconomicDetailResponse,
     CompanyDashboardResponse,
 } from './types';
 
@@ -45,6 +46,7 @@ import {
     getCompanyAircraftWorkOrders,
     getCompanyNotifications,
     getAircraft,
+    getAircraftType,
     getAircraftMaintenanceCosts,
     getAircraftEconomicDetails,
     getAircraftFlights,
@@ -293,22 +295,33 @@ export class OnAirApi implements IOnAirApi {
         return aircraft;
     }
 
-    public async getAircraftMaintenanceCosts(aircraftId:string): Promise<MaintenanceCost|null> {
-        if (!aircraftId) throw new Error('Aircraft ID not provided');
-        if (!this.isValidGuid(aircraftId)) throw new Error('Invalid Aircraft ID provided');
+    public async getAircraftType(aircraftTypeId:string): Promise<AircraftTypeResponse> {
+        if (!aircraftTypeId) throw new Error('Aircraft ID not provided');
+        if (!this.isValidGuid(aircraftTypeId)) throw new Error('Invalid Aircraft ID provided');
 
-        const x: MaintenanceCost|null = await getAircraftMaintenanceCosts(aircraftId, this.ApiKey).then((response) => {
+        const x: AircraftTypeResponse = await getAircraftType(aircraftTypeId, this.ApiKey).then((response) => {
             return response;
         });
 
         return x;
     }
 
-    public async getAircraftEconomicDetails(aircraftId:string): Promise<EconomicDetail|null> {
+    public async getAircraftMaintenanceCosts(aircraftId:string): Promise<MaintenanceCostResponse> {
         if (!aircraftId) throw new Error('Aircraft ID not provided');
         if (!this.isValidGuid(aircraftId)) throw new Error('Invalid Aircraft ID provided');
 
-        const x: EconomicDetail|null = await getAircraftEconomicDetails(aircraftId, this.ApiKey).then((response) => {
+        const x: MaintenanceCostResponse = await getAircraftMaintenanceCosts(aircraftId, this.ApiKey).then((response) => {
+            return response;
+        });
+
+        return x;
+    }
+
+    public async getAircraftEconomicDetails(aircraftId:string): Promise<EconomicDetailResponse> {
+        if (!aircraftId) throw new Error('Aircraft ID not provided');
+        if (!this.isValidGuid(aircraftId)) throw new Error('Invalid Aircraft ID provided');
+
+        const x: EconomicDetailResponse = await getAircraftEconomicDetails(aircraftId, this.ApiKey).then((response) => {
             return response;
         });
 

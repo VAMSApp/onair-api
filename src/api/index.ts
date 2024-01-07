@@ -13,6 +13,7 @@ export * from './getCompanyWorkOrders';
 export * from './getCompanyAircraftWorkOrders';
 export * from './getCompanyNotifications';
 export * from './getAircraft';
+export * from './getAircraftType';
 export * from './getAircraftFlights';
 export * from './getAircraftAtAirport';
 export * from './getAircraftMaintenanceCosts';

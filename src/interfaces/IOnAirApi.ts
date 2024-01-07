@@ -19,8 +19,9 @@ import {
     VARole,
     WorkOrder,
     People as Employee,
-    MaintenanceCost,
-    EconomicDetail,
+    MaintenanceCostResponse,
+    EconomicDetailResponse,
+    AircraftTypeResponse,
 } from '../types';
 
 export interface IOnAirApi {
@@ -39,10 +40,11 @@ export interface IOnAirApi {
     getCompanyAircraftWorkOrders: (aircraftId:string, companyId?:string) => Promise<WorkOrder[]>
     getCompanyNotifications: (companyId?:string) => Promise<Notification[]>
     getAircraft: (aircraftId:string) => Promise<AircraftResponse>
+    getAircraftType: (aircraftId:string) => Promise<AircraftTypeResponse>
     getAircraftFlights: (aircraftId:string, page?:number, limit?:number) => Promise<Flight[]>
     getAircraftAtAirport: (icao:string) => Promise<AircraftResponse>
-    getAircraftMaintenanceCosts: (aircraftId:string) => Promise<MaintenanceCost|null>
-    getAircraftEconomicDetails: (aircraftId:string) => Promise<EconomicDetail|null>
+    getAircraftMaintenanceCosts: (aircraftId:string) => Promise<MaintenanceCostResponse>
+    getAircraftEconomicDetails: (aircraftId:string) => Promise<EconomicDetailResponse>
     getAirport: (airportCode:string) => Promise<AirportResponse>
     getFlight: (flightId:string) => Promise<FlightResponse>
     getVirtualAirline: (vaId?:string) => Promise<VirtualAirlineResponse>

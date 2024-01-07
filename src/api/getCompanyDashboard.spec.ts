@@ -14,7 +14,7 @@ if (!COMPANY_ID) throw new Error('No COMPANY_ID provided');
 const ApiKey: string = COMPANY_APIKEY;
 const CompanyId: string = COMPANY_ID;
 
-describe.only('getCompanyDashboard', () => {
+describe('getCompanyDashboard', () => {
     it('should be a function', () => {
         expect(typeof getCompanyDashboard).to.equal('function');
     });
