@@ -14,7 +14,7 @@ if (!AIRCRAFT_TYPE_ID) throw new Error('No AIRCRAFT_TYPE_ID provided');
 const ApiKey: string = COMPANY_APIKEY;
 const AircraftTypeId:string = AIRCRAFT_TYPE_ID;
 
-describe.only('getAircraftType', () => {
+describe('getAircraftType', () => {
     it('should be a function', () => {
         expect(typeof getAircraftType).to.equal('function');
     });
