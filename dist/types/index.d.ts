@@ -20,3 +20,6 @@ export * from './BalanceSheet';
 export * from './Crew';
 export * from './WorkOrder';
 export * from './Notification';
+export * from './MaintenanceCost';
+export * from './EconomicDetail';
+export * from './CompanyDashboard';

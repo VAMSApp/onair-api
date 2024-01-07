@@ -14,7 +14,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     function verb(n) { return function (v) { return step([n, v]); }; }
     function step(op) {
         if (f) throw new TypeError("Generator is already executing.");
-        while (_) try {
+        while (g && (g = 0, op[0] && (_ = 0)), _) try {
             if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
             if (y = 0, t) op = [op[0] & 2, t.value];
             switch (op[0]) {
@@ -38,45 +38,45 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var mocha_1 = require("mocha");
 var chai_1 = require("chai");
-var getAircraftTypes_1 = require("./getAircraftTypes");
-var _a = process.env, COMPANY_APIKEY = _a.COMPANY_APIKEY, AIRCRAFT_TYPE_ID = _a.AIRCRAFT_TYPE_ID;
+var getAircraftMaintenanceCosts_1 = require("./getAircraftMaintenanceCosts");
+var _a = process.env, COMPANY_APIKEY = _a.COMPANY_APIKEY, AIRCRAFT_ID = _a.AIRCRAFT_ID;
 if (!COMPANY_APIKEY)
     throw new Error('No COMPANY_APIKEY provided');
-if (!AIRCRAFT_TYPE_ID)
-    throw new Error('No AIRCRAFT_TYPE_ID provided');
+if (!AIRCRAFT_ID)
+    throw new Error('No AIRCRAFT_ID provided');
 var ApiKey = COMPANY_APIKEY;
-var AircraftTypeId = AIRCRAFT_TYPE_ID;
-(0, mocha_1.describe)('getAircraftTypes', function () {
+var AircraftId = AIRCRAFT_ID;
+(0, mocha_1.describe)('getAircraftMaintenanceCosts', function () {
     it('should be a function', function () {
-        (0, chai_1.expect)(typeof getAircraftTypes_1.getAircraftTypes).to.equal('function');
+        (0, chai_1.expect)(typeof getAircraftMaintenanceCosts_1.getAircraftMaintenanceCosts).to.equal('function');
     });
-    it('should return the details of an Aircraft Type for the given aircraftTypeId', function () { return __awaiter(void 0, void 0, void 0, function () {
-        var aircraftTypes;
+    it('should return an object of costs for the given AircraftId', function () { return __awaiter(void 0, void 0, void 0, function () {
+        var x;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, (0, getAircraftTypes_1.getAircraftTypes)(AircraftTypeId, ApiKey)];
+                case 0: return [4 /*yield*/, (0, getAircraftMaintenanceCosts_1.getAircraftMaintenanceCosts)(AircraftId, ApiKey)];
                 case 1:
-                    aircraftTypes = _a.sent();
-                    if (!aircraftTypes || aircraftTypes === null)
-                        throw new Error('No aircraftTypes returned');
-                    (0, chai_1.expect)(aircraftTypes).to.be.an('Object');
+                    x = _a.sent();
+                    if (!x || x === null)
+                        throw new Error('No x returned');
+                    (0, chai_1.expect)(x).to.be.an('object');
                     return [2 /*return*/];
             }
         });
     }); });
-    it('should throw an error if the provided aircraftTypeId is invalid', function () { return __awaiter(void 0, void 0, void 0, function () {
+    it('should throw an error if the provided aircraftId is invalid', function () { return __awaiter(void 0, void 0, void 0, function () {
         var e_1;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
                     _a.trys.push([0, 2, , 3]);
-                    return [4 /*yield*/, (0, getAircraftTypes_1.getAircraftTypes)('invalidAircraftTypeId', ApiKey)];
+                    return [4 /*yield*/, (0, getAircraftMaintenanceCosts_1.getAircraftMaintenanceCosts)('invalidAircraftId', ApiKey)];
                 case 1:
                     _a.sent();
                     return [3 /*break*/, 3];
                 case 2:
                     e_1 = _a.sent();
-                    (0, chai_1.expect)(e_1.message).to.equal('Invalid Aircraft Type Id provided');
+                    (0, chai_1.expect)(e_1.message).to.equal('Invalid Aircraft Id provided');
                     return [3 /*break*/, 3];
                 case 3: return [2 /*return*/];
             }
@@ -88,7 +88,7 @@ var AircraftTypeId = AIRCRAFT_TYPE_ID;
             switch (_a.label) {
                 case 0:
                     _a.trys.push([0, 2, , 3]);
-                    return [4 /*yield*/, (0, getAircraftTypes_1.getAircraftTypes)(AircraftTypeId, 'invalidApiKey')];
+                    return [4 /*yield*/, (0, getAircraftMaintenanceCosts_1.getAircraftMaintenanceCosts)(AircraftId, 'invalidApiKey')];
                 case 1:
                     _a.sent();
                     return [3 /*break*/, 3];

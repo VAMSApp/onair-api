@@ -1,7 +1,11 @@
 "use strict";
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
 }) : (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
     o[k2] = m[k];
@@ -24,7 +28,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     function verb(n) { return function (v) { return step([n, v]); }; }
     function step(op) {
         if (f) throw new TypeError("Generator is already executing.");
-        while (_) try {
+        while (g && (g = 0, op[0] && (_ = 0)), _) try {
             if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
             if (y = 0, t) op = [op[0] & 2, t.value];
             switch (op[0]) {
@@ -71,6 +75,7 @@ var OnAirApi = /** @class */ (function () {
         this.CompanyId = companyId;
         this.VaId = (vaId) ? vaId : undefined;
         this.getCompany = this.getCompany.bind(this);
+        this.getCompanyDashboard = this.getCompanyDashboard.bind(this);
         this.getCompanyFleet = this.getCompanyFleet.bind(this);
         this.getCompanyFbos = this.getCompanyFbos.bind(this);
         this.getCompanyFlights = this.getCompanyFlights.bind(this);
@@ -84,8 +89,9 @@ var OnAirApi = /** @class */ (function () {
         this.getCompanyAircraftWorkOrders = this.getCompanyAircraftWorkOrders.bind(this);
         this.getCompanyNotifications = this.getCompanyNotifications.bind(this);
         this.getAircraft = this.getAircraft.bind(this);
+        this.getAircraftMaintenanceCosts = this.getAircraftMaintenanceCosts.bind(this);
+        this.getAircraftEconomicDetails = this.getAircraftEconomicDetails.bind(this);
         this.getAircraftFlights = this.getAircraftFlights.bind(this);
-        this.getAircraftTypes = this.getAircraftTypes.bind(this);
         this.getAircraftAtAirport = this.getAircraftAtAirport.bind(this);
         this.getAirport = this.getAirport.bind(this);
         this.getFlight = this.getFlight.bind(this);
@@ -120,6 +126,26 @@ var OnAirApi = /** @class */ (function () {
                         if (!this.isValidGuid(companyId))
                             throw new Error('Invalid Company Id provided');
                         return [4 /*yield*/, (0, api_1.getCompany)(companyId, this.ApiKey)];
+                    case 1:
+                        company = _a.sent();
+                        return [2 /*return*/, company];
+                }
+            });
+        });
+    };
+    OnAirApi.prototype.getCompanyDashboard = function (companyId) {
+        return __awaiter(this, void 0, void 0, function () {
+            var company;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        if (!companyId)
+                            companyId = this.CompanyId;
+                        if (!companyId)
+                            throw new Error('No Company Id provided');
+                        if (!this.isValidGuid(companyId))
+                            throw new Error('Invalid Company Id provided');
+                        return [4 /*yield*/, (0, api_1.getCompanyDashboard)(companyId, this.ApiKey)];
                     case 1:
                         company = _a.sent();
                         return [2 /*return*/, company];
@@ -400,6 +426,46 @@ var OnAirApi = /** @class */ (function () {
             });
         });
     };
+    OnAirApi.prototype.getAircraftMaintenanceCosts = function (aircraftId) {
+        return __awaiter(this, void 0, void 0, function () {
+            var x;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        if (!aircraftId)
+                            throw new Error('Aircraft ID not provided');
+                        if (!this.isValidGuid(aircraftId))
+                            throw new Error('Invalid Aircraft ID provided');
+                        return [4 /*yield*/, (0, api_1.getAircraftMaintenanceCosts)(aircraftId, this.ApiKey).then(function (response) {
+                                return response;
+                            })];
+                    case 1:
+                        x = _a.sent();
+                        return [2 /*return*/, x];
+                }
+            });
+        });
+    };
+    OnAirApi.prototype.getAircraftEconomicDetails = function (aircraftId) {
+        return __awaiter(this, void 0, void 0, function () {
+            var x;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        if (!aircraftId)
+                            throw new Error('Aircraft ID not provided');
+                        if (!this.isValidGuid(aircraftId))
+                            throw new Error('Invalid Aircraft ID provided');
+                        return [4 /*yield*/, (0, api_1.getAircraftEconomicDetails)(aircraftId, this.ApiKey).then(function (response) {
+                                return response;
+                            })];
+                    case 1:
+                        x = _a.sent();
+                        return [2 /*return*/, x];
+                }
+            });
+        });
+    };
     OnAirApi.prototype.getAircraftFlights = function (aircraftId, page, limit) {
         if (page === void 0) { page = 1; }
         return __awaiter(this, void 0, void 0, function () {
@@ -415,24 +481,6 @@ var OnAirApi = /** @class */ (function () {
                     case 1:
                         flights = _a.sent();
                         return [2 /*return*/, flights];
-                }
-            });
-        });
-    };
-    OnAirApi.prototype.getAircraftTypes = function (aircraftTypeId) {
-        return __awaiter(this, void 0, void 0, function () {
-            var aircraftTypes;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        if (!aircraftTypeId)
-                            throw new Error('Aircraft Type Id not provided');
-                        if (!this.isValidGuid(aircraftTypeId))
-                            throw new Error('Invalid Aircraft Type Id provided');
-                        return [4 /*yield*/, (0, api_1.getAircraftTypes)(aircraftTypeId, this.ApiKey)];
-                    case 1:
-                        aircraftTypes = _a.sent();
-                        return [2 /*return*/, aircraftTypes];
                 }
             });
         });

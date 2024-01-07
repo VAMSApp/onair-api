@@ -1,4 +1,4 @@
-import { OnAirApiConfig, CompanyResponse, EmployeeResponse, CashFlowResponse, BalanceSheetResponse, IncomeStatementResponse, AirportResponse, FlightResponse, VirtualAirlineResponse, AircraftResponse, Notification, Aircraft, People as Employee, Fbo, Flight, FlightTrack, Job, Member, ShareHolder, VARole, WorkOrder, AircraftType } from './types';
+import { OnAirApiConfig, CompanyResponse, EmployeeResponse, CashFlowResponse, BalanceSheetResponse, IncomeStatementResponse, AirportResponse, FlightResponse, VirtualAirlineResponse, AircraftResponse, Notification, Aircraft, People as Employee, Fbo, Flight, FlightTrack, Job, Member, ShareHolder, VARole, WorkOrder, MaintenanceCost, EconomicDetail, CompanyDashboardResponse } from './types';
 import { IOnAirApi } from './interfaces';
 export * from './types';
 export * from './interfaces';
@@ -9,6 +9,7 @@ export declare class OnAirApi implements IOnAirApi {
     constructor(config: OnAirApiConfig);
     isValidGuid(guid: string): boolean;
     getCompany(companyId?: string): Promise<CompanyResponse>;
+    getCompanyDashboard(companyId?: string): Promise<CompanyDashboardResponse>;
     getCompanyFleet(companyId?: string): Promise<Aircraft[]>;
     getCompanyFbos(companyId?: string): Promise<Fbo[]>;
     getCompanyFlights(companyId?: string, page?: number, limit?: number): Promise<Flight[]>;
@@ -22,8 +23,9 @@ export declare class OnAirApi implements IOnAirApi {
     getCompanyAircraftWorkOrders(aircraftId: string, companyId?: string): Promise<WorkOrder[]>;
     getCompanyNotifications(companyId?: string): Promise<Notification[]>;
     getAircraft(aircraftId: string): Promise<AircraftResponse>;
+    getAircraftMaintenanceCosts(aircraftId: string): Promise<MaintenanceCost | null>;
+    getAircraftEconomicDetails(aircraftId: string): Promise<EconomicDetail | null>;
     getAircraftFlights(aircraftId: string, page?: number, limit?: number): Promise<Flight[]>;
-    getAircraftTypes(aircraftTypeId: string): Promise<AircraftType | AircraftType[] | null>;
     getAircraftAtAirport(icao: string): Promise<AircraftResponse>;
     getAirport(airportCode: string): Promise<AirportResponse>;
     getFlight(flightId: string): Promise<FlightResponse>;

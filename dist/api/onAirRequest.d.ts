@@ -1,7 +1,13 @@
 import { AxiosResponse } from 'axios';
-import { BalanceSheet, CashFlow, IncomeStatement, People, Aircraft, AircraftType, Airport, Company, Fbo, Flight, FlightTrack, Job, Member, ShareHolder, VARole, VirtualAirline, WorkOrder, Notification } from '../types';
+import { BalanceSheet, CashFlow, IncomeStatement, People, Aircraft, AircraftType, Airport, Company, Fbo, Flight, FlightTrack, Job, Member, ShareHolder, VARole, VirtualAirline, WorkOrder, Notification, MaintenanceCost, EconomicDetail, CompanyDashboard } from '../types';
 interface OnAirApiResponse {
     Error: string;
+}
+export interface AircraftMaintenanceCostApiResponse extends OnAirApiResponse {
+    Content: MaintenanceCost;
+}
+export interface AircraftEconomicDetailApiResponse extends OnAirApiResponse {
+    Content: EconomicDetail;
 }
 export interface AircraftApiResponse extends OnAirApiResponse {
     Content: Aircraft | Aircraft[];
@@ -15,8 +21,17 @@ export interface FlightApiResponse extends OnAirApiResponse {
 export interface AirportApiResponse extends OnAirApiResponse {
     Content: Airport;
 }
+export interface AircraftMaintenanceCostApiResponse extends OnAirApiResponse {
+    Content: MaintenanceCost;
+}
+export interface AircraftEconomicDetailApiResponse extends OnAirApiResponse {
+    Content: EconomicDetail;
+}
 export interface CompanyApiResponse extends OnAirApiResponse {
     Content: Company;
+}
+export interface CompanyDashboardApiResponse extends OnAirApiResponse {
+    Content: CompanyDashboard;
 }
 export interface FboApiResponse extends OnAirApiResponse {
     Content: Fbo[];
@@ -66,12 +81,11 @@ export interface FlightTrackApiResponse extends OnAirApiResponse {
 export interface WorkOrderApiResponse extends OnAirApiResponse {
     Content: WorkOrder | WorkOrder[];
 }
-export declare type VirtualAirlineNotificationApiResponse = NotificationApiResponse;
-export declare type CompanyNotificationApiResponse = NotificationApiResponse;
+export type VirtualAirlineNotificationApiResponse = NotificationApiResponse;
+export type CompanyNotificationApiResponse = NotificationApiResponse;
 export interface NotificationApiResponse extends OnAirApiResponse {
     Content: Notification | Notification[];
 }
-declare const _default: <T>(url: string, apiKey: string, requestData?: Record<string, unknown> | undefined) => Promise<AxiosResponse<T, any>>;
 /**
  * Generic Get request to OnAir
  *
@@ -80,4 +94,5 @@ declare const _default: <T>(url: string, apiKey: string, requestData?: Record<st
  * @param requestData
  * @returns Promise<AxiosResponse<T>>
  */
+declare const _default: <T>(url: string, apiKey: string, requestData?: Record<string, unknown> | undefined) => Promise<AxiosResponse<T, any>>;
 export default _default;

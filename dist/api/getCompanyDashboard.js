@@ -14,7 +14,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     function verb(n) { return function (v) { return step([n, v]); }; }
     function step(op) {
         if (f) throw new TypeError("Generator is already executing.");
-        while (_) try {
+        while (g && (g = 0, op[0] && (_ = 0)), _) try {
             if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
             if (y = 0, t) op = [op[0] & 2, t.value];
             switch (op[0]) {
@@ -39,50 +39,42 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getAircraftTypes = void 0;
+exports.getCompanyDashboard = void 0;
 var onAirRequest_1 = __importDefault(require("./onAirRequest"));
-var types_1 = require("../types");
 var utils_1 = require("../utils");
-var endPoint = 'aircrafttypes/';
-var getAircraftTypes = function (aircraftTypeId, apiKey) { return __awaiter(void 0, void 0, void 0, function () {
-    var response, aircraftType, e_1;
+var endPoint = 'company/';
+var getCompanyDashboard = function (companyId, apiKey) { return __awaiter(void 0, void 0, void 0, function () {
+    var response, e_1;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
-                if (!aircraftTypeId)
-                    throw new Error('No Aircraft Type Id provided');
+                if (!companyId)
+                    throw new Error('No Company Id provided');
                 if (!apiKey)
-                    throw new Error('No apiKey provided');
-                if (!(0, utils_1.isValidGuid)(aircraftTypeId))
-                    throw new Error('Invalid Aircraft Type Id provided');
+                    throw new Error('No Api Key provided');
+                if (!(0, utils_1.isValidGuid)(companyId))
+                    throw new Error('Invalid Company Id provided');
                 if (!(0, utils_1.isValidGuid)(apiKey))
                     throw new Error('Invalid Api Key provided');
                 _a.label = 1;
             case 1:
                 _a.trys.push([1, 3, , 4]);
-                return [4 /*yield*/, (0, onAirRequest_1.default)("https://server1.onair.company/api/v1/".concat(endPoint).concat(aircraftTypeId), apiKey)];
+                return [4 /*yield*/, (0, onAirRequest_1.default)("https://server1.onair.company/api/v1/".concat(endPoint).concat(companyId, "/dashboard"), apiKey)];
             case 2:
                 response = _a.sent();
                 if (typeof response.data.Content !== 'undefined') {
-                    aircraftType = response.data.Content;
-                    aircraftType.EngineTypeName = types_1.engineTypes[aircraftType.engineType];
-                    return [2 /*return*/, aircraftType];
+                    return [2 /*return*/, response.data.Content];
                 }
                 else {
-                    if (response.data.Error) {
-                        throw new Error(response.data.Error);
-                    }
-                    else {
-                        throw new Error(response.data.Error ? response.data.Error : "AircraftType ID code ".concat(aircraftTypeId, " not found"));
-                    }
+                    throw new Error(response.data.Error ? response.data.Error : "Company Id \"".concat(companyId, "\"\" not found"));
                 }
                 return [3 /*break*/, 4];
             case 3:
                 e_1 = _a.sent();
-                console.error("OnAirApi::getAircraft() Error getting Details for AircraftType ID \"".concat(aircraftTypeId, "\""), e_1);
-                return [2 /*return*/, null];
+                console.error("OnAirApi::getCompany() Error getting Details for Company Id \"".concat(companyId, "\""), e_1);
+                throw new Error(e_1);
             case 4: return [2 /*return*/];
         }
     });
 }); };
-exports.getAircraftTypes = getAircraftTypes;
+exports.getCompanyDashboard = getCompanyDashboard;

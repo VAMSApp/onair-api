@@ -38,7 +38,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var mocha_1 = require("mocha");
 var chai_1 = require("chai");
-var getCompanyBalanceSheet_1 = require("./getCompanyBalanceSheet");
+var getCompanyDashboard_1 = require("./getCompanyDashboard");
 var _a = process.env, COMPANY_APIKEY = _a.COMPANY_APIKEY, COMPANY_ID = _a.COMPANY_ID;
 if (!COMPANY_APIKEY)
     throw new Error('No COMPANY_APIKEY provided');
@@ -46,32 +46,52 @@ if (!COMPANY_ID)
     throw new Error('No COMPANY_ID provided');
 var ApiKey = COMPANY_APIKEY;
 var CompanyId = COMPANY_ID;
-(0, mocha_1.describe)('getCompanyBalanceSheet', function () {
+mocha_1.describe.only('getCompanyDashboard', function () {
     it('should be a function', function () {
-        (0, chai_1.expect)(typeof getCompanyBalanceSheet_1.getCompanyBalanceSheet).to.equal('function');
+        (0, chai_1.expect)(typeof getCompanyDashboard_1.getCompanyDashboard).to.equal('function');
     });
-    it('should return a matching BalanceSheet for the given companyId', function () { return __awaiter(void 0, void 0, void 0, function () {
-        var BalanceSheet;
+    it('should return a matching Company Dashboard for the given companyId', function () { return __awaiter(void 0, void 0, void 0, function () {
+        var company;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, (0, getCompanyBalanceSheet_1.getCompanyBalanceSheet)(CompanyId, ApiKey)];
+                case 0: return [4 /*yield*/, (0, getCompanyDashboard_1.getCompanyDashboard)(CompanyId, ApiKey)];
                 case 1:
-                    BalanceSheet = _a.sent();
-                    if (!BalanceSheet || BalanceSheet === null)
-                        throw new Error('No BalanceSheet returned');
-                    (0, chai_1.expect)(BalanceSheet).to.be.an('object');
-                    (0, chai_1.expect)(BalanceSheet).to.have.any.keys(['ASSAccounts', 'LIAAccounts', 'ASSAmount', 'LIAAmount', 'DeltaBalance',]);
+                    company = _a.sent();
+                    if (!company || company === null)
+                        throw new Error('No company returned');
+                    (0, chai_1.expect)(company).to.be.an('object');
+                    (0, chai_1.expect)(company).to.contain.keys([
+                        'Cash',
+                        'ShareCapital',
+                        'Value',
+                        'Incomes1week',
+                        'Incomes2weeks',
+                        'IncomesGlobal',
+                        'NumberOfCompletedMissions',
+                        'NumberOfActivesMissions',
+                        'NumberOfActiveAircrafts',
+                        'NumberOfAircrafts',
+                        'NumberOfEmployees',
+                        'NumberOfFBOs',
+                        'ReturnOnAssets',
+                        'DebtRatio',
+                        'Assets',
+                        'Loans',
+                        'Level',
+                        'XP',
+                        'XPNeeded',
+                    ]);
                     return [2 /*return*/];
             }
         });
     }); });
-    it('should throw an error if the provided Company ID is invalid', function () { return __awaiter(void 0, void 0, void 0, function () {
+    it('should throw an error if the provided companyId is invalid', function () { return __awaiter(void 0, void 0, void 0, function () {
         var e_1;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
                     _a.trys.push([0, 2, , 3]);
-                    return [4 /*yield*/, (0, getCompanyBalanceSheet_1.getCompanyBalanceSheet)('invalidCompanyId', ApiKey)];
+                    return [4 /*yield*/, (0, getCompanyDashboard_1.getCompanyDashboard)('invalidCompanyId', ApiKey)];
                 case 1:
                     _a.sent();
                     return [3 /*break*/, 3];
@@ -83,13 +103,13 @@ var CompanyId = COMPANY_ID;
             }
         });
     }); });
-    it('should throw an error if the provided API Key is invalid', function () { return __awaiter(void 0, void 0, void 0, function () {
+    it('should throw an error if the provided apiKey is invalid', function () { return __awaiter(void 0, void 0, void 0, function () {
         var e_2;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
                     _a.trys.push([0, 2, , 3]);
-                    return [4 /*yield*/, (0, getCompanyBalanceSheet_1.getCompanyBalanceSheet)(CompanyId, 'invalidApiKey')];
+                    return [4 /*yield*/, (0, getCompanyDashboard_1.getCompanyDashboard)(CompanyId, 'invalidApiKey')];
                 case 1:
                     _a.sent();
                     return [3 /*break*/, 3];

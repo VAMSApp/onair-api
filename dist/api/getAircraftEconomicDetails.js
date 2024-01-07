@@ -39,42 +39,48 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getCompanyFbos = void 0;
-1;
+exports.getAircraftEconomicDetails = void 0;
 var onAirRequest_1 = __importDefault(require("./onAirRequest"));
 var utils_1 = require("../utils");
-var endPoint = 'company/';
-var getCompanyFbos = function (companyId, apiKey) { return __awaiter(void 0, void 0, void 0, function () {
-    var response, e_1;
+var endPoint = 'aircraft/';
+var getAircraftEconomicDetails = function (aircraftId, apiKey) { return __awaiter(void 0, void 0, void 0, function () {
+    var response, maintenance_costs, e_1;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
-                if (!companyId)
-                    throw new Error('No Company Id provided');
+                if (!aircraftId)
+                    throw new Error('No aircraftId provided');
                 if (!apiKey)
-                    throw new Error('No Api Key provided');
-                if (!(0, utils_1.isValidGuid)(companyId))
-                    throw new Error('Invalid Company Id provided');
+                    throw new Error('No apiKey provided');
+                if (!(0, utils_1.isValidGuid)(aircraftId))
+                    throw new Error('Invalid Aircraft Id provided');
                 if (!(0, utils_1.isValidGuid)(apiKey))
                     throw new Error('Invalid Api Key provided');
                 _a.label = 1;
             case 1:
                 _a.trys.push([1, 3, , 4]);
-                return [4 /*yield*/, (0, onAirRequest_1.default)("https://server1.onair.company/api/v1/".concat(endPoint).concat(companyId, "/fbos"), apiKey)];
+                return [4 /*yield*/, (0, onAirRequest_1.default)("https://server1.onair.company/api/v1/".concat(endPoint).concat(aircraftId, "/economic_details"), apiKey)];
             case 2:
                 response = _a.sent();
                 if (typeof response.data.Content !== 'undefined') {
-                    return [2 /*return*/, response.data.Content];
+                    maintenance_costs = response.data.Content;
+                    return [2 /*return*/, maintenance_costs];
                 }
                 else {
-                    throw new Error(response.data.Error ? response.data.Error : "Company Id \"".concat(companyId, "\"\" not found"));
+                    if (response.data.Error) {
+                        throw new Error(response.data.Error);
+                    }
+                    else {
+                        throw new Error(response.data.Error ? response.data.Error : "Aircraft ID code ".concat(aircraftId, " not found"));
+                    }
                 }
                 return [3 /*break*/, 4];
             case 3:
                 e_1 = _a.sent();
-                throw new Error(e_1.response.status === 400 ? "Company Id \"".concat(companyId, "\"\" not found") : e_1.message);
+                console.error("OnAirApi::getAircraftEconomicDetails() Error getting Details for Aircraft ID \"".concat(aircraftId, "\""), e_1);
+                return [2 /*return*/, null];
             case 4: return [2 /*return*/];
         }
     });
 }); };
-exports.getCompanyFbos = getCompanyFbos;
+exports.getAircraftEconomicDetails = getAircraftEconomicDetails;

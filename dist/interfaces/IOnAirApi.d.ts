@@ -1,4 +1,4 @@
-import { CompanyResponse, CashFlowResponse, IncomeStatementResponse, BalanceSheetResponse, Notification, AircraftResponse, AirportResponse, FlightResponse, VirtualAirlineResponse, EmployeeResponse, ShareHolder, Aircraft, Fbo, Flight, FlightTrack, Job, Member, VARole, WorkOrder, People as Employee, AircraftType } from '../types';
+import { CompanyResponse, CashFlowResponse, IncomeStatementResponse, BalanceSheetResponse, Notification, AircraftResponse, AirportResponse, FlightResponse, VirtualAirlineResponse, EmployeeResponse, ShareHolder, Aircraft, Fbo, Flight, FlightTrack, Job, Member, VARole, WorkOrder, People as Employee, MaintenanceCost, EconomicDetail } from '../types';
 export interface IOnAirApi {
     isValidGuid(guid: string): boolean;
     getCompany: (companyId?: string) => Promise<CompanyResponse>;
@@ -16,8 +16,9 @@ export interface IOnAirApi {
     getCompanyNotifications: (companyId?: string) => Promise<Notification[]>;
     getAircraft: (aircraftId: string) => Promise<AircraftResponse>;
     getAircraftFlights: (aircraftId: string, page?: number, limit?: number) => Promise<Flight[]>;
-    getAircraftTypes: (aircraftTypeId: string) => Promise<AircraftType | AircraftType[] | null>;
     getAircraftAtAirport: (icao: string) => Promise<AircraftResponse>;
+    getAircraftMaintenanceCosts: (aircraftId: string) => Promise<MaintenanceCost | null>;
+    getAircraftEconomicDetails: (aircraftId: string) => Promise<EconomicDetail | null>;
     getAirport: (airportCode: string) => Promise<AirportResponse>;
     getFlight: (flightId: string) => Promise<FlightResponse>;
     getVirtualAirline: (vaId?: string) => Promise<VirtualAirlineResponse>;
@@ -33,4 +34,5 @@ export interface IOnAirApi {
     getVirtualAirlineWorkOrders: (vaId?: string) => Promise<WorkOrder[]>;
     getEmployee: (employeeId: string) => Promise<EmployeeResponse>;
     getFboJobs: (fboId: string) => Promise<Job[]>;
+    [key: string]: any;
 }
