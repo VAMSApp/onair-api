@@ -83,7 +83,6 @@ let companyDetails: Company[] = await api.getCompany('35f37dab-59ef-4fdb-b5d5-e7
 - [getAircraftMaintenanceCosts](#getAircraftaircraftMaintenanceCostsId-string)
 - [getAircraftEconomicDetails](#getAircraftaircraftEconomicDetailsId-string)
 - [getAircraftFlights](#getAircraftFlights)
-- [getAircraftTypes](#getaircrafttypesaircrafttypeid-string)
 - [getAircraftAtAirport](#getaircraftatairportaircrafttypeid-string)
 - [getAirport](#getAirportairportCode-string)
 - [getFlight](#getFlightflightId-string)
@@ -494,27 +493,6 @@ let companyAircraftFlights: Flight[] = await api.getAircraftFlights(aircraftId);
 
 #### Example Response
  - [getAircraftFlights.md](docs/responses/getAircraftFlights.md)
-
-### [getAircraftTypes(aircraftTypeId: string)](src/api/getAircraftTypes.ts)
-Fetches the Aircraft Type details for a given aircraftTypeId.
-
-#### Usage
-```typescript
-import OnAirApi, { AircraftType, OnAirApiConfig, } from 'onair-api'
-
-const apiConfig: OnAirApiConfig = {
-  apiKey: 'YOUR-API-KEY',
-  companyId: 'YOUR-COMPANY-ID',
-  vaId: 'YOUR-VA-ID'
-};
-
-const api: Api = new OnAirApi(apiConfig);
-const aircraftTypeId = 'fd20df37-e771-45e2-88d3-e4a00f65cf12';
-let aircraftType: AircraftType = await api.getAircraftTypes(aircraftTypeId);
-```
-
-#### Example Response
- - [getAircraftTypes.md](docs/responses/getAircraftTypes.md)
 
 ### [getAircraftAtAirport(aircraftTypeId: string)](src/api/getAircraftAtAirport.ts)
 Fetches the Aircraft currently at a given airport code.
