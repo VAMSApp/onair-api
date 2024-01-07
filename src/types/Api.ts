@@ -20,6 +20,9 @@ import {
     AircraftType,
     AircraftClass,
     AircraftEngine,
+    MaintenanceCost,
+    EconomicDetail,
+    CompanyDashboard,
 } from './';
 
 export type IncomeStatementResponse = {
@@ -38,6 +41,7 @@ export type AircraftClassResponse = AircraftClass;
 export type AirportResponse = Airport|null;
 export type FboResponse = Fbo|null;
 export type CompanyResponse = Company|null;
+export type CompanyDashboardResponse = CompanyDashboard|null;
 export type JobResponse = Job|null;
 export type CashFlowResponse = CashFlow|null;
 export type MemberResponse = Member|null;
@@ -49,6 +53,8 @@ export type WorkOrderResponse = WorkOrder|null;
 export type VARoleResponse = VARole|null;
 
 export type GetAircraft = (aircraftId: string, apiKey: string) => Promise<AircraftResponse>;
+export type GetAircraftMaintenanceCosts = (aircraftId: string, apiKey: string) => Promise<MaintenanceCost|null>;
+export type GetAircraftEconomicDetails = (aircraftId: string, apiKey: string) => Promise<EconomicDetail|null>;
 export type GetAircraftTypes = (aircraftTypeId: string, apiKey: string) => Promise<AircraftTypeResponse>;
 export type GetAircraftFlights = (aircraftId: string, apiKey: string, page?: number, limit?: number) => Promise<Flight[]>;
 export type GetAirport = (icao: string, apiKey: string) => Promise<AirportResponse>;
@@ -64,6 +70,7 @@ export type GetCompanyBalanceSheet = (companyId: string, apiKey: string) => Prom
 export type GetCompanyWorkOrders = (companyId: string, apiKey: string) => Promise<WorkOrder[]>;
 export type GetCompanyMissionFlightTracks = (companyId: string, apiKey: string) => Promise<FlightTrack[]>;
 export type GetCompany = (companyId: string, apiKey: string) => Promise<CompanyResponse>;
+export type GetCompanyDashboard = (companyId: string, apiKey: string) => Promise<CompanyDashboardResponse>;
 export type GetCompanyNotifications = (vaId: string, apiKey: string) => Promise<Notification[]>;
 export type GetFlight = (flightId: string, apiKey: string) => Promise<FlightResponse>;
 export type GetVirtualAirlineMembers = (vaId: string, apiKey: string) => Promise<Member[]>;

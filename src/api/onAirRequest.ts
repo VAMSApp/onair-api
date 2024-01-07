@@ -18,10 +18,21 @@ import {
     VirtualAirline,
     WorkOrder,
     Notification,
+    MaintenanceCost,
+    EconomicDetail,
+    CompanyDashboard,
 } from '../types';
 
 interface OnAirApiResponse {
   Error: string;
+}
+
+export interface AircraftMaintenanceCostApiResponse extends OnAirApiResponse {
+    Content: MaintenanceCost;
+}
+
+export interface AircraftEconomicDetailApiResponse extends OnAirApiResponse {
+    Content: EconomicDetail;
 }
 
 export interface AircraftApiResponse extends OnAirApiResponse {
@@ -40,8 +51,20 @@ export interface AirportApiResponse extends OnAirApiResponse {
   Content: Airport;
 }
 
+export interface AircraftMaintenanceCostApiResponse extends OnAirApiResponse {
+  Content: MaintenanceCost;
+}
+
+export interface AircraftEconomicDetailApiResponse extends OnAirApiResponse {
+  Content: EconomicDetail;
+}
+
 export interface CompanyApiResponse extends OnAirApiResponse {
   Content: Company;
+}
+
+export interface CompanyDashboardApiResponse extends OnAirApiResponse {
+  Content: CompanyDashboard;
 }
 
 export interface FboApiResponse extends OnAirApiResponse {

@@ -1,4 +1,5 @@
 export * from './getCompany';
+export * from './getCompanyDashboard';
 export * from './getCompanyFleet';
 export * from './getCompanyFbos';
 export * from './getCompanyFlights';
@@ -13,8 +14,9 @@ export * from './getCompanyAircraftWorkOrders';
 export * from './getCompanyNotifications';
 export * from './getAircraft';
 export * from './getAircraftFlights';
-export * from './getAircraftTypes';
 export * from './getAircraftAtAirport';
+export * from './getAircraftMaintenanceCosts';
+export * from './getAircraftEconomicDetails';
 export * from './getAirport';
 export * from './getFlight';
 export * from './getVirtualAirline';

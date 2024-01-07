@@ -67,6 +67,7 @@ let companyDetails: Company[] = await api.getCompany('35f37dab-59ef-4fdb-b5d5-e7
 ## Methods
 
 - [getCompany](#getCompany)
+- [getCompanyDashboard](#getCompanyDashboard)
 - [getCompanyFbos](#getCompanyFbos)
 - [getCompanyFleet](#getCompanyFleet)
 - [getCompanyFlights](#getCompanyFlights)
@@ -79,6 +80,8 @@ let companyDetails: Company[] = await api.getCompany('35f37dab-59ef-4fdb-b5d5-e7
 - [getCompanyAircraftWorkOrders](#getcompanyaircraftworkordersaircraftId-string)
 - [getCompanyNotifications](#getCompanyNotifications)
 - [getAircraft](#getAircraftaircraftId-string)
+- [getAircraftMaintenanceCosts](#getAircraftaircraftMaintenanceCostsId-string)
+- [getAircraftEconomicDetails](#getAircraftaircraftEconomicDetailsId-string)
 - [getAircraftFlights](#getAircraftFlights)
 - [getAircraftTypes](#getaircrafttypesaircrafttypeid-string)
 - [getAircraftAtAirport](#getaircraftatairportaircrafttypeid-string)
@@ -117,6 +120,29 @@ let companyDetails: Company[] = await api.getCompanyFbos(companyId);
 ```
 #### Example Response
  - [getCompany.md](docs/responses/getCompany.md)
+
+
+
+### [getCompanyDashboard(companyId?:string)](src/api/getCompanyDashboard.ts)
+Fetches the company dashboard for the given companyId.
+#### Usage
+```typescript
+import OnAirApi, { Company, OnAirApiConfig, } from 'onair-api'
+
+
+const apiConfig: OnAirApiConfig = {
+  apiKey: 'YOUR-API-KEY',
+  companyId: 'YOUR-COMPANY-ID',
+  vaId: 'YOUR-VA-ID'
+};
+
+const api: Api = new OnAirApi(apiConfig);
+let companyDetails: CompanyDashboard = await api.getCompanyDashboard();
+// or pass another companyId as the first argument
+let companyDetails: CompanyDashboard = await api.getCompanyFbos(companyId);
+```
+#### Example Response
+ - [getCompanyDashboard.md](docs/responses/getCompanyDashboard.md)
 
 
 
@@ -404,6 +430,49 @@ let companyAircraft: Aircraft = await api.getAircraft(aircraftId);
 #### Example Response
  - [getAircraft](docs/responses/getAircraft.md)
 
+
+### [getAircraftMaintenanceCosts(aircraftId: string)](src/api/getAircraftMaintenanceCosts.ts)
+Fetches the Aircraft details for a given aircraftId.
+
+#### Usage
+```typescript
+import OnAirApi, { MaintenanceCost, OnAirApiConfig, } from 'onair-api'
+
+const apiConfig: OnAirApiConfig = {
+  apiKey: 'YOUR-API-KEY',
+  companyId: 'YOUR-COMPANY-ID',
+  vaId: 'YOUR-VA-ID'
+};
+
+const api: Api = new OnAirApi(apiConfig);
+const aircraftId = '9891d561-def7-438c-9097-d3336989af93';
+let maintenanceCost: MaintenanceCost = await api.getAircraftMaintenanceCosts(aircraftId);
+```
+
+#### Example Response
+ - [getAircraftMaintenanceCosts](docs/responses/getAircraftMaintenanceCosts.md)
+
+
+### [getAircraftEconomicDetails(aircraftId: string)](src/api/getAircraftEconomicDetails.ts)
+Fetches the Aircraft details for a given aircraftId.
+
+#### Usage
+```typescript
+import OnAirApi, { EconomicDetail, OnAirApiConfig, } from 'onair-api'
+
+const apiConfig: OnAirApiConfig = {
+  apiKey: 'YOUR-API-KEY',
+  companyId: 'YOUR-COMPANY-ID',
+  vaId: 'YOUR-VA-ID'
+};
+
+const api: Api = new OnAirApi(apiConfig);
+const aircraftId = '9891d561-def7-438c-9097-d3336989af93';
+let economicDetail: EconomicDetail = await api.getAircraftEconomicDetails(aircraftId);
+```
+
+#### Example Response
+ - [getAircraftMaintenanceCosts](docs/responses/getAircraftMaintenanceCosts.md)
 
 ### [getAircraftFlights(aircraftId: string)](src/api/getAircraftFlights.ts)
 Fetches the Flights flown for a given aircraftId.

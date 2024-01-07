@@ -19,7 +19,8 @@ import {
     VARole,
     WorkOrder,
     People as Employee,
-    AircraftType
+    MaintenanceCost,
+    EconomicDetail,
 } from '../types';
 
 export interface IOnAirApi {
@@ -39,8 +40,9 @@ export interface IOnAirApi {
     getCompanyNotifications: (companyId?:string) => Promise<Notification[]>
     getAircraft: (aircraftId:string) => Promise<AircraftResponse>
     getAircraftFlights: (aircraftId:string, page?:number, limit?:number) => Promise<Flight[]>
-    getAircraftTypes: (aircraftTypeId:string) => Promise<AircraftType|AircraftType[]|null>
     getAircraftAtAirport: (icao:string) => Promise<AircraftResponse>
+    getAircraftMaintenanceCosts: (aircraftId:string) => Promise<MaintenanceCost|null>
+    getAircraftEconomicDetails: (aircraftId:string) => Promise<EconomicDetail|null>
     getAirport: (airportCode:string) => Promise<AirportResponse>
     getFlight: (flightId:string) => Promise<FlightResponse>
     getVirtualAirline: (vaId?:string) => Promise<VirtualAirlineResponse>
@@ -56,4 +58,6 @@ export interface IOnAirApi {
     getVirtualAirlineWorkOrders: (vaId?:string) => Promise<WorkOrder[]>
     getEmployee: (employeeId:string) => Promise<EmployeeResponse>
     getFboJobs: (fboId:string) => Promise<Job[]>
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    [key: string]: any;
 }

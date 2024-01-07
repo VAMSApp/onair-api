@@ -20,7 +20,9 @@ import {
     ShareHolder,
     VARole,
     WorkOrder,
-    AircraftType,
+    MaintenanceCost,
+    EconomicDetail,
+    CompanyDashboardResponse,
 } from './types';
 
 import {
@@ -29,6 +31,7 @@ import {
 
 import {
     getCompany,
+    getCompanyDashboard,
     getCompanyFleet,
     getCompanyFbos,
     getCompanyFlights,
@@ -42,8 +45,9 @@ import {
     getCompanyAircraftWorkOrders,
     getCompanyNotifications,
     getAircraft,
+    getAircraftMaintenanceCosts,
+    getAircraftEconomicDetails,
     getAircraftFlights,
-    getAircraftTypes,
     getAircraftAtAirport,
     getAirport,
     getFlight,
@@ -59,7 +63,7 @@ import {
     getVirtualAirlineIncomeStatement,
     getVirtualAirlineWorkOrders,
     getEmployee,
-    getFboJobs
+    getFboJobs,
 } from './api';
 import { isValidGuid } from './utils';
 export * from './types';
@@ -91,6 +95,7 @@ export class OnAirApi implements IOnAirApi {
         this.VaId = (vaId) ? vaId : undefined;
 
         this.getCompany = this.getCompany.bind(this);
+        this.getCompanyDashboard = this.getCompanyDashboard.bind(this);
         this.getCompanyFleet = this.getCompanyFleet.bind(this);
         this.getCompanyFbos = this.getCompanyFbos.bind(this);
         this.getCompanyFlights = this.getCompanyFlights.bind(this);
@@ -104,8 +109,9 @@ export class OnAirApi implements IOnAirApi {
         this.getCompanyAircraftWorkOrders = this.getCompanyAircraftWorkOrders.bind(this);
         this.getCompanyNotifications = this.getCompanyNotifications.bind(this);
         this.getAircraft = this.getAircraft.bind(this);
+        this.getAircraftMaintenanceCosts = this.getAircraftMaintenanceCosts.bind(this);
+        this.getAircraftEconomicDetails = this.getAircraftEconomicDetails.bind(this);
         this.getAircraftFlights = this.getAircraftFlights.bind(this);
-        this.getAircraftTypes = this.getAircraftTypes.bind(this);
         this.getAircraftAtAirport = this.getAircraftAtAirport.bind(this);
         this.getAirport = this.getAirport.bind(this);
         this.getFlight = this.getFlight.bind(this);
@@ -136,6 +142,15 @@ export class OnAirApi implements IOnAirApi {
         if (!this.isValidGuid(companyId)) throw new Error('Invalid Company Id provided');
 
         const company:CompanyResponse = await getCompany(companyId, this.ApiKey);
+        return company;
+    }
+
+    public async getCompanyDashboard(companyId?:string): Promise<CompanyDashboardResponse> {
+        if (!companyId) companyId = this.CompanyId;
+        if (!companyId) throw new Error('No Company Id provided');
+        if (!this.isValidGuid(companyId)) throw new Error('Invalid Company Id provided');
+
+        const company:CompanyDashboardResponse = await getCompanyDashboard(companyId, this.ApiKey);
         return company;
     }
 
@@ -278,20 +293,34 @@ export class OnAirApi implements IOnAirApi {
         return aircraft;
     }
 
+    public async getAircraftMaintenanceCosts(aircraftId:string): Promise<MaintenanceCost|null> {
+        if (!aircraftId) throw new Error('Aircraft ID not provided');
+        if (!this.isValidGuid(aircraftId)) throw new Error('Invalid Aircraft ID provided');
+
+        const x: MaintenanceCost|null = await getAircraftMaintenanceCosts(aircraftId, this.ApiKey).then((response) => {
+            return response;
+        });
+
+        return x;
+    }
+
+    public async getAircraftEconomicDetails(aircraftId:string): Promise<EconomicDetail|null> {
+        if (!aircraftId) throw new Error('Aircraft ID not provided');
+        if (!this.isValidGuid(aircraftId)) throw new Error('Invalid Aircraft ID provided');
+
+        const x: EconomicDetail|null = await getAircraftEconomicDetails(aircraftId, this.ApiKey).then((response) => {
+            return response;
+        });
+
+        return x;
+    }
+
     public async getAircraftFlights(aircraftId:string, page = 1, limit?:number):Promise<Flight[]> {
         if (!aircraftId) throw new Error('Aircraft ID not provided');
         if (!this.isValidGuid(aircraftId)) throw new Error('Invalid Aircraft ID provided');
 
         const flights: Flight[] = await getAircraftFlights(aircraftId, this.ApiKey, page, limit);
         return flights;
-    }
-
-    public async getAircraftTypes(aircraftTypeId:string):Promise<AircraftType|AircraftType[]|null> {
-        if (!aircraftTypeId) throw new Error('Aircraft Type Id not provided');
-        if (!this.isValidGuid(aircraftTypeId)) throw new Error('Invalid Aircraft Type Id provided');
-
-        const aircraftTypes: AircraftType|AircraftType[]|null = await getAircraftTypes(aircraftTypeId, this.ApiKey);
-        return aircraftTypes;
     }
 
     public async getAircraftAtAirport(icao:string):Promise<AircraftResponse> {
