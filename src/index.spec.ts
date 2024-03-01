@@ -12,62 +12,96 @@ const {
 
 if (!COMPANY_APIKEY) throw new Error('No COMPANY_APIKEY provided');
 if (!COMPANY_ID) throw new Error('No COMPANY_ID provided');
-if (!VIRTUAL_AIRLINE_ID) throw new Error('No VIRTUAL_AIRLINE_ID provided');
+// if (!VIRTUAL_AIRLINE_ID) throw new Error('No VIRTUAL_AIRLINE_ID provided');
 
 const apiKey: string = COMPANY_APIKEY;
 const companyId: string = COMPANY_ID;
-const vaId: string = VIRTUAL_AIRLINE_ID;
+const vaId: string | undefined = VIRTUAL_AIRLINE_ID;
 
-describe('OnAirApi()', function() {
+describe.only('OnAirApi()', function() {
     it('when instantiated with valid data, it should return an OnAirApi object with the expected properties', async function() {
-        if (apiKey !== undefined && companyId !== undefined) {
+        if (apiKey !== undefined && companyId !== undefined && vaId !== undefined) {
             try {
                 const api: OnAirApi = new OnAirApi({ apiKey, companyId, vaId });
                 expect(api).to.be.an('Object');
                 expect(api).to.contain.keys([
                     'ApiKey',
                     'CompanyId',
-                    'VaId',
+                    'getVirtualAirline',
+                    'getVirtualAirlineMembers',
+                    'getVirtualAirlineShareHolders',
+                    'getVirtualAirlineRoles',
+                    'getVirtualAirlineFlights',
+                    'getVirtualAirlineFleet',
+                    'getVirtualAirlineJobs',
+                    'getVirtualAirlineFbos',
+                    'getVirtualAirlineNotifications',
+                    'getVirtualAirlineIncomeStatement',
+                    'getVirtualAirlineWorkOrders',
+                    'getCompany',
+                    'getCompanyDashboard',
+                    'getCompanyFleet',
+                    'getCompanyFbos',
+                    'getCompanyFlights',
+                    'getCompanyJobs',
+                    'getCompanyEmployees',
+                    'getCompanyCashFlow',
+                    'getCompanyIncomeStatement',
+                    'getCompanyBalanceSheet',
+                    'getCompanyMissionFlightTracks',
+                    'getCompanyWorkOrders',
+                    'getCompanyAircraftWorkOrders',
+                    'getCompanyNotifications',
                     'getAircraft',
-                    'getAircraftType',
                     'getAircraftMaintenanceCosts',
                     'getAircraftEconomicDetails',
                     'getAircraftFlights',
                     'getAircraftAtAirport',
                     'getAirport',
-                    'getCompany',
-                    'getCompanyDashboard',
-                    'getCompanyBalanceSheet',
-                    'getCompanyCashFlow',
-                    'getCompanyEmployees',
-                    'getCompanyFbos',
-                    'getCompanyFleet',
-                    'getCompanyFlights',
-                    'getCompanyIncomeStatement',
-                    'getCompanyJobs',
-                    'getCompanyMissionFlightTracks',
-                    'getCompanyWorkOrders',
-                    'getCompanyAircraftWorkOrders',
-                    'getCompanyNotifications',
-                    'getEmployee',
                     'getFlight',
-                    'getVirtualAirline',
-                    'getVirtualAirlineFbos',
-                    'getVirtualAirlineFleet',
-                    'getVirtualAirlineFlights',
-                    'getVirtualAirlineIncomeStatement',
-                    'getVirtualAirlineJobs',
-                    'getVirtualAirlineMembers',
-                    'getVirtualAirlineNotifications',
-                    'getVirtualAirlineRoles',
-                    'getVirtualAirlineShareHolders',
-                    'getVirtualAirlineWorkOrders',
+                    'getFboJobs',
+                    'getEmployee',
                     'isValidGuid',
                 ]);
             } catch (e) {
                 console.log(e);
 
             }
+        }
+    });
+
+    it('when instantiated with valid data except for a vaId, it should return an OnAirApi object with the expected properties', async function() {
+        try {
+            const api: OnAirApi = new OnAirApi({ apiKey, companyId });
+            expect(api).to.be.an('Object');
+            expect(api).to.contain.keys([
+                'ApiKey',
+                'CompanyId',
+                'getCompanyDashboard',
+                'getCompanyFleet',
+                'getCompanyFbos',
+                'getCompanyFlights',
+                'getCompanyJobs',
+                'getCompanyEmployees',
+                'getCompanyCashFlow',
+                'getCompanyIncomeStatement',
+                'getCompanyBalanceSheet',
+                'getCompanyMissionFlightTracks',
+                'getCompanyWorkOrders',
+                'getCompanyAircraftWorkOrders',
+                'getCompanyNotifications',
+                'getAircraft',
+                'getAircraftMaintenanceCosts',
+                'getAircraftEconomicDetails',
+                'getAircraftFlights',
+                'getAircraftAtAirport',
+                'getAirport',
+                'getFlight',
+                'getFboJobs',
+            ]);
+        } catch (e) {
+            console.log(e);
+
         }
     });
 

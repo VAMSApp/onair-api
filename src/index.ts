@@ -89,12 +89,24 @@ export class OnAirApi implements IOnAirApi {
         if (!this.isValidGuid(apiKey)) throw new Error('Invalid API Key provided');
         if (!companyId) throw new Error('No Company Id provided');
         if (!this.isValidGuid(companyId)) throw new Error('Invalid Company Id provided');
-        if (!vaId) throw new Error('No VA ID provided');
-        if (vaId && !this.isValidGuid(vaId)) throw new Error('Invalid VA ID provided');
+
+        if (vaId && this.isValidGuid(vaId)) {
+            this.VaId = vaId;
+            this.getVirtualAirline = this.getVirtualAirline.bind(this);
+            this.getVirtualAirlineMembers = this.getVirtualAirlineMembers.bind(this);
+            this.getVirtualAirlineShareHolders = this.getVirtualAirlineShareHolders.bind(this);
+            this.getVirtualAirlineRoles = this.getVirtualAirlineRoles.bind(this);
+            this.getVirtualAirlineFlights = this.getVirtualAirlineFlights.bind(this);
+            this.getVirtualAirlineFleet = this.getVirtualAirlineFleet.bind(this);
+            this.getVirtualAirlineJobs = this.getVirtualAirlineJobs.bind(this);
+            this.getVirtualAirlineFbos = this.getVirtualAirlineFbos.bind(this);
+            this.getVirtualAirlineNotifications = this.getVirtualAirlineNotifications.bind(this);
+            this.getVirtualAirlineIncomeStatement = this.getVirtualAirlineIncomeStatement.bind(this);
+            this.getVirtualAirlineWorkOrders = this.getVirtualAirlineWorkOrders.bind(this);
+        }
 
         this.ApiKey = apiKey;
         this.CompanyId = companyId;
-        this.VaId = (vaId) ? vaId : undefined;
 
         this.getCompany = this.getCompany.bind(this);
         this.getCompanyDashboard = this.getCompanyDashboard.bind(this);
@@ -117,17 +129,6 @@ export class OnAirApi implements IOnAirApi {
         this.getAircraftAtAirport = this.getAircraftAtAirport.bind(this);
         this.getAirport = this.getAirport.bind(this);
         this.getFlight = this.getFlight.bind(this);
-        this.getVirtualAirline = this.getVirtualAirline.bind(this);
-        this.getVirtualAirlineMembers = this.getVirtualAirlineMembers.bind(this);
-        this.getVirtualAirlineShareHolders = this.getVirtualAirlineShareHolders.bind(this);
-        this.getVirtualAirlineRoles = this.getVirtualAirlineRoles.bind(this);
-        this.getVirtualAirlineFlights = this.getVirtualAirlineFlights.bind(this);
-        this.getVirtualAirlineFleet = this.getVirtualAirlineFleet.bind(this);
-        this.getVirtualAirlineJobs = this.getVirtualAirlineJobs.bind(this);
-        this.getVirtualAirlineFbos = this.getVirtualAirlineFbos.bind(this);
-        this.getVirtualAirlineNotifications = this.getVirtualAirlineNotifications.bind(this);
-        this.getVirtualAirlineIncomeStatement = this.getVirtualAirlineIncomeStatement.bind(this);
-        this.getVirtualAirlineWorkOrders = this.getVirtualAirlineWorkOrders.bind(this);
         this.getFboJobs = this.getFboJobs.bind(this);
 
         this.getEmployee = this.getEmployee.bind(this);
