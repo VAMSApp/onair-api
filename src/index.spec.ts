@@ -18,7 +18,7 @@ const apiKey: string = COMPANY_APIKEY;
 const companyId: string = COMPANY_ID;
 const vaId: string | undefined = VIRTUAL_AIRLINE_ID;
 
-describe.only('OnAirApi()', function() {
+describe('OnAirApi()', function() {
     it('when instantiated with valid data, it should return an OnAirApi object with the expected properties', async function() {
         if (apiKey !== undefined && companyId !== undefined && vaId !== undefined) {
             try {

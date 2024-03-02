@@ -58,6 +58,14 @@ export interface VirtualAirline {
     DisableSeatsConfigCheck: boolean,
     RealisticSimProcedures: boolean,
     TravelTokens: number,
+    Description: string,
+    ImageName: string,
+    SkillTreeResetCount: number,
+    IndustryPoints: number,
+    TotalIndustryPoints: number,
+    TotalContractsCompleted: number,
+    TotalContractsEarnedCredits: number,
+    CompanyType: number,
 }
 
 export interface Member {

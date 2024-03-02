@@ -19,11 +19,21 @@ describe('getCompany', () => {
         expect(typeof getCompany).to.equal('function');
     });
 
-    it('should return a matching Company for the given companyId', async () => {
+    it('should return a matching Company for the given companyId, with expected fields', async () => {
         const company:CompanyResponse = await getCompany(CompanyId, ApiKey);
         if (!company || company === null) throw new Error('No company returned');
 
         expect(company).to.be.an('object');
+        expect(company).to.contain.keys([
+            'LastSwapDate',
+            'SkillTreeResetCount',
+            'IndustryPoints',
+            'TotalIndustryPoints',
+            'TotalContractsCompleted',
+            'TotalContractsEarnedCredits',
+            'CompanyType',
+        ]);
+
         expect(company.Id).to.be.a('string');
         expect(company.Id).to.equal(CompanyId);
     });
