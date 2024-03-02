@@ -8,7 +8,6 @@ A Typescript/Javascript wrapper around the OnAir Airline Manager's API.
 `npm i -s onair-api`
 
 ## Usage
-
 **The required apiKey and optional companyId** can be found in the lower left corner of the options screen within the OnAir Desktop client, if You need additional help locating these ID's check the [How To](https://github.com/vams-app/onair-api/wiki/How-To-find-your-OnAir-Company-and-VA-Id's-and-Api-Key) in the wiki.
 
 * apiKey - required, used on all Api calls to authenticate the caller
@@ -64,8 +63,9 @@ let companyDetails: Company[] = await api.getCompany('35f37dab-59ef-4fdb-b5d5-e7
 
 
 ---
-## Methods
 
+## Methods
+### Table of Contents
 - [getCompany](#getCompany)
 - [getCompanyDashboard](#getCompanyDashboard)
 - [getCompanyFbos](#getCompanyFbos)
@@ -841,7 +841,6 @@ let pendingFBOJobs: Job[] = await api.getFboJobs(fboId);
 
 
 ## Examples
-
 ### Example using the dotenv package
 
 ```javascript
