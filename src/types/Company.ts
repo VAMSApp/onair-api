@@ -36,4 +36,11 @@ export interface Company {
   CurrentBadgeUrl: string,
   CurrentBadgeName: string,
   LastWeeklyManagementsPaymentDate: string;
+  LastSwapDate: string,
+  SkillTreeResetCount: number,
+  IndustryPoints: number,
+  TotalIndustryPoints: number,
+  TotalContractsCompleted: number,
+  TotalContractsEarnedCredits: number,
+  CompanyType: number
 }

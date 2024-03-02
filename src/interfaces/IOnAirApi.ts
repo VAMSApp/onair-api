@@ -60,6 +60,4 @@ export interface IOnAirApi {
     getVirtualAirlineWorkOrders: (vaId?:string) => Promise<WorkOrder[]>
     getEmployee: (employeeId:string) => Promise<EmployeeResponse>
     getFboJobs: (fboId:string) => Promise<Job[]>
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    [key: string]: any;
 }
