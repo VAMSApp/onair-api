@@ -337,10 +337,10 @@ export class OnAirApi implements IOnAirApi {
         return flights;
     }
 
-    public async getAircraftAtAirport(icao:string):Promise<AircraftResponse> {
+    public async getAircraftAtAirport(icao:string):Promise<Aircraft[]> {
         if (!icao) throw new Error('Airport ICAO is not provided');
 
-        const aircraft: Aircraft|Aircraft[]|null = await getAircraftAtAirport(icao, this.ApiKey);
+        const aircraft: Aircraft[] = await getAircraftAtAirport(icao, this.ApiKey);
         return aircraft;
     }
 

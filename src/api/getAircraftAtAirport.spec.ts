@@ -1,7 +1,7 @@
 import { describe } from 'mocha';
 import { expect } from 'chai';
 import { getAircraftAtAirport } from './getAircraftAtAirport';
-import { AircraftResponse } from '../types';
+import { Aircraft } from '../types';
 
 const {
     COMPANY_APIKEY,
@@ -18,7 +18,7 @@ describe('getAircraftAtAirport', () => {
     });
 
     it('should return an array of aircraft at the airport for the given ICAO', async () => {
-        const x:AircraftResponse = await getAircraftAtAirport(airportICAO, ApiKey);
+        const x:Aircraft[] = await getAircraftAtAirport(airportICAO, ApiKey);
         if (!x || x === null) throw new Error('No airport returned');
 
         expect(x).to.be.an('array');

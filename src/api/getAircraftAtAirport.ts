@@ -1,10 +1,10 @@
 import { isValidGuid } from '../utils';
-import { Aircraft, GetAircraft, } from '../types';1;
+import { Aircraft, GetAircraftAtAirport, } from '../types';1;
 import onAirRequest, { AircraftApiResponse } from './onAirRequest';
 
 const endPoint = 'airports/';
 
-export const getAircraftAtAirport:GetAircraft = async (icao: string, apiKey: string):Promise<Aircraft> => {
+export const getAircraftAtAirport: GetAircraftAtAirport = async (icao: string, apiKey: string):Promise<Aircraft[]> => {
     if (!icao) throw new Error('No ICAO code provided');
     if (!apiKey) throw new Error('No Api Key provided');
     if (!isValidGuid(apiKey)) throw new Error('Invalid Api Key provided');
@@ -17,7 +17,7 @@ export const getAircraftAtAirport:GetAircraft = async (icao: string, apiKey: str
         );
 
         if (typeof response.data.Content !== 'undefined') {
-            return response.data.Content as Aircraft;
+            return response.data.Content as Aircraft[];
         } else {
             throw new Error(response.data.Error ? response.data.Error : `Aircraft ICAO code ${icao.toUpperCase()} not found`);
         }

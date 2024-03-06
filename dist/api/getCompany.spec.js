@@ -50,7 +50,7 @@ var CompanyId = COMPANY_ID;
     it('should be a function', function () {
         (0, chai_1.expect)(typeof getCompany_1.getCompany).to.equal('function');
     });
-    it('should return a matching Company for the given companyId', function () { return __awaiter(void 0, void 0, void 0, function () {
+    it('should return a matching Company for the given companyId, with expected fields', function () { return __awaiter(void 0, void 0, void 0, function () {
         var company;
         return __generator(this, function (_a) {
             switch (_a.label) {
@@ -60,6 +60,15 @@ var CompanyId = COMPANY_ID;
                     if (!company || company === null)
                         throw new Error('No company returned');
                     (0, chai_1.expect)(company).to.be.an('object');
+                    (0, chai_1.expect)(company).to.contain.keys([
+                        'LastSwapDate',
+                        'SkillTreeResetCount',
+                        'IndustryPoints',
+                        'TotalIndustryPoints',
+                        'TotalContractsCompleted',
+                        'TotalContractsEarnedCredits',
+                        'CompanyType',
+                    ]);
                     (0, chai_1.expect)(company.Id).to.be.a('string');
                     (0, chai_1.expect)(company.Id).to.equal(CompanyId);
                     return [2 /*return*/];

@@ -46,7 +46,7 @@ if (!COMPANY_ID)
     throw new Error('No COMPANY_ID provided');
 var ApiKey = COMPANY_APIKEY;
 var CompanyId = COMPANY_ID;
-mocha_1.describe.only('getCompanyDashboard', function () {
+(0, mocha_1.describe)('getCompanyDashboard', function () {
     it('should be a function', function () {
         (0, chai_1.expect)(typeof getCompanyDashboard_1.getCompanyDashboard).to.equal('function');
     });

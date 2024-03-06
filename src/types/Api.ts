@@ -60,7 +60,7 @@ export type GetAircraftEconomicDetails = (aircraftId: string, apiKey: string) =>
 export type GetAircraftType = (aircraftTypeId: string, apiKey: string) => Promise<AircraftTypeResponse>;
 export type GetAircraftFlights = (aircraftId: string, apiKey: string, page?: number, limit?: number) => Promise<Flight[]>;
 export type GetAirport = (icao: string, apiKey: string) => Promise<AirportResponse>;
-export type GetAircraftAtAirport = (icao: string, apiKey: string) => Promise<AircraftResponse>;
+export type GetAircraftAtAirport = (icao: string, apiKey: string) => Promise<Aircraft[]>;
 export type GetCompanyFbos = (companyId: string, apiKey: string) => Promise<Fbo[]>;
 export type GetCompanyFleet = (companyId: string, apiKey: string) => Promise<Aircraft[]>;
 export type GetCompanyFlights = (companyId: string, apiKey: string, page?: number, limit?: number) => Promise<Flight[]>;

@@ -67,13 +67,22 @@ var OnAirApi = /** @class */ (function () {
             throw new Error('No Company Id provided');
         if (!this.isValidGuid(companyId))
             throw new Error('Invalid Company Id provided');
-        if (!vaId)
-            throw new Error('No VA ID provided');
-        if (vaId && !this.isValidGuid(vaId))
-            throw new Error('Invalid VA ID provided');
+        if (vaId && this.isValidGuid(vaId)) {
+            this.VaId = vaId;
+            this.getVirtualAirline = this.getVirtualAirline.bind(this);
+            this.getVirtualAirlineMembers = this.getVirtualAirlineMembers.bind(this);
+            this.getVirtualAirlineShareHolders = this.getVirtualAirlineShareHolders.bind(this);
+            this.getVirtualAirlineRoles = this.getVirtualAirlineRoles.bind(this);
+            this.getVirtualAirlineFlights = this.getVirtualAirlineFlights.bind(this);
+            this.getVirtualAirlineFleet = this.getVirtualAirlineFleet.bind(this);
+            this.getVirtualAirlineJobs = this.getVirtualAirlineJobs.bind(this);
+            this.getVirtualAirlineFbos = this.getVirtualAirlineFbos.bind(this);
+            this.getVirtualAirlineNotifications = this.getVirtualAirlineNotifications.bind(this);
+            this.getVirtualAirlineIncomeStatement = this.getVirtualAirlineIncomeStatement.bind(this);
+            this.getVirtualAirlineWorkOrders = this.getVirtualAirlineWorkOrders.bind(this);
+        }
         this.ApiKey = apiKey;
         this.CompanyId = companyId;
-        this.VaId = (vaId) ? vaId : undefined;
         this.getCompany = this.getCompany.bind(this);
         this.getCompanyDashboard = this.getCompanyDashboard.bind(this);
         this.getCompanyFleet = this.getCompanyFleet.bind(this);
@@ -95,17 +104,6 @@ var OnAirApi = /** @class */ (function () {
         this.getAircraftAtAirport = this.getAircraftAtAirport.bind(this);
         this.getAirport = this.getAirport.bind(this);
         this.getFlight = this.getFlight.bind(this);
-        this.getVirtualAirline = this.getVirtualAirline.bind(this);
-        this.getVirtualAirlineMembers = this.getVirtualAirlineMembers.bind(this);
-        this.getVirtualAirlineShareHolders = this.getVirtualAirlineShareHolders.bind(this);
-        this.getVirtualAirlineRoles = this.getVirtualAirlineRoles.bind(this);
-        this.getVirtualAirlineFlights = this.getVirtualAirlineFlights.bind(this);
-        this.getVirtualAirlineFleet = this.getVirtualAirlineFleet.bind(this);
-        this.getVirtualAirlineJobs = this.getVirtualAirlineJobs.bind(this);
-        this.getVirtualAirlineFbos = this.getVirtualAirlineFbos.bind(this);
-        this.getVirtualAirlineNotifications = this.getVirtualAirlineNotifications.bind(this);
-        this.getVirtualAirlineIncomeStatement = this.getVirtualAirlineIncomeStatement.bind(this);
-        this.getVirtualAirlineWorkOrders = this.getVirtualAirlineWorkOrders.bind(this);
         this.getFboJobs = this.getFboJobs.bind(this);
         this.getEmployee = this.getEmployee.bind(this);
         this.isValidGuid = this.isValidGuid.bind(this);
@@ -422,6 +420,26 @@ var OnAirApi = /** @class */ (function () {
                     case 1:
                         aircraft = _a.sent();
                         return [2 /*return*/, aircraft];
+                }
+            });
+        });
+    };
+    OnAirApi.prototype.getAircraftType = function (aircraftTypeId) {
+        return __awaiter(this, void 0, void 0, function () {
+            var x;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        if (!aircraftTypeId)
+                            throw new Error('Aircraft ID not provided');
+                        if (!this.isValidGuid(aircraftTypeId))
+                            throw new Error('Invalid Aircraft ID provided');
+                        return [4 /*yield*/, (0, api_1.getAircraftType)(aircraftTypeId, this.ApiKey).then(function (response) {
+                                return response;
+                            })];
+                    case 1:
+                        x = _a.sent();
+                        return [2 /*return*/, x];
                 }
             });
         });

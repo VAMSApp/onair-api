@@ -72,8 +72,7 @@ if (!COMPANY_APIKEY)
     throw new Error('No COMPANY_APIKEY provided');
 if (!COMPANY_ID)
     throw new Error('No COMPANY_ID provided');
-if (!VIRTUAL_AIRLINE_ID)
-    throw new Error('No VIRTUAL_AIRLINE_ID provided');
+// if (!VIRTUAL_AIRLINE_ID) throw new Error('No VIRTUAL_AIRLINE_ID provided');
 var apiKey = COMPANY_APIKEY;
 var companyId = COMPANY_ID;
 var vaId = VIRTUAL_AIRLINE_ID;
@@ -82,52 +81,93 @@ var vaId = VIRTUAL_AIRLINE_ID;
         return __awaiter(this, void 0, void 0, function () {
             var api;
             return __generator(this, function (_a) {
-                if (apiKey !== undefined && companyId !== undefined) {
+                if (apiKey !== undefined && companyId !== undefined && vaId !== undefined) {
                     try {
                         api = new index_1.default({ apiKey: apiKey, companyId: companyId, vaId: vaId });
                         (0, chai_1.expect)(api).to.be.an('Object');
                         (0, chai_1.expect)(api).to.contain.keys([
                             'ApiKey',
                             'CompanyId',
-                            'VaId',
+                            'getVirtualAirline',
+                            'getVirtualAirlineMembers',
+                            'getVirtualAirlineShareHolders',
+                            'getVirtualAirlineRoles',
+                            'getVirtualAirlineFlights',
+                            'getVirtualAirlineFleet',
+                            'getVirtualAirlineJobs',
+                            'getVirtualAirlineFbos',
+                            'getVirtualAirlineNotifications',
+                            'getVirtualAirlineIncomeStatement',
+                            'getVirtualAirlineWorkOrders',
+                            'getCompany',
+                            'getCompanyDashboard',
+                            'getCompanyFleet',
+                            'getCompanyFbos',
+                            'getCompanyFlights',
+                            'getCompanyJobs',
+                            'getCompanyEmployees',
+                            'getCompanyCashFlow',
+                            'getCompanyIncomeStatement',
+                            'getCompanyBalanceSheet',
+                            'getCompanyMissionFlightTracks',
+                            'getCompanyWorkOrders',
+                            'getCompanyAircraftWorkOrders',
+                            'getCompanyNotifications',
                             'getAircraft',
                             'getAircraftMaintenanceCosts',
                             'getAircraftEconomicDetails',
                             'getAircraftFlights',
                             'getAircraftAtAirport',
                             'getAirport',
-                            'getCompany',
-                            'getCompanyBalanceSheet',
-                            'getCompanyCashFlow',
-                            'getCompanyEmployees',
-                            'getCompanyFbos',
-                            'getCompanyFleet',
-                            'getCompanyFlights',
-                            'getCompanyIncomeStatement',
-                            'getCompanyJobs',
-                            'getCompanyMissionFlightTracks',
-                            'getCompanyWorkOrders',
-                            'getCompanyAircraftWorkOrders',
-                            'getCompanyNotifications',
-                            'getEmployee',
                             'getFlight',
-                            'getVirtualAirline',
-                            'getVirtualAirlineFbos',
-                            'getVirtualAirlineFleet',
-                            'getVirtualAirlineFlights',
-                            'getVirtualAirlineIncomeStatement',
-                            'getVirtualAirlineJobs',
-                            'getVirtualAirlineMembers',
-                            'getVirtualAirlineNotifications',
-                            'getVirtualAirlineRoles',
-                            'getVirtualAirlineShareHolders',
-                            'getVirtualAirlineWorkOrders',
+                            'getFboJobs',
+                            'getEmployee',
                             'isValidGuid',
                         ]);
                     }
                     catch (e) {
                         console.log(e);
                     }
+                }
+                return [2 /*return*/];
+            });
+        });
+    });
+    it('when instantiated with valid data except for a vaId, it should return an OnAirApi object with the expected properties', function () {
+        return __awaiter(this, void 0, void 0, function () {
+            var api;
+            return __generator(this, function (_a) {
+                try {
+                    api = new index_1.default({ apiKey: apiKey, companyId: companyId });
+                    (0, chai_1.expect)(api).to.be.an('Object');
+                    (0, chai_1.expect)(api).to.contain.keys([
+                        'ApiKey',
+                        'CompanyId',
+                        'getCompanyDashboard',
+                        'getCompanyFleet',
+                        'getCompanyFbos',
+                        'getCompanyFlights',
+                        'getCompanyJobs',
+                        'getCompanyEmployees',
+                        'getCompanyCashFlow',
+                        'getCompanyIncomeStatement',
+                        'getCompanyBalanceSheet',
+                        'getCompanyMissionFlightTracks',
+                        'getCompanyWorkOrders',
+                        'getCompanyAircraftWorkOrders',
+                        'getCompanyNotifications',
+                        'getAircraft',
+                        'getAircraftMaintenanceCosts',
+                        'getAircraftEconomicDetails',
+                        'getAircraftFlights',
+                        'getAircraftAtAirport',
+                        'getAirport',
+                        'getFlight',
+                        'getFboJobs',
+                    ]);
+                }
+                catch (e) {
+                    console.log(e);
                 }
                 return [2 /*return*/];
             });
