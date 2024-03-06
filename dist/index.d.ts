@@ -27,7 +27,7 @@ export declare class OnAirApi implements IOnAirApi {
     getAircraftMaintenanceCosts(aircraftId: string): Promise<MaintenanceCostResponse>;
     getAircraftEconomicDetails(aircraftId: string): Promise<EconomicDetailResponse>;
     getAircraftFlights(aircraftId: string, page?: number, limit?: number): Promise<Flight[]>;
-    getAircraftAtAirport(icao: string): Promise<AircraftResponse>;
+    getAircraftAtAirport(icao: string): Promise<Aircraft[]>;
     getAirport(airportCode: string): Promise<AirportResponse>;
     getFlight(flightId: string): Promise<FlightResponse>;
     getVirtualAirline(vaId?: string): Promise<VirtualAirlineResponse>;

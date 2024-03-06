@@ -17,7 +17,7 @@ export interface IOnAirApi {
     getAircraft: (aircraftId: string) => Promise<AircraftResponse>;
     getAircraftType: (aircraftId: string) => Promise<AircraftTypeResponse>;
     getAircraftFlights: (aircraftId: string, page?: number, limit?: number) => Promise<Flight[]>;
-    getAircraftAtAirport: (icao: string) => Promise<AircraftResponse>;
+    getAircraftAtAirport: (icao: string) => Promise<Aircraft[]>;
     getAircraftMaintenanceCosts: (aircraftId: string) => Promise<MaintenanceCostResponse>;
     getAircraftEconomicDetails: (aircraftId: string) => Promise<EconomicDetailResponse>;
     getAirport: (airportCode: string) => Promise<AirportResponse>;

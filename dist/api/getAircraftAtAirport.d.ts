@@ -1,2 +1,2 @@
-import { GetAircraft } from '../types';
-export declare const getAircraftAtAirport: GetAircraft;
+import { GetAircraftAtAirport } from '../types';
+export declare const getAircraftAtAirport: GetAircraftAtAirport;
