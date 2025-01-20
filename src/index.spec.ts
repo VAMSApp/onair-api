@@ -65,7 +65,6 @@ describe('OnAirApi()', function() {
                 ]);
             } catch (e) {
                 console.log(e);
-
             }
         }
     });

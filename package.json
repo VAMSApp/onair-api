@@ -17,7 +17,7 @@
         "postversion": "git push && git push --tags",
         "lint": "eslint src --ext .ts",
         "lintFix": "eslint src --ext .ts --fix",
-        "test": "clear && mocha --timeout 20000 --require ts-node/register src/*.spec.ts src/**/*.spec.ts",
+        "test": "mocha --timeout 20000 --require ts-node/register src/*.spec.ts src/**/*.spec.ts",
         "test:watch": "mocha -w --timeout 20000 --require ts-node/register src/*.spec.ts src/**/*.spec.ts"
     },
     "author": {
@@ -53,6 +53,7 @@
         "@types/node": "^17.0.45",
         "@typescript-eslint/eslint-plugin": "^5.10.1",
         "@typescript-eslint/parser": "^5.10.1",
+        "binary-extensions": "^3.0.0",
         "chai": "^4.3.4",
         "eslint": "^7.32.0",
         "eslint-config-prettier": "^8.3.0",
