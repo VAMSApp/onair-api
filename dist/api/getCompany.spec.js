@@ -61,13 +61,13 @@ var CompanyId = COMPANY_ID;
                         throw new Error('No company returned');
                     (0, chai_1.expect)(company).to.be.an('object');
                     (0, chai_1.expect)(company).to.contain.keys([
-                        'LastSwapDate',
-                        'SkillTreeResetCount',
-                        'IndustryPoints',
-                        'TotalIndustryPoints',
-                        'TotalContractsCompleted',
-                        'TotalContractsEarnedCredits',
-                        'CompanyType',
+                        'Id',
+                        'Name',
+                        'AirlineCode',
+                        'LastConnection',
+                        'LastReportDate',
+                        'Reputation',
+                        'CreationDate',
                     ]);
                     (0, chai_1.expect)(company.Id).to.be.a('string');
                     (0, chai_1.expect)(company.Id).to.equal(CompanyId);
