@@ -75,7 +75,7 @@ export class OnAirApi implements IOnAirApi {
     // Properties
     private ApiKey: string
     private CompanyId: string
-    private VaId?: string
+    private VaId?: string|undefined
 
     // Constructor
     constructor(config: OnAirApiConfig) {
