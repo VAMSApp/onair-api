@@ -1,6 +1,6 @@
 {
     "name": "onair-api",
-    "version": "2.9.0",
+    "version": "2.8.4",
     "description": "Node.js package to query the OnAir API",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",

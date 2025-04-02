@@ -10,7 +10,6 @@ export interface Company {
     DifficultyLevel: number;
     UTCOffsetinHours: number;
     Paused: boolean;
-    PausedDate: string;
     Level: number;
     LevelXP: number;
     TransportEmployeeInstant: boolean;
@@ -30,15 +29,16 @@ export interface Company {
     DisableSeatsConfigCheck: boolean;
     RealisticSimProcedures: boolean;
     TravelTokens: number;
-    CurrentBadgeId: string;
-    CurrentBadgeUrl: string;
-    CurrentBadgeName: string;
-    LastWeeklyManagementsPaymentDate: string;
-    LastSwapDate: string;
     SkillTreeResetCount: number;
     IndustryPoints: number;
     TotalIndustryPoints: number;
     TotalContractsCompleted: number;
     TotalContractsEarnedCredits: number;
     CompanyType: number;
+    AutoUnloadMerchandises: boolean;
+    ExcludeAirportsNotInSimbrief: boolean;
+    DisableFlightScoring: boolean;
+    EnableFlightScoringLights: boolean;
+    ManagementMode: number;
+    IsAdvancedManagementModeUnlocked: boolean;
 }

@@ -46,7 +46,7 @@ var endPoint = 'company/';
 var getVirtualAirlineFlights = function (vaId, apiKey, page, limit) {
     if (page === void 0) { page = 1; }
     return __awaiter(void 0, void 0, void 0, function () {
-        var startIndex, queryOpts, response, e_1;
+        var startIndex, queryOpts, response, data, e_1;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
@@ -73,7 +73,8 @@ var getVirtualAirlineFlights = function (vaId, apiKey, page, limit) {
                 case 2:
                     response = _a.sent();
                     if (typeof response.data.Content !== 'undefined') {
-                        return [2 /*return*/, response.data.Content];
+                        data = response.data.Content;
+                        return [2 /*return*/, data];
                     }
                     else {
                         throw new Error(response.data.Error ? response.data.Error : "VA Id \"".concat(vaId, "\"\" not found"));
