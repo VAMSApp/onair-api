@@ -25,13 +25,13 @@ describe('getCompany', () => {
 
         expect(company).to.be.an('object');
         expect(company).to.contain.keys([
-            'LastSwapDate',
-            'SkillTreeResetCount',
-            'IndustryPoints',
-            'TotalIndustryPoints',
-            'TotalContractsCompleted',
-            'TotalContractsEarnedCredits',
-            'CompanyType',
+            'Id',
+            'Name',
+            'AirlineCode',
+            'LastConnection',
+            'LastReportDate',
+            'Reputation',
+            'CreationDate',
         ]);
 
         expect(company.Id).to.be.a('string');
