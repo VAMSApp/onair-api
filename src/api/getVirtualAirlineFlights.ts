@@ -26,9 +26,10 @@ export const getVirtualAirlineFlights:GetVirtualAirlineFlights = async (vaId: st
             `https://server1.onair.company/api/v1/${endPoint}${vaId}/flights`,
             apiKey, queryOpts,
         );
-
         if (typeof response.data.Content !== 'undefined') {
-            return response.data.Content as Flight[];
+            const data: Flight[] = response.data.Content as Flight[];
+
+            return data;
         } else {
             throw new Error(response.data.Error ? response.data.Error : `VA Id "${vaId}"" not found`);
         }
