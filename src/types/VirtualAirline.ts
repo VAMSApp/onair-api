@@ -27,6 +27,7 @@ export interface VirtualAirline {
     AutomaticallyAssignJobWhenLoaded: boolean,
     RestrictLoadingVAJobsIntoNonVAAircraft: boolean,
     RestrictLoadingNonVAJobsIntoVAAircraft: boolean,
+    LastComputationDate: string,
     MemberCount: number,
     Id: string,
     WorldId: string,
@@ -87,6 +88,7 @@ export interface Member {
     AcceptChallengeMode: boolean,
     ReputationImpact: number,
     LastWeeklyPay: string,
+    LastVAFlightDate: string,
 }
 
 export interface ShareHolder extends Member {
