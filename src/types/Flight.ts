@@ -51,6 +51,7 @@ export interface Flight {
   ArrivalActualAirportId: Airport,
   ArrivalActualAirport: Airport,
   Registered: boolean,
+  CancelReason: number|null,
   Category: number,
   ResultComments: string,
   StartTime: string,
