@@ -48,7 +48,7 @@ export interface Flight {
   ArrivalIntendedAirportId: string,
   ArrivalIntendedAirport: Airport,
   ArrivalAlternateAirportId: string,
-  ArrivalActualAirportId: Airport,
+  ArrivalActualAirportId: string,
   ArrivalActualAirport: Airport,
   Registered: boolean,
   CancelReason: number|null,
