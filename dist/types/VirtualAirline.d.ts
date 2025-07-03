@@ -65,6 +65,11 @@ export interface VirtualAirline {
     TotalContractsCompleted: number;
     TotalContractsEarnedCredits: number;
     CompanyType: number;
+    ComputedMemberCount: number;
+    ComputedAircraftsCount: number;
+    ComputedNumberOfFlights30Days: number;
+    ComputedNumberOfFlightHours30Days: number;
+    ComputedMostUsedAirports: string;
 }
 export interface Member {
     Id: string;
