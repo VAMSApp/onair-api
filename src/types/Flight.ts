@@ -102,5 +102,6 @@ export interface Flight {
   StartHeading: number,
   CanResumeOrAbort: boolean,
   EngineOnRealTime: string,
-  EngineOffRealTime: string
+  EngineOffRealTime: string,
+  Score: number
 }
